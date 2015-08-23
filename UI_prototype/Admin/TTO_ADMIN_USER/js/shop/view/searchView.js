@@ -1,4 +1,4 @@
-Ext.define('user.view.searchView', {
+Ext.define('shop.view.searchView', {
     extend: 'Ext.container.Viewport',
 
     requires: [
@@ -10,8 +10,7 @@ Ext.define('user.view.searchView', {
         'Ext.grid.Panel',
         'Ext.grid.column.Boolean',
         'Ext.grid.View',
-        'Ext.toolbar.Paging',
-		'user.store.userStore'
+        'Ext.toolbar.Paging'
     ],
 
     itemId: 'searchView',
@@ -89,7 +88,6 @@ Ext.define('user.view.searchView', {
                         {
                             xtype: 'panel',
                             region: 'north',
-                            height: 150,
                             layout: 'anchor',
                             bodyCls: 'paddingBox',
                             collapsible: true,
@@ -97,18 +95,40 @@ Ext.define('user.view.searchView', {
                             items: [
                                 {
                                     xtype: 'textfield',
-                                    fieldLabel: 'user phone',
-									id:'searchUserPhone',
-									itemId:'searchUserPhone'
+                                    fieldLabel: 'stop name',
+									id:'searchStopName',
+									itemId:'searchStopName'
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     anchor: '100%',
-                                    fieldLabel: 'Is Vendor?',
-                                    boxLabel: 'Box Label',
+                                    fieldLabel: 'Is Hot?',
+                                    boxLabel: 'Yes',
 									inputValue:true,
-									id:'searchIsVendor',
-									itemId:'searchIsVendor'
+									id:'searchIsHot',
+									itemId:'searchIsHot'
+                                },{
+                                    xtype: 'combobox',
+                                    fieldLabel: 'location',
+									store:'locationStore',
+									queryModel:'local',
+									displayField: 'locationName',
+									valueField: 'locationId',
+									forceSelection: true,
+									hideTrigger :true,
+									minChars:3,
+									id:'searchLocation',
+									itemId:'searchLocation'
+                                },{
+                                    xtype: 'combobox',
+                                    fieldLabel: 'status',
+									store:'statusStore',
+									queryModel:'local',
+									displayField: 'statusName',
+									valueField: 'statusId',
+									forceSelection: true,
+									id:'searchStatus',
+									itemId:'searchStatus'
                                 },
                                 {
                                     xtype: 'button',
@@ -123,26 +143,53 @@ Ext.define('user.view.searchView', {
                             title: 'Use List',
 							enableColumnHide : false,
 							sortableColumns : false,
-							store: 'userStore',
+							store: 'shopSearchStore',
 							id:'searchResultGrid',
 							itemId: 'searchResultGrid',
                             columns: [
                                 {
                                     xtype: 'gridcolumn',
-                                    text: 'User Phone',
+                                    text: 'Shop Name',
 									minWidth: 250,
-									dataIndex: 'userPhone',
+									dataIndex: 'shopName',
 									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-										return record.data.userPhone;
+										return record.data.shopName;
 									}
-                                },
-                                {
+                                },{
                                     xtype: 'gridcolumn',
-                                    text: 'Is Vendor',
+                                    text: 'Owner Name',
 									minWidth: 250,
-									dataIndex: 'isVendor',
+									dataIndex: 'ownerName',
 									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-										return record.data.isVendor;
+										return record.data.ownerName;
+									}
+                                },{
+                                    xtype: 'gridcolumn',
+                                    text: 'Location Name',
+									minWidth: 250,
+									dataIndex: 'locationName',
+									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+										return record.data.locationName;
+									}
+                                },{
+                                    xtype: 'gridcolumn',
+                                    text: 'Is Hot',
+									minWidth: 250,
+									dataIndex: 'isHot',
+									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+										if(record.data.isHot){
+											return 'Y';
+										}else{
+											return 'N';
+										}
+									}
+                                },{
+                                    xtype: 'gridcolumn',
+                                    text: 'Status',
+									minWidth: 250,
+									dataIndex: 'status',
+									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+										return record.data.status;
 									}
                                 }
                             ],
@@ -156,8 +203,12 @@ Ext.define('user.view.searchView', {
                                     items: [
                                         {
                                             xtype: 'button',
-                                            text: 'Reset Password',
-											itemId:'resetPswBtn'
+                                            text: 'Set As Hot Shop',
+											itemId:'setAsHotShopBtn'
+                                        },{
+                                            xtype: 'button',
+                                            text: 'View & Change Status',
+											itemId:'viewBtn'
                                         }
                                     ]
                                 },
@@ -165,6 +216,7 @@ Ext.define('user.view.searchView', {
                                     xtype: 'pagingtoolbar',
                                     dock: 'bottom',
                                     width: 360,
+									store:'shopSearchStore',
                                     displayInfo: true
                                 }
                             ]
@@ -179,7 +231,7 @@ Ext.define('user.view.searchView', {
                                 {
                                     xtype: 'label',
                                     cls: 'title',
-                                    text: 'User Manager'
+                                    text: 'Shop Manager'
                                 }
                             ]
                         }

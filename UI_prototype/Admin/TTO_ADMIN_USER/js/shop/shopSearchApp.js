@@ -4,23 +4,27 @@ Ext.Loader.setConfig({
 
 Ext.application({
 	models : [ 
-		'userModel' 
+		'shopSearchModel',
+		'locationModel',
+		'statusModel'
 	],
 	stores : [ 
-		'userStore'
+		'shopSearchStore',
+		'locationStore',
+		'statusStore'
 	],
     views: [
         'searchView'
     ],
-	controllers : [ 
-		'searchController' ,
+	controllers : [
+		'searchController',
 		'cmn.controller.cmnController'
 	],
-    name: 'user',
-	appFolder: 'user',
+    name: 'shop',
+	appFolder: 'js/shop',
 
     launch: function() {
-        Ext.create('user.view.searchView');
+        Ext.create('shop.view.searchView');
     }
 
 });

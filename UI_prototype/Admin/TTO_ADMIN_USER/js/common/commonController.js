@@ -6,6 +6,9 @@ Ext.define('cmn.controller.cmnController', {
 			'#userBtn':{
 				click:this.userPage
 			},
+			'#shopBtn':{
+				click:this.shopPage
+			},
 			'#logoImg':{
 				beforerender:this.loadLogo
 			},
@@ -16,6 +19,9 @@ Ext.define('cmn.controller.cmnController', {
 	},
 	userPage:function(){
 		window.location.href='userSearch.html';
+	},
+	shopPage:function(){
+		window.location.href='shopSearch.html';
 	},
 	loadLogo:function( comp, eOpts ){
 		comp.setSrc('img/rice.png');

@@ -164,6 +164,7 @@ Ext.define('user.view.searchView', {
                                 {
                                     xtype: 'pagingtoolbar',
                                     dock: 'bottom',
+									store: 'userStore',
                                     width: 360,
                                     displayInfo: true
                                 }

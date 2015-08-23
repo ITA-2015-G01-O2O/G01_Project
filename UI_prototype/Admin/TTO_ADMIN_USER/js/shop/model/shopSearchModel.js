@@ -6,14 +6,24 @@ Ext.define('shop.model.shopSearchModel', {
     ],
 
     fields: [
-        {
-        	name: 'userId'
+		{
+        	name: 'shopId'
         },
         {
-            name: 'userPhone'
+        	name: 'shopName'
         },
         {
-            name: 'isVendor'
+            name: 'ownerName'
+        },
+        {
+            name: 'locationName'
+        },
+        {
+            name: 'isHot',
+			type:'boolean'
+        },
+        {
+            name: 'status'
         }
     ]
 });
