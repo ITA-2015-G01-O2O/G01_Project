@@ -74,88 +74,110 @@ Ext.define('config.view.searchView', {
                     bodyCls: 'paddingBox',
                     items: [
                         {
-                            xtype: 'panel',
-                            region: 'north',
-                            height: 150,
-                            layout: 'anchor',
-                            bodyCls: 'paddingBox',
-                            collapsible: true,
-                            title: 'Seach',
-                            items: [
-                                {
-                                    xtype: 'textfield',
-                                    fieldLabel: 'user phone',
-									id:'searchUserPhone',
-									itemId:'searchUserPhone'
-                                },
-                                {
-                                    xtype: 'checkboxfield',
-                                    anchor: '100%',
-                                    fieldLabel: 'Is Vendor?',
-                                    boxLabel: 'Box Label',
-									inputValue:true,
-									id:'searchIsVendor',
-									itemId:'searchIsVendor'
-                                },
-                                {
-                                    xtype: 'button',
-                                    text: 'Seach',
-									itemId:'searchBtn'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'gridpanel',
-                            region: 'center',
-                            title: 'Use List',
-							enableColumnHide : false,
-							sortableColumns : false,
-							//store: 'userStore',
-							id:'searchResultGrid',
-							itemId: 'searchResultGrid',
-                            columns: [
-                                {
-                                    xtype: 'gridcolumn',
-                                    text: 'User Phone',
-									minWidth: 250,
-									dataIndex: 'userPhone',
-									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-										return record.data.userPhone;
-									}
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    text: 'Is Vendor',
-									minWidth: 250,
-									dataIndex: 'isVendor',
-									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-										return record.data.isVendor;
-									}
-                                }
-                            ],
-							selModel: Ext.create('Ext.selection.CheckboxModel', {
-								mode:'SINGLE'
-							}),
-                            dockedItems: [
-                                {
-                                    xtype: 'toolbar',
-                                    dock: 'top',
-                                    items: [
-                                        {
-                                            xtype: 'button',
-                                            text: 'Reset Password',
-											itemId:'resetPswBtn'
-                                        }
-                                    ]
-                                },
-                                {
-                                    xtype: 'pagingtoolbar',
-                                    dock: 'bottom',
-                                    width: 360,
-                                    displayInfo: true
-                                }
-                            ]
-                        }
+							xtype: 'panel',
+							region: 'center',
+							itemId: 'contentPanel',
+							bodyPadding: 10,
+							title: 'Content',
+							items: [
+								{
+									xtype: 'textfield',
+									fieldLabel: 'Service hot line',
+									allowBlank: false,
+									id:'serviceHotLine',
+									itemId:'serviceHotLineFiled'
+								},
+								{
+									xtype: 'numberfield',
+									fieldLabel: 'Order Auto Confirm Time',
+									regex: /^[A-Za-z0-9]+$/,
+									allowBlank: false,
+									enforceMaxLength: true,
+									maxLength: 2,
+									maxValue: 24,
+									minValue: 0,
+									value:0,
+									id:'orderAutoConfirmFiled',
+									itemId:'orderAutoConfirmFiled'
+								},
+								{
+									xtype: 'numberfield',
+									fieldLabel: 'Order Auto Cancel Time',
+									allowBlank: false,
+									regex: /^[A-Za-z0-9]+$/,
+									enforceMaxLength: true,
+									maxLength: 2,
+									maxValue: 24,
+									minValue: 0,
+									value:0,
+									id:'orderAutoCancelFiled',
+									itemId:'orderAutoCancelFiled'
+								},
+								{
+									xtype: 'gridpanel',
+									title: 'Category List',
+									enableColumnHide : false,
+									sortableColumns : false,
+									store:'categoryStore',
+									id:'categoryList',
+									itemId:'categoryList',
+									columns: [
+										{
+											xtype: 'gridcolumn',
+											dataIndex: 'configValue',
+											minWidth: 250,
+											text: 'Category Name',
+											renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+												return record.data.configValue;
+											},
+											editor:{
+												xtype:'textfield'
+											}  
+										}
+									],
+									selModel: Ext.create('Ext.selection.CheckboxModel', {
+										mode:'SINGLE'
+									}),
+									dockedItems: [
+										{
+											xtype: 'toolbar',
+											dock: 'top',
+											items: [
+												{
+													xtype: 'button',
+													text: 'Add',
+													itemId:'addBtn'
+												},{
+													xtype: 'button',
+													text: 'Delete',
+													disabled:true,
+													id:'deleteBtn',
+													itemId:'deleteBtn'
+												}
+											]
+										}
+									],
+									plugins: [   
+										Ext.create('Ext.grid.plugin.CellEditing', {
+											clicksToEdit: 1  
+										})
+									]
+								}
+							],
+							dockedItems: [
+								{
+									xtype: 'toolbar',
+									dock: 'top',
+									items: [
+										{
+											xtype: 'button',
+											text: 'Save Config',
+											itemId:'saveConfigBtn'
+										}
+									]
+								}
+							]
+						}
                     ],
                     dockedItems: [
                         {
@@ -166,7 +188,7 @@ Ext.define('config.view.searchView', {
                                 {
                                     xtype: 'label',
                                     cls: 'title',
-                                    text: 'User Manager'
+                                    text: 'System Config'
                                 }
                             ]
                         }

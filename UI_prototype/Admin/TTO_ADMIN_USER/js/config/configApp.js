@@ -3,10 +3,17 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+	models : [ 
+		'configModel'
+	],
+	stores : [ 
+		'categoryStore'
+	],
     views: [
         'searchView'
     ],
 	controllers : [
+		'searchController',
 		'cmn.controller.cmnController'
 	],
     name: 'config',
