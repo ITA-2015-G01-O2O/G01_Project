@@ -20,7 +20,7 @@ Ext.define('login.controller.loginController', {
 		var username = Ext.getCmp('loginname').getValue();
 		var password = Ext.getCmp('password').getValue();
 		Ext.MessageBox.alert('test',username+":"+password,function(){
-			window.location.href='userView.html';
+			window.location.href='userSearch.html';
 		});
 	}
 });

@@ -78,7 +78,7 @@ Ext.define('config.view.searchView', {
 							region: 'center',
 							itemId: 'contentPanel',
 							bodyPadding: 10,
-							title: 'Content',
+							title: 'System Config',
 							items: [
 								{
 									xtype: 'textfield',
@@ -115,7 +115,6 @@ Ext.define('config.view.searchView', {
 								},
 								{
 									xtype: 'gridpanel',
-									title: 'Category List',
 									enableColumnHide : false,
 									sortableColumns : false,
 									store:'categoryStore',

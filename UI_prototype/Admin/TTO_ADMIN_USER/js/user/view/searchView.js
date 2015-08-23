@@ -105,7 +105,7 @@ Ext.define('user.view.searchView', {
                                     xtype: 'checkboxfield',
                                     anchor: '100%',
                                     fieldLabel: 'Is Vendor?',
-                                    boxLabel: 'Box Label',
+                                    boxLabel: 'Yes',
 									inputValue:true,
 									id:'searchIsVendor',
 									itemId:'searchIsVendor'
