@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nome do Documento</title>
+    <style type="text/css">
+        * {
+            font-family: "微软雅黑", "Microsoft Yahei";
+        }
+        
+        html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
+        #background {
+            width: 100%;
+            height: inherit;
+            background: url(images/bg.jpg) no-repeat center;
+            -webkit-animation: scale 25s linear infinite alternate;
+        }
+        
+        @-webkit-keyframes scale {
+            0% {}
+            100% {
+                -webkit-transform: scale(1.5);
+            }
+        }
+        
+        #search {
+            width: 100%;
+            position: fixed;
+            top: 40%;
+            text-align: center;
+        }
+        
+        .search-Place {
+            width: 40%;
+            height: 45px;
+            padding-left: 40px;
+            border: 0px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 1px #000;
+            transition: box-shadow 0.5s;
+            outline: none;
+        }
+        
+        .search-Place:focus {
+            box-shadow: 0px 0px 30px 1px #000;
+            transition: box-shadow 0.5s;
+        }
+        
+        .search-font {
+            position: relative;
+            right: 33px;
+            font-size: 16px;
+        }
+        
+        #search .dropdown-menu {
+            position: fixed;
+            left: 30%;
+            top: 45%;
+        }
+        
+        .map-font {
+            position: relative;
+            left: 35px;
+            z-index: 99;
+            font-size: 16px;
+        }
+        
+        .title {
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            top: 25%;
+            font-weight: bold;
+            font-size: 46px;
+        }
+        
+        #header {
+            position: fixed;
+            width: 100%;
+            z-index: 99;
+        }
+        
+        .brand {
+            font-family: "Segoe Script";
+        }
+
+    </style>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/basic.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default" id="header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">TAKE-OUT</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">登陆</a></li>
+                <li><a href="#">注册</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="background"></div>
+    <div class="title"><span class="brand">TAKE-OUT</span></div>
+    <div id="search">
+        <a href="#" class="map-font dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-toggle="tooltip" data-placement="top" title="选择地址">
+            <span class=" glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="select-vender.html">珠海，唐家，南方软件园</a></li>
+            <li><a href="select-vender.html">珠海，唐家，东岸</a></li>
+            <li><a href="select-vender.html">珠海，唐家，东岸</a></li>
+            <li><a href="select-vender.html">珠海，唐家，东岸</a></li>
+        </ul>
+        <input class="search-Place" type="text" class="form-control" placeholder="输入地址">
+        <a href="#" class="search-font"><span class=" glyphicon glyphicon-search" aria-hidden="true"></span></a>
+
+    </div>
+
+</body>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type=" text/javascript ">
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+
+</script>
+
+</html>
