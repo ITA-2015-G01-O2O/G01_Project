@@ -49,7 +49,7 @@ Ext.define('shop.controller.searchController', {
 		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
 		if(selectedRows.length==1){
 			var shopId=selectedRows[0].data.shopId;
-			Ext.MessageBox.alert('test','id:'+shopId);	
+			window.open("shopView.html?shopId="+shopId);	
 		}
 	}
 });
