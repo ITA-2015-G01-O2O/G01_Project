@@ -89,7 +89,6 @@ Ext.define('user.view.searchView', {
                         {
                             xtype: 'panel',
                             region: 'north',
-                            height: 150,
                             layout: 'anchor',
                             bodyCls: 'paddingBox',
                             collapsible: true,
@@ -157,7 +156,8 @@ Ext.define('user.view.searchView', {
                                         {
                                             xtype: 'button',
                                             text: 'Reset Password',
-											itemId:'resetPswBtn'
+											itemId:'resetPswBtn',
+											cls:'highlightBtn'
                                         }
                                     ]
                                 },

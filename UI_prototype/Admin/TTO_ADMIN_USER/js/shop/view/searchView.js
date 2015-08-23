@@ -204,11 +204,13 @@ Ext.define('shop.view.searchView', {
                                         {
                                             xtype: 'button',
                                             text: 'Set As Hot Shop',
-											itemId:'setAsHotShopBtn'
+											itemId:'setAsHotShopBtn',
+											cls:'highlightBtn'
                                         },{
                                             xtype: 'button',
                                             text: 'View & Change Status',
-											itemId:'viewBtn'
+											itemId:'viewBtn',
+											cls:'highlightBtn'
                                         }
                                     ]
                                 },

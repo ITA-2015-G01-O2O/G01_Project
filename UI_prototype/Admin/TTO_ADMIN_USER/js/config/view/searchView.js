@@ -145,13 +145,15 @@ Ext.define('config.view.searchView', {
 												{
 													xtype: 'button',
 													text: 'Add',
-													itemId:'addBtn'
+													itemId:'addBtn',
+													cls:'highlightBtn'
 												},{
 													xtype: 'button',
 													text: 'Delete',
 													disabled:true,
 													id:'deleteBtn',
-													itemId:'deleteBtn'
+													itemId:'deleteBtn',
+													cls:'highlightBtn'
 												}
 											]
 										}
@@ -171,7 +173,8 @@ Ext.define('config.view.searchView', {
 										{
 											xtype: 'button',
 											text: 'Save Config',
-											itemId:'saveConfigBtn'
+											itemId:'saveConfigBtn',
+											cls:'highlightBtn'
 										}
 									]
 								}
