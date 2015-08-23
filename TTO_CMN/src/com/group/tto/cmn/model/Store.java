@@ -47,6 +47,8 @@ public class Store {
   private BigDecimal avgDeliverTime;
   @Column(name = "ANNOUNCEMENT")
   private String announcement;
+  @Column(name = "IS_HOT")
+  private Boolean isHot;
 
   @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
   private Location location;
@@ -211,6 +213,14 @@ public class Store {
 
   public void setAnnouncement(String announcement) {
     this.announcement = announcement;
+  }
+
+  public Boolean getIsHot() {
+    return isHot;
+  }
+
+  public void setIsHot(Boolean isHot) {
+    this.isHot = isHot;
   }
 
 }
