@@ -1,4 +1,4 @@
-Ext.define('user.model.userModel', {
+Ext.define('config.model.configModel', {
     extend: 'Ext.data.Model',
 
     requires: [
@@ -7,13 +7,13 @@ Ext.define('user.model.userModel', {
 
     fields: [
         {
-        	name: 'userId'
+        	name: 'configName'
         },
         {
-            name: 'userPhone'
+            name: 'configValue'
         },
         {
-            name: 'isVendor'
+            name: 'configId'
         }
     ]
 });
