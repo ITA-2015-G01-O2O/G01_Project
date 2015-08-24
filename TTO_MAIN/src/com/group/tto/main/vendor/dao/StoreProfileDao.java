@@ -1,5 +1,7 @@
 package com.group.tto.main.vendor.dao;
 
-public interface StoreProfileDao {
+import com.group.tto.cmn.model.StoreProfile;
 
+public interface StoreProfileDao {
+  public StoreProfile selectStoreProfile(int sid);
 }
