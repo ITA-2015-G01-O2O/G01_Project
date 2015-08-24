@@ -1,3 +1,12 @@
+ * {
+     font-family: "微软雅黑", "Microsoft Yahei";
+ }
+ body {
+     background-color: #fafafa;
+ }
+ a {
+     outline: none;
+ }
  #header {
      width: 100%;
      z-index: 99;
@@ -36,4 +45,10 @@
      border-bottom: 18px solid rgb(131, 131, 131);
      border-left: 15px solid rgba(255, 255, 255, 0);
      border-right: 15px solid rgba(255, 255, 255, 0);
+ }
+ .login-modal .modal-content {
+     top: 100px;
+ }
+ .nav-tabs {
+     border-bottom: 0px;
  }

@@ -1,3 +1,9 @@
+
+function consumerlogin(){
+	
+}
+
+
 function addaddress(){
 	$('#addressModal').on('show.bs.modal', function(e) {
 		$("#deletebtn").on("click", function(e) {
