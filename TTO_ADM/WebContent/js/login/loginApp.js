@@ -10,7 +10,7 @@ Ext.application({
 		'loginController'
 	],
     name: 'login',
-	appFolder: 'js/login',
+	appFolder: '/TTO_Admin/js/login',
 
     launch: function() {
         Ext.create('login.view.loginView');

@@ -23,6 +23,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/TTO_CMN"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

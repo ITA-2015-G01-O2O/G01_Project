@@ -6,6 +6,7 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util
@@ -16,9 +17,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
-	default-autowire="byType">
+	default-autowire="default">
 	
 	<context:component-scan base-package="com.group.tto.admin.dao"/>
 	<context:component-scan base-package="com.group.tto.admin.service"/>
@@ -34,10 +37,11 @@
 	  
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${db.driverClassName}"></property>
-		<property name="url" value="${db.url}"></property>
-		<property name="username" value="${db.username}"></property>
-		<property name="password" value="${db.password}"></property>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url"
+			value="jdbc:oracle:thin:@ITA-031-W7.corp.oocl.com:1521:xe"></property>
+		<property name="username" value="wangcd"></property>
+		<property name="password" value="password1"></property>
 	</bean>
 	
 	<!-- JPA实体管理工厂的配置 -->  
@@ -66,5 +70,17 @@
 
     <!-- 使用annotation定义事务 -->  
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />  
+    
+    <context:component-scan base-package="com.group.tto.admin.controller"></context:component-scan>
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
      
 </beans>
