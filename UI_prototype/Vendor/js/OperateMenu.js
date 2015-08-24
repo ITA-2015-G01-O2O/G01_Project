@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	//function addMenu(id,data)
 	//function addMenu()
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i <6; i++) {
 		{
 			var Menu = $("#menuModel").clone();
 			Menu.find("#menuName").text(i);
