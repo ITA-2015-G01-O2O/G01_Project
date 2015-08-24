@@ -9,6 +9,67 @@
 		<link rel="stylesheet" href="css/register.css" />
 		<script src="js/pic.js" type="text/javascript"></script>
 		<title>Register</title>
+		<script type="text/javascript">
+			var isName=false;
+			var isIdcard=false;
+			var isIdcardPic=false;
+			var isLicensePic=false;
+			function verifyName(){
+				var name=$("#inputName").val();
+				if(name.match(/\w+/g)){
+					isName=true;
+					$("#namemsg").attr("style","display: none;");
+				}else{
+					isName=false;
+					$("#namemsg").removeAttr("style");
+				}
+			}
+			function verifyIdcard(){
+				var idcard=$("#inputIdcard").val();
+				if(idcard.match(/\d{18}/g)){
+					isIdcard=true;
+					$("#idcardmsg").attr("style","display: none;");
+				}else{
+					isIdcard=false;
+					$("#idcardmsg").removeAttr("style");
+				}
+			}
+			function verifyIdcardPic(){
+				var idcardPic=$("#IdcardPic").val();
+				if(idcardPic.length>0){
+					isIdcardPic=true;
+					$("#idcardpicmsg").attr("style","display: none;");
+				}else{
+					isIdcardPic=false;
+					$("#idcardpicmsg").removeAttr("style");
+				}
+			}
+			function verifyLicensePic(){
+				var liensePic=$("#LicensePic").val();
+				if(liensePic.length>0){
+					isLicensePic=true;
+					$("#licensepicmsg").attr("style","display: none;");
+				}else{
+					isLicensePic=false;
+					$("#licensepicmsg").removeAttr("style");
+				}
+			}
+			$(document).ready(function(){
+				$("#inputName").on("blur",verifyName);
+				$("#inputIdcard").on("blur",verifyIdcard);
+				$("#next").on("click",function(){
+					verifyName();
+					verifyIdcard();
+					verifyIdcardPic();
+					verifyLicensePic();
+					if(isName && isIdcard && isIdcardPic && isLicensePic){
+						return true;
+					}else{
+						return false;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -42,28 +103,32 @@
     		</div>
     		<div class="sign-form page-center form-horizontal">
     			<div class="page-text">	
-    				<label>Personal name</label>
+    				<label>Real name</label>
     				<div>
-      					<input type="text" class="form-control input-lg" id="inputPhone" placeholder="Personal name">
+      					<input type="text" class="form-control input-lg" placeholder="Real name" id="inputName">
     				</div>
     			</div>
+    			<div class="alert alert-danger" style="display: none;"  role="alert" id="namemsg">Please input your real name!</div>
     			<div class="page-text">	
     				<label>Idcard number</label>
     				<div>
-      					<input type="text" class="form-control input-lg" id="inputPhone" placeholder="Idcard number">
+      					<input type="text" class="form-control input-lg" placeholder="Idcard number" id="inputIdcard">
     				</div>
     			</div>	
+    			<div class="alert alert-danger" style="display: none;"  role="alert" id="idcardmsg">Please input your idcard number!</div>
   				<div><img id="showIdcardPic" width="200" height="200" src="img/1.jpg" class="page-text"/></div>
   				<div class="controls page-text">
-					<input name="productPic" type="file" id="IdcardPic"  style="display: none;"></input>
-					<span class="btn btn-primary btn-lg" onclick="$('#IdcardPic').click();">Choose License Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
+					<input name="idcardPic" type="file" id="IdcardPic"  style="display: none;"></input>
+					<span class="btn btn-primary btn-lg" onclick="$('#IdcardPic').click();" id="idcardBtn">Choose idcard Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 				</div>
+				<div class="alert alert-danger" style="display: none;"  role="alert" id="idcardpicmsg">Please upload your idcard picture!</div>
   				<div><img id="showLicensePic" width="200" height="200" src="img/1.jpg"  class="page-text"/></div>
   				<div class="controls page-text">
-					<input name="productPic" type="file" id="LicensePic"  style="display: none;"></input>
-					<span class="btn btn-primary btn-lg" onclick="$('#LicensePic').click();">Choose License Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
+					<input name="licensePic" type="file" id="LicensePic"  style="display: none;"></input>
+					<span class="btn btn-primary btn-lg" onclick="$('#LicensePic').click();" id="licenseBtn">Choose License Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 				</div>
-            	<button type="button" class="btn btn-primary btn-lg">Next</button>
+				<div class="alert alert-danger" style="display: none;"  role="alert" id="licensepicmsg">Please upload your idcard picture!</div>
+            	<a type="button" class="btn btn-primary btn-lg" href="register4.html" id="next">Next</a>
             <div>
 		</div>
 		<script>

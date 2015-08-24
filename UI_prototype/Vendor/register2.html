@@ -8,6 +8,64 @@
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/register.css" />
 		<title>Register</title>
+		<script type="text/javascript">
+			var isName=false;
+			var isType=false;
+			var isAddr=false;
+			function verifyName(){
+				var name=$("#inputName").val();
+				if(name.match(/\w+/g)){
+					isName=true;
+					$("#namemsg").attr("style","display: none;");
+				}else{
+					isName=false;
+					$("#namemsg").removeAttr("style");
+				}
+			}
+			function verifyType(){
+				var type=$("#inputType").text();
+				if(!type.match("Choose")){
+					isType=true;
+					$("#typemsg").attr("style","display: none;");
+				}else{
+					isType=false;
+					$("#typemsg").removeAttr("style");
+				}
+			}
+			function verifyAddr(){
+				var addr1=$("#inputAddr1").text();
+				var addr2=$("#inputAddr2").val();
+				if(!addr1.match("Choose")&&addr2.length>0){
+					isAddr=true;
+					$("#addrmsg").attr("style","display: none;");
+				}else{
+					isAddr=false;
+					$("#addrmsg").removeAttr("style");
+				}
+			}
+			$(document).ready(function(){
+				$("a[id^=type]").on("click",function(){
+					var typetext=$(this).text();
+					$("#inputType").text(typetext);
+				});
+				$("a[id^=area]").on("click",function(){
+					var areatext=$(this).text();
+					$("#inputAddr1").text(areatext);
+				});
+				$("#inputName").on("blur",verifyName);
+				$("#inputAddr2").on("blur",verifyAddr);
+				$("#next").on("click",function(){
+					verifyAddr();
+					verifyName();
+					verifyType();
+					if(isName && isType && isAddr){
+						return true;
+					}else{
+						return false;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -41,38 +99,41 @@
     		</div>
     		<div class="sign-form page-center form-horizontal">
     			<div class="page-text">	
-    				<label>Name of Restaruant</label>
+    				<label>Name of Store</label>
     				<div>
-      					<input type="text" class="form-control input-lg" id="inputPhone" placeholder="name">
+      					<input type="text" class="form-control input-lg" id="inputName" placeholder="name">
     				</div>
+    				<div class="alert alert-danger" style="display: none;"  role="alert" id="namemsg">Store can not be empty!</div>
     			</div>
     			<label>Type</label>
     			<div class="page-text">		
     				<div class="btn-group">
-  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    						Choose type of Restaurant <span class="caret"></span>
+  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputType">
+    						Choose type of Store <span class="caret"></span>
   						</button>
   						<ul class="dropdown-menu">
-   							<li><a href="#">type1</a></li>
-    						<li><a href="#">type2</a></li>
+   							<li><a href="#" id="type1">type1</a></li>
+    						<li><a href="#" id="type2">type2</a></li>
   						</ul>
 					</div>
+					<div class="alert alert-danger" style="display: none;"  role="alert" id="typemsg">Please choose a type for your store!</div>
     			</div>
     			<label>Address</label>
 			  	<form class="form-inline page-text">						
 						
 						<div class="btn-group">
-  							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputAddr1">
     							Choose Area <span class="caret"></span>
   							</button>
   							<ul class="dropdown-menu">
-   								<li><a href="#">Area 1</a></li>
-    							<li><a href="#">Area 2</a></li>
+   								<li><a href="#" id="area1">Area 1</a></li>
+    							<li><a href="#" id="area2">Area 2</a></li>
   							</ul>
 						</div>
 				</form>
-				<input type="text" class="form-control page-text input-lg"  placeholder="Address">    			
-            	<button type="button" class="btn btn-primary btn-lg">Next</button>
+				<input type="text" class="form-control page-text input-lg"  placeholder="Address" id="inputAddr2">    
+				<div class="alert alert-danger" style="display: none;"  role="alert" id="addrmsg">Please input your Address!</div>
+            	<a type="button" class="btn btn-primary btn-lg" href="register3.html" id="next">Next</a>
             <div>
 		</div>
 	</body>
