@@ -201,9 +201,26 @@ body {
 									<img src="../img/img.png" />
 
 								</div>
-								<div class="col-xs-7" style="word-wrap: break-word;">
-									aaaaaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
-								</div>
+								 <div class="col-xs-7" style="word-wrap: break-word;">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <h3>xx汉堡店</h3>
+                                            <h5>地址:XX</h5>
+
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <h3>4.2分数</h3>
+                                            <h5>商家平均分</h5>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <h3>44分钟</h3>
+                                            <h5>平均送达时间</h5>
+                                        </div>
+                                    </div>
+                                    <h5>0元起送</h5>
+                                     <h5>免外卖费</h5>
+                                    <a href="#"><h5><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏</h5></a>
+                                </div>
 								<div class="clear"></div>
 							</div>
 
