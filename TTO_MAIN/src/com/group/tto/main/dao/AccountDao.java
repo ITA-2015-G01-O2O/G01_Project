@@ -1,5 +1,9 @@
 package com.group.tto.main.dao;
 
-public interface AccountDao {
+import com.group.tto.cmn.model.Account;
 
+public interface AccountDao {
+	public Account getBy(String loginname, String password);
+
+	  public Integer getCount(String loginname);
 }

@@ -1,7 +1,54 @@
 package com.group.tto.main.dao.impl;
 
-import com.group.tto.main.dao.AccountDao;
+import java.util.List;
 
-public class AccountDaoImpl implements  AccountDao{
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.springframework.stereotype.Repository;
+
+import com.group.tto.cmn.model.Account;
+import com.group.tto.cmn.model.Admin;
+import com.group.tto.main.dao.AccountDao;
+import com.group.tto.main.dao.BaseDao;
+
+@Repository
+public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
+	 private static final String FIELD_LOGINNAME = "loginname";
+	  private static final String FIELD_PASSWORD = "password";
+	@Override
+	public Account getBy(String loginname, String password) {
+		 CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+		    CriteriaQuery<Account> query = builder.createQuery(Account.class);
+		    Root<Account> admin = query.from(Account.class);
+
+		    Predicate predicate =
+		        builder.and(builder.equal(admin.get(FIELD_LOGINNAME), loginname),
+		            builder.equal(admin.get(FIELD_PASSWORD), password));
+		    List<Account> result =
+		        this.getEntityManager().createQuery(query.where(predicate)).getResultList();
+
+		    return result.size() == 0 ? null : result.get(0);
+		
+	}
+
+	@Override
+	public Integer getCount(String loginname) {
+		 CriteriaBuilder critBuilder = this.getEntityManager().getCriteriaBuilder();
+		    CriteriaQuery<Long> critQuery = critBuilder.createQuery(Long.class);
+		    Root<Account> root = critQuery.from(Account.class);
+
+		    List<Long> test =
+		        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
+		            .getResultList();
+
+		    int count =
+		        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
+		            .getSingleResult().intValue();
+
+		    return count;
+	}
 
 }
