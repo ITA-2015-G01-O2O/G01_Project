@@ -30,7 +30,7 @@ Ext.define('cmn.controller.cmnController', {
 		window.location.href='configView.html';
 	},
 	loadLogo:function( comp, eOpts ){
-		comp.setSrc('img/rice.png');
+		comp.setSrc('/TTO_Admin/img/rice.png');
 	},
 	loadSystemTitle:function(comp,eOpts){
 		comp.setText('Tomcat Takeout Admin');
