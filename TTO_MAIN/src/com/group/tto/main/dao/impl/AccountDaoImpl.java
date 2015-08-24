@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Admin;
+import com.group.tto.cmn.model.Order;
 import com.group.tto.main.dao.AccountDao;
 import com.group.tto.main.dao.BaseDao;
 
@@ -18,6 +19,7 @@ import com.group.tto.main.dao.BaseDao;
 public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
 	 private static final String FIELD_LOGINNAME = "loginname";
 	  private static final String FIELD_PASSWORD = "password";
+	  private static final String FIELD_ACCOUNTID="accountId";
 	@Override
 	public Account getBy(String loginname, String password) {
 		 CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
@@ -50,5 +52,19 @@ public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
 
 		    return count;
 	}
+
+	@Override
+	public Account getAccountById(Long accountId) {
+		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<Account> query = builder.createQuery(Account.class);
+		Root<Account> account1 = query.from(Account.class);
+		Predicate condition = builder.equal(account1.get(FIELD_ACCOUNTID), accountId);	
+		Account account2 = this.getEntityManager().createQuery(query.where(condition)).getResultList().get(0);
+		return account2;
+		
+	}
+	
+	
+	
 
 }

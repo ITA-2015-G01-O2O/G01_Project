@@ -24,4 +24,14 @@ public class AccountServiceImpl implements AccountService {
 		return this.accountDao.getCount(loginname) > 0;
 	}
 
+	@Override
+	public void changePasswordByAccount(Account account, String newPassword) {
+		try{
+			Account a = accountDao.getAccountById(account.getAccountId());
+			a.setPassword(newPassword);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}	
+
 }

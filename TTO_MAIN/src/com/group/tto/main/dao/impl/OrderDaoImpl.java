@@ -16,6 +16,7 @@ import com.group.tto.main.dao.OrderDao;
 public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 	
 	private static final String FIELD_USERPROFILE = "userProfile";
+	private static final String FIELD_ORDERID ="orderId";
 
 	@Override
 	//根据userProfile查询所有的订单
@@ -32,4 +33,17 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 		return orders;
 	}
 
+	@Override
+	//根据orderId取消对应的订单
+	public Order getOrderById(Long orderId) {
+		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<Order> query = builder.createQuery(Order.class);
+		Root<Order> order = query.from(Order.class);
+		Predicate condition = builder.equal(order.get(FIELD_ORDERID), orderId);	
+		Order o = this.getEntityManager().createQuery(query.where(condition)).getResultList().get(0);
+		return o;
+		
+	}
+
+	
 }
