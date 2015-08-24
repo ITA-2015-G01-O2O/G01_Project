@@ -24,10 +24,10 @@ Ext.define('cmn.controller.cmnController', {
 		window.location.href='/TTO_Admin/user/userSearch.view';
 	},
 	shopPage:function(){
-		window.location.href='shopSearch.html';
+		window.location.href='/TTO_Admin/shop/shopSearch.view';
 	},
 	systemPage:function(){
-		window.location.href='configView.html';
+		window.location.href='/TTO_Admin/config/configView.view';
 	},
 	loadLogo:function( comp, eOpts ){
 		comp.setSrc('/TTO_Admin/img/rice.png');

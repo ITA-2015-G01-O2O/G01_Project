@@ -9,9 +9,9 @@ Ext.define('shop.store.statusStore', {
 	storeId: 'statusStore',
 	autoLoad:true,
 	data:{'items':[
-		{statusName:'normal',statusId:'1'},
-		{statusName:'check',statusId:'2'},
-		{statusName:'freeze',statusId:'3'}
+		{statusName:'normal',statusId:'NORMAL'},
+		{statusName:'check',statusId:'CHECK'},
+		{statusName:'freeze',statusId:'FREEZE'}
 	]},
     proxy: {
         type: 'memory',
