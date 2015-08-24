@@ -24,7 +24,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_admin.png" width="70px" style="margin-top:8px"></a>
+					<a href="#"><img src="img/title_admin.png" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 
@@ -54,6 +54,7 @@
 
 							<div class="row" id="mainContent">
 								<div class="tab-content">
+									<!-- page1 history orders information-->
 									<div role="tabpanel" class="tab-pane active" id="home">
 										<div class="col-xs-12 res_content  page-header">
 											<div class="col-xs-1">
@@ -85,20 +86,20 @@
 										</div>
 										<div class="">
 											<div class="clo-xs-12 ">
-												<div class="col-xs-4">
+												<div class="col-xs-5">
 													<div class="">
-														<table class="table table-bordered ">
-															<caption>order info</caption>
+														<table class="table table-bordered text-center">
+															<caption class="text-center">orderinfo</caption>
 															<thead>
-																<th class="active">food number</th>
-																<th class="active">food name</th>
-																<th class="active">food price</th>
+																<th class="active">orderNumber</th>
+																<th class="active">productName</th>
+																<th class="active">productPrice</th>
 															</thead>
-															<tfoot>
-																<th class="active">food number</th>
-																<th class="active">food name</th>
-																<th class="active">food price</th>
-															</tfoot>
+															<!--<tfoot>
+																<td class="active">orderNumber</td>
+																<td class="active">productName</td>
+																<td class="active">productPrice</td>
+															</tfoot>-->
 															<tbody>
 																<tr>
 																	<td class="active">order 1</td>
@@ -124,12 +125,10 @@
 															</tbody>
 														</table>
 														<div class="text-right">total:$24
-															<!--<button type="button" class="btn btn-success">confirm</button>-->
-
 														</div>
 													</div>
 												</div>
-												<div class="col-xs-8">
+												<div class="col-xs-7">
 
 													<div class="col-xs-12 myclass1">
 														<div class="col-xs-2">
@@ -142,22 +141,6 @@
 														<div>comment</div>
 														<div class="page-header ">addr:XXXXX</div>
 													</div>
-													<!--<div class="clearfix list-container">
-
-												<div class="list-wrapper clearfix" mon="area=mid_category_hot_tuangou">
-													<div class="title">热门团购</div>
-													<ul class="mid-list list-inline">
-														<li><a href="http://www.nuomi.com/deal/movies" class="" mon="element=电影&amp;position=0">电影</a></li>
-														<li><a href="http://www.nuomi.com/392" class="hot" mon="element=自助餐&amp;position=1">自助餐</a></li>
-														<li><a href="http://www.nuomi.com/341" class="" mon="element=KTV&amp;position=2">KTV</a></li>
-														<li><a href="http://www.nuomi.com/364" class="hot" mon="element=火锅&amp;position=3">火锅</a></li>
-														<li><a href="http://www.nuomi.com/881" class="" mon="element=蛋糕&amp;position=4">蛋糕</a></li>
-														<li><a href="http://t.nuomi.com" class="hot" mon="element=酒店&amp;position=5">酒店</a></li>
-														<li><a href="http://www.nuomi.com/380" class="" mon="element=小吃快餐&amp;position=6">小吃快餐</a></li>
-														<li><a href="http://www.nuomi.com/391" class="" mon="element=西餐&amp;position=7">西餐</a></li>
-													</ul>
-												</div>
-											</div>-->
 													<div class="myclass1">
 														<div class="text-center mymainhei">waiting for check by res</div>
 														<div class=" text-right">
@@ -170,6 +153,7 @@
 
 									</div>
 
+									<!-- page2 user information -->
 									<div role="tabpanel" class="tab-pane" id="profile">
 										<div class="col-xs-3"></div>
 
@@ -189,7 +173,7 @@
 																<input type="password" class="form-control" id="inputPassword" value="123456" disabled="disabled">
 															</li>
 															<li>
-																<button class="btn btn-info">change psd</button>
+																<a class="btn btn-info">change psd</a>
 															</li>
 
 														</ul>
@@ -201,7 +185,7 @@
 														<ul class="list-inline">
 															<li class="form-control-static">$400</li>
 															<li>
-																<button class="btn btn-info">charge</button>
+																<a class="btn btn-info">charge</a>
 															</li>
 														</ul>
 													</div>
@@ -212,7 +196,8 @@
 										<div class="col-xs-3"></div>
 
 									</div>
-
+																			
+									<!-- page3  user favorite restaurants-->							
 									<div role="tabpanel" class="tab-pane" id="messages">
 										<div class="col-xs-12">
 											<div class="col-xs-1"></div>
@@ -222,7 +207,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<a href="#"><img src="img/title_admin.png" /></a>
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">
@@ -234,7 +219,7 @@
 															<li>open time:2015-01-02</li>
 														</ul>
 														<ul class="list-inline">
-															<li><a class="link">enter this res</a></li>
+
 															<li>
 																<button class="btn btn-warning" name="cancelfav">cancel fav</button>
 															</li>
@@ -255,7 +240,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<a href="#"><img src="img/title_admin.png" /></a>
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">
@@ -267,10 +252,7 @@
 															<li>open time:2015-01-02</li>
 														</ul>
 														<ul class="list-inline">
-															<li><a class="link">enter this res</a></li>
-															
-
-																<button class="btn btn-warning" name="cancelfav">cancel fav</button>
+															<button class="btn btn-warning" name="cancelfav">cancel fav</button>
 															</li>
 														</ul>
 													</div>
@@ -289,7 +271,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<a href="#"><img src="img/title_admin.png" /></a>
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">
@@ -301,7 +283,6 @@
 															<li>open time:2015-01-02</li>
 														</ul>
 														<ul class="list-inline">
-															<li><a class="link">enter this res</a></li>
 															<li>
 																<button class="btn btn-warning" name="cancelfav">cancel fav</button>
 															</li>
