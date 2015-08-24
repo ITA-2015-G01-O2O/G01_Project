@@ -178,6 +178,7 @@ body {
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav">
 						<li><a href="#">Change Of Address </a></li>
+						<input type="hidden" id="merId" value="${merId}"/>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">137*****</a></li>

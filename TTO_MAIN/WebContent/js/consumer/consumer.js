@@ -1,10 +1,40 @@
+
+
+$(function(){
+	var merId=$("#merId").val();
+	if(merId==null){
+		return false;
+	}
+	$.ajax({
+		type : "post",
+		url : "../consumer/getMerchantById.do",
+		cache : false,
+		data : {
+			merId : merId
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if(json.isSuccess==true){
+				
+			}else{
+				
+			}
+		}
+	});
+})
+
+
+
 function consumerlogin() {
 	var username = $("#username").val();
 	var password = $("#password").val();
 
 	$.ajax({
 		type : "post",
-		url : "../consumer/login.do",
+		url : "../account/login.do",
 		cache : false,
 		data : {
 			loginname : username,
@@ -16,9 +46,10 @@ function consumerlogin() {
 	}).done(function(json) {
 		if (json != "") {
 			if(json.isSuccess==true){
-				windows.location.href();
+				window.location.href='../account/select-vender.view';
 			}else{
-				
+				$("#errorMsg").show();
+				$("#errorMsg").text(json.data);
 			}
 		}
 	});

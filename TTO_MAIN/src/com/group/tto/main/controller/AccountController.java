@@ -20,8 +20,8 @@ import com.group.tto.main.service.AccountService;
 
 
 @Controller
-@RequestMapping("/consumer")
-public class Main_ConsumerController extends BaseController {
+@RequestMapping("/account")
+public class AccountController extends BaseController {
 	@Autowired
 	  private AccountService accountService;
 	
@@ -36,7 +36,7 @@ public class Main_ConsumerController extends BaseController {
 	      if (db == null) {
 	        return this.getResultJSON(false, "tip.error.psw");
 	      } else if (isDuplicate(db, request)) {
-	        return this.getResultJSON(false, "tip.error.login");
+	        return this.getResultJSON(true, "");
 	      } else {
 	        List<Account> loginAdmin =
 	            (List<Account>) request.getServletContext().getAttribute(COMMON.CONTEXT_LOGIN_INFO);
@@ -64,8 +64,6 @@ public class Main_ConsumerController extends BaseController {
 	    }
 	    return false;
 	  }
-	
-	
 	
 	
 	@Override

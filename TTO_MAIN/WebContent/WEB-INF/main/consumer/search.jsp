@@ -70,6 +70,7 @@
 							class="form-control" name="to_password" id="password"
 							placeholder="password">
 					</div>
+					 <div class="alert alert-danger" style="display:none" role="alert" id="errorMsg"></div>
 					<div class="checkbox btn-re">
 						<label> <input type="checkbox"> Remeber me
 						</label>
