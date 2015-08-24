@@ -1,3 +1,4 @@
+var isStorePic=false;
 var isAnnouncement=false;
 var isMinPrice=false;
 var isShipment=false;
@@ -53,17 +54,28 @@ function verifyFinishTime(){
 		$("#finishTimemsg").removeAttr("style");
 	}				
 }
+function verifyStorePic(){
+	var storePic=$("#inputStorePic").val();
+	if(storePic.length>0){
+		isStorePic=true;
+		$("#storePicmsg").attr("style","display: none;");
+	}else{
+		isStorePic=false;
+		$("#storePicmsg").removeAttr("style");
+	}				
+}
 $(document).ready(function(){
 	$("#inputAnnouncement").on("blur",verifyAnnouncement);
 	$("#inputMinAmount").on("blur",verifyMinPrice);
 	$("#inputShipment").on("blur",verifyShipment);
-	$("#save").on("click",function(){
+	$("#submit").on("click",function(){
 		verifyAnnouncement();
 		verifyMinPrice();
 		verifyShipment();
 		verifyStartTime();
 		verifyFinishTime();
-		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime )
+		verifyStorePic();
+		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime && isStorePic)
 			return true;
 		else
 			return false;
