@@ -51,6 +51,9 @@ public class Store {
   private Boolean isHot;
   @Column(name = "LOGO_PIC_URL")
   private String logoPicUrl;
+  @ManyToOne(targetEntity = Configuration.class, fetch = FetchType.EAGER)
+  @JoinColumn(name = "TYPE_CONFIG_ID")
+  private Configuration typeConfig;
 
   @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
   private Location location;
@@ -232,5 +235,15 @@ public class Store {
   public void setLogoPicUrl(String logoPicUrl) {
     this.logoPicUrl = logoPicUrl;
   }
+
+  public Configuration getTypeConfig() {
+    return typeConfig;
+  }
+
+  public void setTypeConfig(Configuration typeConfig) {
+    this.typeConfig = typeConfig;
+  }
+
+
 
 }
