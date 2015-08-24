@@ -47,7 +47,7 @@ public class ConsumerController extends BaseController {
 	  }
 	  
 	  public MerProsList getMerProsListVo(Store store){
-		  MerProsList merProsList=new MerProsList(store.getProducts(),store.getStoreId(),store.getStoreName());
+		  MerProsList merProsList=new MerProsList(store);
 		  return merProsList;
 	  }
 	  
