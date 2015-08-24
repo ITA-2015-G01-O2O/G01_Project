@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,6 +21,7 @@ public class Collect {
   private Long collectId;
 
   @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
+  @JoinColumn(name = "USER_PROFILE_ID")
   private UserProfile userProfile;
   @ManyToOne(targetEntity = Store.class, fetch = FetchType.EAGER)
   private Store store;

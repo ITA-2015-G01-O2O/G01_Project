@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -47,10 +48,10 @@ public class Order {
   private Long storeId;
 
   @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
-  @JoinColumn(name="USER_PROFILE_ID")
+  @JoinColumn(name = "USER_PROFILE_ID")
   private UserProfile userProfile;
-  @ManyToOne(targetEntity = Comment.class, fetch = FetchType.EAGER)
-  @JoinColumn(name="COMMENT_ID")
+  @OneToOne(targetEntity = Comment.class, cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @JoinColumn(name = "COMMENT_ID")
   private Comment comment;
 
   @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)

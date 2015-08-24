@@ -1,5 +1,7 @@
 package com.group.tto.admin.controller;
 
+import java.util.List;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +24,13 @@ public abstract class BaseController {
       data = new ObjectMapper().writeValueAsString(obj);
     } catch (Exception e) {}
     return "{\"isSuccess\":" + isSuccess + ",\"data\":" + data + "}";
+  }
+
+  protected String getPageJSON(List<Object> list, Long total) {
+    String data = "";
+    try {
+      data = new ObjectMapper().writeValueAsString(list);
+    } catch (Exception e) {}
+    return "{\"total\":" + total + ",\"datas\":" + data + "}";
   }
 }
