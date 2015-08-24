@@ -29,8 +29,9 @@ public class Main_ConsumerController extends BaseController {
 	@RequestMapping(value = "/login.do", produces = {"application/json;charset=UTF-8"})
 	  @ResponseBody
 	  public String login(String loginname, String password, HttpServletRequest request) {
-	    if (this.accountService.contains(loginname)) {
-	    	
+		System.out.println(loginname);
+		System.out.println(password);
+		if (this.accountService.contains(loginname)) {
 	    	Account db = this.accountService.login(loginname, password);
 	      if (db == null) {
 	        return this.getResultJSON(false, "tip.error.psw");
@@ -70,7 +71,7 @@ public class Main_ConsumerController extends BaseController {
 	@Override
 	protected String getName() {
 		// TODO Auto-generated method stub
-		return "consumer";
+		return "main/consumer";
 	}
 	
 	@RequestMapping(value = "/getAllproByMerId.action", method = { RequestMethod.POST }, produces = { "application/json;charset=UTF-8" })

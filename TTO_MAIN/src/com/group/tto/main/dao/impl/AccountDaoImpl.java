@@ -16,7 +16,7 @@ import com.group.tto.main.dao.BaseDao;
 
 @Repository
 public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
-	 private static final String FIELD_LOGINNAME = "loginname";
+	 private static final String FIELD_LOGINNAME = "username";
 	  private static final String FIELD_PASSWORD = "password";
 	@Override
 	public Account getBy(String loginname, String password) {
@@ -37,18 +37,15 @@ public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
 	@Override
 	public Integer getCount(String loginname) {
 		 CriteriaBuilder critBuilder = this.getEntityManager().getCriteriaBuilder();
-		    CriteriaQuery<Long> critQuery = critBuilder.createQuery(Long.class);
+		    CriteriaQuery<Account> critQuery = critBuilder.createQuery(Account.class);
 		    Root<Account> root = critQuery.from(Account.class);
 
-		    List<Long> test =
-		        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
-		            .getResultList();
+		    Predicate predicate =critBuilder.equal(root.get(FIELD_LOGINNAME), loginname);
+		    
+			    List<Account> result =
+			        this.getEntityManager().createQuery(critQuery.where(predicate)).getResultList();
 
-		    int count =
-		        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
-		            .getSingleResult().intValue();
-
-		    return count;
+		    return result.size()>0?1:0;
 	}
 
 }
