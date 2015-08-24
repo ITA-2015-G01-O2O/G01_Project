@@ -1,4 +1,4 @@
-package com.group.tto.admin.controller;
+package com.group.tto.main.controller;
 
 import org.springframework.stereotype.Controller;
 

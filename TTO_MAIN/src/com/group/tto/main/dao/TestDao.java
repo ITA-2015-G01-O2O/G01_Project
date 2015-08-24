@@ -1,4 +1,4 @@
-package com.group.tto.admin.dao;
+package com.group.tto.main.dao;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.group.tto.admin.controller;
+package com.group.tto.main.controller;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.PathVariable;
