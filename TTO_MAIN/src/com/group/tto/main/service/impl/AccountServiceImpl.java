@@ -1,5 +1,7 @@
 package com.group.tto.main.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +17,19 @@ public class AccountServiceImpl implements AccountService {
 	
 	
 	@Override
+	@Transactional
 	public Account login(String loginname, String password) {
 		return  this.accountDao.getBy(loginname, password);
 	}
 
 	@Override
+	@Transactional
 	public Boolean contains(String loginname) {
 		return this.accountDao.getCount(loginname) > 0;
 	}
 
 	@Override
+	@Transactional
 	public void changePasswordByAccount(Account account, String newPassword) {
 		try{
 			Account a = accountDao.getAccountById(account.getAccountId());
