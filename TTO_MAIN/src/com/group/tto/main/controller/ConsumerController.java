@@ -32,7 +32,7 @@ public class ConsumerController extends BaseController {
 	  @ResponseBody
 	  public String getMerProsById(String merId, HttpServletRequest request) {
 		  
-		Store store=this.storeService.getAllProsById(Integer.parseInt(merId));
+		Store store=this.storeService.getStoreById(Integer.parseInt(merId));
 		String data=this.getResultJSON(true, store);
 		return data;
 	  }

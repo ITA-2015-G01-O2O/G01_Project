@@ -11,7 +11,7 @@ import com.group.tto.cmn.model.Store;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.StoreDao;
 
-@Repository
+
 @Repository
 public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 	

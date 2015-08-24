@@ -1,6 +1,5 @@
 package com.group.tto.main.service.impl;
 
-package com.group.tto.main.service.impl;
 
 import javax.transaction.Transactional;
 
