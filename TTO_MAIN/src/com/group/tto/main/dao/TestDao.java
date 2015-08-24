@@ -6,5 +6,5 @@ import com.group.tto.cmn.model.Account;
 
 @Repository
 public class TestDao extends BaseDao<Account> {
-
+	
 }
