@@ -1,0 +1,65 @@
+package com.group.tto.admin.dao.impl;
+
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import com.group.tto.admin.cmn.UserSearchCriteria;
+import com.group.tto.admin.dao.AccountDao;
+import com.group.tto.admin.dao.BaseDao;
+import com.group.tto.admin.dto.PageDTO;
+import com.group.tto.cmn.model.Account;
+import com.group.tto.cmn.model.UserProfile;
+
+public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
+
+  private static final String FIELD_USERNAME = "username";
+  private static final String FIELD_STORE = "store";
+
+  private static final String INIT_PSW = "Password1";
+
+  @Override
+  public PageDTO<Account> search(UserSearchCriteria searchCriteria) {
+    PageDTO<Account> pageDTO = new PageDTO<Account>();
+
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Account> query = builder.createQuery(Account.class);
+    Root<Account> account = query.from(Account.class);
+
+    Predicate predicate =
+        builder.and(
+            builder.like(account.get(FIELD_USERNAME).as(String.class),
+                "%" + searchCriteria.getUserPhone() + "%"),
+            searchCriteria.isVendor() ? builder.isNotNull(account.get(FIELD_STORE)) : builder
+                .isNull(account.get(FIELD_STORE)));
+    List<Account> result =
+        this.getEntityManager().createQuery(query.where(predicate)).getResultList();
+
+    pageDTO.setLimit(searchCriteria.getLimit());
+    pageDTO.setStart(searchCriteria.getStart());
+    pageDTO.setTotal(this.getTotal());
+    pageDTO.setDatas(result);
+
+    return pageDTO;
+  }
+
+  @Override
+  public void resetPassword(Long id) {
+    Account account = this.getEntityManager().find(Account.class, id);
+    account.setPassword(INIT_PSW);
+    this.update(account);
+  }
+
+  private Long getTotal() {
+    CriteriaBuilder critBuilder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Long> critQuery = critBuilder.createQuery(Long.class);
+    Root<UserProfile> root = critQuery.from(UserProfile.class);
+
+    return this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
+        .getSingleResult();
+  }
+
+}

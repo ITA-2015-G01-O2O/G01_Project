@@ -1,6 +1,7 @@
 package com.group.tto.cmn.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class UserProfile {
 
   @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
   @JoinColumn(name = "USER_PROFILE_ID")
-  private List<Collect> collects;
+  private List<Collect> collects = new ArrayList<Collect>();
 
   public Long getUserProfileId() {
     return userProfileId;
@@ -64,6 +65,14 @@ public class UserProfile {
 
   public void setIsDelete(Boolean isDelete) {
     this.isDelete = isDelete;
+  }
+
+  public List<Collect> getCollects() {
+    return collects;
+  }
+
+  public void setCollects(List<Collect> collects) {
+    this.collects = collects;
   }
 
 
