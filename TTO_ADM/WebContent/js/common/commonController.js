@@ -21,7 +21,7 @@ Ext.define('cmn.controller.cmnController', {
 		});
 	},
 	userPage:function(){
-		window.location.href='userSearch.html';
+		window.location.href='/TTO_Admin/user/userSearch.view';
 	},
 	shopPage:function(){
 		window.location.href='shopSearch.html';

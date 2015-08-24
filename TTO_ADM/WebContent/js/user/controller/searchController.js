@@ -40,7 +40,21 @@ Ext.define('user.controller.searchController', {
 						.getSelection();
 				if (selectedRows.length == 1) {
 					var userId = selectedRows[0].data.userId;
-					Ext.MessageBox.alert('test', 'id:' + userId);
+					Ext.getBody().mask();
+					Ext.Ajax.request({
+						url : 'resetPsw.do',
+						params : {
+							id : userId
+						},
+						success : function(response) {
+							var responseData = Ext.decode(response.responseText);
+							Ext.getBody().unmask();
+							Ext.MessageBox.alert('Tip', 'New Password:'+responseData.data);
+						},
+						failure : function() {
+							Ext.getBody().unmask();
+						}
+					});
 				}
 			}
 		});

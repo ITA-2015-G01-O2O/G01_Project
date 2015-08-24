@@ -35,8 +35,8 @@ public class UserController extends BaseController {
   @RequestMapping(value = "/resetPsw.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String resetPsw(Long id) {
-    this.service.resetPassword(id);
-    return this.getResultJSON(true, "");
+    String newPassword = this.service.resetPassword(id);
+    return this.getResultJSON(true, newPassword);
   }
 
   private PageDTO<UserSearchVo> converToSearchVo(PageDTO<Account> data) {

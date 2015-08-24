@@ -7,5 +7,7 @@ import com.group.tto.cmn.model.Account;
 public interface UserService {
   public PageDTO<Account> get(UserSearchCriteria searchCriteria);
 
-  public void resetPassword(Long id);
+  public String resetPassword(Long id);
+  
+  public String resetPassword(Long id, String newPassword);
 }
