@@ -49,3 +49,6 @@
  .login-modal .modal-content {
      top: 100px;
  }
+ .nav-tabs {
+     border-bottom: 0px;
+ }
