@@ -204,21 +204,21 @@ body {
 								 <div class="col-xs-7" style="word-wrap: break-word;">
                                     <div class="row">
                                         <div class="col-xs-4">
-                                            <h3>xx汉堡店</h3>
-                                            <h5>地址:XX</h5>
+                                            <h3 id="storeName"></h3>
+                                            <h5 id="detailLocation"></h5>
 
                                         </div>
                                         <div class="col-xs-4">
-                                            <h3>4.2分数</h3>
+                                            <h3 id="avgPoint"></h3>
                                             <h5>商家平均分</h5>
                                         </div>
                                         <div class="col-xs-4">
-                                            <h3>44分钟</h3>
+                                            <h3 id="avgDeliverTime"></h3>
                                             <h5>平均送达时间</h5>
                                         </div>
                                     </div>
-                                    <h5>0元起送</h5>
-                                     <h5>免外卖费</h5>
+                                    <h5 id="startingFee"></h5>
+                                     <h5 id="deliverFee"></h5>
                                     <a href="#"><h5><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏</h5></a>
                                 </div>
 								<div class="clear"></div>
@@ -382,7 +382,10 @@ body {
 							<div class="preferInfo">
 								<div class="preferInfoBox">
 									<h4>商家营业公告及营业时间</h4>
-									<h5 class="text-muted">BaaaaaalablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
+									<h5 class="text-muted" id="announcement">
+									</h5>
+									<h5 class="text-muted">营业开始时间<span id="serviceBeginTime"></span> </h5>
+									<h5 class="text-muted">营业结束时间<span id="serviceEndTime"></span> </h5>
 									</h5>
 								</div>
 

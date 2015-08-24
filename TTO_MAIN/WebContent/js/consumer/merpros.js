@@ -18,6 +18,9 @@ $(function() {
 		if (json != "") {
 			if (json.isSuccess == true) {
 				setPros(json.data.products);
+				
+				setMerInfo(json.data);
+				
 			} else {
 
 			}
@@ -45,6 +48,23 @@ function addshowPro(pro){
 	proInfos.eq(1).text(pro.productId);
 	proInfos.eq(2).find('span').eq(0).text(pro.price);
 	proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+}
+
+function setMerInfo(json){
+	$("#storeName").text(json.storeName);
+	$("#detailLocation").text('地址：'+json.detailLocation);
+	$("#avgPoint").text(json.avgPoint+'分数');
+	$("#avgDeliverTime").text(json.avgDeliverTime+"分钟");
+	$("#startingFee").text(json.startingFee+"元起送");
+	if(json.deliverFee==0){
+		$("#deliverFee").text('免费起送');
+	}else{
+		$("#deliverFee").text(json.deliverFee+"元快递费");
+	}
+	
+	$("#announcement").text(json.announcement);
+	$("#serviceBeginTime").text(json.serviceBeginTime);
+	$("#serviceEndTime").text(json.serviceEndTime);
 }
 
 function addaddress() {
