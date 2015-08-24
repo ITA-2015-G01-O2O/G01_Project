@@ -3,53 +3,136 @@ Ext.define('shop.controller.searchController', {
 
 	init : function(application) {
 		this.control({
-			'#searchBtn':{
-				click:this.search
+			'#searchResultGrid' : {
+				selectionchange : this.checkButtonAccess
 			},
-			'#resetPswBtn':{
-				click:this.resetPsw
+			'#searchBtn' : {
+				click : this.search
 			},
-			"#searchView textfield":{
-				blur: this.toTrimValue
+			'#resetPswBtn' : {
+				click : this.resetPsw
 			},
-			'#setAsHotShopBtn':{
-				click:this.setAsHotShop
+			"#searchView textfield" : {
+				blur : this.toTrimValue
 			},
-			'#viewBtn':{
-				click:this.viewShop
+			'#setAsHotShopBtn' : {
+				click : this.setAsHotShop
+			},
+			'#cancelAsHotShopBtn' : {
+				click : this.cancelAsHotShop
+			},
+			'#viewBtn' : {
+				click : this.viewShop
 			}
 		});
 	},
-	toTrimValue:function(comp){
-		if(Ext.typeOf(comp.getValue())=='string'){
+	toTrimValue : function(comp) {
+		if (Ext.typeOf(comp.getValue()) == 'string') {
 			comp.setValue(Ext.String.trim(comp.getValue()));
 		}
 	},
-	search:function(){
+	checkButtonAccess : function() {
+		var grid = Ext.getCmp('searchResultGrid');
+		var selectedRows = grid.getSelectionModel().getSelection();
+		if (selectedRows.length == 1) {
+			if (selectedRows[0].data.isHot) {
+				Ext.getCmp('setAsHotShopBtn').setDisabled(true);
+				Ext.getCmp('cancelAsHotShopBtn').setDisabled(false);
+			} else {
+				Ext.getCmp('setAsHotShopBtn').setDisabled(false);
+				Ext.getCmp('cancelAsHotShopBtn').setDisabled(true);
+			}
+		} else {
+			Ext.getCmp('setAsHotShopBtn').setDisabled(true);
+			Ext.getCmp('cancelAsHotShopBtn').setDisabled(true);
+		}
+	},
+	search : function() {
 		var stopName = Ext.getCmp('searchStopName').getValue();
 		var isHot = Ext.getCmp('searchIsHot').getValue();
 		var location = Ext.getCmp('searchLocation').getValue();
 		var status = Ext.getCmp('searchStatus').getValue();
-		Ext.MessageBox.alert('test',stopName+":"+isHot+":"+location+":"+status);
+
+		var store = Ext.getCmp('searchResultGrid').getStore();
+		store.load({
+			params : {
+				start : 0,
+				stopName : stopName,
+				isHot : isHot,
+				location : location,
+				status : status
+			}
+		});
 	},
-	setAsHotShop:function(){
+	setAsHotShop : function() {
 		var searchResultGrid = Ext.getCmp('searchResultGrid');
 		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
-		if(selectedRows.length==1){
-			Ext.MessageBox.confirm('Confirm', 'Are you sure?',function(btn, text){
-				if (btn == 'yes'){
-					var shopId=selectedRows[0].data.shopId;
-					Ext.MessageBox.alert('test','id:'+shopId);	
+		var me=this;
+		if (selectedRows.length == 1) {
+			Ext.MessageBox.confirm('Confirm', 'Are you sure?', function(btn,
+					text) {
+				if (btn == 'yes') {
+					var shopId = selectedRows[0].data.shopId;
+					Ext.getBody().mask();
+					Ext.Ajax.request({
+						url : 'setHot.do',
+						params : {
+							id : shopId
+						},
+						success : function(response) {
+							Ext.MessageBox.alert('Tip', 'Success');
+							Ext.getBody().unmask();
+							me.reloadData();
+						},
+						failure : function() {
+							Ext.MessageBox.alert('Tip', 'Error');
+							Ext.getBody().unmask();
+							me.reloadData();
+						}
+					});
 				}
 			});
 		}
 	},
-	viewShop:function(){
+	cancelAsHotShop : function() {
 		var searchResultGrid = Ext.getCmp('searchResultGrid');
 		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
-		if(selectedRows.length==1){
-			var shopId=selectedRows[0].data.shopId;
-			window.open("shopView.html?shopId="+shopId);	
+		var me=this;
+		if (selectedRows.length == 1) {
+			Ext.MessageBox.confirm('Confirm', 'Are you sure?', function(btn,
+					text) {
+				if (btn == 'yes') {
+					var shopId = selectedRows[0].data.shopId;
+					Ext.Ajax.request({
+						url : 'setNoHot.do',
+						params : {
+							id : shopId
+						},
+						success : function(response) {
+							Ext.MessageBox.alert('Tip', 'Success');
+							Ext.getBody().unmask();
+							me.reloadData();
+						},
+						failure : function() {
+							Ext.MessageBox.alert('Tip', 'Error');
+							Ext.getBody().unmask();
+							me.reloadData();
+						}
+					});
+				}
+			});
 		}
+	},
+	viewShop : function() {
+		var searchResultGrid = Ext.getCmp('searchResultGrid');
+		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
+		if (selectedRows.length == 1) {
+			var shopId = selectedRows[0].data.shopId;
+			window.open("detail.view?id=" + shopId);
+		}
+	},
+	reloadData:function(){
+		var store = Ext.getCmp('searchResultGrid').getStore();
+		store.reload();
 	}
 });

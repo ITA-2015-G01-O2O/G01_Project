@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public abstract class BaseController {
   @RequestMapping("/{view}.view")
   public String view(@PathVariable String view) {
+	  System.out.println(view);
     return this.getName() + "/" + view;
   }
 

@@ -7,4 +7,5 @@ public interface AccountService {
 	
 	 public Account login(String loginname, String password); 
 	 public Boolean contains(String loginname);
+	public void changePasswordByAccount(Account account,String newPassword);
 }

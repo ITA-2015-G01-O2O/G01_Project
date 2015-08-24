@@ -8,30 +8,7 @@
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/register.css" />
 		<title>Register</title>
-		<script type="text/javascript">
-			var isPhone=false;
-			function verifyphone(){
-				var phone=$("#inputPhone").val();
-				if(phone.match(/\d+/g)){
-					isPhone=true;
-					$("#phonemsg").attr("style","display: none;");
-				}else{
-					isPhone=false;
-					$("#phonemsg").removeAttr("style");
-				}
-			}
-			
-			$(document).ready(function(){
-				$("#inputPhone").on("blur",verifyphone);
-				$("#next").on("click",function(){
-					verifyphone();
-					if(!isPhone)
-						return false;
-					else
-						return true;
-				});
-			});
-		</script>
+		<script type="text/javascript" src="js/register1.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">

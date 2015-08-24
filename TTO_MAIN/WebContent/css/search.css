@@ -1,0 +1,99 @@
+@charset "utf-8";
+html {
+    height: 100%;
+    margin: 0;
+}
+body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#background {
+    width: 100%;
+    height: inherit;
+    background: url(../img/bg.jpg) no-repeat center;
+    -webkit-animation: scale 25s linear infinite alternate;
+}
+@-webkit-keyframes scale {
+    0% {}
+    100% {
+        -webkit-transform: scale(1.5);
+    }
+}
+#search {
+    width: 100%;
+    position: fixed;
+    top: 40%;
+    text-align: center;
+}
+.search-Place {
+    width: 40%;
+    height: 45px;
+    padding-left: 40px;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px #000;
+    transition: box-shadow 0.5s;
+    outline: none;
+}
+.search-Place:focus {
+    box-shadow: 0px 0px 30px 1px #000;
+    transition: box-shadow 0.5s;
+}
+.search-font {
+    position: relative;
+    right: 33px;
+    font-size: 16px;
+}
+#maplist {
+    position: absolute;
+    margin-top: 5px;
+    left: 30%;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 500px;
+}
+.map-font {
+    position: relative;
+    left: 35px;
+    z-index: 99;
+    font-size: 16px;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    top: 25%;
+    font-weight: bold;
+    font-size: 46px;
+}
+#header {
+    position: fixed;
+    background-color: transparent;
+    border: 0px;
+    width: 100%;
+    z-index: 99;
+}
+#header a {
+    color: #fff;
+}
+#footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: transparent;
+    border: 0px;
+    width: 100%;
+    z-index: 99;
+}
+#footer a {
+    color: #fff;
+}
+.brand {
+    font-family: "Segoe Script";
+}
+#maplist td {
+    text-align: left;
+    vertical-align: center;
+}

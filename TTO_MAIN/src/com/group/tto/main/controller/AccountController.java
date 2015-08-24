@@ -20,8 +20,8 @@ import com.group.tto.main.service.AccountService;
 
 
 @Controller
-@RequestMapping("/consumer")
-public class Main_ConsumerController extends BaseController {
+@RequestMapping("/account")
+public class AccountController extends BaseController {
 	@Autowired
 	  private AccountService accountService;
 	
@@ -29,13 +29,14 @@ public class Main_ConsumerController extends BaseController {
 	@RequestMapping(value = "/login.do", produces = {"application/json;charset=UTF-8"})
 	  @ResponseBody
 	  public String login(String loginname, String password, HttpServletRequest request) {
-	    if (this.accountService.contains(loginname)) {
-	    	
+		System.out.println(loginname);
+		System.out.println(password);
+		if (this.accountService.contains(loginname)) {
 	    	Account db = this.accountService.login(loginname, password);
 	      if (db == null) {
 	        return this.getResultJSON(false, "tip.error.psw");
 	      } else if (isDuplicate(db, request)) {
-	        return this.getResultJSON(false, "tip.error.login");
+	        return this.getResultJSON(true, "");
 	      } else {
 	        List<Account> loginAdmin =
 	            (List<Account>) request.getServletContext().getAttribute(COMMON.CONTEXT_LOGIN_INFO);
@@ -65,12 +66,10 @@ public class Main_ConsumerController extends BaseController {
 	  }
 	
 	
-	
-	
 	@Override
 	protected String getName() {
 		// TODO Auto-generated method stub
-		return "consumer";
+		return "main/consumer";
 	}
 	
 	@RequestMapping(value = "/getAllproByMerId.action", method = { RequestMethod.POST }, produces = { "application/json;charset=UTF-8" })
