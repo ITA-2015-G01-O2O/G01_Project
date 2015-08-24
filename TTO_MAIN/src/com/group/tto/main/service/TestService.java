@@ -1,4 +1,4 @@
-package com.group.tto.admin.service;
+package com.group.tto.main.service;
 
 import org.springframework.stereotype.Service;
 

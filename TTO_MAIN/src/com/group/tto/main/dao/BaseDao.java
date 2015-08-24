@@ -1,4 +1,4 @@
-package com.group.tto.admin.dao;
+package com.group.tto.main.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
