@@ -1,0 +1,29 @@
+@charset "utf-8";
+#sign-form {
+    width: 350px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    background-color: #fff;
+}
+.logo {
+    text-align: center;
+    height: 250px;
+}
+.logo img {
+    position: relative;
+    top: 100px;
+}
+.input-group {
+    margin-bottom: 10px;
+}
+.btn-lg {
+    margin-bottom: 10px;
+}
+.btn-re {
+    text-align: center;
+}
+.bttons {
+    margin-top: 20px;
+}

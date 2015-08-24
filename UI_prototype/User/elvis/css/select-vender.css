@@ -9,9 +9,6 @@
     margin-top: 30px;
     min-height: 200px;
 }
-body {
-    background-color: #fafafa;
-}
 .venders {
     margin-top: 20px;
 }
@@ -20,15 +17,6 @@ body {
 }
 .container {
     width: 960px;
-}
-.footer {
-    margin-top: 100px;
-    height: 48px;
-    background-color: #f8f8f8;
-    border-top: 1px solid #e7e7e7;
-    line-height: 48px;
-    text-align: center;
-    width: 100%;
 }
 .sorter {
     margin-top: 20px;
@@ -40,4 +28,7 @@ body {
 }
 .search {
     width: 300px;
+}
+.nav-pills li a {
+    border-radius: 200px;
 }
