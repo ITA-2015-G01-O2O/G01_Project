@@ -111,7 +111,7 @@ Ext.define('shop.view.searchView', {
                                     xtype: 'combobox',
                                     fieldLabel: 'location',
 									store:'locationStore',
-									queryModel:'local',
+									//queryModel:'local',
 									displayField: 'locationName',
 									valueField: 'locationId',
 									forceSelection: true,
@@ -204,7 +204,15 @@ Ext.define('shop.view.searchView', {
                                         {
                                             xtype: 'button',
                                             text: 'Set As Hot Shop',
-											itemId:'setAsHotShopBtn'
+                                            id:'setAsHotShopBtn',
+											itemId:'setAsHotShopBtn',
+											disabled:true
+                                        },{
+                                            xtype: 'button',
+                                            text: 'Cancel Hot Shop',
+                                            id:'cancelAsHotShopBtn',
+											itemId:'cancelAsHotShopBtn',
+											disabled:true
                                         },{
                                             xtype: 'button',
                                             text: 'View & Change Status',

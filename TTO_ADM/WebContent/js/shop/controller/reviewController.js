@@ -1,74 +1,99 @@
 Ext.define('shop.controller.reviewController', {
 	extend : 'Ext.app.Controller',
-	shopDTO:{},
-	
+	shopDTO : {},
+
 	init : function(application) {
 		this.control({
-			'#reviewView':{
-				afterrender:this.loadData
+			'#reviewView' : {
+				afterrender : this.loadData
 			},
-			'#activeBtn':{
-				click:this.activeShop
+			'#activeBtn' : {
+				click : this.activeShop
 			},
-			'#inactiveBtn':{
-				click:this.inactiveShop
+			'#inactiveBtn' : {
+				click : this.inactiveShop
 			},
-			'#closeBtn':{
-				click:this.closeWin
+			'#closeBtn' : {
+				click : this.closeWin
 			}
 		});
 	},
-	closeWin:function(){
+	closeWin : function() {
 		window.close();
 	},
-	activeShop:function(){
-		Ext.MessageBox.alert('test','id:'+this.shopDTO.shopId);	
+	activeShop : function() {
+		var me=this;
+		Ext.Ajax.request({
+			url : 'active.do',
+			params : {
+				id : me.shopDTO.shopId
+			},
+			success : function(response) {
+				me.loadData();
+				Ext.MessageBox.alert('Tip', 'Success');
+				Ext.getBody().unmask();
+			},
+			failure : function() {
+				Ext.MessageBox.alert('Tip', 'Error');
+				Ext.getBody().unmask();
+			}
+		});
 	},
-	inactiveBtn:function(){
-		Ext.MessageBox.alert('test','id:'+this.shopDTO.shopId);		
+	inactiveShop : function() {
+		var me=this;
+		Ext.Ajax.request({
+			url : 'inactive.do',
+			params : {
+				id : me.shopDTO.shopId
+			},
+			success : function(response) {
+				me.loadData();
+				Ext.MessageBox.alert('Tip', 'Success');
+				Ext.getBody().unmask();
+			},
+			failure : function() {
+				Ext.MessageBox.alert('Tip', 'Error');
+				Ext.getBody().unmask();
+			}
+		});
 	},
-	loadData:function( comp, eOpts ){
-		this.shopDTO={
-			shopId:'1',
-			status:'Normal',
-			idcardNumber:'610103199310101010',
-			realName:'test real name',
-			idcardPicUrl:'img/test.png',
-			licensePicImg:'img/test.png',
-			realShopPicUrl:'img/test.png',
-			canActive:false,
-			canInActive:true,
-			shopName:'test shop name',
-			locationName:'test location name',
-			serviceBeginTime:'10:00',
-			serviceEndTime:'19:00',
-			deliverFee:'10',
-			startingFee:'10',
-			avgPoint:'10',
-			avgDeliverTime:'10',
-			logoPicUrl:'img/test.png'
-		};
-		
-		Ext.getCmp('statusField').setValue(this.shopDTO.status);
-		Ext.getCmp('idCardNumberField').setValue(this.shopDTO.idcardNumber);
-		Ext.getCmp('realNameField').setValue(this.shopDTO.realName);
-		Ext.getCmp('idCardPicImg').setSrc(this.shopDTO.idcardPicUrl);
-		Ext.getCmp('licensePicImg').setSrc(this.shopDTO.licensePicImg);
-		Ext.getCmp('realShopPicImg').setSrc(this.shopDTO.realShopPicUrl);
-		
-		
-		Ext.getCmp('shopNameField').setValue(this.shopDTO.shopName);
-		Ext.getCmp('locationNameField').setValue(this.shopDTO.locationName);
-		Ext.getCmp('deliverFeeField').setValue(this.shopDTO.deliverFee);
-		Ext.getCmp('startingFeeField').setValue(this.shopDTO.startingFee);
-		Ext.getCmp('avgPointField').setValue(this.shopDTO.avgPoint);
-		Ext.getCmp('avgDeliverField').setValue(this.shopDTO.avgDeliverTime);
-		Ext.getCmp('shopLogoPicImg').setSrc(this.shopDTO.logoPicUrl);
-		
-		Ext.getCmp('serviceTimeField').setValue(this.shopDTO.serviceBeginTime+' to '+this.shopDTO.serviceEndTime);
-		
-		Ext.getCmp('activeBtn').setDisabled(this.shopDTO.canActive);
-		Ext.getCmp('inactiveBtn').setDisabled(this.shopDTO.canInActive);
+	loadData : function(comp, eOpts) {
+		var me = this;
+		var shopId=document.getElementById("shopId").value;
+		Ext.Ajax.request({
+			url : 'getDetail.do',
+			params : {
+				id : shopId
+			},
+			success : function(response) {
+				me.shopDTO = Ext.decode(response.responseText);
+				Ext.getCmp('statusField').setValue(me.shopDTO.status);
+				Ext.getCmp('idCardNumberField').setValue(me.shopDTO.idcardNumber);
+				Ext.getCmp('realNameField').setValue(me.shopDTO.realName);
+				Ext.getCmp('idCardPicImg').setSrc(me.shopDTO.idcardPicUrl);
+				Ext.getCmp('licensePicImg').setSrc(me.shopDTO.licensePicImg);
+				Ext.getCmp('realShopPicImg').setSrc(me.shopDTO.realShopPicUrl);
 
+				Ext.getCmp('shopNameField').setValue(me.shopDTO.shopName);
+				Ext.getCmp('locationNameField').setValue(me.shopDTO.locationName);
+				Ext.getCmp('deliverFeeField').setValue(me.shopDTO.deliverFee);
+				Ext.getCmp('startingFeeField').setValue(me.shopDTO.startingFee);
+				Ext.getCmp('avgPointField').setValue(me.shopDTO.avgPoint);
+				Ext.getCmp('avgDeliverField').setValue(me.shopDTO.avgDeliverTime);
+				Ext.getCmp('shopLogoPicImg').setSrc(me.shopDTO.logoPicUrl);
+
+				Ext.getCmp('serviceTimeField').setValue(
+						me.shopDTO.serviceBeginTime + ' to '
+								+ me.shopDTO.serviceEndTime);
+
+				Ext.getCmp('activeBtn').setDisabled(!me.shopDTO.canActive);
+				Ext.getCmp('inactiveBtn').setDisabled(!me.shopDTO.canInActive);
+				Ext.getBody().unmask();
+			},
+			failure : function() {
+				Ext.MessageBox.alert('Tip', 'Error');
+				Ext.getBody().unmask();
+			}
+		});
 	}
 });

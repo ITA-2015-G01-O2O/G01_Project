@@ -7,10 +7,26 @@ Ext.define('shop.model.locationModel', {
 
     fields: [
         {
-        	name: 'locationName'
+        	name: 'locationName',
+        	convert: function(value, record) {
+                var area  = record.get('area');
+                var city  = record.get('city');
+                var place  = record.get('place');
+
+                return area+","+city+","+place;
+            }
         },
         {
             name: 'locationId'
+        },
+        {
+            name: 'area'
+        },
+        {
+            name: 'city'
+        },
+        {
+            name: 'place'
         }
     ]
 });
