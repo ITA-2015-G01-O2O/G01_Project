@@ -19,6 +19,7 @@ import com.group.tto.cmn.model.Store;
 import com.group.tto.main.common.COMMON;
 import com.group.tto.main.service.AccountService;
 import com.group.tto.main.service.StoreService;
+import com.group.tto.main.vo.MerProsList;
 
 
 
@@ -27,16 +28,28 @@ import com.group.tto.main.service.StoreService;
 public class ConsumerController extends BaseController {
 	@Autowired
 	  private StoreService storeService;
-	
+	  
 	  @RequestMapping(value = "/getMerchantById.do", produces = {"application/json;charset=UTF-8"})
 	  @ResponseBody
-	  public String getMerProsById(String merId, HttpServletRequest request) {
-		  
+	  public String getMerProsById(String merId) {
+		  System.out.println("--------"+merId);
 		Store store=this.storeService.getStoreById(Integer.parseInt(merId));
-		String data=this.getResultJSON(true, store);
+		
+		  System.out.println("--------"+store);
+		if(store==null){
+			store=new Store();
+		}
+		
+		
+		MerProsList merProsList=this.getMerProsListVo(store);
+		String data=this.getResultJSON(true, merProsList);
 		return data;
 	  }
 	  
+	  public MerProsList getMerProsListVo(Store store){
+		  MerProsList merProsList=new MerProsList(store.getProducts(),store.getStoreId(),store.getStoreName());
+		  return merProsList;
+	  }
 	  
 	  @RequestMapping("/getMerprosById.view")
 	  public String view(Long merId,Map map) {

@@ -1,33 +1,5 @@
 
 
-$(function(){
-	var merId=$("#merId").val();
-	if(merId==null){
-		return false;
-	}
-	$.ajax({
-		type : "post",
-		url : "../consumer/getMerchantById.do",
-		cache : false,
-		data : {
-			merId : merId
-		},
-		error : function(error) {
-			alert("error");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if(json.isSuccess==true){
-				
-			}else{
-				
-			}
-		}
-	});
-})
-
-
-
 function consumerlogin() {
 	var username = $("#username").val();
 	var password = $("#password").val();

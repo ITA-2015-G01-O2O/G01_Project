@@ -15,6 +15,7 @@ import com.group.tto.cmn.model.UserProfile;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.OrderDao;
 
+
 @Repository
 public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 	
