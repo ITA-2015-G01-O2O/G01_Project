@@ -7,5 +7,5 @@ import com.group.tto.cmn.model.Account;
 public interface AccountDao {
   public PageDTO<Account> search(UserSearchCriteria searchCriteria);
 
-  public void resetPassword(Long id);
+  public void resetPassword(Long idl,String password);
 }

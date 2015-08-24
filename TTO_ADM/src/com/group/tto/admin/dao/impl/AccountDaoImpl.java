@@ -14,7 +14,6 @@ import com.group.tto.admin.dao.AccountDao;
 import com.group.tto.admin.dao.BaseDao;
 import com.group.tto.admin.dto.PageDTO;
 import com.group.tto.cmn.model.Account;
-import com.group.tto.cmn.model.UserProfile;
 
 @Repository
 public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
@@ -22,7 +21,6 @@ public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
   private static final String FIELD_USERNAME = "username";
   private static final String FIELD_STORE = "store";
 
-  private static final String INIT_PSW = "Password1";
 
   @Override
   public PageDTO<Account> search(UserSearchCriteria searchCriteria) {
@@ -52,9 +50,9 @@ public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
   }
 
   @Override
-  public void resetPassword(Long id) {
+  public void resetPassword(Long id, String password) {
     Account account = this.getEntityManager().find(Account.class, id);
-    account.setPassword(INIT_PSW);
+    account.setPassword(password);
     this.update(account);
   }
 
@@ -64,11 +62,11 @@ public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
     Root<Account> root = critQuery.from(Account.class);
 
     Predicate predicate =
-        critBuilder.and(
-            critBuilder.like(root.get(FIELD_USERNAME).as(String.class),
-                "%" + searchCriteria.getUserPhone() + "%"),
-            searchCriteria.getIsVendor() ? critBuilder.isNotNull(root.get(FIELD_STORE)) : critBuilder
-                .isNull(root.get(FIELD_STORE)));
+        critBuilder.and(critBuilder.like(root.get(FIELD_USERNAME).as(String.class), "%"
+            + searchCriteria.getUserPhone() + "%"),
+            searchCriteria.getIsVendor()
+                ? critBuilder.isNotNull(root.get(FIELD_STORE))
+                : critBuilder.isNull(root.get(FIELD_STORE)));
 
     return this.getEntityManager()
         .createQuery(critQuery.select(critBuilder.countDistinct(root)).where(predicate))
