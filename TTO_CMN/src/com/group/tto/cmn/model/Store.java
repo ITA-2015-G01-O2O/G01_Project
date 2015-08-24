@@ -49,6 +49,8 @@ public class Store {
   private String announcement;
   @Column(name = "IS_HOT")
   private Boolean isHot;
+  @Column(name = "LOGO_PIC_URL")
+  private String logoPicUrl;
 
   @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
   private Location location;
@@ -221,6 +223,14 @@ public class Store {
 
   public void setIsHot(Boolean isHot) {
     this.isHot = isHot;
+  }
+
+  public String getLogoPicUrl() {
+    return logoPicUrl;
+  }
+
+  public void setLogoPicUrl(String logoPicUrl) {
+    this.logoPicUrl = logoPicUrl;
   }
 
 }
