@@ -1,0 +1,10 @@
+package com.group.tto.main.service;
+
+import com.group.tto.cmn.model.Account;
+
+
+public interface AccountService {
+	
+	 public Account login(String loginname, String password); 
+	 public Boolean contains(String loginname);
+}
