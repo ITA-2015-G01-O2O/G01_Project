@@ -2,7 +2,7 @@ package com.group.tto.admin.cmn;
 
 public class UserSearchCriteria extends BaseSearchCriteria {
   private String userPhone;
-  private boolean isVendor;
+  private Boolean isVendor;
 
   public String getUserPhone() {
     return userPhone;
@@ -12,12 +12,14 @@ public class UserSearchCriteria extends BaseSearchCriteria {
     this.userPhone = userPhone;
   }
 
-  public boolean isVendor() {
+  public Boolean getIsVendor() {
     return isVendor;
   }
 
-  public void setVendor(boolean isVendor) {
+  public void setIsVendor(Boolean isVendor) {
     this.isVendor = isVendor;
   }
+
+
 
 }
