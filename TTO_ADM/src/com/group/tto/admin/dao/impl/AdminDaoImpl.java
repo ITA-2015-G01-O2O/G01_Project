@@ -2,8 +2,6 @@ package com.group.tto.admin.dao.impl;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -16,10 +14,7 @@ import com.group.tto.admin.dao.BaseDao;
 import com.group.tto.cmn.model.Admin;
 
 @Repository
-public class AdminDaoImpl implements AdminDao {
-
-  @PersistenceContext
-  private EntityManager entityManager;
+public class AdminDaoImpl extends BaseDao<Admin> implements AdminDao {
 
   private static final String FIELD_LOGINNAME = "loginname";
   private static final String FIELD_PASSWORD = "password";
@@ -53,14 +48,5 @@ public class AdminDaoImpl implements AdminDao {
 
     return count;
   }
-
-  public EntityManager getEntityManager() {
-    return entityManager;
-  }
-
-  public void setEntityManager(EntityManager entityManager) {
-    this.entityManager = entityManager;
-  }
-
 
 }
