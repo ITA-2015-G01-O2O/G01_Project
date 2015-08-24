@@ -21,7 +21,7 @@ Ext.application({
 		'cmn.controller.cmnController'
 	],
     name: 'shop',
-	appFolder: 'js/shop',
+	appFolder: '/TTO_Admin/js/shop',
 
     launch: function() {
         Ext.create('shop.view.searchView');

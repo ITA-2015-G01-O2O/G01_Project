@@ -27,9 +27,10 @@ public class AdminDaoImpl extends BaseDao<Admin> implements AdminDao {
     Predicate predicate =
         builder.and(builder.equal(admin.get(FIELD_LOGINNAME), loginname),
             builder.equal(admin.get(FIELD_PASSWORD), password));
-    Admin result = this.getEntityManager().createQuery(query.where(predicate)).getSingleResult();
+    List<Admin> result =
+        this.getEntityManager().createQuery(query.where(predicate)).getResultList();
 
-    return result;
+    return result.size() == 0 ? null : result.get(0);
   }
 
   @Override
