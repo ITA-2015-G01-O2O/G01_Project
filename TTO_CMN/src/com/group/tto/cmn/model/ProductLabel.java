@@ -15,17 +15,17 @@ public class ProductLabel {
   @Column(name = "PRO_LABEL_ID")
   @SequenceGenerator(name = "PRO_LABEL_ID_SEQ", sequenceName = "SEQ_TTO_PRO_LABEL_ID")
   @GeneratedValue(generator = "PRO_LABEL_ID_SEQ", strategy = GenerationType.SEQUENCE)
-  private String productLabelId;
+  private Long productLabelId;
   @Column(name = "PRO_LABEL_NAME")
   private String productLabelName;
   @Column(name = "STORE_ID")
   private Long storeId;
 
-  public String getProductLabelId() {
+  public Long getProductLabelId() {
     return productLabelId;
   }
 
-  public void setProductLabelId(String productLabelId) {
+  public void setProductLabelId(Long productLabelId) {
     this.productLabelId = productLabelId;
   }
 
