@@ -12,11 +12,13 @@ import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.StoreDao;
 
 @Repository
+@Repository
 public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 	
 	private static final String FIELD_STOREID = "storeId";
 
 	@Override
+	//根据商家id找到商家
 	public Store getStoreById(int sid) {
 		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Store> query = builder.createQuery(Store.class);
