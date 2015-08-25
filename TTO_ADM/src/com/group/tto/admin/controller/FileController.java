@@ -27,6 +27,9 @@ public class FileController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+  }
+  
+  public static String getPath(){
+    return "/file/img/";
   }
 }

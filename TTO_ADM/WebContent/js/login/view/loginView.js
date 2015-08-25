@@ -44,6 +44,7 @@ Ext.define('login.view.loginView', {
 							id:'password',
                             itemId: 'password',
                             fieldLabel: 'Password',
+                            inputType:'password',
 							allowBlank: false,
                             labelAlign: 'right',
                             labelWidth: 70

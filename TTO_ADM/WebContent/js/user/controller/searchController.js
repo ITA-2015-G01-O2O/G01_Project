@@ -12,12 +12,19 @@ Ext.define('user.controller.searchController', {
 			"#searchView textfield" : {
 				blur : this.toTrimValue
 			},
+			'#resetBtn':{
+				click:this.reset
+			}
 		});
 	},
 	toTrimValue : function(comp) {
 		if (Ext.typeOf(comp.getValue()) == 'string') {
 			comp.setValue(Ext.String.trim(comp.getValue()));
 		}
+	},
+	reset:function(){
+		Ext.getCmp('searchUserPhone').reset();
+		Ext.getCmp('searchIsVendor').reset();
 	},
 	search : function() {
 		var userPhone = Ext.getCmp('searchUserPhone').getValue();

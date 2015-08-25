@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,13 +68,20 @@ public class ShopController extends BaseController {
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getLocations(String query) {
-    return this.getResultJSON(true, this.locationService.search(query," "));
+    return this.getResultJSON(true, this.locationService.search(query, " "));
+  }
+
+  @RequestMapping(value = "/getCheckStatusTotal.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String getCheckStatusTotal() {
+    return this.getResultJSON(true, this.service.getTotalOfCheck().toString());
   }
 
   @RequestMapping(value = "/getDetail.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public ShopViewVo getDetail(Long id) {
-    return new ShopViewVo(this.service.get(id), "/TTO_Admin/file/img/");
+  public ShopViewVo getDetail(Long id, HttpServletRequest request) {
+    return new ShopViewVo(this.service.get(id), request.getServletContext().getContextPath()
+        + FileController.getPath());
   }
 
   @RequestMapping(value = "/detail.view", produces = {"application/json;charset=UTF-8"})

@@ -10,4 +10,6 @@ public interface StoreDao {
   public Store getById(Long id);
   
   public void save(Store store);
+  
+  public Long getTotalOf(String status);
 }

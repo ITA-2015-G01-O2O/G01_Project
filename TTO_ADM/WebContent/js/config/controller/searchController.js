@@ -79,7 +79,7 @@ Ext.define('config.controller.searchController', {
 		var store=Ext.getCmp('categoryList').getStore();
 		
 		var me=this;
-		if(!Ext.isEmpty(serviceHotLine) && !Ext.isEmpty(orderAutoConfirm) && !Ext.isEmpty(orderAutoCancel)){
+		if(Ext.getCmp('serviceHotLine').validate() && Ext.getCmp('orderAutoConfirmFiled').validate() && Ext.getCmp('orderAutoCancelFiled').validate()){
 			me.basicConfigDTO.hotLine=serviceHotLine;
 			me.basicConfigDTO.orderAutoConfirmTime=orderAutoConfirm;
 			me.basicConfigDTO.orderAutoCancelTime=orderAutoCancel;
