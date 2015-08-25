@@ -46,10 +46,12 @@ Ext.define('config.controller.searchController', {
 				
 				var temp=[];
 				Ext.each(me.basicConfigDTO.categorys,function(value,index){
-					var categoryModel= Ext.create('config.model.configModel');
-					categoryModel.data.configValue=value.configValue;
-					categoryModel.data.configId=value.configId;
-					temp.push(categoryModel);
+					if(!Ext.isEmpty(value.configValue)){
+						var categoryModel= Ext.create('config.model.configModel');
+						categoryModel.data.configValue=value.configValue;
+						categoryModel.data.configId=value.configId;
+						temp.push(categoryModel);
+					}
 				});
 				
 				var grid = Ext.getCmp('categoryList');
