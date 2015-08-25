@@ -1,4 +1,7 @@
 $(function() {
+	
+	$.cookie('com.group.tto.main.addorder', '', { expires: -1 });
+	
 	var merId = $("#merId").val();
 	if (merId == null) {
 		return false;
@@ -37,17 +40,19 @@ function setPros(products) {
 }
 
 function addshowPro(pro) {
-	var proimg = $("#proimg").clone();
-	proimg.show().appendTo($("#meals"));
+	if (pro.isDelete != true) {
+		var proimg = $("#proimg").clone();
+		proimg.show().appendTo($("#meals"));
 
-	var proInfo = $("#proInfo").clone();
-	proInfo.show().appendTo($("#meals"));
+		var proInfo = $("#proInfo").clone();
+		proInfo.show().appendTo($("#meals"));
 
-	var proInfos = $(proInfo).children();
-	proInfos.eq(0).text(pro.productName);
-	proInfos.eq(1).text(pro.productId);
-	proInfos.eq(2).find('span').eq(0).text(pro.price);
-	proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+		var proInfos = $(proInfo).children();
+		proInfos.eq(0).text(pro.productName);
+		proInfos.eq(1).text(pro.productId);
+		proInfos.eq(2).find('span').eq(0).text(pro.price);
+		proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+	}
 }
 
 function setMerInfo(json) {
@@ -68,31 +73,32 @@ function setMerInfo(json) {
 }
 
 function deliveryPros() {
-	$
-			.ajax({
-				type : "post",
-				url : "../consumer/isConsumerLogin.do",
-				cache : false,
-				error : function(error) {
-					alert("error");
+	$.ajax({
+		type : "post",
+		url : "../consumer/isConsumerLogin.do",
+		cache : false,
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				var dataString = getOrder();
+				if (dataString != null) {
+					var dataJson = JSON.stringify(dataString);
+
+					$.cookie('com.group.tto.main.addorder', dataJson);
+
+					console.log(dataJson);
+
+					window.location.href = '../consumer/confirmOrder.view?';
+
 				}
-			})
-			.done(
-					function(json) {
-						if (json != "") {
-							if (json.isSuccess == true) {
-								var dataString = getOrder();
-								if (dataString != null) {
-									var dataJson = JSON.stringify(dataString);
-									console.log(dataJson);
-									window.location.href = '../consumer/confirmOrder.view?dataJson='
-											+ dataJson;
-								}
-							} else {
-								$("#relogin").modal("show");
-							}
-						}
-					});
+			} else {
+				$("#relogin").modal("show");
+			}
+		}
+	});
 }
 function getOrder() {
 	var divele = $("#ordersCard").children();
@@ -109,7 +115,7 @@ function getOrder() {
 				GLOBAL_OrderInfo.proId = orderclassId;
 
 				GLOBAL_OrderInfo.proName = orderchildren.eq(0).text();
-
+				GLOBAL_OrderInfo.bid = $("#merId").val();
 				GLOBAL_OrderInfo.proNum = orderchildren.eq(3).val();
 
 				var priceString = orderchildren.eq(5).text();
@@ -117,7 +123,6 @@ function getOrder() {
 
 				GLOBAL_OrderInfo.proPrice = price1;
 
-				orderArray.push(GLOBAL_OrderInfo);
 				orderArray.push(GLOBAL_OrderInfo);
 			}
 
@@ -161,10 +166,6 @@ function addaddress() {
 		});
 	});
 }
-
-
-
-
 
 var moneyCount = 0;
 
@@ -225,9 +226,6 @@ function addPointPair() {
 }
 
 function setRomdomNameandId($element) {
-	/**
-	 * propèŽ·å�–ç¬¬ä¸€ä¸ªåŒ¹é…�çš„å±žæ€§ï¼Œç„¶å�Žæ›¿æ�¢
-	 */
 	$element.prop('name', $element.prop("name") + "_"
 			+ Math.floor(Math.random() * (1000000)));
 	$element.prop('id', $element.prop("id") + "_"

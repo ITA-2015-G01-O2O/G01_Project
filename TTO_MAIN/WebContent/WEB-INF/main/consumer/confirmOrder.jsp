@@ -261,7 +261,7 @@ input {
 						style="background-color: white; height: 350px;">
 						<div class="col-lg-12">
 							<h4>送餐详情</h4>
-							<div class="address-box" id="addadress" onclick="addaddress()"
+							<div class="address-box" id="addadress"
 								data-toggle="modal" data-target="#addressModal">添加地址</div>
 							</div>
 							<div style="display:none" class="address-box2"  id="showaddressInfo" onclick="addaddress()"
@@ -331,5 +331,6 @@ input {
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="../js/consumer/comfirmorder.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 </body>
 </html>

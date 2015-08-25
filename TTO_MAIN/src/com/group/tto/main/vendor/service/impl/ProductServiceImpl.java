@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public List<Product> findProductsByLabel(String label, long sid) {
+	public List<Product> findProductsByLabel(long label, long sid) {
 
 		return poductDao.findProductsByLabel(label, sid);
 		// TODO Auto-generated method stub
