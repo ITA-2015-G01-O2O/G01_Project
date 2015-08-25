@@ -22,6 +22,9 @@ Ext.define('config.controller.searchController', {
 			"#searchView textfield":{
 				blur: this.toTrimValue
 			},
+			'#refreshConfigBtn':{
+				click:this.loadData
+			}
 		});
 	},
 	toTrimValue:function(comp){
@@ -30,15 +33,33 @@ Ext.define('config.controller.searchController', {
 		}
 	},
 	loadData:function(){
-		this.basicConfigDTO={
-			serviceHotLine:'4008208820',
-			orderAutoConfirm:14,
-			orderAutoCancel:12
-		};
-		
-		Ext.getCmp('serviceHotLine').setValue(this.basicConfigDTO.serviceHotLine);
-		Ext.getCmp('orderAutoConfirmFiled').setValue(this.basicConfigDTO.orderAutoConfirm);
-		Ext.getCmp('orderAutoCancelFiled').setValue(this.basicConfigDTO.orderAutoCancel);
+		var me=this;
+		Ext.Ajax.request({
+			url : 'load.do',
+			success : function(response) {
+				var responseData = Ext.decode(response.responseText);
+				me.basicConfigDTO=responseData;
+				Ext.getBody().unmask();
+				Ext.getCmp('serviceHotLine').setValue(me.basicConfigDTO.hotLine);
+				Ext.getCmp('orderAutoConfirmFiled').setValue(me.basicConfigDTO.orderAutoConfirmTime);
+				Ext.getCmp('orderAutoCancelFiled').setValue(me.basicConfigDTO.orderAutoCancelTime);
+				
+				var temp=[];
+				Ext.each(me.basicConfigDTO.categorys,function(value,index){
+					var categoryModel= Ext.create('config.model.configModel');
+					categoryModel.data.configValue=value.configValue;
+					categoryModel.data.configId=value.configId;
+					temp.push(categoryModel);
+				});
+				
+				var grid = Ext.getCmp('categoryList');
+				var store=grid.getStore();
+				store.loadData(temp);
+			},
+			failure : function() {
+				Ext.getBody().unmask();
+			}
+		});
 	},
 	checkButtonAccess:function(){
 		var grid = Ext.getCmp('categoryList');
@@ -54,21 +75,45 @@ Ext.define('config.controller.searchController', {
 		var orderAutoConfirm=Ext.getCmp('orderAutoConfirmFiled').getValue();
 		var orderAutoCancel=Ext.getCmp('orderAutoCancelFiled').getValue();
 		var store=Ext.getCmp('categoryList').getStore();
-		var categoryData=[];
+		
+		var me=this;
 		if(!Ext.isEmpty(serviceHotLine) && !Ext.isEmpty(orderAutoConfirm) && !Ext.isEmpty(orderAutoCancel)){
-			Ext.MessageBox.alert('test', serviceHotLine+":"+orderAutoConfirm+":"+orderAutoCancel+":");
+			me.basicConfigDTO.hotLine=serviceHotLine;
+			me.basicConfigDTO.orderAutoConfirmTime=orderAutoConfirm;
+			me.basicConfigDTO.orderAutoCancelTime=orderAutoCancel;
+			var categoryData=[];
 			store.each(function(){
-				categoryData.push(this.data);
+				categoryData.push({configId:this.data.configId,configValue:this.data.configValue});
 			});
-			console.log(categoryData);
+			me.basicConfigDTO.categorys=categoryData;
+			
+			Ext.Ajax.request({
+				url : 'save.do',
+				params : {
+					hotLine : me.basicConfigDTO.hotLine,
+					orderAutoConfirmTime : me.basicConfigDTO.orderAutoConfirmTime,
+					orderAutoCancelTime : me.basicConfigDTO.orderAutoCancelTime,
+					categorys: Ext.encode(me.basicConfigDTO.categorys)
+				},
+				success : function(response) {
+					Ext.MessageBox.alert('Tip', 'Success');
+					Ext.getBody().unmask();
+					me.loadData();
+				},
+				failure : function() {
+					Ext.MessageBox.alert('Tip', 'Error');
+					Ext.getBody().unmask();
+					me.loadData();
+				}
+			});
+			
 		}
 	},
 	addCategory:function(){
 		var grid = Ext.getCmp('categoryList');
-		var selectedRows = grid.getSelectionModel().getSelection();
 		var store=grid.getStore();
 		
-		store.insert(store.data.length,new config.model.configModel());
+		store.insert(store.data.length,Ext.create('config.model.configModel'));
 	},
 	deleteCategory:function(){
 		var grid = Ext.getCmp('categoryList');
