@@ -1,12 +1,10 @@
-package com.group.tto.main.vendor.dao;
+package com.group.tto.main.vendor.service;
 
 import java.util.List;
 
-
 import com.group.tto.cmn.model.Order;
 
-
-public interface OrderDao {
+public interface OrderService {
 	public List<Order> findOrdersByState(String state, long sid);
-	public int updateOrder(Order order) ;
+	public void updateOrder(Order order) ;
 }

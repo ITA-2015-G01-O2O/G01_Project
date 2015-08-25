@@ -1,0 +1,356 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SMS - home</title>
+<link
+	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+.clear {
+	clear: both;
+}
+
+body {
+	background: #eee;
+}
+
+.container-main {
+	background: #eee;
+	width: 1100px;
+	margin-bottom: 50px;
+	padding-bottom: 50px;
+}
+
+.container-main .text-muted {
+	color: #bbb;
+}
+
+.mealBox {
+	margin-bottom: 50px;
+	padding: 0 10px;
+	word-wrap: break-word;
+}
+
+.mealBox img {
+	width: 100%;
+}
+
+.breadcrumb-wrapper {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+}
+
+.breadcrumb {
+	background: #fff;
+	margin-bottom: 0;
+}
+
+.main-wrapper {
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+
+.myCart {
+	position: relative;
+	padding: 5px 0 0 10px;
+	margin-top: 50px;
+	background-color: white;
+}
+
+.myCart i {
+	font-size: 35px;
+	margin-right: 10px;
+}
+
+.myCart .badge {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #e00;
+}
+
+.orders {
+	margin-top: 40px;
+	padding: 0 10px 50px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: white;
+}
+
+.orders .orderBox {
+	word-wrap: break-word;
+	margin-top: 40px;
+}
+
+.orders .orderBox input {
+	width: 60px;
+	display: inline-block;
+}
+
+.orders .orderBox button {
+	width: 30px;
+}
+
+.orders .orderBox .price {
+	font-weight: bold;
+	font-size: 23px;
+	float: right;
+}
+
+.pay .total {
+	font-weight: bold;
+	font-size: 40px;
+	position: relative;
+	top: -5px;
+}
+
+.th-inner {
+	padding: 17px 0;
+	font-size: 14px;
+}
+
+.alight-left {
+	text-align: left;
+}
+
+.alight-right {
+	text-align: right;
+}
+
+.dishtable {
+	color: #434343;
+	border: 1px solid #ebebeb;
+	background-color: #ffffff;
+	font: 12px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;
+}
+
+.left {
+	padding-left: 15px;
+}
+
+.right {
+	padding-right: 15px;
+}
+
+.td-inner {
+	background: url(img/order-border.png) repeat-x;
+	padding: 17px 0;
+	font-size: 14px;
+}
+
+.address-box {
+	border: 1px solid #eeeeee;
+	height: 86px;
+	line-height: 86px;
+	width: 600px;
+	cursor: pointer;
+	background-color: #fafafa;
+	color: #898989;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+input {
+	border: 1px solid #eeeeee;
+	height: 25px;
+	line-height: 18px;
+	margin: 0;
+	width: 351px;
+	background-position: -579px 0;
+	padding-left: 6px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	background-repeat: no-repeat;
+}
+
+.merchantMsgclass {
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#main-nav">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a href="index.html"><img src="img/title_client.png" width="70px"
+				style="margin-top: 8px"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="main-nav">
+			<ul class="nav navbar-nav">
+				<li><a href="#">Change Of Address </a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">137*****</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<div class="container container-main">
+		<div class="row">
+			<div class="col-xs-12">
+
+				<div class="row">
+
+					<div class="col-xs-4">
+						<table class="dishtable">
+							<thead>
+								<tr>
+									<th class="left" width="240px">
+										<div class="th-inner alight-left">菜品</div>
+									</th>
+
+									<th class="right">
+										<div class="th-inner alight-right">价格/份数</div>
+									</th>
+								</tr>
+
+							</thead>
+							<tbody>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">南洋鸡肉卷</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">红烧猪蹄</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">红烧猪脚</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">红烧猪脚</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">红烧猪脚</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<div class="td-inner alight-left">红烧猪脚</div>
+									</td>
+									<td class="right">
+										<div class="td-inner alight-right">$6.5*4</div>
+									</td>
+
+								</tr>
+								<tr>
+									<td class="left" width="240px">
+										<h4 style="font-weight: bold;">合计</h4>
+									</td>
+									<td class="right">
+										<div class="alight-right">
+											<h5 style="font-weight: bold;">
+												$300
+												</h4>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="col-xs-8"
+						style="background-color: white; height: 350px;">
+						<div class="col-lg-12">
+							<h4>送餐详情</h4>
+							<div class="address-box" onclick="addaddress()"
+								data-toggle="modal" data-target="#addressModal">添加地址</div>
+						</div>
+						<div class="col-lg-12 merchantMsgclass">
+							<label for="merchantmsg" class="col-sm-3 control-label">给商家留言：</label>
+							<input type="text" width="200px" id="merchantmsg"
+								placeholder="不要辣，多放盐等口味要求">
+						</div>
+
+						<div class="col-lg-12 ">
+							<div class="td-inner"></div>
+							<span style="font-weight: bold; font-size: 20px;">合计:</span> <span
+								style="color: #fe4d3d">$32</span>
+						</div>
+						<button type="button" class="btn btn-primary pull-right"
+							id="getusebtn">Comfirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="addressModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="form-horizontal center-block well"
+					style="max-height: 400px; max-width: 450px; margin-top: 50px;">
+					<h2 class="form-inline">Your Information</h2>
+					<div class="form-group">
+						<label for="merchantNameReg" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">联系人:</label>
+						<div class="col-sm-5 input-group " id="mernameMsgReg">
+
+							<input type="text" class="form-control" id="ausername">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="merchantPassword" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">手机号码:</label>
+						<div class="col-sm-5 input-group " id="merpasswordMsg">
+
+							<input type="text" class="form-control" id="auserage">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="merchantPassword" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">详细地址:</label>
+						<div class="col-sm-5 input-group " id="merpasswordMsg">
+							<input type="text" class="form-control" id="auserJob">
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="getusebtn">Comfirm</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script
+		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

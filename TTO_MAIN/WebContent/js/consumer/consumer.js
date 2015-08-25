@@ -18,7 +18,8 @@ function consumerlogin() {
 	}).done(function(json) {
 		if (json != "") {
 			if(json.isSuccess==true){
-				window.location.href='../account/select-vender.view';
+				//window.location.href='../account/select-vender.view';
+				$("#relogin").modal("hide");
 			}else{
 				$("#errorMsg").show();
 				$("#errorMsg").text(json.data);
@@ -26,6 +27,7 @@ function consumerlogin() {
 		}
 	});
 }
+
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {
