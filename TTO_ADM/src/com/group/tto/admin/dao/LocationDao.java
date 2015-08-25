@@ -5,5 +5,5 @@ import java.util.List;
 import com.group.tto.cmn.model.Location;
 
 public interface LocationDao {
-  public List<Location> search(String search);
+  public List<Location> search(String area,String city,String place);
 }

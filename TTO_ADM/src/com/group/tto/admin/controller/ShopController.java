@@ -66,7 +66,7 @@ public class ShopController extends BaseController {
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getLocations(String query) {
-    return this.getResultJSON(true, this.locationService.search(query));
+    return this.getResultJSON(true, this.locationService.search(query," "));
   }
 
   @RequestMapping(value = "/getDetail.do", produces = {"application/json;charset=UTF-8"})

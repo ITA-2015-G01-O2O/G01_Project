@@ -120,6 +120,7 @@ Ext.define('config.view.searchView', {
 									store:'categoryStore',
 									id:'categoryList',
 									itemId:'categoryList',
+									emptyText:'No Category',
 									columns: [
 										{
 											xtype: 'gridcolumn',
@@ -172,6 +173,10 @@ Ext.define('config.view.searchView', {
 											xtype: 'button',
 											text: 'Save Config',
 											itemId:'saveConfigBtn'
+										},{
+											xtype: 'button',
+											text: 'Refresh Config',
+											itemId:'refreshConfigBtn'
 										}
 									]
 								}
