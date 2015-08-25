@@ -3,6 +3,7 @@ package com.group.tto.main.vendor.service.impl;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Store;
@@ -10,6 +11,7 @@ import com.group.tto.main.vendor.dao.StoreDao;
 import com.group.tto.main.vendor.service.BasicSettingService;
 
 @Service
+@Repository("vendorBasicSettingServiceImpl")
 public class BasicSettingServiceImpl implements BasicSettingService {
 
   @Autowired

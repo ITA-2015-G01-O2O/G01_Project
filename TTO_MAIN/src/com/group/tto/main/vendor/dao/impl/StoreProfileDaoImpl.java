@@ -5,11 +5,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.StoreProfile;
-import com.group.tto.main.vendor.dao.BaseDao;
+import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.StoreProfileDao;
-
+@Repository("vendorStoreProfileDaoImpl")
 public class StoreProfileDaoImpl extends BaseDao<StoreProfile> implements StoreProfileDao {
 
   @Override

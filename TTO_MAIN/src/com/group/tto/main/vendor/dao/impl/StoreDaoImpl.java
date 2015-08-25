@@ -8,10 +8,10 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Store;
-import com.group.tto.main.vendor.dao.BaseDao;
+import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.StoreDao;
 
-@Repository
+@Repository("vendorStoreDaoImpl")
 public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
   @Override

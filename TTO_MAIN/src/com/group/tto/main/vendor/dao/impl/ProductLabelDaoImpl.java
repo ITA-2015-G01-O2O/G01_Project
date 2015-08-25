@@ -3,10 +3,13 @@ package com.group.tto.main.vendor.dao.impl;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
+
+import org.springframework.stereotype.Repository;
+
 import com.group.tto.cmn.model.ProductLabel;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.ProductLabelDao;
-
+@Repository("vendorProductLabelDaoImpl")
 public class ProductLabelDaoImpl extends BaseDao<ProductLabel> implements
 		ProductLabelDao {
 

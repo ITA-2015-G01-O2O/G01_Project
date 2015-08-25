@@ -12,7 +12,7 @@ import com.group.tto.cmn.model.Product;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.PoductDao;
 
-@Repository
+@Repository("vendorPoductDaoImpl")
 public class PoductDaoImpl extends BaseDao<Product> implements PoductDao {
 
 	

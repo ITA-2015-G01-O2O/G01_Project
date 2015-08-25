@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Product;
@@ -12,8 +13,9 @@ import com.group.tto.main.vendor.dao.PoductDao;
 import com.group.tto.main.vendor.service.ProductService;
 
 @Service
+@Repository("vendorProductServiceImpl")
 public class ProductServiceImpl implements ProductService {
-	@Autowired
+	@Autowired()
 	private PoductDao poductDao;
 
 	public PoductDao getPoductDao() {

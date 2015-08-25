@@ -7,10 +7,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import com.group.tto.cmn.model.Order;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.OrderDao;
-
+@Repository("vendorOrderDaoImpl")
 public class OrderDaoImpl  extends BaseDao<Order> implements OrderDao {
 
 	@Override
