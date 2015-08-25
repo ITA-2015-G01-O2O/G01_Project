@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="<c:url value='/css/vendor/register.css'/>" />
 		<title>Register</title>
-		<script type="text/javascript" src="js/register1.js"></script>
+		<script type="text/javascript" src="<c:url value='/js/vendor/register1.js'/>"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -19,7 +21,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -48,7 +50,7 @@
     				</div>
     				<div class="alert alert-danger" style="display: none;"  role="alert" id="phonemsg">Wrong phone number!</div>
     			</div>    			
-            	<a type="button" class="btn btn-primary btn-lg" href="register2.html" id="next">Next</a>
+            	<button type="button" class="btn btn-primary btn-lg" id="next">Next</button>
             <div>
 		</div>
 	</body>

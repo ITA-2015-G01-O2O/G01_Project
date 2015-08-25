@@ -9,4 +9,10 @@ import com.group.tto.main.dao.OrderItemDao;
 @Repository
 public class OrderItemDaoImpl extends BaseDao<OrderItem> implements OrderItemDao {
 
+  @Override
+  public int addOrderItem(OrderItem oi) {
+   
+    this.create(oi);
+   return 1;
+  }
 }

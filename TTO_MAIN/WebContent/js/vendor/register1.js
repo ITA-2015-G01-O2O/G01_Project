@@ -20,9 +20,12 @@ $(document).ready(function(){
 		else{
 			$.ajax({
 				type:"post",
-				url:"www.baidu.com",
+				url:"register1.do",
 				data: {"phone":$("#inputPhone").val()},
-             	dataType: "json"
+             	dataType: "json",
+             	success:function(data){
+             		window.location.href="register2.view";
+             	}
 			});
 		}
 	});

@@ -10,5 +10,7 @@ public interface OrderDao {
 	public List<Order> getAllOrderByUserProfile(UserProfile userProfile);
 	
 	public Order getOrderById(Long orderId);
+	
+	public int addOrder(Order o);
 
 }

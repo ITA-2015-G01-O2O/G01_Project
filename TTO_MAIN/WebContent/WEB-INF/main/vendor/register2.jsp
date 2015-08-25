@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="<c:url value='/css/vendor/register.css'/>" />
 		<title>Register</title>
-		<script type="text/javascript" src="js/register2.js"></script>
+		<script type="text/javascript" src="<c:url value='/js/vendor/register2.js'/>"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -69,14 +71,14 @@
     							Choose Area <span class="caret"></span>
   							</button>
   							<ul class="dropdown-menu">
-   								<li><a href="#" id="area1">Area 1</a></li>
-    							<li><a href="#" id="area2">Area 2</a></li>
+   								<li><a href="#" id="area1">China,Guangdong,Zhuhai</a></li>
+    							<li><a href="#" id="area2">China,Guangdong,Guangzhou</a></li>
   							</ul>
 						</div>
 				</form>
 				<input type="text" class="form-control page-text input-lg"  placeholder="Address" id="inputAddr2">    
 				<div class="alert alert-danger" style="display: none;"  role="alert" id="addrmsg">Please input your Address!</div>
-            	<a type="button" class="btn btn-primary btn-lg" href="register3.html" id="next">Next</a>
+            	<a type="button" class="btn btn-primary btn-lg" id="next">Next</a>
             <div>
 		</div>
 	</body>

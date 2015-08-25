@@ -49,5 +49,11 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 		
 	}
 
+  @Override
+  public int addOrder(Order o) {
+      this.create(o);
+    return 1;
+  }
+
 	
 }

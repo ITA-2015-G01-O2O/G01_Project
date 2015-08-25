@@ -50,10 +50,13 @@ $(document).ready(function(){
 		if(isName && isType && isAddr){
 			$.ajax({
 				type:"post",
-				url:"www.baidu.com",
-				data: {"name":$("#inputName").val(),"type":$("#inputType").text(),
-				"addr":$("#inputAddr1").text()+$("#inputAddr2").val()},
-             	dataType: "json"
+				url:"register2.do",
+				data: {"storename":$("#inputName").val(),"type":$("#inputType").text(),
+				"addr1":$("#inputAddr1").text(),"addr2":$("#inputAddr2").val()},
+             	dataType: "json",
+             	success:function(data){
+             		window.location.href="register3.view";
+             	}
 			});
 		}else{
 			return false;
