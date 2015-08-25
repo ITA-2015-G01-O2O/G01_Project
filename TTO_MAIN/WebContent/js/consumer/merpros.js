@@ -1,4 +1,7 @@
 $(function() {
+	
+	$.cookie('com.group.tto.main.addorder', '', { expires: -1 });
+	
 	var merId = $("#merId").val();
 	if (merId == null) {
 		return false;
@@ -18,15 +21,15 @@ $(function() {
 		if (json != "") {
 			if (json.isSuccess == true) {
 				setPros(json.data.products);
-				
+
 				setMerInfo(json.data);
-				
+
 			} else {
 
 			}
 		}
 	});
-})
+});
 
 function setPros(products) {
 	if (products.length != 0) {
@@ -36,38 +39,40 @@ function setPros(products) {
 	}
 }
 
-function addshowPro(pro){
-	var proimg = $("#proimg").clone();
-	proimg.show().appendTo($("#meals"));
-	
-	var proInfo = $("#proInfo").clone();
-	proInfo.show().appendTo($("#meals"));
-	
-	var proInfos=$(proInfo).children();
-	proInfos.eq(0).text(pro.productName);
-	proInfos.eq(1).text(pro.productId);
-	proInfos.eq(2).find('span').eq(0).text(pro.price);
-	proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+function addshowPro(pro) {
+	if (pro.isDelete != true) {
+		var proimg = $("#proimg").clone();
+		proimg.show().appendTo($("#meals"));
+
+		var proInfo = $("#proInfo").clone();
+		proInfo.show().appendTo($("#meals"));
+
+		var proInfos = $(proInfo).children();
+		proInfos.eq(0).text(pro.productName);
+		proInfos.eq(1).text(pro.productId);
+		proInfos.eq(2).find('span').eq(0).text(pro.price);
+		proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+	}
 }
 
-function setMerInfo(json){
+function setMerInfo(json) {
 	$("#storeName").text(json.storeName);
-	$("#detailLocation").text('Address:'+json.detailLocation);
-	$("#avgPoint").text(json.avgPoint+' scores');
-	$("#avgDeliverTime").text(json.avgDeliverTime+" minute(s)");
-	$("#startingFee").text(json.startingFee+" yuan up to send");
-	if(json.deliverFee==0){
+	$("#detailLocation").text('Address:' + json.detailLocation);
+	$("#avgPoint").text(json.avgPoint + ' scores');
+	$("#avgDeliverTime").text(json.avgDeliverTime + " minute(s)");
+	$("#startingFee").text(json.startingFee + " yuan up to send");
+	if (json.deliverFee == 0) {
 		$("#deliverFee").text('Free deliver fee');
-	}else{
-		$("#deliverFee").text("deliver fee :"+json.deliverFee);
+	} else {
+		$("#deliverFee").text("deliver fee :" + json.deliverFee);
 	}
-	
+
 	$("#announcement").text(json.announcement);
 	$("#serviceBeginTime").text(json.serviceBeginTime);
 	$("#serviceEndTime").text(json.serviceEndTime);
 }
 
-function deliveryPros(){
+function deliveryPros() {
 	$.ajax({
 		type : "post",
 		url : "../consumer/isConsumerLogin.do",
@@ -78,13 +83,53 @@ function deliveryPros(){
 	}).done(function(json) {
 		if (json != "") {
 			if (json.isSuccess == true) {
-				
-				window.location.href='../consumer/confirmOrder.view';
+				var dataString = getOrder();
+				if (dataString != null) {
+					var dataJson = JSON.stringify(dataString);
+
+					$.cookie('com.group.tto.main.addorder', dataJson);
+
+					console.log(dataJson);
+
+					window.location.href = '../consumer/confirmOrder.view?';
+
+				}
 			} else {
 				$("#relogin").modal("show");
 			}
 		}
 	});
+}
+function getOrder() {
+	var divele = $("#ordersCard").children();
+	var orderArray = new Array();
+
+	divele.each(function() {
+		var orderclass = $(this).attr("class");
+		if (orderclass == "orderBox") {
+
+			var orderchildren = $(this).children();
+			var orderclassId = orderchildren.eq(1).text();
+			if (orderclassId != "") {
+				var GLOBAL_OrderInfo = new ORDERINFO();
+				GLOBAL_OrderInfo.proId = orderclassId;
+
+				GLOBAL_OrderInfo.proName = orderchildren.eq(0).text();
+				GLOBAL_OrderInfo.bid = $("#merId").val();
+				GLOBAL_OrderInfo.proNum = orderchildren.eq(3).val();
+
+				var priceString = orderchildren.eq(5).text();
+				var price1 = priceString.substr(1, priceString.length - 1);
+
+				GLOBAL_OrderInfo.proPrice = price1;
+
+				orderArray.push(GLOBAL_OrderInfo);
+			}
+
+		}
+	});
+
+	return orderArray;
 }
 
 function consumerlogin() {
@@ -104,17 +149,15 @@ function consumerlogin() {
 		}
 	}).done(function(json) {
 		if (json != "") {
-			if(json.isSuccess==true){
+			if (json.isSuccess == true) {
 				$("#relogin").modal("hide");
-				//window.location.href='../account/select-vender.view';
-			}else{
+			} else {
 				$("#errorMsg").show();
 				$("#errorMsg").text(json.data);
 			}
 		}
 	});
 }
-
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {
@@ -123,6 +166,7 @@ function addaddress() {
 		});
 	});
 }
+
 var moneyCount = 0;
 
 function addMeals(ele) {
@@ -182,9 +226,6 @@ function addPointPair() {
 }
 
 function setRomdomNameandId($element) {
-	/**
-	 * propèŽ·å�–ç¬¬ä¸€ä¸ªåŒ¹é…�çš„å±žæ€§ï¼Œç„¶å�Žæ›¿æ�¢
-	 */
 	$element.prop('name', $element.prop("name") + "_"
 			+ Math.floor(Math.random() * (1000000)));
 	$element.prop('id', $element.prop("id") + "_"

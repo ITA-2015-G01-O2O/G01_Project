@@ -8,12 +8,13 @@
 <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="js/usercenter/myfav.js"></script>
-		<script src="js/usercenter/myinfo.js"></script>
-		<script src="js/usercenter/myorder.js"></script>
-		<link rel="stylesheet" href="css/usercenter/myfav.css"/>
-		<link rel="stylesheet" href="css/usercenter/myinfo.css"/>
-		<link rel="stylesheet" href="css/usercenter/myorder.css"/>
+		<script src="../js/usercenter/myfav.js"></script>
+		<script src="../js/usercenter/myinfo.js"></script>
+		<script src="../js/usercenter/myorder.js"></script>
+		<script src="../js/usercenter/personcenter.js"></script>
+		<link rel="stylesheet" href="../css/usercenter/myfav.css"/>
+		<link rel="stylesheet" href="../css/usercenter/myinfo.css"/>
+		<link rel="stylesheet" href="../css/usercenter/myorder.css"/>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_admin.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="../img/usercenter/title_admin.png" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 
@@ -61,7 +62,7 @@
 
 											</div>
 											<div class="col-xs-2">
-												<img src="img/title_admin.png" />
+												<img src="../img/usercenter/title_admin.png" />
 											</div>
 											<div class="col-xs-6">
 												<ul class="list-inline">
@@ -190,7 +191,7 @@
 																<input type="password" class="form-control" id="inputPassword" value="123456" disabled="disabled">
 															</li>
 															<li>
-																<button class="btn btn-info">change psd</button>
+																<a class="btn btn-info">change psd</a>
 															</li>
 
 														</ul>
@@ -202,7 +203,7 @@
 														<ul class="list-inline">
 															<li class="form-control-static">$400</li>
 															<li>
-																<button class="btn btn-info">charge</button>
+																<a class="btn btn-info">charge</a>
 															</li>
 														</ul>
 													</div>
@@ -223,7 +224,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<img src="../img/usercenter/title_admin.png" />
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">
@@ -256,7 +257,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<img src="../img/usercenter/title_admin.png" />
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">
@@ -290,7 +291,7 @@
 
 													</div>
 													<div class="col-xs-2">
-														<img src="img/title_admin.png" />
+														<img src="../img/usercenter/title_admin.png" />
 													</div>
 													<div class="col-xs-6">
 														<ul class="list-inline">

@@ -8,5 +8,6 @@ import com.group.tto.cmn.model.ProductLabel;
 @Repository("vendorProductLabelService")
 public interface ProductLabelService {
 	public List<ProductLabel> findAllProductLabels();
+	public ProductLabel findProductLabel(long labelId);
 	public void addProductLabel(ProductLabel producatLabel);
 }

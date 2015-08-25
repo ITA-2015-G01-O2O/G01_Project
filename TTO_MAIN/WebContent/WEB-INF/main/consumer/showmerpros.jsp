@@ -179,7 +179,7 @@ body {
 		<div class="collapse navbar-collapse" id="main-nav">
 			<ul class="nav navbar-nav">
 				<li><a href="#">Change Of Address </a></li>
-				<input type="hidden" id="merId" value="${merId}" />
+				<input type="hidden" id="merId" value=${merId} />
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">137*****</a></li>
@@ -464,6 +464,8 @@ body {
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="../js/consumer/merpros.js"></script>
+	<script src="../js/consumer/Ordermodel.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 </body>
 
 </html>

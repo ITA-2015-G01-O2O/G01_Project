@@ -21,15 +21,15 @@ public class LocationDaoImpl extends BaseDao<Location> implements LocationDao {
   private static final String FIELD_PLACE = "place";
 
   @Override
-  public List<Location> search(String search) {
+  public List<Location> search(String area,String city,String place) {
     CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
     CriteriaQuery<Location> query = builder.createQuery(Location.class);
     Root<Location> location = query.from(Location.class);
 
     Predicate predicate =
-        builder.or(builder.like(location.get(FIELD_AREA).as(String.class), "%" + search + "%"),
-            builder.or(builder.like(location.get(FIELD_CITY).as(String.class), "%" + search + "%"),
-                builder.like(location.get(FIELD_PLACE).as(String.class), "%" + search + "%")));
+        builder.and(builder.like(location.get(FIELD_AREA).as(String.class), "%" + area + "%"),
+            builder.and(builder.like(location.get(FIELD_CITY).as(String.class), "%" + city + "%"),
+                builder.like(location.get(FIELD_PLACE).as(String.class), "%" + place + "%")));
     List<Location> result =
         this.getEntityManager().createQuery(query.where(predicate)).getResultList();
 

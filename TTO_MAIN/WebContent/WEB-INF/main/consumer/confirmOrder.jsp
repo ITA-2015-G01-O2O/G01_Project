@@ -153,6 +153,18 @@ body {
 	text-align: center;
 	margin-bottom: 20px;
 }
+.address-box2{
+	border: 1px solid #eeeeee;
+	height: 100px;
+	line-height: 86px;
+	width: 600px;
+	background-color: #fafafa;
+	color: black;
+	text-align: center;
+	font-size: 14px;
+	margin-top:30px;
+	margin-bottom: 20px;
+}
 
 input {
 	border: 1px solid #eeeeee;
@@ -195,17 +207,17 @@ input {
 	</div>
 	</nav>
 	<div class="container container-main">
+		<span style="display: none" id="ordercomfirm">${ordercomfirm}</span>
 		<div class="row">
 			<div class="col-xs-12">
-
 				<div class="row">
-
 					<div class="col-xs-4">
 						<table class="dishtable">
 							<thead>
 								<tr>
 									<th class="left" width="240px">
 										<div class="th-inner alight-left">菜品</div>
+										
 									</th>
 
 									<th class="right">
@@ -214,70 +226,32 @@ input {
 								</tr>
 
 							</thead>
-							<tbody>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">南洋鸡肉卷</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-
-								</tr>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">红烧猪蹄</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-
-								</tr>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">红烧猪脚</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">红烧猪脚</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">红烧猪脚</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="left" width="240px">
-										<div class="td-inner alight-left">红烧猪脚</div>
-									</td>
-									<td class="right">
-										<div class="td-inner alight-right">$6.5*4</div>
-									</td>
-
-								</tr>
+							<tbody id="showorderpros1">
 								<tr>
 									<td class="left" width="240px">
 										<h4 style="font-weight: bold;">合计</h4>
 									</td>
 									<td class="right">
 										<div class="alight-right">
-											<h5 style="font-weight: bold;">
-												$300
+											<h5 style="font-weight: bold;" id="totalcount">
+												$0
 												</h4>
 										</div>
 									</td>
 								</tr>
+								
+								<tr id="showorderCopy" style="display:none">
+									<td class="left" width="240px">
+										<div class="td-inner alight-left"></div>
+										<span style="display:none"></span>
+									</td>
+									
+									<td class="right">
+										<div class="td-inner alight-right"></div>
+									</td>
+
+								</tr>
+								
 							</tbody>
 						</table>
 
@@ -287,22 +261,27 @@ input {
 						style="background-color: white; height: 350px;">
 						<div class="col-lg-12">
 							<h4>送餐详情</h4>
-							<div class="address-box" onclick="addaddress()"
+							<div class="address-box" id="addadress"
 								data-toggle="modal" data-target="#addressModal">添加地址</div>
-						</div>
+							</div>
+							<div style="display:none" class="address-box2"  id="showaddressInfo" onclick="addaddress()"
+								data-toggle="modal" data-target="#addressModal">
+								<h5>联系人：<label id="contact"></label></h5>
+								<h5>电话：<label id="phonenum"></label></h5>
+								<h5>详细地址：<label id="addressInfo"></label></h5>
+							</div>
 						<div class="col-lg-12 merchantMsgclass">
 							<label for="merchantmsg" class="col-sm-3 control-label">给商家留言：</label>
 							<input type="text" width="200px" id="merchantmsg"
 								placeholder="不要辣，多放盐等口味要求">
 						</div>
-
 						<div class="col-lg-12 ">
-							<div class="td-inner"></div>
-							<span style="font-weight: bold; font-size: 20px;">合计:</span> <span
-								style="color: #fe4d3d">$32</span>
-						</div>
+								<div class="td-inner"></div>
+								<span style="font-weight: bold;font-size: 20px;" >支付方式:</span>
+								<span style="color: #fe4d3d">货到付款</span>
+							</div>
 						<button type="button" class="btn btn-primary pull-right"
-							id="getusebtn">Comfirm</button>
+							id="getusebtn" onclick="confirmbuy()">Comfirm</button>
 					</div>
 				</div>
 			</div>
@@ -317,33 +296,32 @@ input {
 					style="max-height: 400px; max-width: 450px; margin-top: 50px;">
 					<h2 class="form-inline">Your Information</h2>
 					<div class="form-group">
-						<label for="merchantNameReg" class="col-sm-4 control-label"
-							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">联系人:</label>
-						<div class="col-sm-5 input-group " id="mernameMsgReg">
+						<label for="merchantName" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">*联系人:</label>
+						<div class="col-sm-5 input-group " id="merchantName">
 
 							<input type="text" class="form-control" id="ausername">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="merchantPassword" class="col-sm-4 control-label"
-							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">手机号码:</label>
-						<div class="col-sm-5 input-group " id="merpasswordMsg">
-
-							<input type="text" class="form-control" id="auserage">
+						<label for="merchantPhone" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">*手机号码:</label>
+						<div class="col-sm-5 input-group " id="merchantPhone">
+							<input type="text" class="form-control" id="auserPhone">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="merchantPassword" class="col-sm-4 control-label"
-							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">详细地址:</label>
-						<div class="col-sm-5 input-group " id="merpasswordMsg">
-							<input type="text" class="form-control" id="auserJob">
+						<label for="merchantAddress" class="col-sm-4 control-label"
+							style="font: 20px/1.125 Microsoft Yahei, Arial, Helvetica, sans-serif;">*详细地址:</label>
+						<div class="col-sm-5 input-group " id="merchantAddress">
+							<input type="text" class="form-control" id="auseraddress">
 						</div>
 					</div>
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="getusebtn">Comfirm</button>
+					<button type="button" class="btn btn-primary" id="getusebtn" onclick="confirmorderbtn()">Comfirm</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -352,5 +330,7 @@ input {
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="../js/consumer/comfirmorder.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 </body>
 </html>

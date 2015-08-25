@@ -66,13 +66,13 @@ public class ShopController extends BaseController {
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getLocations(String query) {
-    return this.getResultJSON(true, this.locationService.search(query));
+    return this.getResultJSON(true, this.locationService.search(query," "));
   }
 
   @RequestMapping(value = "/getDetail.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public ShopViewVo getDetail(Long id) {
-    return new ShopViewVo(this.service.get(id), "");
+    return new ShopViewVo(this.service.get(id), "/TTO_Admin/file/img/");
   }
 
   @RequestMapping(value = "/detail.view", produces = {"application/json;charset=UTF-8"})

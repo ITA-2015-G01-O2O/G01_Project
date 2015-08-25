@@ -9,5 +9,6 @@ public interface OrderService {
 	
 	public List<Order> getAllOrderByUserProfile(UserProfile userProfile);
 	public void cancelOrderById(Long orderId);
-
+	
+	public void addOrder(Order o);
 }

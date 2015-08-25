@@ -126,6 +126,7 @@ Ext.define('user.view.searchView', {
 							store: 'userStore',
 							id:'searchResultGrid',
 							itemId: 'searchResultGrid',
+							emptyText:'No Result Found',
                             columns: [
                                 {
                                     xtype: 'gridcolumn',

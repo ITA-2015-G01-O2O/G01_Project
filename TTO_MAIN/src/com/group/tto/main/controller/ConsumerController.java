@@ -33,7 +33,7 @@ public class ConsumerController extends BaseController {
   @ResponseBody
   public String getMerProsById(String merId) {
     System.out.println("--------" + merId);
-    Store store = this.storeService.getStoreById(Integer.parseInt(merId));
+    Store store = this.storeService.getStoreById(Long.parseLong(merId));
 
     System.out.println("--------" + store);
     if (store == null) {
@@ -43,6 +43,10 @@ public class ConsumerController extends BaseController {
     String data = this.getResultJSON(true, merProsList);
     return data;
   }
+  
+  
+  
+  
 
   @RequestMapping(value = "/isConsumerLogin.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
@@ -75,11 +79,18 @@ public class ConsumerController extends BaseController {
   }
 
   @RequestMapping("/getMerprosById.view")
-  public String view(Long merId, Map map) {
+  public String getMerprosById(Long merId, Map map) {
     map.put("merId", merId);
     return this.getName() + "/showmerpros";
   }
-
+  
+  /**
+  @RequestMapping("/confirmOrder.view")
+  public String confirmOrder(String dataJson, Map map) {
+    map.put("ordercomfirm", dataJson);
+   System.out.println("dataJson-----------------------------"+dataJson);
+    return this.getName() + "/confirmOrder";
+  }**/
 
 
   @Override
