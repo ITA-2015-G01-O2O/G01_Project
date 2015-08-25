@@ -61,22 +61,17 @@
                 <div class="row">
                     <div class="col-xs-12 main-wrapper">
                         <div class="row">
-                            <ul class="nav nav-pills">
+                            <ul class="nav nav-pills" id="store_type_list">
+                                <li role="presentation" class="active"><a href="#">全部</a></li>
                                 <li role="presentation"><a href="#">中餐</a></li>
                                 <li role="presentation"><a href="#">西餐</a></li>
                                 <li role="presentation"><a href="#">甜点</a></li>
                                 <li role="presentation"><a href="#">中餐</a></li>
                                 <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation" class="active"><a href="#">甜点</a></li>
+
                                 <li role="presentation"><a href="#">中餐</a></li>
                                 <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation"><a href="#">甜点</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation"><a href="#">甜点</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation"><a href="#">甜点</a></li>
+
                             </ul>
                         </div>
                         <div class="nav sorter">
@@ -95,7 +90,7 @@
                         </div>
                         <div class="row venders">
                             <div class="col-xs-3 hidden" id="store_temp">
-                                <a href="../../consumer/getMerprosById.view?merId=50" class="thumbnail shopId"> <img class="logoPicURL" src="../images/rice.png">
+                                <a href="../../consumer/getMerprosById.view?merId=50" class="thumbnail shopId"> <img class="logoPicURL" src="">
                                 </a>
                                 <h4 class="shopName">汉堡店</h4>
                                 <div class="row">
@@ -103,12 +98,11 @@
                                     <div class="col-xs-6 salesNum">销量:888单</div>
                                 </div>
                                 <div class="row">
-
                                     <div class="col-xs-6 startingFee">30元 起送</div>
                                     <div class="col-xs-6 deliverFee">免外卖费</div>
                                 </div>
                                 <div class="row">
-                                    <h6 class="text-muted col-xs-6">30分钟送达</h6>
+                                    <h6 class="text-muted col-xs-6 avgDeliverTime">30分钟送达</h6>
                                     <h6 class="text-muted col-xs-6">货到付款</h6>
                                 </div>
                             </div>

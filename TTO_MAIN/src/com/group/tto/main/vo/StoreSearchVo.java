@@ -14,6 +14,8 @@ public class StoreSearchVo {
   private String deliverFee;
   private String startingFee;
   private String logoPicURL;
+  private String avgDeliverTime;
+  private String storeType;
   private int salesNum;
   
   public StoreSearchVo() {}
@@ -29,6 +31,8 @@ public class StoreSearchVo {
     this.logoPicURL = store.getLogoPicUrl();
     this.deliverFee = store.getDeliverFee().toString();
     this.startingFee = store.getStartingFee().toString();
+    this.avgDeliverTime = store.getAvgDeliverTime().toString();  
+    //this.storeType = store.getTypeConfig().getConfigValue();
   }
 
   public Long getShopId() {
@@ -103,8 +107,15 @@ public class StoreSearchVo {
     this.salesNum = salesNum;
   }
 
+  public String getAvgDeliverTime() {
+    return avgDeliverTime;
+  }
 
-  
+  public void setAvgDeliverTime(String avgDeliverTime) {
+    this.avgDeliverTime = avgDeliverTime;
+  }
+
+
 
 
 }

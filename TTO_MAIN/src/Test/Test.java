@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Collect;
 import com.group.tto.cmn.model.Comment;
+import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.OrderItem;
@@ -56,21 +57,24 @@ public class Test {
     // location.setPlace("testPlace");
     // manager.persist(location);
 
-    // Store store = new Store();
-    // store.setAnnouncement("test");
-    // store.setAvgDeliverTime(new BigDecimal("1"));
-    // store.setAvgPoint(new BigDecimal("0"));
-    // store.setDeliverFee(new BigDecimal("1"));
-    // store.setDetailLocation("test detail location");
-    // store.setIsDelete(false);
-    // store.setIsHot(false);
-    // store.setLocation(manager.find(Location.class, 50L));
-    // store.setLogoPicUrl("test logo");
-    // store.setPhone("test phone");
-    // store.setServiceBeginTime(new Date());
-    // store.setServiceEndTime(new Date());
-    // store.setStartingFee(new BigDecimal("1"));
-    // store.setStoreName("test");
+    Store store = new Store();
+    store.setAnnouncement("test2");
+    store.setAvgDeliverTime(new BigDecimal("1"));
+    store.setAvgPoint(new BigDecimal("0"));
+    store.setDeliverFee(new BigDecimal("1"));
+    store.setDetailLocation("test detail location1");
+    store.setIsDelete(false);
+    store.setIsHot(false);
+    store.setLocation(manager.find(Location.class, 50L));
+    store.setLogoPicUrl("a9b5f8a8-a3d3-4ca8-9b43-0736c4fe3ae8");
+    store.setPhone("test phone");
+    store.setServiceBeginTime(new Date());
+    store.setServiceEndTime(new Date());
+    store.setStartingFee(new BigDecimal("1"));
+    store.setStoreName("test");
+    Configuration c = new Configuration();
+    c.setConfigId(new Long(7));
+    store.setTypeConfig(c);
     //
     // StoreProfile storeProfile = new StoreProfile();
     // storeProfile.setIdCardNumber("test");
@@ -166,11 +170,11 @@ public class Test {
     // LocationDaoImpl locationDao = new LocationDaoImpl();
     // locationDao.setEntityManager(manager);
     // System.out.println( locationDao.getAllLocations().get(0).getArea());
-
-    StoreDaoImpl storeDao = new StoreDaoImpl();
-    storeDao.setEntityManager(manager);
-    StoreSearchCriteria ssc = new StoreSearchCriteria();
-    System.out.println(storeDao.getStoreByCriteria(ssc).size());
+    //
+    // StoreDaoImpl storeDao = new StoreDaoImpl();
+    // storeDao.setEntityManager(manager);
+    // StoreSearchCriteria ssc = new StoreSearchCriteria();
+    // System.out.println(storeDao.getStoreByCriteria(ssc).size());
 
     transaction.commit();
   }
