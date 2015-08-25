@@ -23,7 +23,7 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 	private static final String FIELD_ORDERID ="orderId";
 
 	@Override
-	//根据userProfile查询所有的订单
+	//select all orders by userProfile
 	public List<Order> getAllOrderByUserProfile(UserProfile userProfile) {
 		List<Order> orders = new ArrayList<Order>();
 
@@ -38,7 +38,7 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 	}
 
 	@Override
-	//根据orderId取消对应的订单
+	//select order by orderId
 	public Order getOrderById(Long orderId) {
 		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Order> query = builder.createQuery(Order.class);

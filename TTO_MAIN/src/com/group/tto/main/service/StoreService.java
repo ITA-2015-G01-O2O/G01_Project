@@ -9,7 +9,7 @@ import com.group.tto.main.common.StoreSearchCriteria;
 
 
 public interface StoreService {
-  public Store getStoreById(int sid);
+	public Store getStoreById(Long sid);
 
   public List<Store> getStoresbyCriteria(StoreSearchCriteria criteria);
 }

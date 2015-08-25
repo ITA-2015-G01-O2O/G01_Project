@@ -22,7 +22,7 @@ public class StoreServiceImpl implements StoreService {
 
   @Override
   @Transactional
-  public Store getStoreById(int sid) {
+	public Store getStoreById(Long sid) {	
     return store.getStoreById(sid);
   }
 

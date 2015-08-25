@@ -24,7 +24,8 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
   @Override
   // 根据商家id找到商家
-  public Store getStoreById(int sid) {
+	//根据商家id找到商家
+  public Store getStoreById(Long sid) {
     CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
     CriteriaQuery<Store> query = builder.createQuery(Store.class);
     Root<Store> store = query.from(Store.class);

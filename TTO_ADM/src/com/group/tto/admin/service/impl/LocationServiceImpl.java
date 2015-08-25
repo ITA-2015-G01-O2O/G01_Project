@@ -18,8 +18,22 @@ public class LocationServiceImpl implements LocationService {
 
   @Override
   @Transactional
-  public List<Location> search(String search) {
-    return this.dao.search(search);
+  public List<Location> search(String search, String splitor) {
+    String[] searchs = search.split(splitor);
+    if (searchs.length == 1) {
+      return this.search(searchs[0], "", "");
+    } else if (searchs.length == 2) {
+      return this.search(searchs[0], searchs[1], "");
+    } else if (searchs.length == 3) {
+      return this.search(searchs[0], searchs[1], searchs[2]);
+    } else {
+      return this.search("", "", "");
+    }
+  }
+
+  @Override
+  public List<Location> search(String area, String city, String place) {
+    return this.dao.search(area, city, place);
   }
 
 

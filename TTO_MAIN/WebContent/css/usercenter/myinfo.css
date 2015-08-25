@@ -1,0 +1,10 @@
+<style type="text/css"> 
+#mainContent {
+	border: 1px solid gainsboro;
+	min-height: 700px;
+}
+#userinfo {
+	position: relative;
+	top: 100px;
+}
+</style>

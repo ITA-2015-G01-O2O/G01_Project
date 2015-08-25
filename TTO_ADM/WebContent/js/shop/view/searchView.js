@@ -118,7 +118,8 @@ Ext.define('shop.view.searchView', {
 									hideTrigger :true,
 									minChars:3,
 									id:'searchLocation',
-									itemId:'searchLocation'
+									itemId:'searchLocation',
+									value:'NORMAL'
                                 },{
                                     xtype: 'combobox',
                                     fieldLabel: 'status',
@@ -134,6 +135,11 @@ Ext.define('shop.view.searchView', {
                                     xtype: 'button',
                                     text: 'Seach',
 									itemId:'searchBtn'
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'reset',
+									itemId:'resetBtn'
                                 }
                             ]
                         },
@@ -146,6 +152,7 @@ Ext.define('shop.view.searchView', {
 							store: 'shopSearchStore',
 							id:'searchResultGrid',
 							itemId: 'searchResultGrid',
+							emptyText:'No Result Found',
                             columns: [
                                 {
                                     xtype: 'gridcolumn',

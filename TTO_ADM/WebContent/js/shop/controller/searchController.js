@@ -23,6 +23,9 @@ Ext.define('shop.controller.searchController', {
 			},
 			'#viewBtn' : {
 				click : this.viewShop
+			},
+			'#resetBtn' : {
+				click : this.reset
 			}
 		});
 	},
@@ -30,6 +33,12 @@ Ext.define('shop.controller.searchController', {
 		if (Ext.typeOf(comp.getValue()) == 'string') {
 			comp.setValue(Ext.String.trim(comp.getValue()));
 		}
+	},
+	reset:function(){
+		Ext.getCmp('searchStopName').reset();
+		Ext.getCmp('searchIsHot').reset();
+		Ext.getCmp('searchLocation').reset();
+		Ext.getCmp('searchStatus').reset();
 	},
 	checkButtonAccess : function() {
 		var grid = Ext.getCmp('searchResultGrid');
@@ -59,7 +68,7 @@ Ext.define('shop.controller.searchController', {
 				start : 0,
 				stopName : stopName,
 				isHot : isHot,
-				location : location,
+				locationId : location,
 				status : status
 			}
 		});
@@ -67,7 +76,7 @@ Ext.define('shop.controller.searchController', {
 	setAsHotShop : function() {
 		var searchResultGrid = Ext.getCmp('searchResultGrid');
 		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
-		var me=this;
+		var me = this;
 		if (selectedRows.length == 1) {
 			Ext.MessageBox.confirm('Confirm', 'Are you sure?', function(btn,
 					text) {
@@ -97,7 +106,7 @@ Ext.define('shop.controller.searchController', {
 	cancelAsHotShop : function() {
 		var searchResultGrid = Ext.getCmp('searchResultGrid');
 		var selectedRows = searchResultGrid.getSelectionModel().getSelection();
-		var me=this;
+		var me = this;
 		if (selectedRows.length == 1) {
 			Ext.MessageBox.confirm('Confirm', 'Are you sure?', function(btn,
 					text) {
@@ -131,7 +140,7 @@ Ext.define('shop.controller.searchController', {
 			window.open("detail.view?id=" + shopId);
 		}
 	},
-	reloadData:function(){
+	reloadData : function() {
 		var store = Ext.getCmp('searchResultGrid').getStore();
 		store.reload();
 	}

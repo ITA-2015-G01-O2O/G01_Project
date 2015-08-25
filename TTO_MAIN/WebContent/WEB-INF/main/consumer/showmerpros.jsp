@@ -204,21 +204,21 @@ body {
 								 <div class="col-xs-7" style="word-wrap: break-word;">
                                     <div class="row">
                                         <div class="col-xs-4">
-                                            <h3>xx汉堡店</h3>
-                                            <h5>地址:XX</h5>
+                                            <h3 id="storeName"></h3>
+                                            <h5 id="detailLocation"></h5>
 
                                         </div>
                                         <div class="col-xs-4">
-                                            <h3>4.2分数</h3>
+                                            <h3 id="avgPoint"></h3>
                                             <h5>商家平均分</h5>
                                         </div>
                                         <div class="col-xs-4">
-                                            <h3>44分钟</h3>
+                                            <h3 id="avgDeliverTime"></h3>
                                             <h5>平均送达时间</h5>
                                         </div>
                                     </div>
-                                    <h5>0元起送</h5>
-                                     <h5>免外卖费</h5>
+                                    <h5 id="startingFee"></h5>
+                                     <h5 id="deliverFee"></h5>
                                     <a href="#"><h5><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏</h5></a>
                                 </div>
 								<div class="clear"></div>
@@ -382,7 +382,10 @@ body {
 							<div class="preferInfo">
 								<div class="preferInfoBox">
 									<h4>商家营业公告及营业时间</h4>
-									<h5 class="text-muted">BaaaaaalablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
+									<h5 class="text-muted" id="announcement">
+									</h5>
+									<h5 class="text-muted">营业开始时间<span id="serviceBeginTime"></span> </h5>
+									<h5 class="text-muted">营业结束时间<span id="serviceEndTime"></span> </h5>
 									</h5>
 								</div>
 
@@ -402,12 +405,11 @@ body {
 									<span class="price"></span> <span style="display: none;"></span>
 									<div class="clear"></div>
 								</div>
-
 							</div>
 
 							<div class="pay" id="payCount">
 								<span class="total">$0</span>
-								<button class="btn btn-lg btn-success pull-right">Delivery</button>
+								<button class="btn btn-lg btn-success pull-right" onclick="deliveryPros()">Delivery</button>
 								<div class="clear"></div>
 							</div>
 
@@ -417,10 +419,52 @@ body {
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade login-modal" tabindex="-1" role="dialog" id="relogin">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title text-center">登录</h4>
+				</div>
+				<div class="modal-body">
+					<div class="input-group">
+						<span class="input-group-addon"><span
+							class="glyphicon glyphicon-user"></span></span> <input type="text"
+							class="form-control" name="to_username" id="username"
+							placeholder="username">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"><span
+							class="glyphicon glyphicon-lock"></span></span> <input type="password"
+							class="form-control" name="to_password" id="password"
+							placeholder="password">
+					</div>
+					 <div class="alert alert-danger" style="display:none" role="alert" id="errorMsg"></div>
+					<div class="checkbox btn-re">
+						<label> <input type="checkbox"> Remeber me
+						</label>
+					</div>
+					<div class="bttons">
+						<a class="btn btn-primary btn-block" type="submit"
+							onclick="consumerlogin()">Login</a> <a
+							class="btn btn-success btn-block" href="register.html">Register</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="../js/consumer/merpros.js"></script>
+	<script src="../js/consumer/Ordermodel.js"></script>
 </body>
 
 </html>

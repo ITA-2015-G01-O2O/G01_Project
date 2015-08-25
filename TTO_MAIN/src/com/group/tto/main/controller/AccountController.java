@@ -40,7 +40,9 @@ public class AccountController extends BaseController {
 	      } else {
 	        List<Account> loginAdmin =
 	            (List<Account>) request.getServletContext().getAttribute(COMMON.CONTEXT_LOGIN_INFO);
+	       
 	        loginAdmin.add(db);
+	        
 	        request.getSession().setAttribute(COMMON.SESSION_LOGIN_INFO, db);
 	        return this.getResultJSON(true, "");
 	      }

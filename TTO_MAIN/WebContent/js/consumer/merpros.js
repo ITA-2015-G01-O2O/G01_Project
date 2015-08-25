@@ -18,12 +18,15 @@ $(function() {
 		if (json != "") {
 			if (json.isSuccess == true) {
 				setPros(json.data.products);
+
+				setMerInfo(json.data);
+
 			} else {
 
 			}
 		}
 	});
-})
+});
 
 function setPros(products) {
 	if (products.length != 0) {
@@ -33,18 +36,122 @@ function setPros(products) {
 	}
 }
 
-function addshowPro(pro){
+function addshowPro(pro) {
 	var proimg = $("#proimg").clone();
 	proimg.show().appendTo($("#meals"));
-	
+
 	var proInfo = $("#proInfo").clone();
 	proInfo.show().appendTo($("#meals"));
-	
-	var proInfos=$(proInfo).children();
+
+	var proInfos = $(proInfo).children();
 	proInfos.eq(0).text(pro.productName);
 	proInfos.eq(1).text(pro.productId);
 	proInfos.eq(2).find('span').eq(0).text(pro.price);
 	proInfos.eq(3).find('span').eq(0).text(pro.salesVolume);
+}
+
+function setMerInfo(json) {
+	$("#storeName").text(json.storeName);
+	$("#detailLocation").text('Address:' + json.detailLocation);
+	$("#avgPoint").text(json.avgPoint + ' scores');
+	$("#avgDeliverTime").text(json.avgDeliverTime + " minute(s)");
+	$("#startingFee").text(json.startingFee + " yuan up to send");
+	if (json.deliverFee == 0) {
+		$("#deliverFee").text('Free deliver fee');
+	} else {
+		$("#deliverFee").text("deliver fee :" + json.deliverFee);
+	}
+
+	$("#announcement").text(json.announcement);
+	$("#serviceBeginTime").text(json.serviceBeginTime);
+	$("#serviceEndTime").text(json.serviceEndTime);
+}
+
+function deliveryPros() {
+	$
+			.ajax({
+				type : "post",
+				url : "../consumer/isConsumerLogin.do",
+				cache : false,
+				error : function(error) {
+					alert("error");
+				}
+			})
+			.done(
+					function(json) {
+						if (json != "") {
+							if (json.isSuccess == true) {
+								var dataString = getOrder();
+								if (dataString != null) {
+									var dataJson = JSON.stringify(dataString);
+									console.log(dataJson);
+									window.location.href = '../consumer/confirmOrder.view?dataJson='
+											+ dataJson;
+								}
+							} else {
+								$("#relogin").modal("show");
+							}
+						}
+					});
+}
+function getOrder() {
+	var divele = $("#ordersCard").children();
+	var orderArray = new Array();
+
+	divele.each(function() {
+		var orderclass = $(this).attr("class");
+		if (orderclass == "orderBox") {
+
+			var orderchildren = $(this).children();
+			var orderclassId = orderchildren.eq(1).text();
+			if (orderclassId != "") {
+				var GLOBAL_OrderInfo = new ORDERINFO();
+				GLOBAL_OrderInfo.proId = orderclassId;
+
+				GLOBAL_OrderInfo.proName = orderchildren.eq(0).text();
+
+				GLOBAL_OrderInfo.proNum = orderchildren.eq(3).val();
+
+				var priceString = orderchildren.eq(5).text();
+				var price1 = priceString.substr(1, priceString.length - 1);
+
+				GLOBAL_OrderInfo.proPrice = price1;
+
+				orderArray.push(GLOBAL_OrderInfo);
+				orderArray.push(GLOBAL_OrderInfo);
+			}
+
+		}
+	});
+
+	return orderArray;
+}
+
+function consumerlogin() {
+	var username = $("#username").val();
+	var password = $("#password").val();
+
+	$.ajax({
+		type : "post",
+		url : "../account/login.do",
+		cache : false,
+		data : {
+			loginname : username,
+			password : password
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				$("#relogin").modal("hide");
+			} else {
+				$("#errorMsg").show();
+				$("#errorMsg").text(json.data);
+			}
+		}
+	});
 }
 
 function addaddress() {
@@ -54,6 +161,11 @@ function addaddress() {
 		});
 	});
 }
+
+
+
+
+
 var moneyCount = 0;
 
 function addMeals(ele) {
@@ -114,7 +226,7 @@ function addPointPair() {
 
 function setRomdomNameandId($element) {
 	/**
-	 * prop获取第一个匹配的属性，然后替换
+	 * propèŽ·å�–ç¬¬ä¸€ä¸ªåŒ¹é…�çš„å±žæ€§ï¼Œç„¶å�Žæ›¿æ�¢
 	 */
 	$element.prop('name', $element.prop("name") + "_"
 			+ Math.floor(Math.random() * (1000000)));
