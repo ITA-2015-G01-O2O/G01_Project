@@ -72,7 +72,7 @@ public class ShopController extends BaseController {
   @RequestMapping(value = "/getDetail.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public ShopViewVo getDetail(Long id) {
-    return new ShopViewVo(this.service.get(id), "");
+    return new ShopViewVo(this.service.get(id), "/TTO_Admin/file/img/");
   }
 
   @RequestMapping(value = "/detail.view", produces = {"application/json;charset=UTF-8"})
