@@ -84,8 +84,8 @@
                                 <button type="button" class="btn btn-default">起送价</button>
                             </div>
                             <form class="navbar-form navbar-right search">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <button class="btn btn-default">Go</button>
+                                <input type="text" class="form-control" placeholder="Search" id="searchStoreName">
+                                <button class="btn btn-default" onclick="searchStore()">Go</button>
                             </form>
                         </div>
                         <div class="row venders">

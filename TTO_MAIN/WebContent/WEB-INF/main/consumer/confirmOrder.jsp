@@ -207,7 +207,7 @@ input {
 	</div>
 	</nav>
 	<div class="container container-main">
-		<span style="display: none" id="ordercomfirm">${ordercomfirm}</span>
+		<span style="display: none" id="merId">${merId}</span>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="row">

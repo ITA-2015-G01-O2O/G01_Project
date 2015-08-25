@@ -1,6 +1,7 @@
 package com.group.tto.main.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.UserProfile;
+import com.group.tto.main.common.JMSHelper;
+import com.group.tto.main.common.MessageType;
+import com.group.tto.main.common.OrderJMSMsg;
 import com.group.tto.main.dao.OrderDao;
 import com.group.tto.main.service.OrderService;
 
@@ -19,6 +23,7 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao order;
 	
+	private JMSHelper<OrderJMSMsg> jmsHelper=new JMSHelper<OrderJMSMsg>();
 
 	public OrderDao getOrder() {
 		return order;
@@ -52,6 +57,18 @@ public class OrderServiceImpl implements OrderService{
     @Transactional
   public void addOrder(Order proorder) {
 	  order.addOrder(proorder);
+	  
+	  OrderJMSMsg o=new OrderJMSMsg();
+	  o.setFlag(MessageType.ADD_ORDER.name());
+	  o.setId(UUID.randomUUID().toString());
+	  o.setOrderId(proorder.getOrderId());
+	  o.setStoreId(proorder.getStoreId());
+	  try {
+      jmsHelper.sendJMSMessage(o);
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     
   }
 	

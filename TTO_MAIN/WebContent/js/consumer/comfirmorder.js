@@ -1,6 +1,8 @@
-$(function() {
 
-	var orderjson = $.cookie('com.group.tto.main.addorder');
+ var merId;
+$(function() {
+     merId=$("#merId").text();
+	var orderjson = $.cookie('com.group.tto.main.addorder'+merId);
 
 	if (orderjson == null) {
 		return false;
@@ -12,11 +14,10 @@ $(function() {
 });
 
 var paycount = 0;
-
 function setOrderpros(orderdata) {
 	for (var i = 0; i < orderdata.length; i++) {
 		var order = orderdata[i];
-
+        
 		var tr = $("#showorderCopy").clone();
 		tr.show().prependTo($("#showorderpros1"));
 
@@ -53,7 +54,7 @@ function confirmbuy() {
 	var auseraddress = $("#auseraddress").val();
 	var merchantmsg=$("#merchantmsg").val();
 	
-	var dataJson = $.cookie('com.group.tto.main.addorder');
+	var dataJson = $.cookie('com.group.tto.main.addorder'+merId);
 	//var dataJson = JSON.stringify(orderjson);
 	//var dataJson=dataJson.substr(1, dataJson.length - 2);
 	if (ausername != null && auserPhone != null && auseraddress != null && dataJson!=null) {
@@ -76,7 +77,7 @@ function confirmbuy() {
 			if (json != "") {
 				if (json.isSuccess == true) {
 					
-					$.cookie('com.group.tto.main.addorder', '', { expires: -1 });
+					$.cookie('com.group.tto.main.addorder'+merId, '', { expires: -1 });
 					window.location.href = '../consumer/confirmOrder.view?';
 				} else {
 					//添加失败

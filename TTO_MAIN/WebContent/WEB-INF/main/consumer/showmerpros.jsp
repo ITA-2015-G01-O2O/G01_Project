@@ -231,7 +231,7 @@ body {
 								<li role="presentation" class="active"><a href="#meals"
 									aria-controls="Meals" role="tab" data-toggle="tab">Meals</a></li>
 								<li role="presentation"><a href="#comment"
-									aria-controls="comment" role="tab" data-toggle="tab">Conmment</a></li>
+									aria-controls="comment" role="tab" data-toggle="tab" onclick="conment()">Conmment</a></li>
 							</ul>
 
 							<div class="tab-content">
@@ -321,53 +321,26 @@ body {
 										 -->
 								</div>
 
-								<div role="tabpanel" class="tab-pane" id="comment">
+								<div role="tabpanel" class="tab-pane" id="comment" >
 
 									<div class="col-xs-12 secondTitle">
-										<button type="button" class="btn btn-default btn-lg active">好评（4-5分）</button>
-										<button type="button" class="btn btn-default btn-lg ">中评（3分）</button>
-										<button type="button" class="btn btn-default btn-lg ">差评（1-2分）</button>
+                                        <button type="button" class="btn btn-default btn-lg " onclick="conment()">全部</button>
+										<button type="button" class="btn btn-default btn-lg " onclick="getComby(4)">好评（4-5分）</button>
+										<button type="button" class="btn btn-default btn-lg "  onclick="getComby(3)">中评（3分）</button>
+										<button type="button" class="btn btn-default btn-lg "  onclick="getComby(1)">差评（1-2分）</button>
 									</div>
-									<div class="col-xs-12 secondTitle commentlist">
-										<div class="col-xs-3">评分：xx分</div>
-										<div class="col-xs-9 text-right">点评时间：2015-08-23
-											12:00:00</div>
+									<div class="col-xs-12 secondTitle commentlist" id="commentInfo" style="display:none">
+                                        <div class="col-xs-3">评分：<span></span>分</div>
+										<div class="col-xs-9 text-right">送餐时间：<span></span>分钟</div>
 										<div class="col-xs-12 secondTitle">
 											点评内容：
-											<h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
+											<h5 class="text-muted">
 											</h5>
 										</div>
 									</div>
-									<div class="col-xs-12 secondTitle commentlist">
-										<div class="col-xs-3">评分：xx分</div>
-										<div class="col-xs-9 text-right">点评时间：2015-08-23
-											12:00:00</div>
-										<div class="col-xs-12 secondTitle">
-											点评内容：
-											<h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
-											</h5>
-										</div>
-									</div>
-									<div class="col-xs-12 secondTitle commentlist">
-										<div class="col-xs-3">评分：xx分</div>
-										<div class="col-xs-9 text-right">点评时间：2015-08-23
-											12:00:00</div>
-										<div class="col-xs-12 secondTitle">
-											点评内容：
-											<h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
-											</h5>
-										</div>
-									</div>
-									<div class="col-xs-12 secondTitle commentlist">
-										<div class="col-xs-3">评分：xx分</div>
-										<div class="col-xs-9 text-right">点评时间：2015-08-23
-											12:00:00</div>
-										<div class="col-xs-12 secondTitle">
-											点评内容：
-											<h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla
-											</h5>
-										</div>
-									</div>
+									
+									
+									
 
 								</div>
 							</div>

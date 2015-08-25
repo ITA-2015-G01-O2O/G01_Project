@@ -1,8 +1,8 @@
+var merId;
 $(function() {
-	
-	$.cookie('com.group.tto.main.addorder', '', { expires: -1 });
-	
-	var merId = $("#merId").val();
+    
+	 merId = $("#merId").val();
+    $.cookie('com.group.tto.main.addorder'+merId, '', { expires: -1 });
 	if (merId == null) {
 		return false;
 	}
@@ -87,11 +87,11 @@ function deliveryPros() {
 				if (dataString != null) {
 					var dataJson = JSON.stringify(dataString);
 
-					$.cookie('com.group.tto.main.addorder', dataJson);
+					$.cookie('com.group.tto.main.addorder'+merId, dataJson);
 
 					console.log(dataJson);
 
-					window.location.href = '../consumer/confirmOrder.view?';
+					window.location.href = '../consumer/confirmOrder.view?merId='+merId;
 
 				}
 			} else {
@@ -265,3 +265,80 @@ function del1(ele) {
 		orderchildren.remove();
 	}
 }
+
+function getComby(score){
+    deleteComment();
+    $.ajax({
+		type : "post",
+		url : "../comment/getallCommentByScore.do",
+		cache : false,
+		data : {
+			merId : merId,
+            score:score
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				addComment(json.data);
+			} 
+		}
+	});
+}
+
+
+function conment(){
+    deleteComment();
+    $.ajax({
+		type : "post",
+		url : "../comment/getallCommentBySid.do",
+		cache : false,
+		data : {
+			merId : merId
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				addComment(json.data);
+			} 
+		}
+	});
+}
+
+function addComment(com){
+    for(var i=0;i<com.length;i++){
+        showaddComment(com[i]);
+    }
+    
+}
+function showaddComment(data){
+     var comCopy=$("#commentInfo").clone();
+    comCopy.show().appendTo($("#comment"));
+    setRomdomNameandId($(comCopy));
+    var comcopy1=$(comCopy).children();
+    comcopy1.eq(0).find('span').text(data.point);
+    comcopy1.eq(1).find('span').text(data.deliverTime);
+    comcopy1.eq(2).find('h5').text(data.context);
+}
+
+function deleteComment(){
+    var divele=$("#comment").children()
+    divele.each(function() {
+		var orderclass = $(this).attr("class");
+        var orderid = $(this).attr("id");
+		if (orderclass.indexOf("commentlist")!=-1) {
+            
+			if (orderid != "commentInfo") {
+				$(this).remove();
+			}
+
+		}
+	});
+
+}
+

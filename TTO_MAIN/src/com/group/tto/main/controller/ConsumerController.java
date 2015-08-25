@@ -84,13 +84,13 @@ public class ConsumerController extends BaseController {
     return this.getName() + "/showmerpros";
   }
   
-  /**
+ 
   @RequestMapping("/confirmOrder.view")
-  public String confirmOrder(String dataJson, Map map) {
-    map.put("ordercomfirm", dataJson);
-   System.out.println("dataJson-----------------------------"+dataJson);
+  public String confirmOrder(String merId, Map map) {
+    map.put("merId", merId);
+   System.out.println("dataJson-----------------------------"+merId);
     return this.getName() + "/confirmOrder";
-  }**/
+  }
 
 
   @Override
