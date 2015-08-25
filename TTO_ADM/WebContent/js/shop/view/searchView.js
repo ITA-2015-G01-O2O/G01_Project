@@ -71,6 +71,19 @@ Ext.define('shop.view.searchView', {
                                     text: 'System',
 									id:'systemBtn',
 									itemId:'systemBtn'
+                                },
+                                { 
+                                	xtype: 'tbspacer',
+                                	width:50
+                                },
+                                { 
+                                	xtype: 'tbseparator' 
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Logout',
+									id:'logoutBtn',
+									itemId:'logoutBtn'
                                 }
                             ]
                         }
