@@ -464,6 +464,7 @@ body {
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="../js/consumer/merpros.js"></script>
+	<script src="../js/consumer/Ordermodel.js"></script>
 </body>
 
 </html>
