@@ -1,5 +1,7 @@
 package com.group.tto.main.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -8,24 +10,63 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Store;
+import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.StoreSearchCriteria;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.StoreDao;
 
-@Repository
+
 @Repository
 public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
-	
-	private static final String FIELD_STOREID = "storeId";
 
-	@Override
+  private static final String FIELD_STOREID = "storeId";
+  private static final String FIELD_STOREPLACE = "location";
+
+  @Override
+<<<<<<< HEAD
+  // 根据商家id找到商家
+  public Store getStoreById(int sid) {
+=======
 	//根据商家id找到商家
-	public Store getStoreById(int sid) {
-		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-		CriteriaQuery<Store> query = builder.createQuery(Store.class);
-		Root<Store> store = query.from(Store.class);
-		Predicate condition = builder.equal(store.get(FIELD_STOREID), sid);		
-		Store store1 = this.getEntityManager().createQuery(query.where(condition)).getResultList().get(0);
-		return store1;
-	}
+  public Store getStoreById(Long sid) {
+>>>>>>> 0c92f051e3f63bddb6ca91694adbbe8b2ecb3ca7
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Store> query = builder.createQuery(Store.class);
+    Root<Store> store = query.from(Store.class);
+
+
+    Predicate condition = builder.equal(store.get(FIELD_STOREID), sid);
+    Store store1 =
+
+    this.getEntityManager().createQuery(query.where(condition)).getResultList().get(0);
+    return store1;
+  }
+
+  @Override
+  public List<Store> getStoreByCriteria(StoreSearchCriteria criteria) {
+
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Store> query = builder.createQuery(Store.class);
+    Root<Store> store = query.from(Store.class);
+
+    Predicate condition = builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation());
+
+    if (COMMON.ASC.equals(criteria.getOrderType())) {
+      query = query.orderBy(builder.asc(store.get(criteria.getSortType())));
+    }
+    if (COMMON.DESC.equals(criteria.getOrderType())) {
+      query = query.orderBy(builder.desc(store.get(criteria.getSortType())));
+    }
+    if (criteria.getStoreType() != null || criteria.getSortType() != null) {
+      condition =
+          builder.and(condition,
+              builder.equal(store.get("typeConfig").get("configValue"), criteria.getStoreType()));
+    }
+
+    List<Store> storeList =
+        this.getEntityManager().createQuery(query.where(condition)).getResultList();
+
+    return storeList;
+  }
 
 }

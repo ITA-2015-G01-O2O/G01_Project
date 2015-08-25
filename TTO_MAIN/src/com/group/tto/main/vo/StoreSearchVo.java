@@ -14,6 +14,7 @@ public class StoreSearchVo {
   private String deliverFee;
   private String startingFee;
   private String logoPicURL;
+  private int salesNum;
   
   public StoreSearchVo() {}
 
@@ -22,6 +23,7 @@ public class StoreSearchVo {
     this.shopId = store.getStoreId();
     this.shopName = store.getStoreName();
     this.avgPoint = store.getAvgPoint().toString();
+    this.salesNum = store.getOrders().size();
     this.isHot = store.getIsHot();
     this.status = store.getStoreProfile().getStatus();
     this.logoPicURL = store.getLogoPicUrl();
@@ -91,6 +93,14 @@ public class StoreSearchVo {
 
   public void setStartingFee(String startingFee) {
     this.startingFee = startingFee;
+  }
+
+  public int getSalesNum() {
+    return salesNum;
+  }
+
+  public void setSalesNum(int salesNum) {
+    this.salesNum = salesNum;
   }
 
 
