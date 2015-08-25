@@ -8,7 +8,7 @@ import com.group.tto.cmn.model.ProductLabel;
 public interface PoductDao {
 	 public void createProduct(Product product);
 	 public List<Product> findAllProducts(long sid);
-	 public List<Product> findProductsByLabel(String label,long sid);
+	 public List<Product> findProductsByLabel(long labelId,long sid);
 	 public int updateProduct(Product product);
 	 public int deleteProduct(long pid);
 }
