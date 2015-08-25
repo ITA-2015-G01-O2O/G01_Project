@@ -51,7 +51,13 @@ $(document).ready(function(){
 		verifyIdcardPic();
 		verifyLicensePic();
 		if(isName && isIdcard && isIdcardPic && isLicensePic){
-			return true;
+			$.ajax({
+				type:"post",
+				url:"www.baidu.com",
+				data: {"name":$("#inputName").val(),"type":$("#inputType").text(),
+				"addr":$("#inputAddr1").text()+$("#inputAddr2").val()},
+             	dataType: "json"
+			});
 		}else{
 			return false;
 		}

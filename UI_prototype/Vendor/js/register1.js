@@ -14,9 +14,16 @@ $(document).ready(function(){
 	$("#inputPhone").on("blur",verifyphone);
 	$("#next").on("click",function(){
 		verifyphone();
-		if(!isPhone)
+		if(!isPhone){
 			return false;
-		else
-			return true;
+		}
+		else{
+			$.ajax({
+				type:"post",
+				url:"www.baidu.com",
+				data: {"phone":$("#inputPhone").val()},
+             	dataType: "json"
+			});
+		}
 	});
 });
