@@ -11,6 +11,7 @@ import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.LocationDao;
+
 @Repository("vendorLocationDaoImpl")
 public class LocationDaoImpl extends BaseDao<Location> implements LocationDao {
   public Location selectLocation(int sid) {
@@ -24,5 +25,21 @@ public class LocationDaoImpl extends BaseDao<Location> implements LocationDao {
 
     return location;
 
+  }
+
+  @Override
+  public int getLocation(String city, String area, String place) {
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Location> query = builder.createQuery(Location.class);
+    Root<Location> location = query.from(Location.class);
+
+    Predicate condition =
+        builder.and(builder.equal(location.get("area"), area),
+            builder.equal(location.get("city"), city), builder.equal(location.get("place"), place));
+
+    Location location1 =
+        this.getEntityManager().createQuery(query.where(condition)).getSingleResult();
+    long id = location1.getLocationId();
+    return (int) id;
   }
 }
