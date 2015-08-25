@@ -7,4 +7,5 @@ import com.group.tto.cmn.model.ProductLabel;
 public interface ProductLabelDao {
 	public List<ProductLabel> findAllProductLabels();
 	public void addProductLabel(ProductLabel producatLabel);
+	public ProductLabel findProductLabel(long labelID);
 }

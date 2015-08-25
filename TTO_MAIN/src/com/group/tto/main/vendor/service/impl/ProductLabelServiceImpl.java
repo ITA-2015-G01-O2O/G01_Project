@@ -29,4 +29,9 @@ public class ProductLabelServiceImpl implements ProductLabelService {
    
 	}
 
+	@Override
+	public ProductLabel findProductLabel(long labelId) {
+		return	productLabelDao.findProductLabel(labelId);
+	}
+
 }
