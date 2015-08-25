@@ -47,7 +47,7 @@
 			href="#">我要开店</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span> </a>
 	</div>
 
-	<div class="modal fade login-modal" tabindex="-1" role="dialog">
+	<div class="modal fade login-modal" tabindex="-1" role="dialog" id="relogin">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">

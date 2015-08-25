@@ -52,20 +52,69 @@ function addshowPro(pro){
 
 function setMerInfo(json){
 	$("#storeName").text(json.storeName);
-	$("#detailLocation").text('地址：'+json.detailLocation);
-	$("#avgPoint").text(json.avgPoint+'分数');
-	$("#avgDeliverTime").text(json.avgDeliverTime+"分钟");
-	$("#startingFee").text(json.startingFee+"元起送");
+	$("#detailLocation").text('Address:'+json.detailLocation);
+	$("#avgPoint").text(json.avgPoint+' scores');
+	$("#avgDeliverTime").text(json.avgDeliverTime+" minute(s)");
+	$("#startingFee").text(json.startingFee+" yuan up to send");
 	if(json.deliverFee==0){
-		$("#deliverFee").text('免费起送');
+		$("#deliverFee").text('Free deliver fee');
 	}else{
-		$("#deliverFee").text(json.deliverFee+"元快递费");
+		$("#deliverFee").text("deliver fee :"+json.deliverFee);
 	}
 	
 	$("#announcement").text(json.announcement);
 	$("#serviceBeginTime").text(json.serviceBeginTime);
 	$("#serviceEndTime").text(json.serviceEndTime);
 }
+
+function deliveryPros(){
+	$.ajax({
+		type : "post",
+		url : "../consumer/isConsumerLogin.do",
+		cache : false,
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				
+				window.location.href='../consumer/confirmOrder.view';
+			} else {
+				$("#relogin").modal("show");
+			}
+		}
+	});
+}
+
+function consumerlogin() {
+	var username = $("#username").val();
+	var password = $("#password").val();
+
+	$.ajax({
+		type : "post",
+		url : "../account/login.do",
+		cache : false,
+		data : {
+			loginname : username,
+			password : password
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if(json.isSuccess==true){
+				$("#relogin").modal("hide");
+				//window.location.href='../account/select-vender.view';
+			}else{
+				$("#errorMsg").show();
+				$("#errorMsg").text(json.data);
+			}
+		}
+	});
+}
+
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {
@@ -134,7 +183,7 @@ function addPointPair() {
 
 function setRomdomNameandId($element) {
 	/**
-	 * prop获取第一个匹配的属性，然后替换
+	 * propèŽ·å�–ç¬¬ä¸€ä¸ªåŒ¹é…�çš„å±žæ€§ï¼Œç„¶å�Žæ›¿æ�¢
 	 */
 	$element.prop('name', $element.prop("name") + "_"
 			+ Math.floor(Math.random() * (1000000)));
