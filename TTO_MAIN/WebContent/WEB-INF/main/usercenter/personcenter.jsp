@@ -47,7 +47,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								<ul class="nav nav-tabs nav-stacked" role="tablist">
 									<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">myorder</a></li>
-									<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">myinfo</a></li>
+									<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" onclick="loadMyInfo()">myinfo</a></li>
 									<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">myfav</a></li>
 								</ul>
 							</ul>
@@ -191,7 +191,7 @@
 																<input type="password" class="form-control" id="inputPassword" value="123456" disabled="disabled">
 															</li>
 															<li>
-																<a class="btn btn-info">change psd</a>
+																<a class="btn btn-info" id="changePsd">change psd</a>
 															</li>
 
 														</ul>
@@ -203,7 +203,7 @@
 														<ul class="list-inline">
 															<li class="form-control-static">$400</li>
 															<li>
-																<a class="btn btn-info">charge</a>
+																<a class="btn btn-info" id="charge">charge</a>
 															</li>
 														</ul>
 													</div>

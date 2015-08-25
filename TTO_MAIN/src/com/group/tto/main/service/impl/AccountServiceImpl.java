@@ -37,6 +37,16 @@ public class AccountServiceImpl implements AccountService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	@Transactional
+	public Account getAccountByAccountId(Long accountId) {
+		
+		return accountDao.getAccountById(accountId);
 	}	
+	
+	
+	
 
 }
