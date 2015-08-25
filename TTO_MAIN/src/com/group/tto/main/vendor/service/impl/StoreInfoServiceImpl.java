@@ -1,5 +1,7 @@
 package com.group.tto.main.vendor.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +16,14 @@ public class StoreInfoServiceImpl implements StoreInfoService {
   private StoreDao storeDao;
 
   @Override
+  @Transactional
   public Store loadStoreInfo(int sid) {
     Store store = storeDao.getStoreById(sid);
     return store;
   }
 
   @Override
+  @Transactional
   public int updateStoreInfo(Store store, int sid) {
     int num = 1;
     try {

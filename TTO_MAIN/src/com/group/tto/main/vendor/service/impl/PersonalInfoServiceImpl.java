@@ -2,6 +2,7 @@ package com.group.tto.main.vendor.service.impl;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.StoreProfile;
@@ -10,6 +11,7 @@ import com.group.tto.main.vendor.service.PersonalInfoService;
 
 @Service
 public class PersonalInfoServiceImpl implements PersonalInfoService {
+  @Autowired
   private StoreProfileDao storeProfileDao;
 
   @Override
