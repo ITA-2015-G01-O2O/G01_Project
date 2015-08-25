@@ -47,6 +47,13 @@ public class OrderServiceImpl implements OrderService{
 		}
 		
 	}
+
+	@Override
+    @Transactional
+  public void addOrder(Order proorder) {
+	  order.addOrder(proorder);
+    
+  }
 	
 
 }

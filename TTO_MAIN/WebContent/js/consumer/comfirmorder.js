@@ -1,6 +1,6 @@
 $(function() {
 
-	var orderjson = $("#ordercomfirm").text();
+	var orderjson = $.cookie('com.group.tto.main.addorder');
 
 	if (orderjson == null) {
 		return false;
@@ -52,14 +52,16 @@ function confirmbuy() {
 	var auserPhone = $("#auserPhone").val();
 	var auseraddress = $("#auseraddress").val();
 	var merchantmsg=$("#merchantmsg").val();
-	var orderjson = $("#ordercomfirm").text();
-	var dataJson = JSON.stringify(orderjson);
-
-	if (ausername != null && auserPhone != null && auseraddress != null) {
+	
+	var dataJson = $.cookie('com.group.tto.main.addorder');
+	//var dataJson = JSON.stringify(orderjson);
+	//var dataJson=dataJson.substr(1, dataJson.length - 2);
+	if (ausername != null && auserPhone != null && auseraddress != null && dataJson!=null) {
 		$.ajax({
 			type : "post",
 			url : "../order/addOrder.do",
 			cache : false,
+			asyn:false,
 			data : {
 				dataJson : dataJson,
 				ausername : ausername,
@@ -73,11 +75,11 @@ function confirmbuy() {
 		}).done(function(json) {
 			if (json != "") {
 				if (json.isSuccess == true) {
-					// window.location.href='../account/select-vender.view';
-					$("#relogin").modal("hide");
+					
+					$.cookie('com.group.tto.main.addorder', '', { expires: -1 });
+					window.location.href = '../consumer/confirmOrder.view?';
 				} else {
-					$("#errorMsg").show();
-					$("#errorMsg").text(json.data);
+					//添加失败
 				}
 			}
 		});
