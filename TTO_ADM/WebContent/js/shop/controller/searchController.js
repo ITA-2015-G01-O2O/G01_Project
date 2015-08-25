@@ -26,6 +26,9 @@ Ext.define('shop.controller.searchController', {
 			},
 			'#resetBtn' : {
 				click : this.reset
+			},
+			'#checkTipLabel':{
+				afterrender:this.refreshCheckTotal
 			}
 		});
 	},
@@ -33,6 +36,24 @@ Ext.define('shop.controller.searchController', {
 		if (Ext.typeOf(comp.getValue()) == 'string') {
 			comp.setValue(Ext.String.trim(comp.getValue()));
 		}
+	},
+	refreshCheckTotal:function(){
+		Ext.Ajax.request({
+			url : 'getCheckStatusTotal.do',
+			success : function(response) {
+				Ext.getCmp('checkTipLabel').setText(Ext.decode(response.responseText).data);
+				scrollTimer = setInterval(function() {
+					Ext.Ajax.request({
+						url : 'getCheckStatusTotal.do',
+						success : function(response) {
+							Ext.getCmp('checkTipLabel').setText(Ext.decode(response.responseText).data);
+						},
+						failure : function() {}
+					});
+				}, 5000);
+			},
+			failure : function() {}
+		});
 	},
 	reset:function(){
 		Ext.getCmp('searchStopName').reset();
@@ -51,9 +72,11 @@ Ext.define('shop.controller.searchController', {
 				Ext.getCmp('setAsHotShopBtn').setDisabled(false);
 				Ext.getCmp('cancelAsHotShopBtn').setDisabled(true);
 			}
+			Ext.getCmp('viewBtn').setDisabled(false);
 		} else {
 			Ext.getCmp('setAsHotShopBtn').setDisabled(true);
 			Ext.getCmp('cancelAsHotShopBtn').setDisabled(true);
+			Ext.getCmp('viewBtn').setDisabled(true);
 		}
 	},
 	search : function() {

@@ -108,8 +108,8 @@ Ext.define('config.view.searchView', {
 									enforceMaxLength: true,
 									maxLength: 2,
 									maxValue: 24,
-									minValue: 0,
-									value:0,
+									minValue: 1,
+									value:1,
 									id:'orderAutoConfirmFiled',
 									itemId:'orderAutoConfirmFiled'
 								},
@@ -121,8 +121,8 @@ Ext.define('config.view.searchView', {
 									enforceMaxLength: true,
 									maxLength: 2,
 									maxValue: 24,
-									minValue: 0,
-									value:0,
+									minValue: 1,
+									value:1,
 									id:'orderAutoCancelFiled',
 									itemId:'orderAutoCancelFiled'
 								},

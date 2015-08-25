@@ -14,6 +14,7 @@ import com.group.tto.admin.cmn.StringUtils;
 import com.group.tto.admin.dao.BaseDao;
 import com.group.tto.admin.dao.StoreDao;
 import com.group.tto.admin.dto.PageDTO;
+import com.group.tto.cmn.model.Admin;
 import com.group.tto.cmn.model.Store;
 
 @Repository
@@ -103,6 +104,21 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
   @Override
   public void save(Store store) {
     this.update(store);
+  }
+
+  @Override
+  public Long getTotalOf(String status) {
+    CriteriaBuilder critBuilder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Long> critQuery = critBuilder.createQuery(Long.class);
+    Root<Store> root = critQuery.from(Store.class);
+
+    Predicate predicate =
+        critBuilder.equal(root.get(FIELD_STORE_PROFILE).get(FIELD_STORE_PROFILE_STATUS), status);
+
+    return this.getEntityManager()
+        .createQuery(critQuery.select(critBuilder.countDistinct(root)).where(predicate))
+        .getSingleResult();
+
   }
 
 }

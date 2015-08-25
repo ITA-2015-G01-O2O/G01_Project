@@ -127,6 +127,11 @@ Ext.define('user.view.searchView', {
                                     xtype: 'button',
                                     text: 'Seach',
 									itemId:'searchBtn'
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Rest',
+									itemId:'resetBtn'
                                 }
                             ]
                         },

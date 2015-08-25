@@ -151,8 +151,25 @@ Ext.define('shop.view.searchView', {
                                 },
                                 {
                                     xtype: 'button',
-                                    text: 'reset',
+                                    text: 'Reset',
 									itemId:'resetBtn'
+                                },
+                                {
+                                	xtype:'container',
+                                	items:[
+										{
+										    xtype: 'label',
+										    cls: 'title',
+											text:'Need check shop:'
+										},
+										{
+										    xtype: 'label',
+										    cls: 'title',
+											id:'checkTipLabel',
+											itemId:'checkTipLabel',
+											text:'0'
+										}
+                                	]
                                 }
                             ]
                         },
@@ -236,7 +253,9 @@ Ext.define('shop.view.searchView', {
                                         },{
                                             xtype: 'button',
                                             text: 'View & Change Status',
-											itemId:'viewBtn'
+                                            id:'viewBtn',
+											itemId:'viewBtn',
+											disabled:true
                                         }
                                     ]
                                 },

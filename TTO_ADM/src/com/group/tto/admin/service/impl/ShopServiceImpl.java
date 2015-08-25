@@ -61,4 +61,10 @@ public class ShopServiceImpl implements ShopService {
     this.dao.save(store);
   }
 
+  @Override
+  @Transactional
+  public Long getTotalOfCheck() {
+    return this.dao.getTotalOf(StopProfileStatus.CHECK.name());
+  }
+
 }

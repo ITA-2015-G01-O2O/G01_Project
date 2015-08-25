@@ -19,33 +19,36 @@ Ext.define('login.controller.loginController', {
 	login : function() {
 		var loginname = Ext.getCmp('loginname').getValue();
 		var password = Ext.getCmp('password').getValue();
-		Ext.getBody().mask();
-		Ext.Ajax.request({
-			url : 'login.do',
-			params : {
-				loginname : loginname,
-				password : password
-			},
-			success : function(response) {
-				var responseData = Ext.decode(response.responseText);
-				Ext.getBody().unmask();
-				if(!responseData.isSuccess){
-					var tip='';
-					if(responseData.data=='tip.error.psw'){
-						tip='password error!';
-					}else if(responseData.data=='tip.error.login'){
-						tip='this account has logined';
-					}else if(responseData.data=='tip.error.nofound'){
-						tip='the acccount has been not found!';
+		if(Ext.getCmp('loginname').validate() && Ext.getCmp('password').validate()){
+			Ext.getBody().mask();
+			Ext.Ajax.request({
+				url : 'login.do',
+				params : {
+					loginname : loginname,
+					password : password
+				},
+				success : function(response) {
+					var responseData = Ext.decode(response.responseText);
+					Ext.getBody().unmask();
+					if(!responseData.isSuccess){
+						var tip='';
+						if(responseData.data=='tip.error.psw'){
+							tip='password error!';
+						}else if(responseData.data=='tip.error.login'){
+							tip='this account has logined';
+						}else if(responseData.data=='tip.error.nofound'){
+							tip='the acccount has been not found!';
+						}
+						Ext.MessageBox.alert('Error', tip);
+					}else{
+						window.location.href='../user/userSearch.view';
 					}
-					Ext.MessageBox.alert('Error', tip);
-				}else{
-					window.location.href='../user/userSearch.view';
+				},
+				failure : function() {
+					Ext.getBody().unmask();
 				}
-			},
-			failure : function() {
-				Ext.getBody().unmask();
-			}
-		});
+			});
+		}
+		
 	}
 });

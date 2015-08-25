@@ -39,8 +39,10 @@ public class AdminDaoImpl extends BaseDao<Admin> implements AdminDao {
     CriteriaQuery<Long> critQuery = critBuilder.createQuery(Long.class);
     Root<Admin> root = critQuery.from(Admin.class);
 
+    Predicate predicate =critBuilder.equal(root.get(FIELD_LOGINNAME), loginname);
+    
     int count =
-        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)))
+        this.getEntityManager().createQuery(critQuery.select(critBuilder.countDistinct(root)).where(predicate))
             .getSingleResult().intValue();
 
     return count;

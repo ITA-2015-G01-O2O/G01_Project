@@ -16,4 +16,6 @@ public interface ShopService {
   public void setHot(Long id);
   
   public void setNoHot(Long id);
+  
+  public Long getTotalOfCheck();
 }
