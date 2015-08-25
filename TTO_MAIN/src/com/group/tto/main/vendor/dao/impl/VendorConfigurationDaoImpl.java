@@ -5,10 +5,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Repository;
+
 import com.group.tto.cmn.model.Configuration;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.vendor.dao.ConfigurationDao;
 
+@Repository
 public class VendorConfigurationDaoImpl extends BaseDao<Configuration> implements ConfigurationDao {
 
   @Override

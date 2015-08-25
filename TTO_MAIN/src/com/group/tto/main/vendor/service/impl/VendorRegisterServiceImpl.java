@@ -70,6 +70,7 @@ public class VendorRegisterServiceImpl implements VendorRegisterService {
   }
 
   @Override
+  @Transactional
   public Configuration getConfiguration(String value) {
     Configuration con=conDao.getConfiguration(value);
     return con;

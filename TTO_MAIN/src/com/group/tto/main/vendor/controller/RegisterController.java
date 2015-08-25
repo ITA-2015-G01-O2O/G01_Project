@@ -31,16 +31,17 @@ public class RegisterController extends BaseController {
 
   @RequestMapping(value = "/register1.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public void register1(HttpServletRequest req) {
+  public String register1(HttpServletRequest req) {
     String phone = req.getParameter("phone");
     Store store = new Store();
     store.setPhone(phone);
     req.getSession().setAttribute("store", store);
+    return this.getResultJSON(true, "");
   }
 
   @RequestMapping(value = "/register2.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public void register2(HttpServletRequest req) {
+  public String register2(HttpServletRequest req) {
     Store store = (Store) req.getSession().getAttribute("store");
     String addr1 = req.getParameter("addr1");
     String addr2 = req.getParameter("addr2");
@@ -66,6 +67,7 @@ public class RegisterController extends BaseController {
     store.setTypeConfig(con);
 
     req.getSession().setAttribute("store", store);
+    return this.getResultJSON(true, "");
   }
 
   @RequestMapping(value = "/register3.do")
@@ -116,7 +118,7 @@ public class RegisterController extends BaseController {
   @Override
   protected String getName() {
 
-    return "vendorregister";
+    return "main/vendor";
   }
 
   public VendorRegisterService getVr() {
