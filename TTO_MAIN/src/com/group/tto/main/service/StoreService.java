@@ -6,5 +6,5 @@ import com.group.tto.cmn.model.Store;
 
 
 public interface StoreService {
-	public Store getStoreById(int sid);
+	public Store getStoreById(Long sid);
 }
