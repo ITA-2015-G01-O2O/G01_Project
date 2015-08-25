@@ -2,6 +2,7 @@ package com.group.tto.main.vendor.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -70,23 +71,31 @@ public class RegisterController extends BaseController {
     return this.getResultJSON(true, "");
   }
 
-  @RequestMapping(value = "/register3.do")
+  @RequestMapping(value = "/register3.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public ModelAndView register3(HttpServletRequest req,
+  public String register3(HttpServletRequest req,
       @RequestParam(value = "idcardpic") MultipartFile pic1,
       @RequestParam(value = "licensepic") MultipartFile pic2) {
     Store store = (Store) req.getSession().getAttribute("store");
     String realName = req.getParameter("realname");
     String idcardNumber = req.getParameter("idcardnumber");
-    // wrong
+
     String picName1 = UUID.randomUUID().toString();
     String picName2 = UUID.randomUUID().toString();
+    InputStream is1 = null;
+    InputStream is2 = null;
     try {
-      pic1.transferTo(new File(picName1));
-      pic2.transferTo(new File(picName2));
+      is1=pic1.getInputStream();
+      is2=pic2.getInputStream();
     } catch (IOException e) {
       e.printStackTrace();
     }
+    // try {
+    // pic1.transferTo(new File(picName1));
+    // pic2.transferTo(new File(picName2));
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
 
     StoreProfile sp = new StoreProfile();
     sp.setRealName(realName);
@@ -96,23 +105,21 @@ public class RegisterController extends BaseController {
     sp.setIsDelete(false);
     sp.setStatus(StopProfileStatus.CHECK.name());
     sp.setVersion(1l);
-    
+
     store.setStoreProfile(sp);
     store.setVersion(1l);
     store.setIsHot(false);
     store.setIsDelete(false);
-    
-    Account loginConsumer = (Account) req.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
-    long uid=loginConsumer.getAccountId();
-    int num=vr.storeRegister(store, (int)uid);
-    
-    ModelAndView mv=new ModelAndView();
+
+
+//    Account loginConsumer = (Account) req.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
+//    long uid = loginConsumer.getAccountId();
+    long uid=52l;
+    int num = vr.storeRegister(store, (int) uid,picName1,is1,picName2,is2);
     if(num==1)
-      mv.setViewName("vendor/register3");
+      return "register4.view";
     else
-      mv.setViewName("vendor/register1");
-    
-    return mv;
+      return "register1.view";
   }
 
   @Override

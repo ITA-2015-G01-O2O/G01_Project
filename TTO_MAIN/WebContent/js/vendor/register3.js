@@ -45,7 +45,7 @@ function verifyLicensePic(){
 $(document).ready(function(){
 	$("#inputName").on("blur",verifyName);
 	$("#inputIdcard").on("blur",verifyIdcard);
-	$("#next").on("click",function(){
+	$("#form3").submit(function(){
 		verifyName();
 		verifyIdcard();
 		verifyIdcardPic();
@@ -53,10 +53,10 @@ $(document).ready(function(){
 		if(isName && isIdcard && isIdcardPic && isLicensePic){
 			$.ajax({
 				type:"post",
-				url:"www.baidu.com",
-				data: {"name":$("#inputName").val(),"type":$("#inputType").text(),
-				"addr":$("#inputAddr1").text()+$("#inputAddr2").val()},
-             	dataType: "json"
+				url:"register3.do",
+             	success:function(data){
+             		window.location.href="register4.view";
+             	}
 			});
 		}else{
 			return false;

@@ -21,7 +21,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -43,33 +43,35 @@
     			</div>
     		</div>
     		<div class="sign-form page-center form-horizontal">
+    			<form action="register3.do" method="post" enctype="multipart/form-data" id="form3">
     			<div class="page-text">	
     				<label>Real name</label>
     				<div>
-      					<input type="text" class="form-control input-lg" placeholder="Real name" id="inputName">
+      					<input type="text" class="form-control input-lg" placeholder="Real name" id="inputName" name="realname">
     				</div>
     			</div>
     			<div class="alert alert-danger" style="display: none;"  role="alert" id="namemsg">Please input your real name!</div>
     			<div class="page-text">	
     				<label>Idcard number</label>
     				<div>
-      					<input type="text" class="form-control input-lg" placeholder="Idcard number" id="inputIdcard">
+      					<input type="text" class="form-control input-lg" placeholder="Idcard number" id="inputIdcard" name="idcardnumber">
     				</div>
     			</div>	
     			<div class="alert alert-danger" style="display: none;"  role="alert" id="idcardmsg">Please input your idcard number!</div>
-  				<div><img id="showIdcardPic" width="200" height="200" src="img/1.jpg" class="page-text"/></div>
+  				<div><img id="showIdcardPic" width="200" height="200" src="<c:url value='/img/vendor/1.jpg'/>" class="page-text"/></div>
   				<div class="controls page-text">
-					<input name="idcardPic" type="file" id="IdcardPic"  style="display: none;"></input>
+					<input type="file" id="IdcardPic"  style="display: none;" name="idcardpic"></input>
 					<span class="btn btn-primary btn-lg" onclick="$('#IdcardPic').click();" id="idcardBtn">Choose idcard Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 				</div>
 				<div class="alert alert-danger" style="display: none;"  role="alert" id="idcardpicmsg">Please upload your idcard picture!</div>
-  				<div><img id="showLicensePic" width="200" height="200" src="img/1.jpg"  class="page-text"/></div>
+  				<div><img id="showLicensePic" width="200" height="200" src="<c:url value='/img/vendor/1.jpg'/>"  class="page-text"/></div>
   				<div class="controls page-text">
-					<input name="licensePic" type="file" id="LicensePic"  style="display: none;"></input>
+					<input  type="file" id="LicensePic"  style="display: none;"  name="licensepic"></input>
 					<span class="btn btn-primary btn-lg" onclick="$('#LicensePic').click();" id="licenseBtn">Choose License Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 				</div>
 				<div class="alert alert-danger" style="display: none;"  role="alert" id="licensepicmsg">Please upload your idcard picture!</div>
-            	<a type="button" class="btn btn-primary btn-lg" href="register4.html" id="next">Next</a>
+            	<input type="submit" class="btn btn-primary btn-lg" id="next">Next</input>
+            	</form>
             <div>
 		</div>
 		<script>
