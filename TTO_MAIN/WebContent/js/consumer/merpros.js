@@ -1,6 +1,6 @@
 var merId;
 $(function() {
-
+	getUserName();
 	merId = $("#merId").val();
 	$.cookie('com.group.tto.main.addorder' + merId, '', {
 		expires : -1
@@ -26,12 +26,35 @@ $(function() {
 
 				setMerInfo(json.data);
 
-			} else {
-
-			}
+			} 
 		}
 	});
 });
+
+
+function getUserName(){
+	$.ajax({
+		type : "post",
+		url : "../account/getMainName.do",
+		cache : false,
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				$("#loginameshow").show();
+				$("#logintitle").hide();
+				$("#registertitle").hide();
+				$("#loginameshow").children().eq(0).text(json.data);
+			}else{
+				$("#logintitle").show();
+				$("#registertitle").show();
+				$("#loginameshow").hide();
+			} 
+		}
+	});
+}
 
 function setPros(products) {
 	if (products.length != 0) {
@@ -172,6 +195,7 @@ function consumerlogin() {
 		if (json != "") {
 			if (json.isSuccess == true) {
 				$("#relogin").modal("hide");
+				getUserName();
 			} else {
 				$("#errorMsg").show();
 				$("#errorMsg").text(json.data);

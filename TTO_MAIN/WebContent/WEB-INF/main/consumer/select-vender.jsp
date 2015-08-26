@@ -63,25 +63,17 @@
                         <div class="row">
                             <ul class="nav nav-pills" id="store_type_list">
                                 <li role="presentation" class="active"><a href="#">全部</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation"><a href="#">甜点</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
 
                             </ul>
                         </div>
                         <div class="nav sorter">
-                            <div class="btn-group navbar-form navbar-left" role="group">
-                                <button type="button" class="btn btn-default">
-                                    销量&nbsp;<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+                            <div class="btn-group navbar-form navbar-left" role="group" id="sorter">
+                                <button type="button" class="btn btn-default" id="sales">
+                                    销量<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
                                 </button>
-                                <button type="button" class="btn btn-default">评价</button>
-                                <button type="button" class="btn btn-default">速度</button>
-                                <button type="button" class="btn btn-default">起送价</button>
+                                <button type="button" class="btn btn-default" id="score">评分</button>
+                                <button type="button" class="btn btn-default" id="speed">速度</button>
+
                             </div>
                             <form class="navbar-form navbar-right search">
                                 <input type="text" class="form-control" placeholder="Search" id="searchStoreName">
@@ -156,6 +148,8 @@
 		</a>
             </div>
         </body>
+
+
         <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
         <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<c:url value='../js/consumer/select_vender.js'/>"></script>

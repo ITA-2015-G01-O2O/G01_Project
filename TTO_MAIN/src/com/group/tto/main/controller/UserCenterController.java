@@ -123,6 +123,7 @@ public class UserCenterController extends BaseController{
 	}
 	
 	@RequestMapping(value="/changeUserProfile.do",produces={"application/json;charset=UTF-8"})
+	@ResponseBody
 	public UserInformationVo changeUserProfile(){
 		System.out.println("receive change user's password  by Account..........");
 		System.out.println("handling............");
@@ -136,6 +137,7 @@ public class UserCenterController extends BaseController{
 	
 	
 	@RequestMapping(value="/chargeUserFund.do",produces={"application/json;charset=UTF-8"})
+	@ResponseBody
 	public UserInformationVo chargeUserFund(){
 		System.out.println("receive charge user's fund  by UserPRofile..........");
 		System.out.println("handling............");
@@ -175,7 +177,7 @@ public class UserCenterController extends BaseController{
 	
 	@RequestMapping(value="/cancelUserFavVendor.do",produces={"application/json;charset=UTF-8"})
 	@ResponseBody
-	public void cancelUserFavVendor(){
+	public UserInformationVo cancelUserFavVendor(){
 		System.out.println("receive cancel user's favorite vendor  by storeId..........");
 		System.out.println("handling............");
 		UserProfile user = userProfileService.getUserProfilebyId(50L);
@@ -188,6 +190,8 @@ public class UserCenterController extends BaseController{
 				break;
 			}
 		}
+		UserInformationVo userInformationVo = new UserInformationVo();
+		return userInformationVo;
 	}
 	
 	

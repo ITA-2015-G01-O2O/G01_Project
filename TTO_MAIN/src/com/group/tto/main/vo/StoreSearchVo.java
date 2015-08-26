@@ -6,33 +6,47 @@ import com.group.tto.cmn.model.Store;
 
 public class StoreSearchVo {
   private Long shopId;
-  private String shopName;  
+  private String shopName;
   private Boolean isHot;
   private String status;
-  
-  private String avgPoint;
-  private String deliverFee;
-  private String startingFee;
-  private String logoPicURL;
-  private String avgDeliverTime;
-  private String storeType;
+
+  private String avgPoint = "";
+  private String deliverFee = "";
+  private String startingFee = "";
+  private String logoPicURL = "";
+  private String avgDeliverTime = "";
+  private String storeType = "";
   private int salesNum;
-  
+
   public StoreSearchVo() {}
 
   public StoreSearchVo(Store store) {
     super();
     this.shopId = store.getStoreId();
-    this.shopName = store.getStoreName();
-    this.avgPoint = store.getAvgPoint().toString();
+    if (store.getStoreName() != null) {
+      this.shopName = store.getStoreName();
+    }
+    if (store.getAvgPoint() != null) {
+      this.avgPoint = store.getAvgPoint().toString();
+    }
     this.salesNum = store.getOrders().size();
     this.isHot = store.getIsHot();
-    this.status = store.getStoreProfile().getStatus();
+    if (store.getStoreProfile() != null) {
+      this.status = store.getStoreProfile().getStatus();
+    }
     this.logoPicURL = store.getLogoPicUrl();
-    this.deliverFee = store.getDeliverFee().toString();
-    this.startingFee = store.getStartingFee().toString();
-    this.avgDeliverTime = store.getAvgDeliverTime().toString();  
-    //this.storeType = store.getTypeConfig().getConfigValue();
+    if (store.getDeliverFee() != null) {
+      this.deliverFee = store.getDeliverFee().toString();
+    }
+    if (store.getStartingFee() != null) {
+      this.startingFee = store.getStartingFee().toString();
+    }
+    if (store.getAvgDeliverTime() != null) {
+      this.avgDeliverTime = store.getAvgDeliverTime().toString();
+    }
+    if (store.getTypeConfig() != null) {
+      this.storeType = store.getTypeConfig().getConfigValue();
+    }
   }
 
   public Long getShopId() {
@@ -115,6 +129,13 @@ public class StoreSearchVo {
     this.avgDeliverTime = avgDeliverTime;
   }
 
+  public String getStoreType() {
+    return storeType;
+  }
+
+  public void setStoreType(String storeType) {
+    this.storeType = storeType;
+  }
 
 
 

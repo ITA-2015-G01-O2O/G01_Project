@@ -183,7 +183,12 @@ body {
 				<input type="hidden" id="merId" value=${merId} />
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">137*****</a></li>
+			
+				<li id="loginameshow" style="display:none"><a href="#"></a></li>
+				<li id="logintitle" style="display:none"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
+				<li id="registertitle" style="display:none"><a href="../consumer/register.view">注册</a></li>
+
+			<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
 			</ul>
 		</div>
 	</div>
@@ -246,7 +251,7 @@ body {
 									</div>
 									<div class="col-xs-3 imfoimg" id="proimg"
 										style="display: none;">
-										<img src="/TTO_MAIN/file/img/" />
+										<img src="" />
 									</div>
 
 									<div class="col-xs-9 imfolist" id="proInfo" style="background-color: white;display: none;" >
@@ -368,13 +373,13 @@ body {
 							<div class="orders" id="ordersCard">
 								<div class="myCart text-muted">
 									<i class="glyphicon glyphicon-shopping-cart"></i><span>My
-										Cart</span><span class="badge">42</span>
+										Cart</span>
 								</div>
 								<div class="orderBox" id="orderBoxCopy" style="display: none;">
 									<h4></h4>
 									<span style="display: none;"></span>
 									<button class="btn btn-default btn-sm" onclick="del1(this)">-</button>
-									<input type="number" value="1" class="form-control input-sm">
+									<input type="number" value="1" readOnly="true" class="form-control input-sm">
 									<button class="btn btn-default btn-sm" onclick="add1(this)">+</button>
 									<span class="price"></span> <span style="display: none;"></span>
 									<div class="clear"></div>

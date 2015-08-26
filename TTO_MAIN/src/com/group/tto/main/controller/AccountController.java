@@ -83,6 +83,23 @@ public class AccountController extends BaseController {
           return this.getResultJSON(true, "tip.success.create");
         }
       }
+	  
+	  @RequestMapping(value = "/getMainName.do", produces = {"application/json;charset=UTF-8"})
+      @ResponseBody
+      public String getMainName(HttpServletRequest request) {
+	    
+	  
+	    String loginName =  (String) request.getSession().getAttribute("mainName");
+	    boolean flag=false;
+	    if(loginName!=null){
+	      flag=true;
+	    }
+	    String data = this.getResultJSON(flag, loginName);
+         return data;
+      }
+	  
+	  
+	  
 	@Override
 	protected String getName() {
 		// TODO Auto-generated method stub
