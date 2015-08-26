@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Store;
+import com.group.tto.cmn.type.StopProfileStatus;
 import com.group.tto.main.common.Constants;
 import com.group.tto.main.common.StoreSearchCriteria;
 import com.group.tto.main.dao.BaseDao;
@@ -22,6 +23,8 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
   private static final String FIELD_STOREID = "storeId";
   private static final String FIELD_STOREPLACE = "location";
+  private static final String FIELD_STATUS = "status";
+  private static final String FIELD_STORE_PROFILE = "storeProfile";
 
   @Override
   // 根据商家id找到商家
@@ -46,29 +49,10 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
     CriteriaQuery<Store> query = builder.createQuery(Store.class);
     Root<Store> store = query.from(Store.class);
 
-    Predicate condition = builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation());
-//
-//    if (criteria.getSortType() != null) {
-//      condition =
-//          builder.and(builder.equal(store.get(""), criteria),
-//              builder.equal(store.get(""), criteria), builder.equal(store.get(""), criteria));
-//      
-//      List<Store> result =
-//          this.getEntityManager()
-//              .createQuery(
-//                  query.where(condition).orderBy(builder.asc(store.get(criteria.getSortType()))))
-//              .getResultList();
-//      
-//    query = query.orderBy(builder.asc(store.get(criteria.getSortType())));
-//    } else if (COMMON.DESC.equals(criteria.getOrderType())) {
-//      query = query.orderBy(builder.desc(store.get(criteria.getSortType())));
-//    } else if (criteria.getStoreType() != null || criteria.getSortType() != null) {
-//      condition =
-//          builder.and(condition,
-//              builder.equal(store.get("typeConfig").get("configValue"), criteria.getStoreType()));
-//    }else{
-//      
-//    }
+    Predicate condition =
+        builder.and(builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation()),
+            builder.equal(store.get(FIELD_STORE_PROFILE).get(FIELD_STATUS).as(String.class),
+                StopProfileStatus.NORMAL.toString()));
 
     List<Store> storeList =
         this.getEntityManager().createQuery(query.where(condition)).getResultList();

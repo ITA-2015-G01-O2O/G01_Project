@@ -69,15 +69,15 @@
                         <div class="nav sorter">
                             <div class="btn-group navbar-form navbar-left" role="group" id="sorter">
                                 <button type="button" class="btn btn-default" id="sales">
-                                    销量<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+                                    &nbsp;销量<span class="hidden glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
                                 </button>
-                                <button type="button" class="btn btn-default" id="score">评分</button>
-                                <button type="button" class="btn btn-default" id="speed">速度</button>
+                                <button type="button" class="btn btn-default" id="score"><span class="hidden glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>&nbsp;评分</button>
+                                <button type="button" class="btn btn-default" id="speed"><span class="hidden glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>&nbsp;速度</button>
 
                             </div>
                             <form class="navbar-form navbar-right search">
-                                <input type="text" class="form-control" placeholder="Search" id="searchStoreName">
-                                <button class="btn btn-default" onclick="searchStore()">Go</button>
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button class="btn btn-default">Go</button>
                             </form>
                         </div>
                         <div class="row venders">
