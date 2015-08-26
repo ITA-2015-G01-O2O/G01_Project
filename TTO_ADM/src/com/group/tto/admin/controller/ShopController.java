@@ -25,6 +25,7 @@ import com.group.tto.cmn.model.Store;
 @Controller
 @RequestMapping("/shop")
 public class ShopController extends BaseController {
+  private static String LOCATION_AUTO_COMPLETE_SPLITER = " ";
 
   @Autowired
   private ShopService service;
@@ -68,7 +69,8 @@ public class ShopController extends BaseController {
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getLocations(String query) {
-    return this.getResultJSON(true, this.locationService.search(query, " "));
+    return this.getResultJSON(true,
+        this.locationService.search(query, LOCATION_AUTO_COMPLETE_SPLITER));
   }
 
   @RequestMapping(value = "/getCheckStatusTotal.do", produces = {"application/json;charset=UTF-8"})

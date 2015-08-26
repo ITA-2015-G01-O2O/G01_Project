@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Store;
-import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.service.AccountService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.vo.MerProsList;
@@ -53,9 +53,9 @@ public class ConsumerController extends BaseController {
   public String isConsumerLogin(HttpServletRequest request) {
 
     List<Account> loginMain =
-        (List<Account>) request.getServletContext().getAttribute(COMMON.CONTEXT_LOGIN_INFO);
+        (List<Account>) request.getServletContext().getAttribute(Constants.CONTEXT_LOGIN_INFO);
 
-    Account loginConsumer = (Account) request.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
+    Account loginConsumer = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
 
     boolean flag = false;
     if (loginConsumer != null) {
@@ -84,13 +84,13 @@ public class ConsumerController extends BaseController {
     return this.getName() + "/showmerpros";
   }
   
-  /**
+ 
   @RequestMapping("/confirmOrder.view")
-  public String confirmOrder(String dataJson, Map map) {
-    map.put("ordercomfirm", dataJson);
-   System.out.println("dataJson-----------------------------"+dataJson);
+  public String confirmOrder(String merId, Map map) {
+    map.put("merId", merId);
+   System.out.println("dataJson-----------------------------"+merId);
     return this.getName() + "/confirmOrder";
-  }**/
+  }
 
 
   @Override

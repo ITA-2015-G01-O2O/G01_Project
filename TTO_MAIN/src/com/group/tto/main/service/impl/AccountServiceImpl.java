@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Account;
+import com.group.tto.cmn.model.UserProfile;
 import com.group.tto.main.dao.AccountDao;
 import com.group.tto.main.service.AccountService;
 
@@ -44,7 +45,24 @@ public class AccountServiceImpl implements AccountService {
 	public Account getAccountByAccountId(Long accountId) {
 		
 		return accountDao.getAccountById(accountId);
-	}	
+	}
+
+  @Override
+  @Transactional
+  public void register(String loginname, String password) {
+      Account a=new Account();
+      a.setUsername(loginname);
+      a.setPassword(password);
+      
+      System.out.println("dao---======"+a.getUsername());
+      System.out.println("dao---======"+a.getPassword());
+      a.setIsDelete(false);
+      a.setVersion(1l);
+      UserProfile u=new UserProfile();
+      a.setUserProfile(u);
+      accountDao.createAccount(a);
+    
+  }	
 	
 	
 	

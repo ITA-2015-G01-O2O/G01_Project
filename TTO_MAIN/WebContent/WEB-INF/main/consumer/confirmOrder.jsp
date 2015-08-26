@@ -207,7 +207,7 @@ input {
 	</div>
 	</nav>
 	<div class="container container-main">
-		<span style="display: none" id="ordercomfirm">${ordercomfirm}</span>
+		<span style="display: none" id="merId">${merId}</span>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="row">
@@ -318,8 +318,12 @@ input {
 							<input type="text" class="form-control" id="auseraddress">
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="alert alert-danger" style="display: none" role="alert"
+					id="errorMsg2"></div>
+					</div>
 				</div>
-
+				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="getusebtn" onclick="confirmorderbtn()">Comfirm</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

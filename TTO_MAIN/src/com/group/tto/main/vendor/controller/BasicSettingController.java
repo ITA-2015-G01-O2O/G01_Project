@@ -24,7 +24,8 @@ public class BasicSettingController extends BaseController {
   @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String updateBasicSetting(HttpServletRequest req) {
-    int sid = (int) req.getSession().getAttribute("sid");
+    //int sid = (int) req.getSession().getAttribute("sid");
+    int sid=2050;
     String announcement = req.getParameter("announcement");
     String minPrice = req.getParameter("minPrice");
     String shipment = req.getParameter("shipment");
@@ -58,7 +59,8 @@ public class BasicSettingController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadBasicSetting(HttpServletRequest req) {
-    int sid = (int) req.getSession().getAttribute("sid");
+    //int sid = (int) req.getSession().getAttribute("sid");
+    int sid=2050;
     Store store=bs.loadBasicSetting(sid);
     
     return this.getResultJSON(true, store);
@@ -76,7 +78,7 @@ public class BasicSettingController extends BaseController {
   @Override
   protected String getName() {
 
-    return "basicSetting";
+    return "main/vendor";
   }
 
 }

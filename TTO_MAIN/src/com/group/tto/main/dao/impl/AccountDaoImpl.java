@@ -62,6 +62,16 @@ public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
 		return account2;
 		
 	}
+
+  @Override
+  public void createAccount(Account a) {
+      try {
+        this.create(a);
+      } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+  }
 	
 	
 	

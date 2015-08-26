@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Store;
-import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.common.StoreSearchCriteria;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.StoreDao;

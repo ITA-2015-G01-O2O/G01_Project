@@ -31,10 +31,10 @@ import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.UserProfile;
 import com.group.tto.cmn.type.OrderStatus;
 import com.group.tto.cmn.type.PayWay;
-import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.service.AccountService;
 import com.group.tto.main.service.OrderService;
-import com.group.tto.main.vo.AddOrderListVO;
+import com.group.tto.main.vo.CommentsVO;
 import com.group.tto.main.vo.AddOrderVO;
 import com.group.tto.main.vo.MerProsList;
 
@@ -74,13 +74,19 @@ public class OrderController extends BaseController {
       Order o = getOrder(ausername, auserPhone, auseraddress, remark, vos);
 
       Account loginConsumer =
-          (Account) request.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
+          (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
       UserProfile up = new UserProfile();
+      System.out.println(loginConsumer.getUserProfile().getUserProfileId());
+      
       up.setUserProfileId(loginConsumer.getUserProfile().getUserProfileId());
       o.setUserProfile(up);
 
 
       orderService.addOrder(o);
+      
+      
+      
+      
       data = this.getResultJSON(true, "");
     }else{
       data = this.getResultJSON(false, "");

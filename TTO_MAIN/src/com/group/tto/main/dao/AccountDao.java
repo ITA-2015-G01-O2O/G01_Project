@@ -8,5 +8,5 @@ public interface AccountDao {
 	public Integer getCount(String loginname);
 	
 	public Account getAccountById(Long accountId);
-	
+	public void createAccount(Account a);
 }

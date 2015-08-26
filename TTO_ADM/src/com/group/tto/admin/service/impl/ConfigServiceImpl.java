@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.group.tto.admin.cmn.ServiceInfoPool;
 import com.group.tto.admin.dao.ConfigDao;
 import com.group.tto.admin.service.ConfigService;
 import com.group.tto.cmn.model.Configuration;
@@ -43,8 +44,21 @@ public class ConfigServiceImpl implements ConfigService {
       }
       dbConfig.toString();
       this.configDao.save(dbConfig);
-
+      if (dbConfig.getConfigName().equals(ConfigName.AUTO_CONFIRM_TIME.toString())) {
+        ServiceInfoPool.addAttribute(ConfigName.AUTO_CONFIRM_TIME.toString(),
+            dbConfig.getConfigValue());
+      } else if (dbConfig.getConfigName().equals(ConfigName.AUTO_CANCEL_TIME.toString())) {
+        ServiceInfoPool.addAttribute(ConfigName.AUTO_CANCEL_TIME.toString(),
+            dbConfig.getConfigValue());
+      }
     }
+  }
+
+  @Override
+  @Transactional
+  public String getValueByName(String name) {
+    Configuration config = this.configDao.getByName(name);
+    return config == null ? null : config.getConfigValue();
   }
 
 }
