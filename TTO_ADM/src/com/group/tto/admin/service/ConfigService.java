@@ -9,4 +9,6 @@ public interface ConfigService {
   public List<Configuration> getAll();
 
   public void saveConfig(List<Configuration> configs);
+
+  public String getValueByName(String name);
 }
