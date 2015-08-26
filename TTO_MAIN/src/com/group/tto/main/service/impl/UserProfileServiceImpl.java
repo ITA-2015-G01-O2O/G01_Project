@@ -21,13 +21,13 @@ public class UserProfileServiceImpl implements UserProfileService {
 
 	@Override
 	@Transactional
-	public void chargeUserProfileFundByProfileId(Long profileId,
+	public UserProfile chargeUserProfileFundByProfileId(Long profileId,
 			BigDecimal addFund) {
 		
 		UserProfile u = userProfileDao.findUserProfileByProfileId(profileId);
 		
 		u.setFund(u.getFund().add(addFund));
-
+		return u;
 	}
 
 	@Override
@@ -35,6 +35,13 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public List<Collect> getUserCollectVendorByProfileId(Long profileId) {
 		return userProfileDao.findUserProfileByProfileId(profileId).getCollects();
 		
+	}
+
+	@Override
+	@Transactional
+	public UserProfile getUserProfilebyId(Long profileId) {
+		
+		return userProfileDao.findUserProfileByProfileId(profileId);
 	}
 	
 	

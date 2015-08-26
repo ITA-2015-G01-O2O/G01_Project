@@ -6,7 +6,7 @@ $(function(){
 			$.ajax({
 				
 				type : "post",
-				url : "../usercenter/getUserFavVendor.do",
+				url : "../usercenter/cancelUserFavVendor.do",
 				cache : false,
 				data : {
 					

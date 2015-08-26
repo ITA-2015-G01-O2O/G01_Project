@@ -16,14 +16,13 @@ import com.group.tto.main.common.OrderJMSMsg;
 import com.group.tto.main.dao.OrderDao;
 import com.group.tto.main.service.OrderService;
 
-
-
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
+
 	@Autowired
 	private OrderDao order;
-	
-	private JMSHelper<OrderJMSMsg> jmsHelper=new JMSHelper<OrderJMSMsg>();
+
+	private JMSHelper<OrderJMSMsg> jmsHelper = new JMSHelper<OrderJMSMsg>();
 
 	public OrderDao getOrder() {
 		return order;
@@ -36,41 +35,46 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	@Transactional
 	public List<Order> getAllOrderByUserProfile(UserProfile userProfile) {
-		
+
 		return order.getAllOrderByUserProfile(userProfile);
 	}
-	
+
 	@Override
 	@Transactional
 	public void cancelOrderById(Long orderId) {
 
-		try{
+		try {
 			Order o = order.getOrderById(orderId);
 			o.setIsDelete(true);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
-    @Transactional
-  public void addOrder(Order proorder) {
-	  order.addOrder(proorder);
-	  
-	  OrderJMSMsg o=new OrderJMSMsg();
-	  o.setFlag(MessageType.ADD_ORDER.name());
-	  o.setId(UUID.randomUUID().toString());
-	  o.setOrderId(proorder.getOrderId());
-	  o.setStoreId(proorder.getStoreId());
-	  try {
-      jmsHelper.sendJMSMessage(o);
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    
-  }
+	@Transactional
+	public void addOrder(Order proorder) {
+		order.addOrder(proorder);
+
+		OrderJMSMsg o = new OrderJMSMsg();
+		o.setFlag(MessageType.ADD_ORDER.name());
+		o.setId(UUID.randomUUID().toString());
+		o.setOrderId(proorder.getOrderId());
+		o.setStoreId(proorder.getStoreId());
+		try {
+			jmsHelper.sendJMSMessage(o);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	@Override
+	@Transactional
+	public List<Order> getAllOrderByStoreId(Long storeId) {
 	
+		return order.getAllOrderByStoreId(storeId);
+	}
 
 }

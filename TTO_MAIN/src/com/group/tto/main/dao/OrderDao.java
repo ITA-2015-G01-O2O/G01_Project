@@ -9,6 +9,8 @@ public interface OrderDao {
 	
 	public List<Order> getAllOrderByUserProfile(UserProfile userProfile);
 	
+	public List<Order> getAllOrderByStoreId(Long storeId);
+	
 	public Order getOrderById(Long orderId);
 	
 	public int addOrder(Order o);
