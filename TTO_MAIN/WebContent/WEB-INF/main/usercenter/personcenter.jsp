@@ -54,7 +54,7 @@
 									aria-controls="profile" role="tab" data-toggle="tab"
 									onclick="loadMyInfo()">myinfo</a></li>
 								<li role="presentation"><a href="#messages"
-									aria-controls="messages" role="tab" data-toggle="tab">myfav</a></li>
+									aria-controls="messages" role="tab" data-toggle="tab" onclick="loadMyFav()">myfav</a></li>
 							</ul>
 						</ul>
 					</div>
@@ -63,7 +63,7 @@
 						<div class="row" id="mainContent">
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane active" id="home">
-									<div class="" id="myordermodel">
+									<div class="hidden" id="myordermodel">
 										<div class="col-xs-12 res_content  page-header ">
 											<div class="col-xs-1"></div>
 											<div class="col-xs-2">
@@ -183,15 +183,14 @@
 											<div class="form-group">
 												<label class="col-sm-2 control-label">tel</label>
 												<div class="col-sm-10">
-													<p class="form-control-static">13545102672</p>
+													<p class="form-control-static" id="userInfo_uname"></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="inputPassword" class="col-xs-2 control-label">Password</label>
 												<div class="col-xs-10">
 													<ul class="list-inline">
-														<li><input type="password" class="form-control"
-															id="inputPassword" value="123456" disabled="disabled">
+														<li><p class="form-control" id="userInfo_password"></p>
 														</li>
 														<li><a class="btn btn-info" id="changePsd">change
 																psd</a></li>
@@ -203,7 +202,8 @@
 												<label class="col-sm-2 control-label">account:</label>
 												<div class="col-sm-10">
 													<ul class="list-inline">
-														<li class="form-control-static">$400</li>
+														<li class="form-control-static"><p
+																id="userInfo_fund"></p></li>
 														<li><a class="btn btn-info" id="charge">charge</a></li>
 													</ul>
 												</div>
@@ -216,108 +216,48 @@
 								</div>
 
 								<div role="tabpanel" class="tab-pane" id="messages">
-									<div class="col-xs-12">
-										<div class="col-xs-1"></div>
-										<div class="col-xs-10 myborder">
-											<div class="col-xs-12 res_content  page-header">
-												<div class="col-xs-1"></div>
-												<div class="col-xs-2">
-													<img src="../img/usercenter/title_admin.png" />
+									<div class="hidden" id="myfavinfo">
+										<div class="col-xs-12">
+											<div class="col-xs-1"></div>
+											<div class="col-xs-10 myborder">
+												<div class="col-xs-12 res_content  page-header">
+													<div class="col-xs-1"></div>
+													<div class="col-xs-2">
+														<img src="../img/usercenter/title_admin.png" />
+													</div>
+													<div class="col-xs-6">
+														<ul class="list-inline">
+															<li>res name:XXX</li>
+															<li>res tel:10000000</li>
+														</ul>
+														<ul class="list-inline">
+															<li>res addr:XXX</li>
+															<li>open time:2015-01-02</li>
+														</ul>
+														<ul class="list-inline">
+															<li><a class="link">enter this res</a></li>
+															<li>
+																<button class="btn btn-warning" name="cancelfav">cancel
+																	fav</button>
+															</li>
+														</ul>
+													</div>
+													<div class="col-xs-1"></div>
 												</div>
-												<div class="col-xs-6">
-													<ul class="list-inline">
-														<li>res name:XXX</li>
-														<li>res tel:10000000</li>
-													</ul>
-													<ul class="list-inline">
-														<li>res addr:XXX</li>
-														<li>open time:2015-01-02</li>
-													</ul>
-													<ul class="list-inline">
-														<li><a class="link">enter this res</a></li>
-														<li>
-															<button class="btn btn-warning" name="cancelfav">cancel
-																fav</button>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-1"></div>
 											</div>
+											<div class="col-xs-1"></div>
 										</div>
-										<div class="col-xs-1"></div>
-									</div>
-									<div class="col-xs-12">
-										<div class="col-xs-1"></div>
-										<div class="col-xs-10 myborder">
-											<div class="col-xs-12 res_content  page-header">
-												<div class="col-xs-1"></div>
-												<div class="col-xs-2">
-													<img src="../img/usercenter/title_admin.png" />
-												</div>
-												<div class="col-xs-6">
-													<ul class="list-inline">
-														<li>res name:XXX</li>
-														<li>res tel:10000000</li>
-													</ul>
-													<ul class="list-inline">
-														<li>res addr:XXX</li>
-														<li>open time:2015-01-02</li>
-													</ul>
-													<ul class="list-inline">
-														<li><a class="link">enter this res</a></li>
+										
 
-
-														<button class="btn btn-warning" name="cancelfav">cancel
-															fav</button>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-1"></div>
-											</div>
-										</div>
-										<div class="col-xs-1"></div>
-									</div>
-									<div class="col-xs-12">
-										<div class="col-xs-1"></div>
-										<div class="col-xs-10 myborder">
-											<div class="col-xs-12 res_content  page-header">
-												<div class="col-xs-1"></div>
-												<div class="col-xs-2">
-													<img src="../img/usercenter/title_admin.png" />
-												</div>
-												<div class="col-xs-6">
-													<ul class="list-inline">
-														<li>res name:XXX</li>
-														<li>res tel:10000000</li>
-													</ul>
-													<ul class="list-inline">
-														<li>res addr:XXX</li>
-														<li>open time:2015-01-02</li>
-													</ul>
-													<ul class="list-inline">
-														<li><a class="link">enter this res</a></li>
-														<li>
-															<button class="btn btn-warning" name="cancelfav">cancel
-																fav</button>
-														</li>
-													</ul>
-												</div>
-												<div class="col-xs-1"></div>
-											</div>
-										</div>
-										<div class="col-xs-1"></div>
 									</div>
 								</div>
-
 							</div>
+
 						</div>
 					</div>
-
 				</div>
-			</div>
-		</div>
 
-		<!--<div id="copyright-info">
+				<!--<div id="copyright-info">
 				<div class="site-info text-center">
 					<a href="#" class="link" target="_blank">关注微信</a>&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="#" class="link" target="_blank">关注微博</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -333,8 +273,6 @@
 					</ul>
 				</div>
 			</div>-->
-	</div>
-
-
+			</div>
 </body>
 </html>
