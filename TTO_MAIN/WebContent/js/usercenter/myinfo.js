@@ -11,13 +11,9 @@ function loadMyInfo(){
 			alert("error");
 		}
 	}).done(function(json) {
-		alert(json.uname);
-		alert(json.password);
-		alert(json.fund);
 		if (json != "") {
-			alert("success");
 			$("#userInfo_uname").text(json.uname);
-			$("#userInfo_password").text(json.password);
+			$("#userInfo_password").data("userInfo_password",json.password);
 			$("#userInfo_fund").text("￥："+json.fund);
 		}
 	});
