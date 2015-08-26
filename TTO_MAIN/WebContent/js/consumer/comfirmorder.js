@@ -31,6 +31,59 @@ function setOrderpros(orderdata) {
 	}
 }
 
+function getUserName(){
+	$.ajax({
+		type : "post",
+		url : "../account/getMainName.do",
+		cache : false,
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				$("#loginameshow").show();
+				$("#logintitle").hide();
+				$("#registertitle").hide();
+				$("#loginameshow").children().eq(0).text(json.data);
+			}else{
+				$("#logintitle").show();
+				$("#registertitle").show();
+				$("#loginameshow").hide();
+			} 
+		}
+	});
+}
+
+function consumerlogin() {
+	var username = $("#username").val();
+	var password = $("#password").val();
+
+	$.ajax({
+		type : "post",
+		url : "../account/login.do",
+		cache : false,
+		data : {
+			loginname : username,
+			password : password
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				$("#relogin").modal("hide");
+				getUserName();
+			} else {
+				$("#errorMsg").show();
+				$("#errorMsg").text(json.data);
+			}
+		}
+	});
+}
+
+
 function confirmorderbtn() {
 	$('#errorMsg2').text("");
 	var ausername = $("#ausername").val();
