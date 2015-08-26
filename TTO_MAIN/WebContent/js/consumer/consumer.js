@@ -1,4 +1,6 @@
-
+$(function(){
+	getUserName();
+});
 
 function consumerlogin() {
 	var username = $("#username").val();

@@ -18,6 +18,10 @@ import com.group.tto.cmn.model.Account;
 @Repository
 public class AccountDaoImpl extends BaseDao<Account> implements AccountDao {
 
+  public AccountDaoImpl() {
+    super(Account.class);
+  }
+
   private static final String FIELD_USERNAME = "username";
   private static final String FIELD_STORE = "store";
 
