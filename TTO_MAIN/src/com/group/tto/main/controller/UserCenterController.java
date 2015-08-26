@@ -15,13 +15,14 @@ import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.OrderItem;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.UserProfile;
-import com.group.tto.main.dao.AccountDao;
 import com.group.tto.main.service.AccountService;
+import com.group.tto.main.service.CollectService;
 import com.group.tto.main.service.OrderService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.service.UserProfileService;
 import com.group.tto.main.vo.OrderEachItem;
 import com.group.tto.main.vo.OrderListVo;
+import com.group.tto.main.vo.UserFavVendorsVo;
 import com.group.tto.main.vo.UserInformationVo;
 
 @Controller
@@ -36,6 +37,8 @@ public class UserCenterController extends BaseController{
 	private AccountService accountService;
 	@Autowired
 	private UserProfileService userProfileService;
+	@Autowired
+	private CollectService collectService;
 	
 
 	@Override
@@ -89,7 +92,12 @@ public class UserCenterController extends BaseController{
 			o.setContacterPhone(order.getContacterPhone());
 			o.setDetailLocation(order.getDetailLocation());
 			o.setRemarks(order.getRemarks());
-			o.setContext(order.getComment().getContext());
+			if(order.getComment()==null){
+				o.setContext(null);
+			}else{
+				o.setContext(order.getComment().getContext());
+			}
+
 
 			orderlist.add(o);
 			
@@ -114,33 +122,77 @@ public class UserCenterController extends BaseController{
 		
 	}
 	
-	@RequestMapping(value="/changeUserProfile.do")
-	public void changeUserProfile(){
+	@RequestMapping(value="/changeUserProfile.do",produces={"application/json;charset=UTF-8"})
+	public UserInformationVo changeUserProfile(){
 		System.out.println("receive change user's password  by Account..........");
 		System.out.println("handling............");
 		Account account = new Account();
 		account.setAccountId(50l);
 		accountService.changePasswordByAccount(account, "123");
+		UserInformationVo userInformationVo = new UserInformationVo();
+		userInformationVo.setPassword("123");
+		return userInformationVo;
 	}
 	
 	
-	@RequestMapping(value="/chargeUserFund.do")
-	public void chargeUserFund(){
+	@RequestMapping(value="/chargeUserFund.do",produces={"application/json;charset=UTF-8"})
+	public UserInformationVo chargeUserFund(){
 		System.out.println("receive charge user's fund  by UserPRofile..........");
 		System.out.println("handling............");
 		BigDecimal addFund = new BigDecimal("20");
-		userProfileService.chargeUserProfileFundByProfileId(50l, addFund);
+		UserProfile u = userProfileService.chargeUserProfileFundByProfileId(50l, addFund);
+		UserInformationVo userInformationVo = new UserInformationVo();
+		userInformationVo.setFund(u.getFund());
+		return userInformationVo;
 	}
 	
 	@RequestMapping(value="/getUserFavVendor.do",produces={"application/json;charset=UTF-8"})
 	@ResponseBody
-	public void getUserFavVendor(){
+	public List<UserFavVendorsVo> getUserFavVendor(){
+		List<UserFavVendorsVo> userFavVendorsVoList = new ArrayList<UserFavVendorsVo>();
 		System.out.println("receive get user's favorite vendors  by UserProfile..........");
 		System.out.println("handling............");
 		List<Collect> vendors = userProfileService.getUserCollectVendorByProfileId(50L);
-		System.out.println(vendors.size()==1);
-		
+		for (Collect collect : vendors) {
+			System.out.println(collect.getCollectId()+collect.getStore().getStoreName());
+			UserFavVendorsVo u = new UserFavVendorsVo();
+			Store s = collect.getStore();
+			u.setStoreName(s.getStoreName());
+			u.setServiceBeginTime(s.getServiceBeginTime());
+			u.setServiceEndTime(s.getServiceEndTime());
+			u.setLogoPicUrl(s.getLogoPicUrl());
+			u.setDetailLocation(s.getDetailLocation());
+			u.setPhone(s.getPhone());
+			List<Order> orders = orderService.getAllOrderByStoreId(s.getStoreId());
+			u.setOrderAmount(new BigDecimal(orders.size()));
+			Long  l = collectService.findAllCollectsByStore(s);
+			u.setCollectAmount(new BigDecimal(l));
+			
+			userFavVendorsVoList.add(u);
+		}
+		return userFavVendorsVoList;
 	}
+	
+	@RequestMapping(value="/cancelUserFavVendor.do",produces={"application/json;charset=UTF-8"})
+	@ResponseBody
+	public void cancelUserFavVendor(){
+		System.out.println("receive cancel user's favorite vendor  by storeId..........");
+		System.out.println("handling............");
+		UserProfile user = userProfileService.getUserProfilebyId(50L);
+		
+		List<Collect> collects = user.getCollects();
+		for (Collect collect : collects) {
+			if(collect.getStore().getStoreId()==50L){
+				System.out.println("find this collect"+collect.getCollectId());
+				collectService.updateCollectNode(collect);
+				break;
+			}
+		}
+	}
+	
+	
+	
+	
 	
 	
 	
