@@ -54,7 +54,8 @@
 									aria-controls="profile" role="tab" data-toggle="tab"
 									onclick="loadMyInfo()">myinfo</a></li>
 								<li role="presentation"><a href="#messages"
-									aria-controls="messages" role="tab" data-toggle="tab" onclick="loadMyFav()">myfav</a></li>
+									aria-controls="messages" role="tab" data-toggle="tab"
+									onclick="loadMyFav()">myfav</a></li>
 							</ul>
 						</ul>
 					</div>
@@ -62,118 +63,7 @@
 
 						<div class="row" id="mainContent">
 							<div class="tab-content">
-								<div role="tabpanel" class="tab-pane active" id="home">
-									<div class="hidden" id="myordermodel">
-										<div class="col-xs-12 res_content  page-header ">
-											<div class="col-xs-1"></div>
-											<div class="col-xs-2">
-												<img src="../img/usercenter/title_admin.png" />
-											</div>
-											<div class="col-xs-6">
-												<ul class="list-inline">
-													<li>res name:XXX</li>
-													<li>res tel:10000000</li>
-												</ul>
-												<ul class="list-inline">
-													<li>order number:XXX</li>
-													<li>oder time:2015-01-02</li>
-												</ul>
-
-											</div>
-											<div class="col-xs-2">
-												<div>order state:</div>
-												<div>
-													<span class="btn btn-info">affect</span>
-												</div>
-											</div>
-											<div class="col-xs-1"></div>
-										</div>
-										<div class="">
-											<div class="clo-xs-12 ">
-												<div class="col-xs-4">
-													<div class="">
-														<table class="table table-bordered ">
-															<caption>order info</caption>
-															<thead>
-																<th class="active">food number</th>
-																<th class="active">food name</th>
-																<th class="active">food price</th>
-															</thead>
-															<tfoot>
-																<th class="active">food number</th>
-																<th class="active">food name</th>
-																<th class="active">food price</th>
-															</tfoot>
-															<tbody>
-																<tr>
-																	<td class="active">order 1</td>
-																	<td class="success">name</td>
-																	<td class="warning">price</td>
-																</tr>
-																<tr>
-																	<td class="active">order 1</td>
-																	<td class="success">name</td>
-																	<td class="warning">price</td>
-																</tr>
-																<tr>
-																	<td class="active">order 1</td>
-																	<td class="success">name</td>
-																	<td class="warning">price</td>
-																</tr>
-																<tr>
-																	<td class="active">order 1</td>
-																	<td class="success">name</td>
-																	<td class="warning">price</td>
-																</tr>
-
-															</tbody>
-														</table>
-														<div class="text-right">
-															total:$24
-															<!--<button type="button" class="btn btn-success">confirm</button>-->
-
-														</div>
-													</div>
-												</div>
-												<div class="col-xs-8">
-
-													<div class="col-xs-12 myclass1">
-														<div class="col-xs-2"></div>
-														<div class="page-header ">order state</div>
-														<div>contacter:XXX</div>
-														<div>tel:XXXXX</div>
-														<div>remarks</div>
-														<div>comment</div>
-														<div class="page-header ">addr:XXXXX</div>
-													</div>
-													<!--<div class="clearfix list-container">
-
-												<div class="list-wrapper clearfix" mon="area=mid_category_hot_tuangou">
-													<div class="title">热门团购</div>
-													<ul class="mid-list list-inline">
-														<li><a href="http://www.nuomi.com/deal/movies" class="" mon="element=电影&amp;position=0">电影</a></li>
-														<li><a href="http://www.nuomi.com/392" class="hot" mon="element=自助餐&amp;position=1">自助餐</a></li>
-														<li><a href="http://www.nuomi.com/341" class="" mon="element=KTV&amp;position=2">KTV</a></li>
-														<li><a href="http://www.nuomi.com/364" class="hot" mon="element=火锅&amp;position=3">火锅</a></li>
-														<li><a href="http://www.nuomi.com/881" class="" mon="element=蛋糕&amp;position=4">蛋糕</a></li>
-														<li><a href="http://t.nuomi.com" class="hot" mon="element=酒店&amp;position=5">酒店</a></li>
-														<li><a href="http://www.nuomi.com/380" class="" mon="element=小吃快餐&amp;position=6">小吃快餐</a></li>
-														<li><a href="http://www.nuomi.com/391" class="" mon="element=西餐&amp;position=7">西餐</a></li>
-													</ul>
-												</div>
-											</div>-->
-													<div class="myclass1">
-														<div class="text-center mymainhei">waiting for check
-															by res</div>
-														<div class=" text-right">
-															<button class="btn btn-warning">cancel order?</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div role="tabpanel" class="tab-pane active" id="home"></div>
 
 								<div role="tabpanel" class="tab-pane" id="profile">
 									<div class="col-xs-3"></div>
@@ -202,8 +92,7 @@
 												<label class="col-sm-2 control-label">account:</label>
 												<div class="col-sm-10">
 													<ul class="list-inline">
-														<li class="form-control-static"><p
-																id="userInfo_fund"></p></li>
+														<li class="form-control-static"><p id="userInfo_fund"></p></li>
 														<li><a class="btn btn-info" id="charge">charge</a></li>
 													</ul>
 												</div>
@@ -215,64 +104,107 @@
 
 								</div>
 
-								<div role="tabpanel" class="tab-pane" id="messages">
-									<div class="hidden" id="myfavinfo">
-										<div class="col-xs-12">
-											<div class="col-xs-1"></div>
-											<div class="col-xs-10 myborder">
-												<div class="col-xs-12 res_content  page-header">
-													<div class="col-xs-1"></div>
-													<div class="col-xs-2">
-														<img src="../img/usercenter/title_admin.png" />
-													</div>
-													<div class="col-xs-6">
-														<ul class="list-inline">
-															<li>res name:XXX</li>
-															<li>res tel:10000000</li>
-														</ul>
-														<ul class="list-inline">
-															<li>res addr:XXX</li>
-															<li>open time:2015-01-02</li>
-														</ul>
-														<ul class="list-inline">
-															<li><a class="link">enter this res</a></li>
-															<li>
-																<button class="btn btn-warning" name="cancelfav">cancel
-																	fav</button>
-															</li>
-														</ul>
-													</div>
-													<div class="col-xs-1"></div>
-												</div>
-											</div>
-											<div class="col-xs-1"></div>
-										</div>
-										
-
-									</div>
-								</div>
+								<div role="tabpanel" class="tab-pane" id="messages"></div>
 							</div>
 
 						</div>
 					</div>
 				</div>
 
-				<!--<div id="copyright-info">
-				<div class="site-info text-center">
-					<a href="#" class="link" target="_blank">关注微信</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" class="link" target="_blank">关注微博</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#" class="link" target="_blank">我要开店</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				</div>
 			</div>
-			<div class="text-right">
-				<div class="contact-info ">
+		</div>
+
+		<div class="hidden" id="myordermodel">
+			<div class="col-xs-12 res_content  page-header ">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-2">
+					<img src="" id="showImg" width="100px" height="80px" />
+				</div>
+				<div class="col-xs-6">
 					<ul class="list-inline">
-						<li class="contact-name"><i>客服电话</i></li>
-						<li class="contact-numbers"><strong>4000000</strong></li>
-						<li class="contact-time small">(9:00-22:00)</li>
+						<li>res name:<lable id="resOVoname"></lable></li>
+						<li>res tel:<lable id="resOVoPhone"></lable></li>
 					</ul>
+					<ul class="list-inline">
+						<li>order number:<lable id="resOVoOrderNumber"></lable></li>
+						<li>oder time:<lable id="resOVoOrderTime"></lable></li>
+					</ul>
+
 				</div>
-			</div>-->
+				<div class="col-xs-2">
+					<div>order state:</div>
+					<div>
+						<span class="btn btn-info"><lable id="resOVoOrderState"></lable></span>
+					</div>
+				</div>
+				<div class="col-xs-1"></div>
 			</div>
+			<div class="">
+				<div class="clo-xs-12 ">
+					<div class="col-xs-4">
+						<div class="">
+							<table class="table table-bordered ">
+								<caption>orderInfo</caption>
+								<thead>
+									<th class="active">productId</th>
+									<th class="active">productName</th>
+									<th class="active">productPrice</th>
+								</thead>
+								<tfoot>
+									<th class="active">productId</th>
+									<th class="active">productName</th>
+									<th class="active">productPrice</th>
+								</tfoot>
+								<tbody id="myordertbody">
+
+								</tbody>
+							</table>
+							<div class="text-right">
+								total:$<lable id="totalPrice"></lable>
+								
+
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-8">
+
+						<div class="col-xs-12 myclass1">
+							<div class="col-xs-2"></div>
+							<div class="page-header ">order state</div>
+							<div>
+								contacter:
+								<lable id="resOVoContacter"></lable>
+							</div>
+							<div>
+								tel:
+								<lable id="resOVoContactPhone"></lable>
+							</div>
+							<div>
+								remarks:
+								<lable id="resOVoRemarks"></lable>
+							</div>
+							<div>
+								comment:
+								<lable id="resOVoComment"></lable>
+							</div>
+							<div class="page-header ">addr:<lable id="detailLocation"></lable></div>
+						</div>
+						<div class="myclass1">
+							<div class="text-center mymainhei">waiting for check by res</div>
+							<div class=" text-right">
+								<button class="btn btn-warning">cancel order?</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<tr class="hidden" id="productListModul">
+			<td class="active" id="productId"></td>
+			<td class="success" id="productName"></td>
+			<td class="warning" id="productPrice"></td>
+		</tr>
 </body>
+
 </html>

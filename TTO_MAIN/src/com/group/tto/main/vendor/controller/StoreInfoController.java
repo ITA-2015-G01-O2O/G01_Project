@@ -1,7 +1,7 @@
 package com.group.tto.main.vendor.controller;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.StoreInfoService;
 
@@ -26,7 +27,8 @@ public class StoreInfoController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadStoreInfo(HttpServletRequest req) {
-    int sid = (int) req.getSession().getAttribute("sid");
+    // int sid = (int) req.getSession().getAttribute("sid");
+    int sid = 2050;
     Store store = si.loadStoreInfo(sid);
 
     return this.getResultJSON(true, store);
@@ -35,31 +37,44 @@ public class StoreInfoController extends BaseController {
   @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String updateStoreInfo(HttpServletRequest req,
-      @RequestParam(value = "storeLogo") MultipartFile pic) {
-    int sid = (int) req.getSession().getAttribute("sid");
-    String address = req.getParameter("address");
+      @RequestParam(value = "storeLogo", required = false) MultipartFile pic) {
+    // int sid = (int) req.getSession().getAttribute("sid");
+    int sid = 2050;
     String storeName = req.getParameter("storename");
-    // wrong
-    String filename = UUID.randomUUID().toString();
-    System.out.println(pic);
-    try {
-      pic.transferTo(new File(filename));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    String phone = req.getParameter("phone");
+    String type = req.getParameter("type");
+    String piclog=req.getParameter("piclog");
+       
+    int num=0;
     Store store = new Store();
-    store.getLocation().setPlace(address);
-    store.setStoreName(storeName);
-    store.setLogoPicUrl(filename);
+    store.setStoreName(storeName);   
+    store.setPhone(phone);
+    
+    Configuration con = si.getConfiguration(type);
+    store.setTypeConfig(con);    
+    
+    if("1".equals(piclog)){
+      String filename = UUID.randomUUID().toString();
+      InputStream is = null;
+      
+      try {
+        is = pic.getInputStream();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      store.setLogoPicUrl(filename);
 
-    int num = si.updateStoreInfo(store, sid);
-
+      num = si.updateStoreInfo(store, sid, filename, is);
+    }else{
+      num=si.updateStoreInfo(store, sid);
+    }
+    
     return this.getResultJSON(true, num);
   }
 
   @Override
   protected String getName() {
-    return "storeInfo";
+    return "main/vendor";
   }
 
   public StoreInfoService getSi() {

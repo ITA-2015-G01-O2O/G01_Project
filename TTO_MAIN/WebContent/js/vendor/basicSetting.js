@@ -63,10 +63,10 @@ function loadMessage(){
 			$("#inputMinAmount").val(store.startingFee);
 			$("#inputShipment").val(store.deliverFee);
 			var s=store.serviceBeginTime;
-			var date1=new Date(s).toString().substring(16,24);
+			var date1=new Date(s).toString().substring(16,21);
 			$("#startTime").val(date1);
 			var f=store.serviceEndTime;
-			var date2=new Date(f).toString().substring(16,24);
+			var date2=new Date(f).toString().substring(16,21);
 			$("#finishTime").val(date2);
 		},
         error:function(data){
@@ -83,11 +83,11 @@ $(document).ready(function(){
 		verifyAnnouncement();
 		verifyMinPrice();
 		verifyShipment();
-		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime ){
+		if(isAnnouncement && isMinPrice && isShipment  ){
 			$.ajax({
 				type:"post",
 				url:"update.do",
-				data: {"minprice":$("#inputMinAmount").val(),"announcement":$("#inputAnnouncement").val(),
+				data: {"minPrice":$("#inputMinAmount").val(),"announcement":$("#inputAnnouncement").val(),
 				"shipment":$("#inputShipment").val(),"starttime":$("#startTime").val(),"finishtime":$("#finishTime").val()},
              	dataType: "json",
              	success:function(data){

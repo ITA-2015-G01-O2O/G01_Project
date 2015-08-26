@@ -15,6 +15,10 @@ import com.group.tto.cmn.model.File;
 
 @Repository
 public class FileDaoImpl extends BaseDao<File> implements FileDao {
+  public FileDaoImpl() {
+    super(File.class);
+  }
+
   private static final String FIELD_UUID = "uuid";
 
   @Override

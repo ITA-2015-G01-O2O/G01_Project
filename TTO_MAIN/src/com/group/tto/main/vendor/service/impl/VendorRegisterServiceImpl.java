@@ -1,6 +1,7 @@
 package com.group.tto.main.vendor.service.impl;
 
 import java.io.InputStream;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Configuration;
+import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.AccountDao;
@@ -90,6 +92,30 @@ public class VendorRegisterServiceImpl implements VendorRegisterService {
   public Configuration getConfiguration(String value) {
     Configuration con = conDao.getConfiguration(value);
     return con;
+  }
+
+  @Override
+  public List<String> getAllArea() {
+    List<String> locations=locationDao.getAllArea();
+    return locations;
+  }
+
+  @Override
+  public List<Configuration> getAllConfig() {
+    List<Configuration> cons=conDao.getAllConfig();
+    return cons;
+  }
+
+  @Override
+  public List<String> getCity(String area) {
+    List<String> locations=locationDao.getCity(area);
+    return locations;
+  }
+
+  @Override
+  public List<Location> getPlace(String city) {
+    List<Location> locations=locationDao.getPlace(city);
+    return locations;
   }
 
 }

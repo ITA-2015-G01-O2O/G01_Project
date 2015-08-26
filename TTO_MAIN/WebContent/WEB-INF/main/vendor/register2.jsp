@@ -56,9 +56,8 @@
   						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputType">
     						Choose type of Store <span class="caret"></span>
   						</button>
-  						<ul class="dropdown-menu">
-   							<li><a href="#" id="type1">type1</a></li>
-    						<li><a href="#" id="type2">type2</a></li>
+  						<ul class="dropdown-menu" id="configMenu">
+
   						</ul>
 					</div>
 					<div class="alert alert-danger" style="display: none;"  role="alert" id="typemsg">Please choose a type for your store!</div>
@@ -69,14 +68,30 @@
 						<div class="btn-group">
   							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputAddr1">
     							Choose Area <span class="caret"></span>
-  							</button>
-  							<ul class="dropdown-menu">
-   								<li><a href="#" id="area1">China,Guangdong,Zhuhai</a></li>
-    							<li><a href="#" id="area2">China,Guangdong,Guangzhou</a></li>
-  							</ul>
+  							</button>  							
+  								<ul class="dropdown-menu" id="locationMenu">
+  									
+  								</ul>
+  							
 						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputCity">
+    							Choose City <span class="caret"></span>
+  							</button>  							
+  							<ul class="dropdown-menu" id="cityMenu">
+  									
+  							</ul>
+  						</div>
+  						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="inputPlace">
+    							Choose City <span class="caret"></span>
+  							</button>  							
+  							<ul class="dropdown-menu" id="placeMenu">
+  									
+  							</ul>
+  						</div>
 				</form>
-				<input type="text" class="form-control page-text input-lg"  placeholder="Address" id="inputAddr2">    
+				<input type="text" class="form-control page-text input-lg"  placeholder="Address" id="inputAddr2" oninput="loadLocation()">    
 				<div class="alert alert-danger" style="display: none;"  role="alert" id="addrmsg">Please input your Address!</div>
             	<a type="button" class="btn btn-primary btn-lg" id="next">Next</a>
             <div>
