@@ -45,7 +45,6 @@ $(function(){
 			}).done(function(json) {
 				alert();
 				if (json != "") {
-					alert("success");
 					$("#userInfo_password").text(json.password);
 				}
 			});
@@ -85,6 +84,64 @@ $(function(){
 	});
 	function addUserOrder(data){
 		var s = $("#myordermodel").clone();
+		var orderId = data.orderId;
+		s.find("#resOVoname").text(data.storeName);
+		s.find("#resOVoPhone").text(data.phone);
+		s.find("#resOVoOrderNumber").text(data.orderNumber);
+		s.find("#resOVoOrderTime").text(data.createTime);
+		s.find("#resOVoOrderState").text(data.status);
+		s.find("#resOVoContacter").text(data.contacterName);
+		s.find("#resOVoContactPhone").text(data.contacterPhone);
+		s.find("#resOVoRemarks").text(data.remarks);
+		s.find("#resOVoComment").text(data.context);
+		s.find("#detailLocation").text(data.detailLocation);
+		s.find("#showImg").attr("src","../file/img/"+data.logoPicUrl);
+		
+		if(data.status=="NEW"){
+			s.find("#userCancelThisOrder").removeClass("hidden");
+			s.find("#userCancelThisOrder").on("click",function(){
+				var cancelOrder = confirm("do you want to cancel this order?");
+				if(cancelOrder){
+					$.ajax({
+						
+						type : "post",
+						url : "../usercenter/cancelOrder.do",
+						cache : false,
+						data : {
+							orderId:orderId,
+							
+						},
+						error : function(error) {
+							alert(error);
+						}
+					}).done(function(json) {
+						var ss= s;						
+						if (json.isSuccess) {
+							alert("success");
+							ss.find("#userCancelThisOrder").addClass("hidden");
+							s.find("#resOVoOrderState").text("CANCEL");
+						}
+					});
+				}
+				
+			});
+		}
+		
+		sum=0;
+		var orderItems = data.orderEachItemList;
+		
+		for(var i = 0;i<orderItems.length;i++){
+			var tr="<tr>";
+			tr += "<td class=\"active\" id=\"productId\">"+orderItems[i].productId+"</td>";	
+			tr +="<td class=\"active\" id=\"productName\">"+orderItems[i].productName+"</td>";
+			tr +="<td class=\"active\" id=\"productPrice\">"+orderItems[i].price+"</td>";
+			tr += "</tr>";
+			s.find("#myordertbody").append(tr);
+			sum+=orderItems[i].price;
+		}
+		
+		
+		s.find("#totalPrice").text(sum);
 		setRomdomNameandId(s);
 		
 		return s;
@@ -95,5 +152,7 @@ $(function(){
 		$element.prop('id', $element.prop("id") + "_"
 				+ Math.floor(Math.random() * (1000000)));
 	}
+	
+
 	
 });

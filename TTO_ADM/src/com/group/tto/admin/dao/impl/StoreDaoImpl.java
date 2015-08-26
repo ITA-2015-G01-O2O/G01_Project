@@ -19,6 +19,10 @@ import com.group.tto.cmn.model.Store;
 
 @Repository
 public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
+  public StoreDaoImpl() {
+    super(Store.class);
+  }
+
   private static final String FIELD_STORE_ID = "storeId";
   private static final String FIELD_STORE_NAME = "storeName";
   private static final String FIELD_STORE_PROFILE = "storeProfile";

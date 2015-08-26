@@ -32,27 +32,102 @@ function verifyAddr(){
 		$("#addrmsg").removeAttr("style");
 	}
 }
+function loadPlace(city){
+	$.ajax({
+		type:"post",
+		url:"loadPlace.do",
+		data:{"city":city},
+		dataType: "json",
+        success:function(data){
+            var locations=data.data;
+            for(var i in locations){
+            	var l=locations[i].place;
+            	$("#placeMenu").append("<li><a href=\"#\" id=\"place"+i+"\">"+l+"</a></li>");            
+            }
+            $("a[id^=place]").on("click",function(){
+				var areatext=$(this).text();
+				$("#inputPlace").text(areatext);
+				
+			});
+        }
+	});
+}
+
+function loadCity(area){
+	$.ajax({
+		type:"post",
+		url:"loadCity.do",
+		data:{"area":area},
+		dataType: "json",
+        success:function(data){
+            var locations=data.data;
+            for(var i in locations){
+            	var l=locations[i];
+            	$("#cityMenu").append("<li><a href=\"#\" id=\"city"+i+"\">"+l+"</a></li>");            
+            }
+            $("a[id^=city]").on("click",function(){
+				var areatext=$(this).text();
+				$("#inputCity").text(areatext);
+				loadPlace(areatext);
+			});
+        }
+	});
+}
+function loadLocation(){
+	$.ajax({
+		type:"post",
+		url:"loadLocation.do",
+        success:function(data){
+            var locations=data.data;
+            for(var i in locations){
+            	var l=locations[i];
+            	$("#locationMenu").append("<li><a href=\"#\" id=\"location"+i+"\">"+l+"</a></li>");            
+            }
+            $("a[id^=location]").on("click",function(){
+				var areatext=$(this).text();
+				$("#inputAddr1").text(areatext);
+				loadCity(areatext);
+			});
+        }
+	});
+}
+
+
+function loadConfig(){
+	$.ajax({
+		type:"post",
+		url:"loadConfig.do",
+        success:function(data){
+            var configs=data.data;
+            for(var i in configs){
+            	var con=configs[i];
+            	$("#configMenu").append("<li><a href=\"#\" id=\"type"+i+"\">"+con.configValue+"</a></li>");           
+            }
+            
+            $("a[id^=type]").on("click",function(){
+				var typetext=$(this).text();
+				$("#inputType").text(typetext);
+			});
+        }
+	});
+}
+
 $(document).ready(function(){
-	$("a[id^=type]").on("click",function(){
-		var typetext=$(this).text();
-		$("#inputType").text(typetext);
-	});
-	$("a[id^=area]").on("click",function(){
-		var areatext=$(this).text();
-		$("#inputAddr1").text(areatext);
-	});
 	$("#inputName").on("blur",verifyName);
 	$("#inputAddr2").on("blur",verifyAddr);
+	loadConfig();
+	loadLocation();
 	$("#next").on("click",function(){
 		verifyAddr();
 		verifyName();
 		verifyType();
+		var addr=$("#inputAddr1").text()+","+$("#inputCity").text()+","+$("#inputPlace").text();
 		if(isName && isType && isAddr){
 			$.ajax({
 				type:"post",
 				url:"register2.do",
 				data: {"storename":$("#inputName").val(),"type":$("#inputType").text(),
-				"addr1":$("#inputAddr1").text(),"addr2":$("#inputAddr2").val()},
+				"addr1":addr,"addr2":$("#inputAddr2").val()},
              	dataType: "json",
              	success:function(data){
              		window.location.href="register3.view";

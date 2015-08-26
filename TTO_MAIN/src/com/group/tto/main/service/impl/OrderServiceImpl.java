@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.UserProfile;
+import com.group.tto.cmn.type.OrderStatus;
 import com.group.tto.main.common.JMSHelper;
 import com.group.tto.main.common.MessageType;
 import com.group.tto.main.common.OrderJMSMsg;
@@ -41,13 +42,22 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	@Transactional
-	public void cancelOrderById(Long orderId) {
+	public Boolean cancelOrderById(Long orderId) {
 
 		try {
+		
 			Order o = order.getOrderById(orderId);
-			o.setIsDelete(true);
+			if("NEW".equals(o.getStatus())){
+			  o.setStatus(OrderStatus.CANCEL.name());
+			  System.out.println("order status:"+o.getStatus());
+			  return true;
+			}else{
+			  return false;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 
 	}

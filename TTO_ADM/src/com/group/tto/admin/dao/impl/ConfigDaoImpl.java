@@ -17,6 +17,10 @@ import com.group.tto.cmn.model.Configuration;
 @Repository
 public class ConfigDaoImpl extends BaseDao<Configuration> implements ConfigDao {
 
+  public ConfigDaoImpl() {
+    super(Configuration.class);
+  }
+
   private static final String FIELD_CONFIG_NAME = "configName";
 
   @Override

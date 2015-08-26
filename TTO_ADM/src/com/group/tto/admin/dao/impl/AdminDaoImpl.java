@@ -16,6 +16,11 @@ import com.group.tto.cmn.model.Admin;
 @Repository
 public class AdminDaoImpl extends BaseDao<Admin> implements AdminDao {
 
+  public AdminDaoImpl() {
+    super(Admin.class);
+    // TODO Auto-generated constructor stub
+  }
+
   private static final String FIELD_LOGINNAME = "loginname";
   private static final String FIELD_PASSWORD = "password";
 

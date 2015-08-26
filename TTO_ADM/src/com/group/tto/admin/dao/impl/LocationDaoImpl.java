@@ -16,12 +16,16 @@ import com.group.tto.cmn.model.Location;
 @Repository
 public class LocationDaoImpl extends BaseDao<Location> implements LocationDao {
 
+  public LocationDaoImpl() {
+    super(Location.class);
+  }
+
   private static final String FIELD_AREA = "area";
   private static final String FIELD_CITY = "city";
   private static final String FIELD_PLACE = "place";
 
   @Override
-  public List<Location> search(String area,String city,String place) {
+  public List<Location> search(String area, String city, String place) {
     CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
     CriteriaQuery<Location> query = builder.createQuery(Location.class);
     Root<Location> location = query.from(Location.class);

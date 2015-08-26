@@ -63,14 +63,14 @@ public class OrderController extends BaseController {
     List<Map<String, Object>> list = mapper.readValue(dataJson, List.class);
     String data=null;
     if (list.size() > 0 && ausername != null && auserPhone != null && auseraddress != null
-        && remark != null) {
+        ) {
 
       List<AddOrderVO> vos = new ArrayList<AddOrderVO>();
       for (Map<String, Object> map : list) {
         vos.add(new AddOrderVO(map));
       }
 
-
+      
       Order o = getOrder(ausername, auserPhone, auseraddress, remark, vos);
 
       Account loginConsumer =
@@ -83,9 +83,6 @@ public class OrderController extends BaseController {
 
 
       orderService.addOrder(o);
-      
-      
-      
       
       data = this.getResultJSON(true, "");
     }else{
@@ -116,9 +113,10 @@ public class OrderController extends BaseController {
     o.setContacterName(ausername);
     o.setContacterPhone(auserPhone);
     o.setDetailLocation(auseraddress);
-    o.setRemarks(remark);
+    o.setRemarks(remark==null?" ":remark);
     o.setOrderItems(ois);
     o.setCreateTime(new Date());
+    o.setIsDelete(false);
     o.setPayWay(PayWay.CASH_PAY.name());
     o.setOrderNumber(UUID.randomUUID().toString());
     o.setStoreId(bid);

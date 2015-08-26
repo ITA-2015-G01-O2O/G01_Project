@@ -1,15 +1,18 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Basic Setting</title>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/setting.css" />
+		<link rel="stylesheet" href="<c:url value='/css/vendor/setting.css'/>" />
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script src="js/pic.js" type="text/javascript"></script>
-		<script src="js/storeInfo.js" type="text/javascript"></script>
+		<script src="<c:url value='/js/vendor/pic.js'/>" type="text/javascript"></script>
+		<script src="<c:url value='/js/vendor/jquery.form.js'/>" type="text/javascript"></script>
+		<script src="<c:url value='/js/vendor/storeInfo.js'/>" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -21,7 +24,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -81,47 +84,54 @@
 						<div class="col-xs-9 main-wrapper">
 
 							<div class="panel panel-default">
-
+							<form enctype="multipart/form-data" id="si_form">
 								<div class="panel-heading">Basic Setting</div>
 								<div class="panel-body form-horizontal">
 									<div class="page-text">	
     									<label>Address</label>
-    									<div>
-      										<input type="text" class="form-control" placeholder="Address" id="inputAddr">
-    									</div>
-    									<div class="alert alert-danger" style="display: none;"  role="alert" id="addrmsg">Wrong Address!</div>
+    									<div id="inputAddr"></div>
     								</div>
     								<div class="page-text">	
     									<label>Store name</label>
     									<div>
-      										<input type="text" class="form-control" placeholder="Store name" id="inputStoreName">
+      										<input type="text" class="form-control" placeholder="Store name" id="inputStoreName" name="storename">
     									</div>
     									<div class="alert alert-danger" style="display: none;"  role="alert" id="storeNamemsg">Wrong store name!</div>
     								</div>
     								<div class="page-text">	
+    									<label>Phone</label>
+    									<div>
+      										<input type="text" class="form-control" placeholder="tel" id="inputPhone" name="phone">
+    									</div>
+    									<div class="alert alert-danger" style="display: none;"  role="alert" id="phonemsg">Wrong phone!</div>
+    								</div>
+    								<div class="page-text">	
     									<label>Type</label>
     									<div>		
+    										<input type="text" class="form-control"  id="inputType" name="type" style="display: none;">
     										<div class="btn-group">
-  												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="typemsg">
     												Choose type of Store <span class="caret"></span>
   												</button>
-  											<ul class="dropdown-menu">
-   												<li><a href="#">type1</a></li>
-    											<li><a href="#">type2</a></li>
+  											<ul class="dropdown-menu" id="typeMenu">
+   												<li><a href="#" id="type1">type1</a></li>
+    											<li><a href="#" id="type2">type2</a></li>
   											</ul>
 											</div>
     									</div>
     								</div>
     								<div class="page-text">	
     									<label>Store Picture</label>
-    									<div><img id="showStorePic" width="200" height="200" src="img/1.jpg"  class="page-text"/></div>
+    									<div><img id="showStorePic" width="200" height="200" src="<c:url value='/img/vendor/1.jpg'/>"  class="page-text"/></div>
     									<div class="controls page-text">
-											<input name="productPic" type="file" id="StorePic"  style="display: none;"></input>
-											<span class="btn btn-primary" onclick="$('#StorePic').click();">Change Store Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
+											<input type="file" id="StorePic"  style="display: none;" name="storeLogo"></input>
+											<span class="btn btn-primary" onclick="$('#StorePic').click();" id="changePic">Change Store Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 										</div>
     								</div>
-									<button type="button" class="btn btn-primary btn-lg">Save</button>
+    								<input name="piclog" type="text" id="piclog"  style="display: none;"></input>
+									<input type="submit" class="btn btn-primary btn-lg">Save</input>
 								</div>
+							</form>
 							</div>
 						</div>
 					</div>
