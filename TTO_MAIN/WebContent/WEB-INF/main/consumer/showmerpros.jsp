@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix ="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -197,8 +198,8 @@ body {
 
 						<div class="row">
 							<div class="jumbotron" style="background-color: white;">
-								<div class="col-xs-5">
-									<img src="../img/img.png" />
+								<div class="col-xs-5" >
+									<img id="storeImgId" src="../img/img.png" />
 
 								</div>
 								 <div class="col-xs-7" style="word-wrap: break-word;">
@@ -245,7 +246,7 @@ body {
 									</div>
 									<div class="col-xs-3 imfoimg" id="proimg"
 										style="display: none;">
-										<img src="../img/img.png" />
+										<img src="/TTO_MAIN/file/img/" />
 									</div>
 
 									<div class="col-xs-9 imfolist" id="proInfo" style="background-color: white;display: none;" >
@@ -357,8 +358,8 @@ body {
 									<h4>商家营业公告及营业时间</h4>
 									<h5 class="text-muted" id="announcement">
 									</h5>
-									<h5 class="text-muted">营业开始时间<span id="serviceBeginTime"></span> </h5>
-									<h5 class="text-muted">营业结束时间<span id="serviceEndTime"></span> </h5>
+									<h5 class="text-muted">营业开始时间:<span id="serviceBeginTime"></span> </h5>
+									<h5 class="text-muted">营业结束时间:<span id="serviceEndTime"></span> </h5>
 									</h5>
 								</div>
 

@@ -1,8 +1,10 @@
 var merId;
 $(function() {
-    
-	 merId = $("#merId").val();
-    $.cookie('com.group.tto.main.addorder'+merId, '', { expires: -1 });
+
+	merId = $("#merId").val();
+	$.cookie('com.group.tto.main.addorder' + merId, '', {
+		expires : -1
+	});
 	if (merId == null) {
 		return false;
 	}
@@ -43,10 +45,18 @@ function addshowPro(pro) {
 	if (pro.isDelete != true) {
 		var proimg = $("#proimg").clone();
 		proimg.show().appendTo($("#meals"));
-
+		setRomdomNameandId(proimg);
+		var proimgchildren = $(proimg).children();
+		if (pro.productPicUrl == null) {
+			proimgchildren.eq(0).attr('src',
+					'../img/img.png');
+		} else {
+			proimgchildren.eq(0).attr('src',
+					'/TTO_MAIN/file/img/' + pro.productPicUrl);
+		}
 		var proInfo = $("#proInfo").clone();
 		proInfo.show().appendTo($("#meals"));
-
+		setRomdomNameandId(proInfo);
 		var proInfos = $(proInfo).children();
 		proInfos.eq(0).text(pro.productName);
 		proInfos.eq(1).text(pro.productId);
@@ -56,6 +66,12 @@ function addshowPro(pro) {
 }
 
 function setMerInfo(json) {
+	if(json.logoPicUrl==null){
+		$("#storeImgId").attr('src','../img/img.png');
+	}else{
+		$("#storeImgId").attr('src','/TTO_MAIN/file/img/'+json.logoPicUrl);
+	}
+	
 	$("#storeName").text(json.storeName);
 	$("#detailLocation").text('Address:' + json.detailLocation);
 	$("#avgPoint").text(json.avgPoint + ' scores');
@@ -73,32 +89,37 @@ function setMerInfo(json) {
 }
 
 function deliveryPros() {
-	$.ajax({
-		type : "post",
-		url : "../consumer/isConsumerLogin.do",
-		cache : false,
-		error : function(error) {
-			alert("error");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if (json.isSuccess == true) {
-				var dataString = getOrder();
-				if (dataString != null) {
-					var dataJson = JSON.stringify(dataString);
-
-					$.cookie('com.group.tto.main.addorder'+merId, dataJson);
-
-					console.log(dataJson);
-
-					window.location.href = '../consumer/confirmOrder.view?merId='+merId;
-
+	$
+			.ajax({
+				type : "post",
+				url : "../consumer/isConsumerLogin.do",
+				cache : false,
+				error : function(error) {
+					alert("error");
 				}
-			} else {
-				$("#relogin").modal("show");
-			}
-		}
-	});
+			})
+			.done(
+					function(json) {
+						if (json != "") {
+							if (json.isSuccess == true) {
+								var dataString = getOrder();
+								if (dataString != null) {
+									var dataJson = JSON.stringify(dataString);
+
+									$.cookie('com.group.tto.main.addorder'
+											+ merId, dataJson);
+
+									console.log(dataJson);
+
+									window.location.href = '../consumer/confirmOrder.view?merId='
+											+ merId;
+
+								}
+							} else {
+								$("#relogin").modal("show");
+							}
+						}
+					});
 }
 function getOrder() {
 	var divele = $("#ordersCard").children();
@@ -266,15 +287,15 @@ function del1(ele) {
 	}
 }
 
-function getComby(score){
-    deleteComment();
-    $.ajax({
+function getComby(score) {
+	deleteComment();
+	$.ajax({
 		type : "post",
 		url : "../comment/getallCommentByScore.do",
 		cache : false,
 		data : {
 			merId : merId,
-            score:score
+			score : score
 		},
 		error : function(error) {
 			alert("error");
@@ -283,15 +304,14 @@ function getComby(score){
 		if (json != "") {
 			if (json.isSuccess == true) {
 				addComment(json.data);
-			} 
+			}
 		}
 	});
 }
 
-
-function conment(){
-    deleteComment();
-    $.ajax({
+function conment() {
+	deleteComment();
+	$.ajax({
 		type : "post",
 		url : "../comment/getallCommentBySid.do",
 		cache : false,
@@ -305,34 +325,34 @@ function conment(){
 		if (json != "") {
 			if (json.isSuccess == true) {
 				addComment(json.data);
-			} 
+			}
 		}
 	});
 }
 
-function addComment(com){
-    for(var i=0;i<com.length;i++){
-        showaddComment(com[i]);
-    }
-    
+function addComment(com) {
+	for (var i = 0; i < com.length; i++) {
+		showaddComment(com[i]);
+	}
+
 }
-function showaddComment(data){
-     var comCopy=$("#commentInfo").clone();
-    comCopy.show().appendTo($("#comment"));
-    setRomdomNameandId($(comCopy));
-    var comcopy1=$(comCopy).children();
-    comcopy1.eq(0).find('span').text(data.point);
-    comcopy1.eq(1).find('span').text(data.deliverTime);
-    comcopy1.eq(2).find('h5').text(data.context);
+function showaddComment(data) {
+	var comCopy = $("#commentInfo").clone();
+	comCopy.show().appendTo($("#comment"));
+	setRomdomNameandId($(comCopy));
+	var comcopy1 = $(comCopy).children();
+	comcopy1.eq(0).find('span').text(data.point);
+	comcopy1.eq(1).find('span').text(data.deliverTime);
+	comcopy1.eq(2).find('h5').text(data.context);
 }
 
-function deleteComment(){
-    var divele=$("#comment").children()
-    divele.each(function() {
+function deleteComment() {
+	var divele = $("#comment").children()
+	divele.each(function() {
 		var orderclass = $(this).attr("class");
-        var orderid = $(this).attr("id");
-		if (orderclass.indexOf("commentlist")!=-1) {
-            
+		var orderid = $(this).attr("id");
+		if (orderclass.indexOf("commentlist") != -1) {
+
 			if (orderid != "commentInfo") {
 				$(this).remove();
 			}
@@ -341,4 +361,3 @@ function deleteComment(){
 	});
 
 }
-

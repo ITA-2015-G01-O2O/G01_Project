@@ -1,6 +1,7 @@
 package com.group.tto.main.vo;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class MerProsList {
 	
 	private Long storeId;
 	private String storeName;
-	
+	private String logoPicUrl;
 	
 	private String detailLocation;
-	private Date serviceBeginTime;
-	private Date serviceEndTime;
+	private String serviceBeginTime;
+	private String serviceEndTime;
 	/**
 	 * kuai di fei   qisong fei
 	 */
@@ -31,7 +32,8 @@ public class MerProsList {
 	 * gong gao
 	 */
 	private String announcement;
-	
+
+	private SimpleDateFormat sdf= new SimpleDateFormat("HH:mm");
 	public MerProsList(){
 		
 	}
@@ -41,8 +43,9 @@ public class MerProsList {
 		this.storeName=stroe.getStoreName();
 		
 		this.detailLocation=stroe.getDetailLocation();
-		this.serviceBeginTime=stroe.getServiceBeginTime();
-		this.serviceEndTime=stroe.getServiceEndTime();
+		
+		this.serviceBeginTime= sdf.format(stroe.getServiceBeginTime());
+		this.serviceEndTime= sdf.format(stroe.getServiceEndTime());
 		/**
 		 * kuai di fei   qisong fei
 		 */
@@ -57,9 +60,17 @@ public class MerProsList {
 		 * gong gao
 		 */
 		this.announcement=stroe.getAnnouncement();
+		this.logoPicUrl=stroe.getLogoPicUrl();
 	}
 	
-	public List<Product> getProducts() {
+	
+	public String getLogoPicUrl() {
+    return logoPicUrl;
+  }
+  public void setLogoPicUrl(String logoPicUrl) {
+    this.logoPicUrl = logoPicUrl;
+  }
+  public List<Product> getProducts() {
 		return products;
 	}
 	public void setProducts(List<Product> products) {
@@ -83,16 +94,16 @@ public class MerProsList {
 	public void setDetailLocation(String detailLocation) {
 		this.detailLocation = detailLocation;
 	}
-	public Date getServiceBeginTime() {
+	public String getServiceBeginTime() {
 		return serviceBeginTime;
 	}
-	public void setServiceBeginTime(Date serviceBeginTime) {
+	public void setServiceBeginTime(String serviceBeginTime) {
 		this.serviceBeginTime = serviceBeginTime;
 	}
-	public Date getServiceEndTime() {
+	public String getServiceEndTime() {
 		return serviceEndTime;
 	}
-	public void setServiceEndTime(Date serviceEndTime) {
+	public void setServiceEndTime(String serviceEndTime) {
 		this.serviceEndTime = serviceEndTime;
 	}
 	public BigDecimal getDeliverFee() {

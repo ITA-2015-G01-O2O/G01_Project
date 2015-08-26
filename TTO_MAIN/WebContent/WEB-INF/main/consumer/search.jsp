@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix ="c" uri ="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,8 +15,13 @@
 	<nav class="navbar navbar-default" id="header">
 	<div class="container-fluid">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
-			<li><a href="register.html">注册</a></li>
+			<c:if test="${ sessionScope.mainName != null }">
+				<li id="loginameshow"><a href="#">Hello, ${sessionScope.mainName} </a></li>
+			</c:if>
+			<c:if test="${sessionScope.mainName == null }">
+				<li id="logintitle"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
+				<li id="registertitle"><a href="../consumer/register.view">注册</a></li>
+			</c:if>
 			<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
 		</ul>
 	</div>

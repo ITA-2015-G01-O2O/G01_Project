@@ -17,17 +17,21 @@ function consumerlogin() {
 		}
 	}).done(function(json) {
 		if (json != "") {
-			if(json.isSuccess==true){
-				//window.location.href='../account/select-vender.view';
-				$("#relogin").modal("hide");
-			}else{
+			if (json.isSuccess == true) {
+				// window.location.href='../account/select-vender.view';
+				//$("#relogin").modal("hide");
+				window.location.href='../consumer/search.view';
+				//$("#logintitle").hide();
+				//$("#registertitle").hide();
+				//$("#loginameshow").show();
+				
+			} else {
 				$("#errorMsg").show();
 				$("#errorMsg").text(json.data);
 			}
 		}
 	});
 }
-
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {
@@ -47,3 +51,37 @@ function addMeals(ele) {
 function addToCard(proName, proId, proprice) {
 
 }
+var errorMsg;
+function verifyName(name) {
+	if (name.match(/\d{11}$/)) {
+		return true;
+	} else {
+		errorMsg = getErrorMsg(errorMsg,
+				"Error UserName,The userName should be PhoneNumber!");
+		return false;
+	}
+}
+
+function getErrorMsg(msg, newmsg) {
+	if (msg == null) {
+		msg = newmsg;
+	} else {
+		msg = msg + "<br/>" + newmsg;
+	}
+	return msg;
+}
+
+function verifypassword(psw1, compsw2) {
+	if (psw1 != compsw2) {
+		errorMsg = getErrorMsg(errorMsg,
+				"Error password,pls comfirm your psssword!");
+		return false;
+	} else if (psw1.match(/^.{6,}$/)) {
+		return true;
+	} else {
+		errorMsg = getErrorMsg(errorMsg,
+				"Error Password format!Password's length should  be  greater than 6");
+		return false;
+	}
+}
+

@@ -42,7 +42,7 @@ public class AccountController extends BaseController {
 	            (List<Account>) request.getServletContext().getAttribute(COMMON.CONTEXT_LOGIN_INFO);
 	       
 	        loginAdmin.add(db);
-	        
+	        request.getSession().setAttribute("mainName", db.getUsername());
 	        request.getSession().setAttribute(COMMON.SESSION_LOGIN_INFO, db);
 	        return this.getResultJSON(true, "");
 	      }
@@ -67,7 +67,22 @@ public class AccountController extends BaseController {
 	    return false;
 	  }
 	
-	
+	  @RequestMapping(value = "/register.do", produces = {"application/json;charset=UTF-8"})
+      @ResponseBody
+      public String register(String to_username, String to_password) {
+        System.out.println(to_username);
+        System.out.println(to_password);
+        String loginname=to_username;
+            String password=to_password;
+        if (this.accountService.contains(loginname)) {
+          return this.getResultJSON(false, "tip.error.exist");
+        } else  if(loginname==null || password==null){
+          return this.getResultJSON(false, "tip.error.notnull");
+        }else{
+          this.accountService.register(loginname, password);
+          return this.getResultJSON(true, "tip.success.create");
+        }
+      }
 	@Override
 	protected String getName() {
 		// TODO Auto-generated method stub
