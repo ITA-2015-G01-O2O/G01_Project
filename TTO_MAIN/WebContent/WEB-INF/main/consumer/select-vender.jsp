@@ -144,7 +144,7 @@
                 <div></div>
             </a>
             <div id="footer">
-                <a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a href="../../../Vendor/register1.html">我要开店</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span>
+                <a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a href="../../../Vendor/register1.html">我要开店</a> <a>|</a> <a><span>客服电话${config_hotLine}</span>
 		</a>
             </div>
         </body>
