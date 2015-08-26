@@ -28,12 +28,10 @@ public class PoductDaoImpl extends BaseDao<Product> implements PoductDao {
 
 	@Override
 	public List<Product> findProductsByLabel(long labelId,long id) {
-		
 		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Product> query = builder.createQuery(Product.class);
 		Root<Product> product=query.from(Product.class);
-		
-		Predicate condition =builder.and( builder.equal(product.get("storeId"),id),builder.equal(product.get("productLabel").get("PRO_LABEL_ID").as(long.class),labelId));
+		Predicate condition =builder.and( builder.equal(product.get("storeId"),id),builder.equal(product.get("productLabel").get("productLabelId").as(long.class),labelId),builder.equal(product.get("isDelete"),0));
 	    List <Product>products=this.getEntityManager().createQuery(query.where(condition)).getResultList();
 		return products;
 	}

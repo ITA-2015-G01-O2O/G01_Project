@@ -18,21 +18,45 @@ $(document).ready(function() {
 			$("#updateMenuPrice").val(menu.find("#menuPrice").text());
 	        $(".modal.fade.bs-example-modal-sm").data('id',$(this).data('id'));
 		});
+		
+		
+		$("#saveMenuTypeBtn").on("click", function() {
+			   var menuType=$("#addMenuType").val();
+				$.get("../productLabel/addProductLabel.do", {
+					LabelName : menuType,
+				}, function(data) {
+			         if(data.isSuccess){
+			        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+			         }
+				});
+			});
+		
 	});
 
-	$("#addMenuBtn").on("click", function() {
-		var menuName = $("#menuName").val();
-		var menuType = $("#menuType").text();
-		var menuPrice = $("#menuPrice").val();
-		$.get("../product/addProduct.do", {
-			menuName : menuName,
-			menuType : menuType,
-			menuPrice : menuPrice,
-		}, function(data) {
-             if(data.isSuccess){
-            	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
-             }
-		});
+
+	
+//	$("#addMenuBtn").on("click", function() {
+//		var menuName = $("#menuName").val();
+//		var menuType = $("#menuType").text();
+//		var menuPrice = $("#menuPrice").val();
+//		$.get("../product/addProduct.do", {
+//			menuName : menuName,
+//			menuType : menuType,
+//			menuPrice : menuPrice,
+//		}, function(data) {
+//             if(data.isSuccess){
+//            	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+//             }
+//		});
+//	});
+//	
+	
+	$('#form1').ajaxForm({
+		type:'post',
+		url:'../product/addProduct.do',
+		success:function(data){
+			 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+		}
 	});
 	
 	
@@ -47,11 +71,12 @@ function addMenu(str) {
 	var Menu = $("#menuModel").clone();
 	Menu.attr("id",str.productId);
 	Menu.find("#menuName").text(str.productName);
+	Menu.find("#srcImg").attr('src',"../file/img/"+str.productPicUrl);
 	Menu.find("#menuPrice").text(str.price);
 	Menu.find(".btn.btn-danger.del").data('id', str.productId);
 	Menu.find(".btn.btn-primary.update").data('id', str.productId);
 	Menu.removeClass("hidden");
-	Menu.appendTo(".col-xs-12.MenuArea");
+	Menu.appendTo(".menuTestArea");
 }
 
 function deleteMenu(id) {
