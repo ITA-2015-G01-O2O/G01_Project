@@ -45,7 +45,6 @@ $(function(){
 			}).done(function(json) {
 				alert();
 				if (json != "") {
-					alert("success");
 					$("#userInfo_password").text(json.password);
 				}
 			});
