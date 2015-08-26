@@ -100,7 +100,7 @@ $(function () {
             var list = $('#store_type_list li');
             list.removeClass('active');
             $(this).parent().addClass('active');
-            //sort by 
+            //sort by
             if ($(this).text() != '全部') {
                 sort_stores_operation($(this).text());
             } else {
@@ -113,6 +113,16 @@ $(function () {
         $('#sorter button').on('click', function () {
             //console.log($(this).text());
             orderType = orderType * (-1);
+            var type_icon;
+
+            if (orderType == -1) {
+                type_icon = "glyphicon-sort-by-attributes-alt";
+            } else {
+                type_icon = "glyphicon-sort-by-attributes";
+            }
+
+            $(this).parent().find('.glyphicon').removeClass('glyphicon-sort-by-attributes').removeClass('glyphicon-sort-by-attributes-alt').addClass('hidden');
+            $(this).find('.glyphicon').removeClass('hidden').addClass(type_icon);
             sortType = $(this).attr("id");
             order_stores_operation();
         });
@@ -137,10 +147,9 @@ $(function () {
     //sorter by order
     function order_stores_operation() {
         var temp, len = sort_store_list.length;
-        for (var i = 0; i < len; i++) {
-            for (j = i + 1; j < len; j++) {
-                if (compare_result(i, j) * orderType) {
-                    console.log("swap!");
+        for (var i = 0; i < len - 1; i++) {
+            for (var j = i + 1; j < len; j++) {
+                if (compare_result(i, j)) {
                     temp = sort_store_list[i];
                     sort_store_list[i] = sort_store_list[j];
                     sort_store_list[j] = temp;
@@ -153,21 +162,20 @@ $(function () {
     }
 
     function compare_result(i, j) {
-        var result;
 
         if (sortType == "sales") {
             //console.log("按照销量排序");
-            return (sort_store_list[i].salesNum >= sort_store_list[j].salesNum);
+            return (orderType * sort_store_list[i].salesNum >= orderType * sort_store_list[j].salesNum);
         }
 
         if (sortType == "score") {
             //console.log("按照评分排序");
-            return (sort_store_list[i].avgPoint >= sort_store_list[j].avgPoint);
+            return (orderType * sort_store_list[i].avgPoint >= orderType * sort_store_list[j].avgPoint);
         }
 
         if (sortType == "speed") {
             //console.log("按照送餐时间排序");
-            return (sort_store_list[i].avgDeliverTime >= sort_store_list[j].avgDeliverTime);
+            return (orderType * sort_store_list[i].avgDeliverTime >= orderType * sort_store_list[j].avgDeliverTime);
         }
 
         return 0;

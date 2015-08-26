@@ -2,6 +2,7 @@ package com.group.tto.main.vo;
 
 import java.math.BigDecimal;
 
+import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.Store;
 
 public class StoreSearchVo {
@@ -16,7 +17,7 @@ public class StoreSearchVo {
   private String logoPicURL = "";
   private String avgDeliverTime = "";
   private String storeType = "";
-  private int salesNum;
+  private String salesNum;
 
   public StoreSearchVo() {}
 
@@ -29,8 +30,16 @@ public class StoreSearchVo {
     if (store.getAvgPoint() != null) {
       this.avgPoint = store.getAvgPoint().toString();
     }
-    this.salesNum = store.getOrders().size();
+
+    BigDecimal sum = new BigDecimal(0);
+    for(int i=0;i<store.getProducts().size();i++){
+      sum=sum.add(store.getProducts().get(i).getSalesVolume());
+    }
+    
+    this.salesNum = sum.toString();
+
     this.isHot = store.getIsHot();
+
     if (store.getStoreProfile() != null) {
       this.status = store.getStoreProfile().getStatus();
     }
@@ -47,6 +56,7 @@ public class StoreSearchVo {
     if (store.getTypeConfig() != null) {
       this.storeType = store.getTypeConfig().getConfigValue();
     }
+
   }
 
   public Long getShopId() {
@@ -113,11 +123,11 @@ public class StoreSearchVo {
     this.startingFee = startingFee;
   }
 
-  public int getSalesNum() {
+  public String getSalesNum() {
     return salesNum;
   }
 
-  public void setSalesNum(int salesNum) {
+  public void setSalesNum(String salesNum) {
     this.salesNum = salesNum;
   }
 
