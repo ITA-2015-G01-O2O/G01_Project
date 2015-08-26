@@ -19,8 +19,8 @@ function consumerlogin() {
 		if (json != "") {
 			if (json.isSuccess == true) {
 				// window.location.href='../account/select-vender.view';
-				//$("#relogin").modal("hide");
-				window.location.href='../consumer/search.view';
+				$("#relogin").modal("hide");
+				getUserName();
 				//$("#logintitle").hide();
 				//$("#registertitle").hide();
 				//$("#loginameshow").show();
@@ -32,6 +32,32 @@ function consumerlogin() {
 		}
 	});
 }
+
+
+function getUserName(){
+	$.ajax({
+		type : "post",
+		url : "../account/getMainName.do",
+		cache : false,
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				$("#loginameshow").show();
+				$("#logintitle").hide();
+				$("#registertitle").hide();
+				$("#loginameshow").children().eq(0).text(json.data);
+			}else{
+				$("#logintitle").show();
+				$("#registertitle").show();
+				$("#loginameshow").hide();
+			} 
+		}
+	});
+}
+
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {

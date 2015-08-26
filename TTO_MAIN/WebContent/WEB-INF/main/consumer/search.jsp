@@ -15,14 +15,12 @@
 	<nav class="navbar navbar-default" id="header">
 	<div class="container-fluid">
 		<ul class="nav navbar-nav navbar-right">
-			<c:if test="${ sessionScope.mainName != null }">
-				<li id="loginameshow"><a href="#">Hello, ${sessionScope.mainName} </a></li>
-			</c:if>
-			<c:if test="${sessionScope.mainName == null }">
-				<li id="logintitle"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
-				<li id="registertitle"><a href="../consumer/register.view">注册</a></li>
-			</c:if>
-			<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
+			
+				<li id="loginameshow" style="display:none"><a href="#"></a></li>
+				<li id="logintitle" style="display:none"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
+				<li id="registertitle" style="display:none"><a href="../consumer/register.view">注册</a></li>
+
+			<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服: ${config.hotLine} </a></li>
 		</ul>
 	</div>
 	</nav>
@@ -50,7 +48,7 @@
 
 	<div id="footer">
 		<a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a
-			href="#">我要开店</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span> </a>
+			href="#">我要开店</a> <a>|</a> <a><span>客服电话  ${config.hotLine} </span> </a>
 	</div>
 
 	<div class="modal fade login-modal" tabindex="-1" role="dialog" id="relogin">
