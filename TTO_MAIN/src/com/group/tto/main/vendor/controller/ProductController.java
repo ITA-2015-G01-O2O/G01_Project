@@ -1,15 +1,20 @@
 package com.group.tto.main.vendor.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.ProductLabel;
@@ -34,20 +39,24 @@ public class ProductController extends BaseController {
 
 	@RequestMapping(value = "/addProduct.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public String addProduct(HttpServletRequest request) {
+	public String addProduct(HttpServletRequest request, @RequestParam(value = "productPic") MultipartFile pic1) {
 
+	//	productPic
 		String menuName = request.getParameter("menuName");
-		String menuType = request.getParameter("menuType");
+		String menuType = request.getParameter("selectType");
 		String menuPrice = request.getParameter("menuPrice");
+	    String picName1 = UUID.randomUUID().toString();
+	    InputStream is1 = null;
+
 		try {
 			String proName = new String(menuName.getBytes("ISO-8859-1"),
 					"UTF-8");
 			// Attendation this.
-			String proMenuType = new String(menuType.getBytes("ISO-8859-1"),
-					"UTF-8");
+			String proMenuType ="中餐"; //new String(menuType.getBytes("ISO-8859-1"),
+					//"UTF-8");
 			String proMenuPrice = new String(menuPrice.getBytes("ISO-8859-1"),
 					"UTF-8");
-
+		    is1=pic1.getInputStream();
 			Product product = new Product();
 			BigDecimal price = new BigDecimal(proMenuPrice);
 			product.setIsDelete(false);
@@ -57,16 +66,19 @@ public class ProductController extends BaseController {
 			product.setProductName(proName);
 			product.setSalesVolume(temp);
 			product.setVersion((long) 0);
+			product.setProductPicUrl(picName1);
 			// /////////////////////////////////////////////
 			product.setStoreId((long) 50);
-			// //////////////////////////////////////////////
 			ProductLabel productLabel = productLabelService
-					.findProductLabel(150);
+					.findProductLabel(Long.parseLong(menuType));
 			product.setProductLabel(productLabel);
-			productService.addProduct(product);
+			productService.addProduct(product, is1);
 			return this.getResultJSON(true, null);
 			// return the table
 		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -78,11 +90,21 @@ public class ProductController extends BaseController {
 	public List<Product> loadProducts(HttpServletRequest request) {
 		// 模拟用户
 		List<Product> products = productService.findAllProductsBySid(50);
-		System.out.println(products.size());
 		return products;
-
 	}
-
+	
+	@RequestMapping(value = "/loadProductByLabel.do", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public List<Product> loadProductsByLabel(HttpServletRequest request) {
+		// 模拟用户
+		System.out.println("-=-=-=-=-=-=-=:::"+request.getParameter("label"));
+		String laeblID=request.getParameter("label");
+		List<Product> products = productService.findProductsByLabel(Long.parseLong(laeblID), 50);
+		System.out.println(">>>>>>>>>>>>>>>>"+products.size());
+		return products;
+	}
+	
+	
 	@RequestMapping(value = "/deleteProduct.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public String deleteProducts(HttpServletRequest request) {

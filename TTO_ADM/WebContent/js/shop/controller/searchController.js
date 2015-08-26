@@ -50,7 +50,7 @@ Ext.define('shop.controller.searchController', {
 						},
 						failure : function() {}
 					});
-				}, 5000);
+				}, 30000);
 			},
 			failure : function() {}
 		});

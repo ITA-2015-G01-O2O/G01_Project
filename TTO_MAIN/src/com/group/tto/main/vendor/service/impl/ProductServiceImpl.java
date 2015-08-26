@@ -1,5 +1,6 @@
 package com.group.tto.main.vendor.service.impl;
 
+import java.io.InputStream;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,17 +10,27 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Product;
+import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.PoductDao;
 import com.group.tto.main.vendor.service.ProductService;
 
 @Service
 @Repository("vendorProductServiceImpl")
 public class ProductServiceImpl implements ProductService {
-	@Autowired()
+	@Autowired
 	private PoductDao poductDao;
-
+	@Autowired
+    private FileDao  fileDao;
 	public PoductDao getPoductDao() {
 		return poductDao;
+	}
+
+	public FileDao getFileDao() {
+		return fileDao;
+	}
+
+	public void setFileDao(FileDao fileDao) {
+		this.fileDao = fileDao;
 	}
 
 	public void setPoductDao(PoductDao poductDao) {
@@ -28,8 +39,11 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional
-	public void addProduct(Product product) {
+	public void addProduct(Product product,InputStream input) {
 		poductDao.createProduct(product);
+		
+		System.out.println("-=====================-:"+product.getProductPicUrl());
+		fileDao.saveFile(input,product.getProductPicUrl());
 		// TODO Auto-generated method stub
 
 	}

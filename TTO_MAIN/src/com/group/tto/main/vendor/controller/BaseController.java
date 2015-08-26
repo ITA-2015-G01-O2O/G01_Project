@@ -1,13 +1,22 @@
 package com.group.tto.main.vendor.controller;
 
+import java.util.Map;
+
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group.tto.main.common.Constants;
+import com.group.tto.main.service.ConfigService;
+
 public abstract class BaseController {
+  @Autowired
+  private ConfigService service;
+  
   @RequestMapping("/{view}.view")
-  public String view(@PathVariable String view) {
-	  System.out.println(view);
+  public String view(@PathVariable String view, Map<String, String> map) {
+    map.put(Constants.HOT_LINE, this.service.getHotLine());
     return this.getName() + "/" + view;
   }
 

@@ -49,7 +49,7 @@ public class StoreSearchCriteria {
 
   public StoreSearchCriteria(int storeLocation, String storeType, String sortType, String orderType) {
     super();
-    this.storeLocation = storeLocation;
+    this.storeLocation = storeLocation;    
     this.storeType = storeType;
     this.sortType = sortType;
     this.orderType = orderType;

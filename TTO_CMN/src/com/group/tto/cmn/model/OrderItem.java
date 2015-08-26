@@ -59,5 +59,37 @@ public class OrderItem {
     this.product = product;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+    result = prime * result + ((orderItemId == null) ? 0 : orderItemId.hashCode());
+    result = prime * result + ((price == null) ? 0 : price.hashCode());
+    result = prime * result + ((product == null) ? 0 : product.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    OrderItem other = (OrderItem) obj;
+    if (amount == null) {
+      if (other.amount != null) return false;
+    } else if (!amount.equals(other.amount)) return false;
+    if (orderItemId == null) {
+      if (other.orderItemId != null) return false;
+    } else if (!orderItemId.equals(other.orderItemId)) return false;
+    if (price == null) {
+      if (other.price != null) return false;
+    } else if (!price.equals(other.price)) return false;
+    if (product == null) {
+      if (other.product != null) return false;
+    } else if (!product.equals(other.product)) return false;
+    return true;
+  }
+
 
 }

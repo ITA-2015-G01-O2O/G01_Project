@@ -63,29 +63,21 @@
                         <div class="row">
                             <ul class="nav nav-pills" id="store_type_list">
                                 <li role="presentation" class="active"><a href="#">全部</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-                                <li role="presentation"><a href="#">甜点</a></li>
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
-
-                                <li role="presentation"><a href="#">中餐</a></li>
-                                <li role="presentation"><a href="#">西餐</a></li>
 
                             </ul>
                         </div>
                         <div class="nav sorter">
-                            <div class="btn-group navbar-form navbar-left" role="group">
-                                <button type="button" class="btn btn-default">
-                                    销量&nbsp;<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+                            <div class="btn-group navbar-form navbar-left" role="group" id="sorter">
+                                <button type="button" class="btn btn-default" id="sales">
+                                    &nbsp;销量<span class="hidden glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
                                 </button>
-                                <button type="button" class="btn btn-default">评价</button>
-                                <button type="button" class="btn btn-default">速度</button>
-                                <button type="button" class="btn btn-default">起送价</button>
+                                <button type="button" class="btn btn-default" id="score"><span class="hidden glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>&nbsp;评分</button>
+                                <button type="button" class="btn btn-default" id="speed"><span class="hidden glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>&nbsp;速度</button>
+
                             </div>
                             <form class="navbar-form navbar-right search">
-                                <input type="text" class="form-control" placeholder="Search" id="searchStoreName">
-                                <button class="btn btn-default" onclick="searchStore()">Go</button>
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button class="btn btn-default">Go</button>
                             </form>
                         </div>
                         <div class="row venders">
@@ -152,10 +144,12 @@
                 <div></div>
             </a>
             <div id="footer">
-                <a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a href="../../../Vendor/register1.html">我要开店</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span>
+                <a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a href="../../../Vendor/register1.html">我要开店</a> <a>|</a> <a><span>客服电话${config_hotLine}</span>
 		</a>
             </div>
         </body>
+
+
         <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
         <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<c:url value='../js/consumer/select_vender.js'/>"></script>

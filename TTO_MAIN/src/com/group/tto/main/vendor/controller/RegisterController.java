@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.StoreProfile;
 import com.group.tto.cmn.type.StopProfileStatus;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.vendor.service.VendorRegisterService;
 
 @Controller

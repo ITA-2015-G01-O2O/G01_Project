@@ -9,4 +9,5 @@ public interface AccountService {
 	 public Boolean contains(String loginname);
 	public void changePasswordByAccount(Account account,String newPassword);
 	public Account getAccountByAccountId(Long accountId);
+	 public void register(String loginname, String password); 
 }
