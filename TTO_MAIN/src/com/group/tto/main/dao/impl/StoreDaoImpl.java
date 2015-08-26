@@ -9,6 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.common.Constants;
 import com.group.tto.main.common.StoreSearchCriteria;
@@ -24,7 +25,7 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
   @Override
   // 根据商家id找到商家
-	//根据商家id找到商家
+  // 根据商家id找到商家
   public Store getStoreById(Long sid) {
     CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
     CriteriaQuery<Store> query = builder.createQuery(Store.class);
@@ -46,23 +47,34 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
     Root<Store> store = query.from(Store.class);
 
     Predicate condition = builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation());
-
-    if (Constants.ASC.equals(criteria.getOrderType())) {
-      query = query.orderBy(builder.asc(store.get(criteria.getSortType())));
-    }
-    if (Constants.DESC.equals(criteria.getOrderType())) {
-      query = query.orderBy(builder.desc(store.get(criteria.getSortType())));
-    }
-    if (criteria.getStoreType() != null || criteria.getSortType() != null) {
-      condition =
-          builder.and(condition,
-              builder.equal(store.get("typeConfig").get("configValue"), criteria.getStoreType()));
-    }
+//
+//    if (criteria.getSortType() != null) {
+//      condition =
+//          builder.and(builder.equal(store.get(""), criteria),
+//              builder.equal(store.get(""), criteria), builder.equal(store.get(""), criteria));
+//      
+//      List<Store> result =
+//          this.getEntityManager()
+//              .createQuery(
+//                  query.where(condition).orderBy(builder.asc(store.get(criteria.getSortType()))))
+//              .getResultList();
+//      
+//    query = query.orderBy(builder.asc(store.get(criteria.getSortType())));
+//    } else if (COMMON.DESC.equals(criteria.getOrderType())) {
+//      query = query.orderBy(builder.desc(store.get(criteria.getSortType())));
+//    } else if (criteria.getStoreType() != null || criteria.getSortType() != null) {
+//      condition =
+//          builder.and(condition,
+//              builder.equal(store.get("typeConfig").get("configValue"), criteria.getStoreType()));
+//    }else{
+//      
+//    }
 
     List<Store> storeList =
         this.getEntityManager().createQuery(query.where(condition)).getResultList();
 
     return storeList;
   }
+
 
 }

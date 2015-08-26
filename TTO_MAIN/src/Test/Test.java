@@ -1,7 +1,9 @@
 package Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -57,24 +59,31 @@ public class Test {
     // location.setPlace("testPlace");
     // manager.persist(location);
 
+    List<Order> orders = new ArrayList<Order>();
+    int i=0;
+    while(++i==20){
+      orders.add(new Order());
+    };
     Store store = new Store();
-    store.setAnnouncement("test2");
-    store.setAvgDeliverTime(new BigDecimal("1"));
+    store.setAnnouncement("zxczc anno3");
+    store.setAvgDeliverTime(new BigDecimal("12"));
     store.setAvgPoint(new BigDecimal("0"));
     store.setDeliverFee(new BigDecimal("1"));
-    store.setDetailLocation("test detail location1");
+    store.setDetailLocation("test detail location4");
     store.setIsDelete(false);
     store.setIsHot(false);
     store.setLocation(manager.find(Location.class, 50L));
     store.setLogoPicUrl("a9b5f8a8-a3d3-4ca8-9b43-0736c4fe3ae8");
-    store.setPhone("test phone");
+    store.setPhone("123xxx");
     store.setServiceBeginTime(new Date());
     store.setServiceEndTime(new Date());
     store.setStartingFee(new BigDecimal("1"));
-    store.setStoreName("test");
+    store.setStoreName("tdddest cvbafg");
+    store.setOrders(orders);
     Configuration c = new Configuration();
-    c.setConfigId(new Long(7));
+    c.setConfigId(new Long(4));
     store.setTypeConfig(c);
+    manager.persist(store);
     //
     // StoreProfile storeProfile = new StoreProfile();
     // storeProfile.setIdCardNumber("test");
