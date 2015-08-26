@@ -45,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
 
 		try {
 			Order o = order.getOrderById(orderId);
+	//		if(o.getStatus())
 			o.setIsDelete(true);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -79,6 +79,7 @@ public class UserCenterController extends BaseController {
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
       Store s = storeService.getStoreById(order.getStoreId());
+      o.setOrderId(order.getOrderId());
       o.setStoreName(s.getStoreName());
       o.setPhone(s.getPhone());
       o.setLogoPicUrl(s.getLogoPicUrl());
@@ -215,5 +216,17 @@ public class UserCenterController extends BaseController {
     } else {
       return this.getResultJSON(false, "");
     }
+  }
+  
+  
+  @RequestMapping(value = "/cancelOrder.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String cancelOrder(String orderId){
+    System.out.println("receive user cancel order request!"+orderId);
+    orderService.cancelOrderById(Long.valueOf(orderId));
+    
+    
+    
+    return this.getResultJSON(true, "");
   }
 }
