@@ -19,6 +19,10 @@ import com.group.tto.cmn.model.Order;
 @Repository
 public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 
+  public OrderDaoImpl() {
+    super(Order.class);
+  }
+
   private static final String FIELD_STATUS = "status";
   private static final String FIELD_ORDER_ID = "orderId";
   private static final String FIELD_CREATE_TIME = "createTime";
