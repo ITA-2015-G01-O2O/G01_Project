@@ -190,9 +190,9 @@
 							<div class="page-header ">addr:<lable id="detailLocation"></lable></div>
 						</div>
 						<div class="myclass1">
-							<div class="text-center mymainhei">waiting for check by res</div>
+							<div class="text-center mymainhei" id="resReplyToUser">waiting for check by res</div>
 							<div class=" text-right">
-								<button class="btn btn-warning">cancel order?</button>
+								<button class="btn btn-warning hidden" id="userCancelThisOrder">cancel order?</button>
 							</div>
 						</div>
 					</div>
