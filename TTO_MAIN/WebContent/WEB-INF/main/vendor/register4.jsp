@@ -7,7 +7,7 @@
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/register.css" />
+		<link rel="stylesheet" href="<c:url value='/css/vendor/register.css'/>" />
 		<title>Register</title>
 	</head>
 	<body>
@@ -19,7 +19,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -41,11 +41,11 @@
     			</div>
     		</div>
 
-        	<div class="text-center page-center">
-        		<img src="img/success.png" height="200px" width="200px" id="pic"/>
+        	<div class="text-center page-center">        		
+        		<img src="<c:url value='/img/vendor/success.png'/>" height="200px" width="200px" id="pic"/>
             	<h2 class="table-title">You have successfully submitted your application</h2>
             	<h2 class="table-title">Please be patient before admin review</h2>
-           	 	<a class="btn btn-success btn-lg" href="../elvis/html/select-vender.html" >goback</a>
+           	 	<a class="btn btn-success btn-lg" href="../consumer/search.view" >goback</a>
         	</div>       
    		 	
 		</div>

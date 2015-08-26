@@ -1,17 +1,20 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Basic Setting</title>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/setting.css" />
+		<link rel="stylesheet" href="<c:url value='/css/vendor/setting.css'/>" />
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>	
-		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+		<link href="<c:url value='/css/vendor/bootstrap-datetimepicker.min.css'/>" rel="stylesheet" media="screen">
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-		<script type="text/javascript" src="js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-		<script type="text/javascript" src="js/basicSetting.js"></script>
+		<script type="text/javascript" src="<c:url value='/js/vendor/bootstrap-datetimepicker.js'/>" charset="UTF-8"></script>
+		<script type="text/javascript" src="<c:url value='/js/vendor/bootstrap-datetimepicker.fr.js'/>" charset="UTF-8"></script>
+		<script type="text/javascript" src="<c:url value='/js/vendor/basicSetting.js'/>"></script>
+
 	</head>
 
 	<body>
@@ -23,7 +26,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -126,23 +129,23 @@
     									<div class="alert alert-danger" style="display: none;"  role="alert" id="payTypemsg">pay type can not be empty!</div>
     								</div>
 									<div>
-                						<label for="startTime" class="col-md-3 control-label">Business Start time</label>
+                						<label for="startTime" class="col-md-3 control-label" id="starttimelabel">Business Start time</label>
                 						<div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="startTime" data-link-format="hh:ii">
-                    						<input class="form-control" size="16" type="text"  readonly>
+                    						<input class="form-control" size="16" type="text"  readonly  id="startTime">
                     						<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 						</div>
-										<input type="hidden" id="startTime" value="" /><br/>
+										<input type="hidden"  value="" /><br/>
             						</div>
             						<div class="alert alert-danger" style="display: none;"  role="alert" id="startTimemsg">Please choose your bussiness start time!</div>
     								<div>
-                						<label for="finishTime" class="col-md-3 control-label">Business finish time</label>
+                						<label for="finishTime" class="col-md-3 control-label" id="finishtimelabel">Business finish time</label>
                 						<div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="finishTime" data-link-format="hh:ii">
-                    						<input class="form-control" size="16" type="text"  readonly>
+                    						<input class="form-control" size="16" type="text"  readonly id="finishTime">
                     						<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 						</div>
-										<input type="hidden" id="finishTime" value="" /><br/>
+										<input type="hidden"  value="" /><br/>
             						</div>
             						<div class="alert alert-danger" style="display: none;"  role="alert" id="finishTimemsg">Please choose your bussiness finish time!</div>
 									<button type="button" class="btn btn-primary btn-lg" id="save">Save</button>

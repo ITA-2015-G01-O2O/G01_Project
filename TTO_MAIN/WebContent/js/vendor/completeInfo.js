@@ -65,19 +65,29 @@ function verifyStorePic(){
 	}				
 }
 $(document).ready(function(){
+	$('#ci_form').ajaxForm({
+		type:'post',
+		url:'update.do',
+		beforeSubmit:function(){
+			verifyAnnouncement();
+			verifyMinPrice();
+			verifyShipment();
+			verifyStartTime();
+			verifyFinishTime();
+			verifyStorePic();
+			if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime && isStorePic){
+				return true;
+			}else
+				return false;
+			},
+		success:function(data){
+			window.location.href="NewOrder.view";
+		}
+	});
+	
+	
 	$("#inputAnnouncement").on("blur",verifyAnnouncement);
 	$("#inputMinAmount").on("blur",verifyMinPrice);
 	$("#inputShipment").on("blur",verifyShipment);
-	$("#submit").on("click",function(){
-		verifyAnnouncement();
-		verifyMinPrice();
-		verifyShipment();
-		verifyStartTime();
-		verifyFinishTime();
-		verifyStorePic();
-		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime && isStorePic)
-			return true;
-		else
-			return false;
-	});
+	
 });

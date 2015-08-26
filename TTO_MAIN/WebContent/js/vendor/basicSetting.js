@@ -53,18 +53,51 @@ function verifyFinishTime(){
 		$("#finishTimemsg").removeAttr("style");
 	}				
 }
+function loadMessage(){
+	$.ajax({
+		type:"post",
+		url:"load.do",
+		success:function(data){
+			var store=data.data;
+			$("#inputAnnouncement").val(store.announcement);
+			$("#inputMinAmount").val(store.startingFee);
+			$("#inputShipment").val(store.deliverFee);
+			var s=store.serviceBeginTime;
+			var date1=new Date(s).toString().substring(16,24);
+			$("#startTime").val(date1);
+			var f=store.serviceEndTime;
+			var date2=new Date(f).toString().substring(16,24);
+			$("#finishTime").val(date2);
+		},
+        error:function(data){
+            alert("Load message fail!");
+        }
+	});
+}
 $(document).ready(function(){
 	$("#inputAnnouncement").on("blur",verifyAnnouncement);
 	$("#inputMinAmount").on("blur",verifyMinPrice);
 	$("#inputShipment").on("blur",verifyShipment);
+	loadMessage();
 	$("#save").on("click",function(){
 		verifyAnnouncement();
 		verifyMinPrice();
 		verifyShipment();
-		verifyStartTime();
-		verifyFinishTime();
-		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime )
-			return true;
+		if(isAnnouncement && isMinPrice && isShipment && isStartTime && isFinishTime ){
+			$.ajax({
+				type:"post",
+				url:"update.do",
+				data: {"minprice":$("#inputMinAmount").val(),"announcement":$("#inputAnnouncement").val(),
+				"shipment":$("#inputShipment").val(),"starttime":$("#startTime").val(),"finishtime":$("#finishTime").val()},
+             	dataType: "json",
+             	success:function(data){
+             		alert("Save success!");
+             	},
+             	error:function(data){
+             		alert("Save fail!");
+             	}
+			});
+		}
 		else
 			return false;
 	});
