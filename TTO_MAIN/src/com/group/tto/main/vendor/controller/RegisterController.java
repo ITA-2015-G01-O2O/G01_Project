@@ -1,8 +1,9 @@
 package com.group.tto.main.vendor.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.StoreProfile;
 import com.group.tto.cmn.type.StopProfileStatus;
-import com.group.tto.main.common.COMMON;
 import com.group.tto.main.vendor.service.VendorRegisterService;
 
 @Controller
@@ -63,6 +61,9 @@ public class RegisterController extends BaseController {
 
     store.setStoreName(storeName);
     store.setDetailLocation(addr2);
+    BigDecimal avg = new BigDecimal(0);
+    store.setAvgDeliverTime(avg);
+    store.setAvgPoint(avg);
 
     Configuration con = vr.getConfiguration(type);
     store.setTypeConfig(con);
@@ -85,8 +86,8 @@ public class RegisterController extends BaseController {
     InputStream is1 = null;
     InputStream is2 = null;
     try {
-      is1=pic1.getInputStream();
-      is2=pic2.getInputStream();
+      is1 = pic1.getInputStream();
+      is2 = pic2.getInputStream();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -112,14 +113,48 @@ public class RegisterController extends BaseController {
     store.setIsDelete(false);
 
 
-//    Account loginConsumer = (Account) req.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
-//    long uid = loginConsumer.getAccountId();
-    long uid=52l;
-    int num = vr.storeRegister(store, (int) uid,picName1,is1,picName2,is2);
-    if(num==1)
+    // Account loginConsumer = (Account) req.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
+    // long uid = loginConsumer.getAccountId();
+    long uid = 52l;
+    int num = vr.storeRegister(store, (int) uid, picName1, is1, picName2, is2);
+    if (num == 1)
       return "register4.view";
     else
       return "register1.view";
+  }
+
+  @RequestMapping(value = "/loadCity.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String loadCity(HttpServletRequest req) {
+    String area=req.getParameter("area");
+    List<String> locations = vr.getCity(area);
+
+    return this.getResultJSON(true, locations);
+  }
+  
+  @RequestMapping(value = "/loadPlace.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String loadPlace(HttpServletRequest req) {
+    String city=req.getParameter("city");
+    List<Location> locations = vr.getPlace(city);
+
+    return this.getResultJSON(true, locations);
+  }
+  
+  @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String loadLocation(HttpServletRequest req) {
+    List<String> locations = vr.getAllArea();
+
+    return this.getResultJSON(true, locations);
+  }
+  
+  @RequestMapping(value = "/loadConfig.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String loadConfig(HttpServletRequest req) {
+    List<Configuration> cons=vr.getAllConfig();
+
+    return this.getResultJSON(true, cons);
   }
 
   @Override

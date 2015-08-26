@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Basic Setting</title>
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/setting.css" />
-		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>		
+		<link rel="stylesheet" href="<c:url value='/css/vendor/setting.css'/>" />
+		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>	
+		<script type="text/javascript" src="<c:url value='/js/vendor/personalInfo.js'/>"></script>
 	</head>
 
 	<body>
@@ -18,7 +21,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="index.html"><img src="img/title_client.png" width="70px" style="margin-top:8px"></a>
+					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-nav">
 					<ul class="nav navbar-nav navbar-right">
@@ -81,22 +84,17 @@
 
 								<div class="panel-heading">Basic Setting</div>
 								<div class="panel-body form-horizontal">
-									<div class="page-text">	
-    									<label>Tel</label>
-    									<div>
-      										<input type="text" class="form-control" placeholder="tel" readonly>
-    									</div>
-    								</div>
+									
     								<div class="page-text">	
     									<label>True name</label>
     									<div>
-      										<input type="text" class="form-control" placeholder="True name" readonly>
+      										<input type="text" class="form-control" placeholder="True name" readonly id="trueNamemsg">
     									</div>
     								</div>
     								<div class="page-text">	
     									<label>Idcard number</label>
     									<div>
-      										<input type="text" class="form-control" placeholder="Idcard number" readonly>
+      										<input type="text" class="form-control" placeholder="Idcard number" readonly id="dicardnumbermsg">
     									</div>
     								</div>
     								<div class="page-text">	
@@ -105,7 +103,7 @@
   											<div class="form-group">
     											<div class="input-group">
       												<div class="input-group-addon">$</div>
-      												<input type="text" class="form-control inputAmount"  placeholder="Amount" readonly>      												
+      												<input type="text" class="form-control inputAmount"  placeholder="Amount" readonly id="accountmsg">      												
     											</div>
   											</div>
 										</form>
