@@ -1,13 +1,23 @@
 package com.group.tto.main.controller;
 
+import java.util.Map;
+
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group.tto.main.common.Constants;
+import com.group.tto.main.service.ConfigService;
+
 public abstract class BaseController {
+
+  @Autowired
+  private ConfigService service;
+
   @RequestMapping("/{view}.view")
-  public String view(@PathVariable String view) {
-	  System.out.println(view);
+  public String view(@PathVariable String view, Map<String, String> map) {
+    map.put(Constants.HOT_LINE, this.service.getHotLine());
     return this.getName() + "/" + view;
   }
 
@@ -21,7 +31,7 @@ public abstract class BaseController {
     String data = "";
     try {
       data = new ObjectMapper().writeValueAsString(obj);
-      System.out.println("data=============="+data);
+      System.out.println("data==============" + data);
     } catch (Exception e) {}
     return "{\"isSuccess\":" + isSuccess + ",\"data\":" + data + "}";
   }

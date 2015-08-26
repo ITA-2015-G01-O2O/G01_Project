@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Store;
-import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.common.StoreSearchCriteria;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.StoreDao;
@@ -47,10 +47,10 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
     Predicate condition = builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation());
 
-    if (COMMON.ASC.equals(criteria.getOrderType())) {
+    if (Constants.ASC.equals(criteria.getOrderType())) {
       query = query.orderBy(builder.asc(store.get(criteria.getSortType())));
     }
-    if (COMMON.DESC.equals(criteria.getOrderType())) {
+    if (Constants.DESC.equals(criteria.getOrderType())) {
       query = query.orderBy(builder.desc(store.get(criteria.getSortType())));
     }
     if (criteria.getStoreType() != null || criteria.getSortType() != null) {
