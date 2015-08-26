@@ -21,7 +21,7 @@ import com.group.tto.cmn.model.Location;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.cmn.model.StoreProfile;
 import com.group.tto.cmn.type.StopProfileStatus;
-import com.group.tto.main.common.COMMON;
+import com.group.tto.main.common.Constants;
 import com.group.tto.main.vendor.service.VendorRegisterService;
 
 @Controller
