@@ -48,8 +48,12 @@ public class ShopViewVo {
     this.locationName =
         store.getLocation().getArea() + "," + store.getLocation().getCity() + ","
             + store.getLocation().getPlace();
-    this.serviceBeginTime = new SimpleDateFormat("HH:mm").format(store.getServiceBeginTime());
-    this.serviceEndTime = new SimpleDateFormat("HH:mm").format(store.getServiceEndTime());
+    if (store.getServiceBeginTime() != null) {
+      this.serviceBeginTime = new SimpleDateFormat("HH:mm").format(store.getServiceBeginTime());
+    }
+    if (store.getServiceEndTime() != null) {
+      this.serviceEndTime = new SimpleDateFormat("HH:mm").format(store.getServiceEndTime());
+    }
     this.deliverFee = store.getDeliverFee().toString();
     this.startingFee = store.getStartingFee().toString();
     this.avgPoint = store.getAvgPoint().toString();
