@@ -147,12 +147,14 @@ Ext.define('shop.view.searchView', {
                                 {
                                     xtype: 'button',
                                     text: 'Seach',
-									itemId:'searchBtn'
+									itemId:'searchBtn',
+									width:70
                                 },
                                 {
                                     xtype: 'button',
                                     text: 'Reset',
-									itemId:'resetBtn'
+									itemId:'resetBtn',
+									width:70
                                 },
                                 {
                                 	xtype:'container',

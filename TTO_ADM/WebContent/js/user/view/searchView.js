@@ -102,7 +102,6 @@ Ext.define('user.view.searchView', {
                         {
                             xtype: 'panel',
                             region: 'north',
-                            height: 150,
                             layout: 'anchor',
                             bodyCls: 'paddingBox',
                             collapsible: true,
@@ -124,14 +123,21 @@ Ext.define('user.view.searchView', {
 									itemId:'searchIsVendor'
                                 },
                                 {
-                                    xtype: 'button',
-                                    text: 'Seach',
-									itemId:'searchBtn'
-                                },
-                                {
-                                    xtype: 'button',
-                                    text: 'Rest',
-									itemId:'resetBtn'
+                                	xtype:'container',
+                                	items:[
+										{
+										    xtype: 'button',
+										    text: 'Seach',
+											itemId:'searchBtn',
+											width:70
+										},
+										{
+										    xtype: 'button',
+										    text: 'Reset',
+											itemId:'resetBtn',
+											width:70
+										}
+                                	]
                                 }
                             ]
                         },
