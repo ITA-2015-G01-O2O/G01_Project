@@ -29,6 +29,8 @@ public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
 		    Predicate predicate =
 		        builder.and(builder.equal(admin.get(FIELD_LOGINNAME), loginname),
 		            builder.equal(admin.get(FIELD_PASSWORD), password));
+		    
+		    
 		    List<Account> result =
 		        this.getEntityManager().createQuery(query.where(predicate)).getResultList();
 
