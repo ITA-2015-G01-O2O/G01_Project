@@ -116,12 +116,11 @@ $(function(){
 							alert(error);
 						}
 					}).done(function(json) {
-						var ss= s;
-						alert(json.length);
-						if (json != "") {
+						var ss= s;						
+						if (json.isSuccess) {
 							alert("success");
-							$("#userInfo_fund").text("￥："+json.fund);
-							
+							ss.find("#userCancelThisOrder").addClass("hidden");
+							s.find("#resOVoOrderState").text("CANCEL");
 						}
 					});
 				}

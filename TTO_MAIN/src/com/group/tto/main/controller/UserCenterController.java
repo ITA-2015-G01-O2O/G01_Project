@@ -223,10 +223,10 @@ public class UserCenterController extends BaseController {
   @ResponseBody
   public String cancelOrder(String orderId){
     System.out.println("receive user cancel order request!"+orderId);
-    orderService.cancelOrderById(Long.valueOf(orderId));
+    Boolean result = orderService.cancelOrderById(Long.valueOf(orderId));
     
     
     
-    return this.getResultJSON(true, "");
+    return this.getResultJSON(result, "");
   }
 }
