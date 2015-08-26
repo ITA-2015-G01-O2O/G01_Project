@@ -25,6 +25,8 @@ $(function() {
 				setPros(json.data.products);
 
 				setMerInfo(json.data);
+				
+				setProductLael(json.data.productLabels);
 
 			} 
 		}
@@ -56,8 +58,29 @@ function getUserName(){
 	});
 }
 
+
+function setProductLael(productLabel){
+	if (productLabel.length != 0) {
+		for (var i = 0; i < productLabel.length; i++) {
+			addproductLabel(productLabel[i]);
+		}
+	}
+}
+
+
+function addproductLabel(proLabel){
+	var labelBtn= $("#labelBtn").clone();
+	labelBtn.show().appendTo($("#showAllpros"));
+	setRomdomNameandId(labelBtn);
+	$(labelBtn).text(proLabel.productLabelName);
+	$(labelBtn).data("proLabelId",proLabel.productLabelId);
+}
+
+
+
 function setPros(products) {
 	if (products.length != 0) {
+		deleteproducts();
 		for (var i = 0; i < products.length; i++) {
 			addshowPro(products[i]);
 		}
@@ -112,8 +135,7 @@ function setMerInfo(json) {
 }
 
 function deliveryPros() {
-	$
-			.ajax({
+	$.ajax({
 				type : "post",
 				url : "../consumer/isConsumerLogin.do",
 				cache : false,
@@ -126,7 +148,7 @@ function deliveryPros() {
 						if (json != "") {
 							if (json.isSuccess == true) {
 								var dataString = getOrder();
-								if (dataString != null) {
+								if (dataString.length>0) {
 									var dataJson = JSON.stringify(dataString);
 
 									$.cookie('com.group.tto.main.addorder'
@@ -137,6 +159,8 @@ function deliveryPros() {
 									window.location.href = '../consumer/confirmOrder.view?merId='
 											+ merId;
 
+								}else{
+									$("#orderEmpty").modal("show");
 								}
 							} else {
 								$("#relogin").modal("show");
@@ -371,11 +395,11 @@ function showaddComment(data) {
 }
 
 function deleteComment() {
-	var divele = $("#comment").children()
+	var divele = $("#comment").children();
 	divele.each(function() {
 		var orderclass = $(this).attr("class");
 		var orderid = $(this).attr("id");
-		if (orderclass.indexOf("commentlist") != -1) {
+		if (orderid!=undefined && orderid.indexOf("commentInfo") != -1) {
 
 			if (orderid != "commentInfo") {
 				$(this).remove();
@@ -383,5 +407,66 @@ function deleteComment() {
 
 		}
 	});
-
 }
+function deleteproducts() {
+	var divele = $("#meals").children();
+	divele.each(function() {
+		var orderclass = $(this).attr("class");
+		var orderid = $(this).attr("id");
+		if (orderid!=undefined && orderid.indexOf("proimg") != -1) {
+			if (orderid != "proimg") {
+				$(this).remove();
+			}
+		}
+		if (orderid!=undefined && orderid.indexOf("proInfo") != -1) {
+			if (orderid != "proInfo") {
+				$(this).remove();
+			}
+		}
+	});
+}
+
+function clickproLabel(ele){
+	var productlabelId=$(ele).data("proLabelId");
+	deleteproducts();
+	$.ajax({
+		type : "post",
+		url : "../consumer/getprosByproLabel.do",
+		cache : false,
+		data : {
+			merId : merId,
+			productlabelId:productlabelId
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				setPros(json.data);
+			} 
+		}
+	});
+}
+
+function clickproLabelgetAll(){
+	$.ajax({
+		type : "post",
+		url : "../consumer/getMerchantById.do",
+		cache : false,
+		data : {
+			merId : merId
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				setPros(json.data.products);
+			} 
+		}
+	});
+}
+
+

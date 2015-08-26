@@ -17,5 +17,6 @@ public interface StoreDao {
 	 * @return
 	 */
 	public List<Store> getStoreByCriteria(StoreSearchCriteria criteria);
+
 	
 }

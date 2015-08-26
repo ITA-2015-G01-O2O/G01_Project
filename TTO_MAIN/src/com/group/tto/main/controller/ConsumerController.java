@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.Account;
+import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.common.Constants;
 import com.group.tto.main.service.AccountService;
@@ -44,7 +45,19 @@ public class ConsumerController extends BaseController {
     return data;
   }
   
-  
+  @RequestMapping(value = "/getprosByproLabel.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String getprosByproLabel(String merId,String productlabelId) {
+    System.out.println("--------" + productlabelId);
+    List<Product> products = this.storeService.getStoreByprosLabelId(Long.parseLong(merId),Long.parseLong(productlabelId));
+
+    System.out.println("--------" + products);
+    if (products == null) {
+      products =new ArrayList<Product>();
+    }
+    String data = this.getResultJSON(true, products);
+    return data;
+  }
   
   
 

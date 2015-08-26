@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.SingularAttribute;
 
 import org.springframework.stereotype.Repository;
 
@@ -59,6 +60,5 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
     return storeList;
   }
-
 
 }
