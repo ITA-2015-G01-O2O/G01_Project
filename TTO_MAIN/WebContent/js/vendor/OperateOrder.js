@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$.get("../vendor/order/loadAllNewOrder.do", function(data) {
+	$.get("loadAllNewOrder.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
 			addOrderTale(this);
@@ -9,16 +9,16 @@ $(document).ready(function() {
 			var status = $(this).text();
 		//	if (status == "ACCEPT") {
 			//	alert(status + $(this).data('id'));
-				$.get("../vendor/order/updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
-					 window.location.href="/TTO_MAIN/product/NewOrder.view";
+				$.get("updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
+					 window.location.href="NewOrder.view";
 				});
 		//	}
 		});
 
 		$(".btn.btn-danger.giveUp").on("click", function() {
 			var status = $(this).text();
-			$.get("../vendor/order/updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
-				 window.location.href="/TTO_MAIN/product/NewOrder.view";
+			$.get("updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
+				 window.location.href="NewOrder.view";
 			});
 		});
 
@@ -44,8 +44,7 @@ function addOrderTale(str) {
 	Order.find("#orderPeopleName").text(str.contacterName);
 	Order.find("#orderTel").text(str.contacterPhone);
 	Order.find("#orderAddress").text(str.detailLocation);
-	// 有问题
-	Order.find("#priceLabel").text(str.orderItems[0].price);
+	Order.find("#priceLabel").text(getPrice(str.orderItems));
 	Order.find(".btn.btn-primary.access").data('id', str.orderId);
 	Order.find(".btn.btn-danger.giveUp").data('id', str.orderId);
 	Order.appendTo(".col-xs-9.main-wrapper");
@@ -59,6 +58,18 @@ function addOrderTale(str) {
 	}
 }
 
+
+
+function getPrice(OrderItems){
+	if(OrderItems!=null)
+	{
+		for (var i = 0; i < OrderItems.length; i++) {
+			var price =0;
+			price=price+parseInt(price+OrderItems[i].price);
+		}
+		return price;
+	}
+}
 
 var formatDateTime2 = function (date) {  
     var y = date.getFullYear();  
