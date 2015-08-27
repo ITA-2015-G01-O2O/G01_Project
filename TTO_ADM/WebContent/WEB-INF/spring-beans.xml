@@ -21,7 +21,7 @@
         http://www.springframework.org/schema/task 
     	http://www.springframework.org/schema/task/spring-task.xsd"
 	default-autowire="default">
-	
+
 	<task:annotation-driven></task:annotation-driven>
 	<context:component-scan base-package="com.group.tto.admin.task"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
@@ -29,7 +29,7 @@
 	<context:component-scan base-package="com.group.tto.admin.dao" />
 	<context:component-scan base-package="com.group.tto.admin.service" />
 	<context:component-scan base-package="com.group.tto.admin.webservice" />
-	
+
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="fileEncoding" value="UTF-8" />
@@ -58,9 +58,9 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop>  -->
+				<!-- <prop key="hibernate.show_sql">true</prop> -->
+				<!-- <prop key="hibernate.format_sql">true</prop> -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
 			</props>
 		</property>
 	</bean>
