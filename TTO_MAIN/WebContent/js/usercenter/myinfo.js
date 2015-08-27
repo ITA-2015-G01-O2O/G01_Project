@@ -34,7 +34,7 @@ function loadMyFav(){
 			alert("error");
 		}
 	}).done(function(json) {
-		alert(json.length);
+		
 		if (json != "") {
 			$("#messages").children().remove();
 			$("#myfavinfo").removeClass("hidden");
