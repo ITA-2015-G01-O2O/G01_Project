@@ -56,6 +56,7 @@
 
 						<div class="row" id="mainContent">
 							<div class="tab-content">
+							
 								<div role="tabpanel" class="tab-pane active" id="home"></div>
 
 								<div role="tabpanel" class="tab-pane" id="profile">
@@ -114,7 +115,7 @@
 
 			</div>
 		</div>
-
+		<!-- my order template -->
 		<div class="hidden" id="myordermodel">
 			<div class="col-xs-12 res_content  page-header ">
 				<div class="col-xs-1"></div>
@@ -227,13 +228,13 @@
 				</div>
 			</div>
 		</div>
-
+		<!--shopping car template  -->
 		<tr class="hidden" id="productListModul">
 			<td class="active" id="productId"></td>
 			<td class="success" id="productName"></td>
 			<td class="warning" id="productPrice"></td>
 		</tr>
-
+		<!-- modal of changepassword -->
 		<div class="modal fade" id="showChangePsw" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -251,7 +252,7 @@
 				</div>
 			</div>
 		</div>
-
+		<!-- change password success modal -->
 		<div class="modal fade" id="successchange" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -265,7 +266,7 @@
 				</div>
 			</div>
 		</div>
-
+		<!-- change password fail modal -->
 		<div class="modal fade" id="failchange" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -279,7 +280,7 @@
 				</div>
 			</div>
 		</div>
-
+		<!-- favorite vendors template -->
 		<div class="hidden" id="myfavinfo">
 			<div class="col-xs-12">
 				<div class="col-xs-1"></div>
@@ -317,7 +318,7 @@
 
 
 		</div>
-
+		<!-- user charge template -->
 		<div class="modal fade" id="chargePage" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -326,17 +327,17 @@
 						<h4 class="modal-title" id="myModalLabel">charge money</h4>
 					</div>
 					<div class="modal-body">
-						
-					
+						<div>add amount:<input type="text" id="addMoney"></div>					
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
+						<button type="button" class="btn btn-primary" id="saveCharge">Save
 							changes</button>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<jsp:include page="../common/footer.jsp" flush="true">
             <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
         </jsp:include>
