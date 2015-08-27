@@ -120,11 +120,11 @@ public class AccountController extends BaseController {
                 //flag = true;
                 if(temp.getStore()!=null){
                   flag = true;
-                    if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.NORMAL.name()){
+                    if(temp.getStore().getStoreProfile().getStatus().equals(StopProfileStatus.NORMAL.name())){
                       status="NORMAL";
-                    }else if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.CHECK.name()){
+                    }else if(temp.getStore().getStoreProfile().getStatus().equals(StopProfileStatus.CHECK.name())){
                       status="CHECK";
-                    }if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.FREEZE.name()){
+                    }if(temp.getStore().getStoreProfile().getStatus().equals(StopProfileStatus.FREEZE.name())){
                       status="FREEZE";
                     }
       
