@@ -33,7 +33,7 @@ public class CollectionController extends BaseController {
       Store s=new Store();
       s.setStoreId(storeId);
       c.setStore(s);
-      c.setUserProfileId(loginConsumer.getUserProfile().getUserProfileId());
+      c.setUserProfile(loginConsumer.getUserProfile());
       collectService.addCollectNode(c);
     }
     
