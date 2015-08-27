@@ -32,12 +32,8 @@ public class ConsumerController extends BaseController {
   @ResponseBody
   public String getMerProsById(String merId) {
     MerProsList merProsList = this.storeService.getStoreById(Long.parseLong(merId));
-    if(merProsList==null){
-      System.out.println(merProsList);
-    }
     System.out.println(merProsList.getProducts().size()+"   controller");
-    MerProsList newMerProsList=new MerProsList(merProsList);
-    String data = this.getResultJSON(true, newMerProsList);
+    String data = this.getResultJSON(true, merProsList);
     return data;
   }
   

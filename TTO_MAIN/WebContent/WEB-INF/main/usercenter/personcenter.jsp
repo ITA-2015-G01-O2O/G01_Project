@@ -168,7 +168,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-6 col-md-offset-2">
 
 						<div class="col-xs-12 myclass1">
 							<div class="col-xs-2"></div>
@@ -196,10 +196,10 @@
 								</div>
 								<div id="resOVoComment2" style="display: none; padding: 5px;">
 									comment:<input style="margin: 5px;" type="text"
-										id="resOVoCommenttext" /> score:<input style="margin: 5px;"
-										type="text" id="resOVoCommentscore" /> deliver time:<input
+										id="resOVoCommenttext" /> <br/>score:<input style="margin: 5px;"
+										type="text" id="resOVoCommentscore" /> <br/>deliver time:<input
 										style="margin: 5px;" type="text" id="resOVoCommenttime" />
-									minute(s)
+									minute(s)<br/>
 									<button onclick="commitcomment(this)"
 										style="margin-left: 15px;" id="commitId">commit</button>
 									<div class="alert alert-danger" style="display: none"

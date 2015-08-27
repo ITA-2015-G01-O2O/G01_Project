@@ -17,62 +17,59 @@ import org.springframework.stereotype.Repository;
 import com.group.tto.cmn.model.Collect;
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.Store;
+import com.group.tto.cmn.model.UserProfile;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.CollectDao;
 
 /**
  * @author LINI5
- *
+ * 
  */
 @Repository
-public class CollectDaoImpl  extends BaseDao<Collect> implements CollectDao {
-	
-	
-	private static final String FIELD_STORE="store";
-	private static final String FIELD_COLLECTID="collectId";
+public class CollectDaoImpl extends BaseDao<Collect> implements CollectDao {
 
-	@Override
-	public List<Collect> findAllCollects() {
-		List<Collect> collects = new ArrayList<Collect>();
-	
-		collects = this.getEntityManager().createQuery("from Collect")
-				.getResultList();
 
-		return collects;
-	}
+  private static final String FIELD_STORE = "store";
+  private static final String FIELD_USER_PROFILE = "userProfile";
+  private static final String FIELD_COLLECTID = "collectId";
 
-	@Override
-	public Long findAllCollectsByStore(Store store) {
-		
-		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-		CriteriaQuery<Long> query = builder.createQuery(Long.class);
-		Root<Collect> collect = query.from(Collect.class);
+  @Override
+  public List<Collect> findAllCollects() {
+    List<Collect> collects = new ArrayList<Collect>();
 
-		Predicate condition = builder.equal(collect.get(FIELD_STORE),
-				store);	
-		 return this.getEntityManager()
-			        .createQuery(query.select(builder.countDistinct(collect)).where(condition))
-			        .getSingleResult();
-	}
+    collects = this.getEntityManager().createQuery("from Collect").getResultList();
 
-	@Override
-	public void removeCollectNodeById(Long id) {
-		delete(this.getEntityManager().find(Collect.class, id));
-	}
+    return collects;
+  }
 
-	@Override
-	public Collect findCollectNodeById(Long id) {
-		
-		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-		CriteriaQuery<Collect> query = builder.createQuery(Collect.class);
-		Root<Collect> collect = query.from(Collect.class);
+  @Override
+  public Long findAllCollectsByStore(Store store) {
 
-		Predicate condition = builder.equal(collect.get(FIELD_COLLECTID),
-				id);	
-		 return this.getEntityManager()
-			        .createQuery(query.where(condition))
-			        .getSingleResult();
-	}
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Long> query = builder.createQuery(Long.class);
+    Root<Collect> collect = query.from(Collect.class);
+
+    Predicate condition = builder.equal(collect.get(FIELD_STORE), store);
+    return this.getEntityManager()
+        .createQuery(query.select(builder.countDistinct(collect)).where(condition))
+        .getSingleResult();
+  }
+
+  @Override
+  public void removeCollectNodeById(Long id) {
+    delete(this.getEntityManager().find(Collect.class, id));
+  }
+
+  @Override
+  public Collect findCollectNodeById(Long id) {
+
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Collect> query = builder.createQuery(Collect.class);
+    Root<Collect> collect = query.from(Collect.class);
+
+    Predicate condition = builder.equal(collect.get(FIELD_COLLECTID), id);
+    return this.getEntityManager().createQuery(query.where(condition)).getSingleResult();
+  }
 
   @Override
   public void addCollect(Collect c) {
@@ -84,7 +81,18 @@ public class CollectDaoImpl  extends BaseDao<Collect> implements CollectDao {
     }
   }
 
-	
-	
+  @Override
+  public List<Collect> findStoresByUserProfileId(Long userProfileId) {
+
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Collect> query = builder.createQuery(Collect.class);
+    Root<Collect> collect = query.from(Collect.class);
+
+    Predicate condition = builder.equal(collect.get("userProfile"), userProfileId);
+
+    return this.getEntityManager().createQuery(query.where(condition)).getResultList();
+  }
+
+
 
 }
