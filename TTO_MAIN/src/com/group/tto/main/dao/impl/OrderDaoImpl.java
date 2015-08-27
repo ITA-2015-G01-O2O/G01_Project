@@ -16,6 +16,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Order;
+import com.group.tto.cmn.model.OrderItem;
 import com.group.tto.cmn.model.UserProfile;
 import com.group.tto.main.dao.BaseDao;
 import com.group.tto.main.dao.OrderDao;
@@ -70,6 +71,9 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 
   @Override
   public int addOrder(Order o) {
+    for(OrderItem item:o.getOrderItems()){
+      this.getEntityManager().persist(item);
+    }
     this.create(o);
     return 1;
   }
