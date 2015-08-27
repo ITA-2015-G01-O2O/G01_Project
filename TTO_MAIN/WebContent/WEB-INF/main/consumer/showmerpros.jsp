@@ -209,9 +209,10 @@
                                             </div>
                                             <h5 id="startingFee"></h5>
                                             <h5 id="deliverFee"></h5>
-                                            <a href="#" onclick="addCollect()">
-                                                <a class="btn btn-default">
+                                            <a href="#" onclick="addCollect()" class="btn btn-default">
+                                  
                                                     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏
+                                        
                                                 </a>
                                         </div>
                                         <div class="clear"></div>

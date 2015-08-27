@@ -425,11 +425,10 @@ function addCollect(){
 	var flag=false;
 	if( $("#loginameshow").data("successlogin")!=undefined && $("#loginameshow").data("successlogin")==true ){
 		flag=true;
+		
 	}else{
 		$("#relogin").modal("show");
 	}
-	
-	
 	
 	if(flag){
 		$.ajax({
