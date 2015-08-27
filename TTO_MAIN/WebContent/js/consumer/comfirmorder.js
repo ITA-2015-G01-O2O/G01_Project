@@ -90,12 +90,13 @@ function confirmorderbtn() {
 	var auserPhone = $("#auserPhone").val();
 	var auseraddress = $("#auseraddress").val();
 
-	validate(ausername, auserPhone, auseraddress);
+	errorMsg=validate(ausername, auserPhone, auseraddress);
 	if(errorMsg!=null){
 		$("#errorMsg2").show();
 		$('#errorMsg2').text(errorMsg);
-	}
-	if (ausername != null && auserPhone != null && auseraddress != null) {
+		return false;
+	}else {
+		addflag=true;
 		$("#addressModal").modal("hide");
 		$("#addadress").hide();
 		$("#showaddressInfo").show();
@@ -116,10 +117,10 @@ function validate(ausername, auserPhone, auseraddress) {
 			errorMsg=getErrorMsg(errorMsg, "Error UserPhone format,The UserPhone's length  should be 12 number!");
 		}
 	}
-	
 	if (auseraddress == null) {
 		errorMsg=getErrorMsg(errorMsg, "UserPhone should not be null!");
 	}
+	return errorMsg;
 }
 
 
@@ -131,6 +132,7 @@ function getErrorMsg(msg, newmsg) {
 	}
 	return msg;
 }
+var addflag=false;
 function confirmbuy() {
 
 	var ausername = $("#ausername").val();
@@ -141,8 +143,7 @@ function confirmbuy() {
 	var dataJson = $.cookie('com.group.tto.main.addorder' + merId);
 	// var dataJson = JSON.stringify(orderjson);
 	// var dataJson=dataJson.substr(1, dataJson.length - 2);
-	if (ausername != null && auserPhone != null && auseraddress != null
-			&& dataJson != null) {
+	if (addflag==true) {
 		$.ajax({
 			type : "post",
 			url : "../order/addOrder.do",
@@ -161,7 +162,7 @@ function confirmbuy() {
 		}).done(function(json) {
 			if (json != "") {
 				if (json.isSuccess == true) {
-
+					addflag=false;
 					$.cookie('com.group.tto.main.addorder' + merId, '', {
 						expires : -1
 					});
