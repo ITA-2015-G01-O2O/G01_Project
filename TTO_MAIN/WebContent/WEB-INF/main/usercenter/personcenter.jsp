@@ -17,6 +17,12 @@
 <link rel="stylesheet" href="../css/usercenter/myfav.css" />
 <link rel="stylesheet" href="../css/usercenter/myinfo.css" />
 <link rel="stylesheet" href="../css/usercenter/myorder.css" />
+<style>
+	.resOVoComment2 {
+		padding: 5px;
+	}
+
+</style>
 </head>
 <body>
 
@@ -190,12 +196,19 @@
 								<lable id="resOVoRemarks"></lable>
 							</div>
 							<div id="resOVoCommentFunc" style="display:none">
-								comment:
-								<lable id="resOVoComment" style="display:none"></lable>
-								<div id="resOVoComment2" style="display: none">
-									<input type="text" id="resOVoCommenttext"/> <span
-										id="comment"></span>
-									<button onclick="commitcomment(this)" id="commitId">commit</button>
+								<div>	
+									conment:<lable id="resOVoComment" style="display:none"></lable>
+									score:<lable id="resOVoCommentscore2" style="display:none"></lable>
+									deliver time:<lable id="resOVoCommenttime2" style="display:none"></lable>
+								</div>
+								<div id="resOVoComment2" style="display: none;padding: 5px;">
+										comment:<input style="margin: 5px;" type="text" id="resOVoCommenttext"/> 
+										score:<input  style="margin: 5px;"  type="text" id="resOVoCommentscore"/> 
+										deliver time:<input  style="margin: 5px;"  type="text" id="resOVoCommenttime"/> minute(s) 
+									<button onclick="commitcomment(this)"  style="margin-left: 15px;"  id="commitId" >commit</button>
+									<div class="alert alert-danger" 
+																style="display: none" role="alert" id="errorMsg3"></div>
+							
 								</div>
 							</div>
 							<div class="page-header ">
