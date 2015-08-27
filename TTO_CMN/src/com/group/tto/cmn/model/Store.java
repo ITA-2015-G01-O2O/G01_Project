@@ -244,6 +244,106 @@ public class Store {
     this.typeConfig = typeConfig;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((announcement == null) ? 0 : announcement.hashCode());
+    result = prime * result + ((avgDeliverTime == null) ? 0 : avgDeliverTime.hashCode());
+    result = prime * result + ((avgPoint == null) ? 0 : avgPoint.hashCode());
+    result = prime * result + ((deliverFee == null) ? 0 : deliverFee.hashCode());
+    result = prime * result + ((detailLocation == null) ? 0 : detailLocation.hashCode());
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((isHot == null) ? 0 : isHot.hashCode());
+    result = prime * result + ((location == null) ? 0 : location.hashCode());
+    result = prime * result + ((logoPicUrl == null) ? 0 : logoPicUrl.hashCode());
+    result = prime * result + ((orders == null) ? 0 : orders.hashCode());
+    result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+    result = prime * result + ((productLabels == null) ? 0 : productLabels.hashCode());
+    result = prime * result + ((products == null) ? 0 : products.hashCode());
+    result = prime * result + ((serviceBeginTime == null) ? 0 : serviceBeginTime.hashCode());
+    result = prime * result + ((serviceEndTime == null) ? 0 : serviceEndTime.hashCode());
+    result = prime * result + ((startingFee == null) ? 0 : startingFee.hashCode());
+    result = prime * result + ((storeId == null) ? 0 : storeId.hashCode());
+    result = prime * result + ((storeName == null) ? 0 : storeName.hashCode());
+    result = prime * result + ((storeProfile == null) ? 0 : storeProfile.hashCode());
+    result = prime * result + ((typeConfig == null) ? 0 : typeConfig.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Store other = (Store) obj;
+    if (announcement == null) {
+      if (other.announcement != null) return false;
+    } else if (!announcement.equals(other.announcement)) return false;
+    if (avgDeliverTime == null) {
+      if (other.avgDeliverTime != null) return false;
+    } else if (!avgDeliverTime.equals(other.avgDeliverTime)) return false;
+    if (avgPoint == null) {
+      if (other.avgPoint != null) return false;
+    } else if (!avgPoint.equals(other.avgPoint)) return false;
+    if (deliverFee == null) {
+      if (other.deliverFee != null) return false;
+    } else if (!deliverFee.equals(other.deliverFee)) return false;
+    if (detailLocation == null) {
+      if (other.detailLocation != null) return false;
+    } else if (!detailLocation.equals(other.detailLocation)) return false;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (isHot == null) {
+      if (other.isHot != null) return false;
+    } else if (!isHot.equals(other.isHot)) return false;
+    if (location == null) {
+      if (other.location != null) return false;
+    } else if (!location.equals(other.location)) return false;
+    if (logoPicUrl == null) {
+      if (other.logoPicUrl != null) return false;
+    } else if (!logoPicUrl.equals(other.logoPicUrl)) return false;
+    if (orders == null) {
+      if (other.orders != null) return false;
+    } else if (!orders.equals(other.orders)) return false;
+    if (phone == null) {
+      if (other.phone != null) return false;
+    } else if (!phone.equals(other.phone)) return false;
+    if (productLabels == null) {
+      if (other.productLabels != null) return false;
+    } else if (!productLabels.equals(other.productLabels)) return false;
+    if (products == null) {
+      if (other.products != null) return false;
+    } else if (!products.equals(other.products)) return false;
+    if (serviceBeginTime == null) {
+      if (other.serviceBeginTime != null) return false;
+    } else if (!serviceBeginTime.equals(other.serviceBeginTime)) return false;
+    if (serviceEndTime == null) {
+      if (other.serviceEndTime != null) return false;
+    } else if (!serviceEndTime.equals(other.serviceEndTime)) return false;
+    if (startingFee == null) {
+      if (other.startingFee != null) return false;
+    } else if (!startingFee.equals(other.startingFee)) return false;
+    if (storeId == null) {
+      if (other.storeId != null) return false;
+    } else if (!storeId.equals(other.storeId)) return false;
+    if (storeName == null) {
+      if (other.storeName != null) return false;
+    } else if (!storeName.equals(other.storeName)) return false;
+    if (storeProfile == null) {
+      if (other.storeProfile != null) return false;
+    } else if (!storeProfile.equals(other.storeProfile)) return false;
+    if (typeConfig == null) {
+      if (other.typeConfig != null) return false;
+    } else if (!typeConfig.equals(other.typeConfig)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 
 }
