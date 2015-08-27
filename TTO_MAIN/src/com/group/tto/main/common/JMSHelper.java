@@ -31,7 +31,7 @@ public class JMSHelper<T extends Serializable> {
       conn = factory.createConnection();
       conn.start();
     } catch (Exception e) {
-      e.printStackTrace();
+      SystemLogger.error(LoggerNames.ERROR_APPENDER, "JMS Helper load properties failed");
     }
   }
 

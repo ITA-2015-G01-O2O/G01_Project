@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.group.tto.admin.cmn.LoggerNames;
+import com.group.tto.admin.cmn.SystemLogger;
 import com.group.tto.admin.service.ConfigService;
 import com.group.tto.admin.vo.CategoryVo;
 import com.group.tto.admin.vo.ConfigSearchVo;
@@ -36,13 +38,17 @@ public class ConfigController extends BaseController {
   @RequestMapping(value = "/save.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String save(String hotLine, Long orderAutoConfirmTime, Long orderAutoCancelTime,
-      String categorys) throws Exception {
+      String categorys) {
     ObjectMapper mapper = new ObjectMapper();
-    List<Map<String, Object>> list = mapper.readValue(categorys, List.class);
-
+    List<Map<String, Object>> list = null;
     List<CategoryVo> vos = new ArrayList<CategoryVo>();
-    for (Map<String, Object> map : list) {
-      vos.add(new CategoryVo(map));
+    try {
+      list = mapper.readValue(categorys, List.class);
+      for (Map<String, Object> map : list) {
+        vos.add(new CategoryVo(map));
+      }
+    } catch (Exception e) {
+      SystemLogger.error(LoggerNames.ERROR_APPENDER, "json conver error:" + categorys);
     }
 
     ConfigSearchVo vo = new ConfigSearchVo();

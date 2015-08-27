@@ -6,6 +6,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group.tto.admin.cmn.LoggerNames;
+import com.group.tto.admin.cmn.SystemLogger;
+
 public abstract class BaseController {
   @RequestMapping("/{view}.view")
   public String view(@PathVariable String view) {
@@ -22,7 +25,11 @@ public abstract class BaseController {
     String data = "";
     try {
       data = new ObjectMapper().writeValueAsString(obj);
-    } catch (Exception e) {}
+    } catch (Exception e) {
+      SystemLogger.error(LoggerNames.ERROR_APPENDER, "convert json error:" + obj);
+      isSuccess = false;
+      data = "system.error";
+    }
     return "{\"isSuccess\":" + isSuccess + ",\"data\":" + data + "}";
   }
 
@@ -30,7 +37,11 @@ public abstract class BaseController {
     String data = "";
     try {
       data = new ObjectMapper().writeValueAsString(list);
-    } catch (Exception e) {}
+    } catch (Exception e) {
+      SystemLogger.error(LoggerNames.ERROR_APPENDER, "convert json error:" + list);
+      data = "[]";
+      total = 0L;
+    }
     return "{\"total\":" + total + ",\"datas\":" + data + "}";
   }
 }
