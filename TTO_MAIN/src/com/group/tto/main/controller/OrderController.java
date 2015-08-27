@@ -112,19 +112,12 @@ public class OrderController extends BaseController {
       oi.setPrice(new BigDecimal(aov.getProPrice()));
       p.setProductId(Long.parseLong(aov.getProId()));
       oi.setProduct(p);
- 
       oi.setOrder(o);
-      
-      
       bid = Long.parseLong(aov.getBid());
       ois.add(oi);
       
     }
-
-    
-    
-    
-    
+    o.setStoreId(bid);
     o.setOrderItems(ois);
    
     return o;
