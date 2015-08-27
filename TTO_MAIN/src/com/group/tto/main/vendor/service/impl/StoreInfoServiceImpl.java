@@ -39,8 +39,7 @@ public class StoreInfoServiceImpl implements StoreInfoService {
       Store store1 = storeDao.getStoreById(sid);
       store1.setPhone(store.getPhone());
       store1.setStoreName(store.getStoreName());
-      String type = store1.getTypeConfig().getConfigValue();
-      store1.getTypeConfig().setConfigValue(type);
+      store1.setTypeConfig(store.getTypeConfig());
       store1.setLogoPicUrl(store.getLogoPicUrl());
       f.saveFile(is, uuid);
 
@@ -59,8 +58,7 @@ public class StoreInfoServiceImpl implements StoreInfoService {
       Store store1 = storeDao.getStoreById(sid);
       store1.setPhone(store.getPhone());
       store1.setStoreName(store.getStoreName());
-      String type = store1.getTypeConfig().getConfigValue();
-      store1.getTypeConfig().setConfigValue(type);
+      store1.setTypeConfig(store.getTypeConfig());
 
     } catch (Exception e) {
       num = 0;

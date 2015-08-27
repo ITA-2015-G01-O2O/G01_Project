@@ -11,6 +11,17 @@
 		<link rel="stylesheet" href="<c:url value='/css/vendor/register.css'/>" />
 		<title>Register</title>
 		<script type="text/javascript" src="<c:url value='/js/vendor/register1.js'/>"></script>
+		<style type="text/css">
+			.nav > li > a:hover{
+				background-color: #fff;
+			}
+			.nav-tabs.nav-justified > li > a:hover{
+				border-top: none;
+				border-left: none;
+				border-right: none;
+			}
+			
+		</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -36,9 +47,9 @@
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs nav-justified">
 						<li role="presentation" class="active"><a href="#">Contact information</a></li>
-     					<li role="presentation"><a href="#">Restaurant Information</a></li>
-     					<li role="presentation"><a href="#">Qualification certification</a></li>
-      					<li role="presentation"><a href="#">Approval status</a></li>
+     					<li role="presentation"><a >Restaurant Information</a></li>
+     					<li role="presentation"><a >Qualification certification</a></li>
+      					<li role="presentation"><a >Approval status</a></li>
     				</ul>
     			</div>
     		</div>
