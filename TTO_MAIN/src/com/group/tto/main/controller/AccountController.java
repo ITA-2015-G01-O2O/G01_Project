@@ -30,8 +30,6 @@ public class AccountController extends BaseController {
 	@RequestMapping(value = "/login.do", produces = {"application/json;charset=UTF-8"})
 	  @ResponseBody
 	  public String login(String loginname, String password, HttpServletRequest request) {
-		System.out.println(loginname);
-		System.out.println(password);
 		if (this.accountService.contains(loginname)) {
 	    	Account db = this.accountService.login(loginname, password);
 	      if (db == null) {
@@ -71,8 +69,6 @@ public class AccountController extends BaseController {
 	  @RequestMapping(value = "/register.do", produces = {"application/json;charset=UTF-8"})
       @ResponseBody
       public String register(String to_username, String to_password) {
-        System.out.println(to_username);
-        System.out.println(to_password);
         String loginname=to_username;
             String password=to_password;
         if (this.accountService.contains(loginname)) {
@@ -145,7 +141,6 @@ public class AccountController extends BaseController {
 	  
 	@Override
 	protected String getName() {
-		// TODO Auto-generated method stub
 		return "main/consumer";
 	}
 	

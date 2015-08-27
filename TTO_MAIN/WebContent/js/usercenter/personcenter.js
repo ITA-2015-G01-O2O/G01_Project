@@ -13,7 +13,7 @@ $(function() {
 
 		},
 		error : function(error) {
-			alert("error");
+			
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -35,13 +35,13 @@ $(function() {
 				url : "../usercenter/changeUserProfile.do",
 				cache : false,
 				data : {
-
+					
 				},
 				error : function(error) {
-					alert("error");
+					
 				}
 			}).done(function(json) {
-				alert();
+				
 				if (json != "") {
 					$("#userInfo_password").text(json.password);
 				}
@@ -63,12 +63,10 @@ $(function() {
 
 				},
 				error : function(error) {
-					alert(error);
+					
 				}
 			}).done(function(json) {
-				alert(json.length);
 				if (json != "") {
-					alert("success");
 					$("#userInfo_fund").text("￥：" + json.fund);
 
 				}
@@ -132,14 +130,14 @@ $(function() {
 
 														},
 														error : function(error) {
-															alert(error);
+															
 														}
 													})
 											.done(
 													function(json) {
 														var ss = s;
 														if (json.isSuccess) {
-															alert("success");
+														
 															ss
 																	.find(
 																			"#userConfirmThisOrder")
@@ -183,12 +181,12 @@ $(function() {
 
 						},
 						error : function(error) {
-							alert(error);
+							
 						}
 					}).done(function(json) {
 						var ss = s;
 						if (json.isSuccess) {
-							alert("success");
+							
 							ss.find("#userCancelThisOrder").addClass("hidden");
 							s.find("#resOVoOrderState").text("CANCEL");
 						}
@@ -266,8 +264,7 @@ function commitcomment(ele) {
 					deliverTime : inputvalue3,
 					orderId : $(ele).data("orderId")
 				},
-				error : function(error) {
-					alert("error");
+				error : function(error) {					
 				}
 			}).done(function(json) {
 				if (json.isSuccess == true) {

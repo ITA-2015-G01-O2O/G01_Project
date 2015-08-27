@@ -70,13 +70,9 @@ public class UserCenterController extends BaseController {
    */
   public List<OrderListVo> getAllOrderWhenLoadPage() {
     List<OrderListVo> orderlist = new ArrayList<OrderListVo>();
-    System.out.println("receive load all users' oders when load usercenter page..................");
-    System.out.println("handling.................");
     UserProfile userProfile = new UserProfile();
     userProfile.setUserProfileId(50l);
     List<Order> orders = orderService.getAllOrderByUserProfile(userProfile);
-    System.out.println("orders' amount:" + orders.size());
-    System.out.println(orders.get(0).getOrderItems().size());
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
       Store s = storeService.getStoreById(order.getStoreId());
@@ -110,22 +106,15 @@ public class UserCenterController extends BaseController {
         o.setDeliverTime(c.getDeliverTime());
         o.setPoint(c.getPoint());
       }
-
-
       orderlist.add(o);
-
     }
-
     return orderlist;
-
   }
 
 
   @RequestMapping(value = "/getUserProfile.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public UserInformationVo getUserProfileBy() {
-    System.out.println("receive load user's personal info by accountId..........");
-    System.out.println("handling............");
     Account a = accountService.getAccountByAccountId(50L);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setUname(a.getUsername());
@@ -138,15 +127,9 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/changeUserProfile.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String changeUserProfile(String newPassword, HttpServletRequest request) {
-    System.out.println("receive change user's password  by Account..........");
-    System.out.println("handling............" + newPassword);
-
-    // Account account = new Account();
-    // account.setAccountId(50l);
     Boolean flag = false;
     if (newPassword != null) {
       Account account = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-      System.out.println(account.getUsername());
       if (account != null) {
         flag = true;
         accountService.changePasswordByAccount(account, newPassword);
@@ -161,8 +144,6 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/chargeUserFund.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public UserInformationVo chargeUserFund() {
-    System.out.println("receive charge user's fund  by UserPRofile..........");
-    System.out.println("handling............");
     BigDecimal addFund = new BigDecimal("20");
     UserProfile u = userProfileService.chargeUserProfileFundByProfileId(50l, addFund);
     UserInformationVo userInformationVo = new UserInformationVo();
@@ -174,11 +155,8 @@ public class UserCenterController extends BaseController {
   @ResponseBody
   public List<UserFavVendorsVo> getUserFavVendor() {
     List<UserFavVendorsVo> userFavVendorsVoList = new ArrayList<UserFavVendorsVo>();
-    System.out.println("receive get user's favorite vendors  by UserProfile..........");
-    System.out.println("handling............");
     List<Collect> vendors = userProfileService.getUserCollectVendorByProfileId(50L);
     for (Collect collect : vendors) {
-      System.out.println(collect.getCollectId() + collect.getStore().getStoreName());
       UserFavVendorsVo u = new UserFavVendorsVo();
       Store s = collect.getStore();
       u.setStoreName(s.getStoreName());
@@ -200,14 +178,10 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/cancelUserFavVendor.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public UserInformationVo cancelUserFavVendor() {
-    System.out.println("receive cancel user's favorite vendor  by storeId..........");
-    System.out.println("handling............");
     UserProfile user = userProfileService.getUserProfilebyId(50L);
-
     List<Collect> collects = user.getCollects();
     for (Collect collect : collects) {
       if (collect.getStore().getStoreId() == 50L) {
-        System.out.println("find this collect" + collect.getCollectId());
         collectService.updateCollectNode(collect);
         break;
       }
@@ -236,22 +210,14 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/cancelOrder.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String cancelOrder(String orderId) {
-    System.out.println("receive user cancel order request!" + orderId);
     Boolean result = orderService.cancelOrderById(Long.valueOf(orderId));
-
-
-
     return this.getResultJSON(result, "");
   }
   
   @RequestMapping(value = "/confirmOrder.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String confirmOrder(String orderId) {
-    System.out.println("receive user confirm order request!" + orderId);
     Boolean result = orderService.confirmOrderById(Long.valueOf(orderId));
-
-
-
     return this.getResultJSON(result, "");
   }
   
