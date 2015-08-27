@@ -103,7 +103,11 @@
 												<div class="col-sm-10">
 													<ul class="list-inline">
 														<li class="form-control-static"><p id="userInfo_fund"></p></li>
-														<li><a class="btn btn-info" id="charge">charge</a></li>
+														<li><button type="button" class="btn btn-primary btn-lg"
+															data-toggle="modal" data-target="#chargePage">
+															charge</button>
+															<li>
+	
 													</ul>
 												</div>
 											</div>
@@ -296,7 +300,8 @@
 					<div class="col-xs-12 res_content  page-header">
 						<div class="col-xs-1"></div>
 						<div class="col-xs-2">
-							<a href="#"><img src="" id="showStorePic"  width="100px" height="50px"/></a>
+							<a href="#"><img src="" id="showStorePic" width="100px"
+								height="50px" /></a>
 						</div>
 						<div class="col-xs-6">
 							<ul class="list-inline">
@@ -324,6 +329,26 @@
 			</div>
 
 
+		</div>
+
+		<div class="modal fade" id="chargePage" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">charge money</h4>
+					</div>
+					<div class="modal-body">
+						
+					
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
 		</div>
 </body>
 
