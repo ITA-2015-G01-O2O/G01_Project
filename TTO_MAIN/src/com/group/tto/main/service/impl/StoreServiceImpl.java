@@ -35,11 +35,11 @@ public class StoreServiceImpl implements StoreService {
   private PoductDao productDao;
   @Autowired
   private CollectDao collectDao;
-  
+
   @Override
   @Transactional
-	public MerProsList getStoreById(Long sid) {
-    Store temp=store.getStoreById(sid);
+  public MerProsList getStoreById(Long sid) {
+    Store temp = store.getStoreById(sid);
     if (temp == null) {
       temp = new Store();
     }
@@ -57,8 +57,8 @@ public class StoreServiceImpl implements StoreService {
 
   @Override
   @Transactional
-  public  List<Product> getStoreByprosLabelId(long merId, Long productlabelId) {
-    List<Product> storeList = productDao.getProductByCriteria(merId ,productlabelId);
+  public List<Product> getStoreByprosLabelId(long merId, Long productlabelId) {
+    List<Product> storeList = productDao.getProductByCriteria(merId, productlabelId);
     return storeList;
   }
 
@@ -70,10 +70,10 @@ public class StoreServiceImpl implements StoreService {
     for (Collect collect : collectList) {
       Store s = collect.getStore();
       storeList.add(s);
-    } 
+    }
 
     List<UserFavVendorsVo> userFavVendorsVoList = new ArrayList<UserFavVendorsVo>();
-    for(Store s:storeList){
+    for (Store s : storeList) {
       UserFavVendorsVo u = new UserFavVendorsVo();
       u.setStoreName(s.getStoreName());
       u.setServiceBeginTime(s.getServiceBeginTime());
@@ -81,7 +81,7 @@ public class StoreServiceImpl implements StoreService {
       u.setLogoPicUrl(s.getLogoPicUrl());
       u.setDetailLocation(s.getDetailLocation());
       u.setPhone(s.getPhone());
-      
+
       List<Order> orders = order.getAllOrderByStoreId(s.getStoreId());
       u.setAvgPoint(s.getAvgPoint());
       u.setOrderAmount(new BigDecimal(orders.size()));
@@ -89,13 +89,19 @@ public class StoreServiceImpl implements StoreService {
       u.setCollectAmount(new BigDecimal(l));
 
       userFavVendorsVoList.add(u);
-      
-      
+
+
     }
-    
-    
-    
+
+
+
     return userFavVendorsVoList;
+  }
+
+  @Override
+  @Transactional
+  public Store getOrgStoreById(Long sid) {
+    return store.getStoreById(sid);
   }
 
 
