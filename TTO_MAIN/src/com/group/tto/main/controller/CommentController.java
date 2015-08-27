@@ -27,7 +27,7 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentBySid.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentBySid(String merId) {
-    Store store = this.storeService.getStoreById(Long.parseLong(merId));
+    MerProsList store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
     if (store != null) {
@@ -54,7 +54,7 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentByScore.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentByScore(String merId,int score) {
-    Store store = this.storeService.getStoreById(Long.parseLong(merId));
+    MerProsList store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
     if (store != null) {

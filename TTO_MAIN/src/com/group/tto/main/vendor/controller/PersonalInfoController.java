@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.StoreProfile;
 import com.group.tto.main.vendor.service.PersonalInfoService;
+import com.group.tto.main.vo.PersonalInfo;
 
 @Controller
 @RequestMapping("/vendor/personalInfo")
@@ -22,7 +23,15 @@ public class PersonalInfoController extends BaseController {
     //int sid = (int) req.getSession().getAttribute("sid");
     int sid=2050;
     StoreProfile sp = pi.loadPersonInfo(sid);
-    return this.getResultJSON(true, sp);
+    
+    PersonalInfo pi=new PersonalInfo();
+    pi.setRealName(sp.getRealName());
+    pi.setIdCardNumber(sp.getIdCardNumber());
+    
+    String json=this.getResultJSON(true, pi);
+    System.out.println(json);
+    
+    return json;
 
   }
 

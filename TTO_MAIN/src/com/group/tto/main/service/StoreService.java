@@ -11,6 +11,7 @@ import com.group.tto.main.vo.UserFavVendorsVo;
 
 
 public interface StoreService {
+	public MerProsList getStoreById(Long sid);
 	public Store getStoreById(Long sid);
 
   public List<Store> getStoresbyCriteria(StoreSearchCriteria criteria);

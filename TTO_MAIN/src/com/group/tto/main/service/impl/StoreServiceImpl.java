@@ -21,6 +21,7 @@ import com.group.tto.main.dao.PoductDao;
 import com.group.tto.main.dao.StoreDao;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.vo.UserFavVendorsVo;
+import com.group.tto.main.vo.MerProsList;
 
 
 @Service
@@ -37,8 +38,14 @@ public class StoreServiceImpl implements StoreService {
   
   @Override
   @Transactional
-	public Store getStoreById(Long sid) {	
-    return store.getStoreById(sid);
+	public MerProsList getStoreById(Long sid) {
+    Store temp=store.getStoreById(sid);
+    if (temp == null) {
+      temp = new Store();
+    }
+    System.out.println(temp.getProducts().size());
+    MerProsList merProsList = new MerProsList(temp);
+    return merProsList;
   }
 
   @Override

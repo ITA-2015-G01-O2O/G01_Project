@@ -158,19 +158,13 @@
 										Management
 								</a></li>
 								<br />
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.view">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
-										Information
-								</a></li>
-								<li role="presentation"><a href="storeInfo.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
-										Information</a></li>
-								<li role="presentation"><a href="BasicSetting.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic
-										Settings</a></li>
-							</ul>
+								<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									</li>
+									<li class="active" role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+								</ul>
 						</div>
 						<!--
                         	作者：chen.ace@outlook.com
@@ -268,10 +262,7 @@
 		</div>
 
 
-		<div id="footer">
-			<a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span>
-			</a>
-		</div>
+
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
         <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>

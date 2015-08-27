@@ -17,7 +17,7 @@ $(function() {
 			merId : merId
 		},
 		error : function(error) {
-			alert("error");
+			alert("error5");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -31,7 +31,6 @@ $(function() {
 			} 
 		}
 	});
-	getUserName();
 });
 
 
@@ -119,7 +118,7 @@ function deliveryPros() {
 				url : "../consumer/isConsumerLogin.do",
 				cache : false,
 				error : function(error) {
-					alert("error");
+					alert("error6");
 				}
 			})
 			.done(
@@ -298,7 +297,7 @@ function getComby(score) {
 			score : score
 		},
 		error : function(error) {
-			alert("error");
+			alert("error7");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -319,7 +318,7 @@ function conment() {
 			merId : merId
 		},
 		error : function(error) {
-			alert("error");
+			alert("error8");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -390,7 +389,7 @@ function clickproLabel(ele){
 			productlabelId:productlabelId
 		},
 		error : function(error) {
-			alert("error");
+			alert("error9");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -410,7 +409,7 @@ function clickproLabelgetAll(){
 			merId : merId
 		},
 		error : function(error) {
-			alert("error");
+			alert("error10");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -441,7 +440,7 @@ function addCollect(){
 				storeId:merId
 			},
 			error : function(error) {
-				alert("error");
+				alert("error11");
 			}
 		})
 		.done(
