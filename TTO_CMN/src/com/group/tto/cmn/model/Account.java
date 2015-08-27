@@ -93,6 +93,50 @@ public class Account {
     this.isDelete = isDelete;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((accountId == null) ? 0 : accountId.hashCode());
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((password == null) ? 0 : password.hashCode());
+    result = prime * result + ((store == null) ? 0 : store.hashCode());
+    result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
+    result = prime * result + ((username == null) ? 0 : username.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Account other = (Account) obj;
+    if (accountId == null) {
+      if (other.accountId != null) return false;
+    } else if (!accountId.equals(other.accountId)) return false;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (password == null) {
+      if (other.password != null) return false;
+    } else if (!password.equals(other.password)) return false;
+    if (store == null) {
+      if (other.store != null) return false;
+    } else if (!store.equals(other.store)) return false;
+    if (userProfile == null) {
+      if (other.userProfile != null) return false;
+    } else if (!userProfile.equals(other.userProfile)) return false;
+    if (username == null) {
+      if (other.username != null) return false;
+    } else if (!username.equals(other.username)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 
 }

@@ -127,6 +127,62 @@ public class Product {
     this.storeId = storeId;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((point == null) ? 0 : point.hashCode());
+    result = prime * result + ((price == null) ? 0 : price.hashCode());
+    result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+    result = prime * result + ((productLabel == null) ? 0 : productLabel.hashCode());
+    result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+    result = prime * result + ((productPicUrl == null) ? 0 : productPicUrl.hashCode());
+    result = prime * result + ((salesVolume == null) ? 0 : salesVolume.hashCode());
+    result = prime * result + ((storeId == null) ? 0 : storeId.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Product other = (Product) obj;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (point == null) {
+      if (other.point != null) return false;
+    } else if (!point.equals(other.point)) return false;
+    if (price == null) {
+      if (other.price != null) return false;
+    } else if (!price.equals(other.price)) return false;
+    if (productId == null) {
+      if (other.productId != null) return false;
+    } else if (!productId.equals(other.productId)) return false;
+    if (productLabel == null) {
+      if (other.productLabel != null) return false;
+    } else if (!productLabel.equals(other.productLabel)) return false;
+    if (productName == null) {
+      if (other.productName != null) return false;
+    } else if (!productName.equals(other.productName)) return false;
+    if (productPicUrl == null) {
+      if (other.productPicUrl != null) return false;
+    } else if (!productPicUrl.equals(other.productPicUrl)) return false;
+    if (salesVolume == null) {
+      if (other.salesVolume != null) return false;
+    } else if (!salesVolume.equals(other.salesVolume)) return false;
+    if (storeId == null) {
+      if (other.storeId != null) return false;
+    } else if (!storeId.equals(other.storeId)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 
 }

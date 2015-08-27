@@ -18,10 +18,9 @@
 <link rel="stylesheet" href="../css/usercenter/myinfo.css" />
 <link rel="stylesheet" href="../css/usercenter/myorder.css" />
 <style>
-	.resOVoComment2 {
-		padding: 5px;
-	}
-
+.resOVoComment2 {
+	padding: 5px;
+}
 </style>
 </head>
 <body>
@@ -195,20 +194,26 @@
 								remarks:
 								<lable id="resOVoRemarks"></lable>
 							</div>
-							<div id="resOVoCommentFunc" style="display:none">
-								<div>	
-									conment:<lable id="resOVoComment" style="display:none"></lable>
-									score:<lable id="resOVoCommentscore2" style="display:none"></lable>
-									deliver time:<lable id="resOVoCommenttime2" style="display:none"></lable>
+							<div id="resOVoCommentFunc" style="display: none">
+								<div>
+									conment:
+									<lable id="resOVoComment" style="display:none"></lable>
+									score:
+									<lable id="resOVoCommentscore2" style="display:none"></lable>
+									deliver time:
+									<lable id="resOVoCommenttime2" style="display:none"></lable>
 								</div>
-								<div id="resOVoComment2" style="display: none;padding: 5px;">
-										comment:<input style="margin: 5px;" type="text" id="resOVoCommenttext"/> 
-										score:<input  style="margin: 5px;"  type="text" id="resOVoCommentscore"/> 
-										deliver time:<input  style="margin: 5px;"  type="text" id="resOVoCommenttime"/> minute(s) 
-									<button onclick="commitcomment(this)"  style="margin-left: 15px;"  id="commitId" >commit</button>
-									<div class="alert alert-danger" 
-																style="display: none" role="alert" id="errorMsg3"></div>
-							
+								<div id="resOVoComment2" style="display: none; padding: 5px;">
+									comment:<input style="margin: 5px;" type="text"
+										id="resOVoCommenttext" /> score:<input style="margin: 5px;"
+										type="text" id="resOVoCommentscore" /> deliver time:<input
+										style="margin: 5px;" type="text" id="resOVoCommenttime" />
+									minute(s)
+									<button onclick="commitcomment(this)"
+										style="margin-left: 15px;" id="commitId">commit</button>
+									<div class="alert alert-danger" style="display: none"
+										role="alert" id="errorMsg3"></div>
+
 								</div>
 							</div>
 							<div class="page-header ">
@@ -237,6 +242,7 @@
 			<td class="success" id="productName"></td>
 			<td class="warning" id="productPrice"></td>
 		</tr>
+
 		<div class="modal fade" id="showChangePsw" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -268,7 +274,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="modal fade" id="failchange" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -281,6 +287,43 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="hidden" id="myfavinfo">
+			<div class="col-xs-12">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-10 myborder">
+					<div class="col-xs-12 res_content  page-header">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-2">
+							<a href="#"><img src="" id="showStorePic"  width="100px" height="50px"/></a>
+						</div>
+						<div class="col-xs-6">
+							<ul class="list-inline">
+								<li>res name:<lable id="resVoname"></lable></li>
+								<li>res tel:<label id="resVophone"></label></li>
+								<li>res addr:<lable id="resVodetailLocation"></lable></li>
+							</ul>
+							<ul class="list-inline">
+								<li>res point:<lable id="resVopoint"></lable></li>
+								<li>res sold amount:<lable id="resVoAmount"></lable></li>
+								<li>res col amount:<lable id="resVoColAmount"></lable></li>
+							</ul>
+							<ul class="list-inline">
+
+								<li>
+									<button class="btn btn-warning" name="cancelfav">cancel
+										fav</button>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-1"></div>
+					</div>
+				</div>
+				<div class="col-xs-1"></div>
+			</div>
+
+
 		</div>
 </body>
 

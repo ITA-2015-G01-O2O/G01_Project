@@ -45,5 +45,33 @@ public class Configuration {
     this.configValue = configValue;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((configId == null) ? 0 : configId.hashCode());
+    result = prime * result + ((configName == null) ? 0 : configName.hashCode());
+    result = prime * result + ((configValue == null) ? 0 : configValue.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Configuration other = (Configuration) obj;
+    if (configId == null) {
+      if (other.configId != null) return false;
+    } else if (!configId.equals(other.configId)) return false;
+    if (configName == null) {
+      if (other.configName != null) return false;
+    } else if (!configName.equals(other.configName)) return false;
+    if (configValue == null) {
+      if (other.configValue != null) return false;
+    } else if (!configValue.equals(other.configValue)) return false;
+    return true;
+  }
+
 
 }

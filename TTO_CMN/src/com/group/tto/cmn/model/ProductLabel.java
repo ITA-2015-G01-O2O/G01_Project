@@ -45,5 +45,33 @@ public class ProductLabel {
     this.storeId = storeId;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((productLabelId == null) ? 0 : productLabelId.hashCode());
+    result = prime * result + ((productLabelName == null) ? 0 : productLabelName.hashCode());
+    result = prime * result + ((storeId == null) ? 0 : storeId.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    ProductLabel other = (ProductLabel) obj;
+    if (productLabelId == null) {
+      if (other.productLabelId != null) return false;
+    } else if (!productLabelId.equals(other.productLabelId)) return false;
+    if (productLabelName == null) {
+      if (other.productLabelName != null) return false;
+    } else if (!productLabelName.equals(other.productLabelName)) return false;
+    if (storeId == null) {
+      if (other.storeId != null) return false;
+    } else if (!storeId.equals(other.storeId)) return false;
+    return true;
+  }
+
 
 }

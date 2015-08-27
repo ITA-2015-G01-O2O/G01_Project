@@ -20,9 +20,8 @@ public class Collect {
   @GeneratedValue(generator = "ORDER_COLLECT_SEQ", strategy = GenerationType.SEQUENCE)
   private Long collectId;
 
-  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-  @JoinColumn(name = "USER_PROFILE_ID")
-  private UserProfile userProfile;
+  @Column(name = "USER_PROFILE_ID")
+  private Long userProfileId;
   @ManyToOne(targetEntity = Store.class, fetch = FetchType.EAGER)
   private Store store;
 
@@ -34,12 +33,12 @@ public class Collect {
     this.collectId = collectId;
   }
 
-  public UserProfile getUserProfile() {
-    return userProfile;
+  public Long getUserProfileId() {
+    return userProfileId;
   }
 
-  public void setUserProfile(UserProfile userProfile) {
-    this.userProfile = userProfile;
+  public void setUserProfileId(Long userProfileId) {
+    this.userProfileId = userProfileId;
   }
 
   public Store getStore() {
@@ -48,6 +47,34 @@ public class Collect {
 
   public void setStore(Store store) {
     this.store = store;
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((collectId == null) ? 0 : collectId.hashCode());
+    result = prime * result + ((store == null) ? 0 : store.hashCode());
+    result = prime * result + ((userProfileId == null) ? 0 : userProfileId.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Collect other = (Collect) obj;
+    if (collectId == null) {
+      if (other.collectId != null) return false;
+    } else if (!collectId.equals(other.collectId)) return false;
+    if (store == null) {
+      if (other.store != null) return false;
+    } else if (!store.equals(other.store)) return false;
+    if (userProfileId == null) {
+      if (other.userProfileId != null) return false;
+    } else if (!userProfileId.equals(other.userProfileId)) return false;
+    return true;
   }
 
 

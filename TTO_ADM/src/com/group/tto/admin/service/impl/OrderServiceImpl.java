@@ -23,8 +23,7 @@ public class OrderServiceImpl implements OrderService {
   @Transactional
   public List<Order> getNeedAutoConfirmOrder(Date earliestDate) {
     OrderSearchCriteria search = new OrderSearchCriteria();
-    search.getStatus().add(OrderStatus.NEW.toString());
-    search.getStatus().add(OrderStatus.ACCEPT.toString());
+    search.getStatus().add(OrderStatus.SENDING.toString());
     search.setEarliestDate(earliestDate);
     return this.dao.getOrder(search);
   }
@@ -33,7 +32,8 @@ public class OrderServiceImpl implements OrderService {
   @Transactional
   public List<Order> getNeedCancelConfirmOrder(Date earliestDate) {
     OrderSearchCriteria search = new OrderSearchCriteria();
-    search.getStatus().add(OrderStatus.SENDING.toString());
+    search.getStatus().add(OrderStatus.NEW.toString());
+    search.getStatus().add(OrderStatus.ACCEPT.toString());
     search.setEarliestDate(earliestDate);
     return this.dao.getOrder(search);
   }

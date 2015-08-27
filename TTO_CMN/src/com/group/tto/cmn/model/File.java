@@ -1,5 +1,7 @@
 package com.group.tto.cmn.model;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +47,32 @@ public class File {
 
   public void setFileContext(byte[] fileContext) {
     this.fileContext = fileContext;
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + Arrays.hashCode(fileContext);
+    result = prime * result + ((fileId == null) ? 0 : fileId.hashCode());
+    result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    File other = (File) obj;
+    if (!Arrays.equals(fileContext, other.fileContext)) return false;
+    if (fileId == null) {
+      if (other.fileId != null) return false;
+    } else if (!fileId.equals(other.fileId)) return false;
+    if (uuid == null) {
+      if (other.uuid != null) return false;
+    } else if (!uuid.equals(other.uuid)) return false;
+    return true;
   }
 
 

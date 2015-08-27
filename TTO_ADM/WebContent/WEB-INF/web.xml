@@ -31,19 +31,48 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>spring</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
 	<context-param>
 	    <param-name>contextConfigLocation</param-name>
 	    <param-value>/WEB-INF/spring-beans.xml</param-value>
   	</context-param>
-  	<listener>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<listener>
     	<listener-class>
  			org.springframework.web.context.ContextLoaderListener
  		</listener-class>
   	</listener>
+  	<!-- web service -->
+  	<listener>  
+        <listener-class>  
+            org.springframework.web.context.request.RequestContextListener  
+        </listener-class>  
+    </listener>
+    <servlet>  
+        <servlet-name>JerseyServlet</servlet-name>  
+        <servlet-class>  
+            com.sun.jersey.spi.spring.container.servlet.SpringServlet  
+        </servlet-class>  
+        <init-param>  
+            <param-name>  
+                com.sun.jersey.config.property.packages  
+            </param-name>     
+            <param-value>com.group.tto.admin.webservice</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>  
+                com.sun.jersey.api.json.POJOMappingFeature  
+            </param-name>  
+            <param-value>true</param-value>  
+        </init-param> 
+        <load-on-startup>1</load-on-startup>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>JerseyServlet</servlet-name>  
+        <url-pattern>/webservice/*</url-pattern>  
+    </servlet-mapping>  
 	
 	<!-- ChatacterEncodingFilter -->
 	<filter>

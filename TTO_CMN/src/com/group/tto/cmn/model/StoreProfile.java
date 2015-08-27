@@ -96,5 +96,53 @@ public class StoreProfile {
     this.isDelete = isDelete;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((idCardNumber == null) ? 0 : idCardNumber.hashCode());
+    result = prime * result + ((idCardPicUrl == null) ? 0 : idCardPicUrl.hashCode());
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((licensePicUrl == null) ? 0 : licensePicUrl.hashCode());
+    result = prime * result + ((realName == null) ? 0 : realName.hashCode());
+    result = prime * result + ((status == null) ? 0 : status.hashCode());
+    result = prime * result + ((storeProfileId == null) ? 0 : storeProfileId.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    StoreProfile other = (StoreProfile) obj;
+    if (idCardNumber == null) {
+      if (other.idCardNumber != null) return false;
+    } else if (!idCardNumber.equals(other.idCardNumber)) return false;
+    if (idCardPicUrl == null) {
+      if (other.idCardPicUrl != null) return false;
+    } else if (!idCardPicUrl.equals(other.idCardPicUrl)) return false;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (licensePicUrl == null) {
+      if (other.licensePicUrl != null) return false;
+    } else if (!licensePicUrl.equals(other.licensePicUrl)) return false;
+    if (realName == null) {
+      if (other.realName != null) return false;
+    } else if (!realName.equals(other.realName)) return false;
+    if (status == null) {
+      if (other.status != null) return false;
+    } else if (!status.equals(other.status)) return false;
+    if (storeProfileId == null) {
+      if (other.storeProfileId != null) return false;
+    } else if (!storeProfileId.equals(other.storeProfileId)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 }

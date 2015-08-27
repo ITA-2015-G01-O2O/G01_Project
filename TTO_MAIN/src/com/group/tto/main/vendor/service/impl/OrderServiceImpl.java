@@ -34,6 +34,18 @@ public class OrderServiceImpl implements OrderService {
   @Transactional
   public void updateOrder(Order order) {
     orderDao.updateOrder(order);
+	}
+
+	@Override
+	@Transactional
+	public List<Order> findNewOrders(long sid) {
+		return orderDao.findNewOrders(sid);
+	}
+
+	@Override
+	public List<Order> findAllCompletedOrderd(long sid) {
+	
+		return orderDao.findAllCompletedOrders(sid);
   }
 
 }
