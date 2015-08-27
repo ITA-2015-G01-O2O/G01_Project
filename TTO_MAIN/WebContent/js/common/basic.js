@@ -52,7 +52,7 @@ $(function() {
 function isStore(){
 	 $.ajax({
 	        type: "post",
-	        url: "../account/isStore.do",
+	        url: "TTO_MAIN/account/isStore.do",
 	        cache: false,
 	        error: function (error) {
 	            alert("error");
@@ -64,7 +64,7 @@ function isStore(){
 	            		$("#openStore").hide();
 	            		$("#showmyShop").show();
 	            		$("#logout").show();
-	            		$("#openStore").attr('href',"../vendor/product/NewOrder.view");
+	            		$("#openStore").children().eq(0).attr('href',"../vendor/product/NewOrder.view");
 	            	}else if(json.data=="CHECK"){
 	            		$("#openStore").show();
 	            		$("#showmyShop").hide();
@@ -87,7 +87,7 @@ function isStore(){
 function getUserName(){
 	 $.ajax({
 	        type: "post",
-	        url: "../account/getMainName.do",
+	        url: "TTO_MAIN/account/getMainName.do",
 	        cache: false,
 	        error: function (error) {
 	            alert("error");
@@ -99,7 +99,7 @@ function getUserName(){
 	                $("#logintitle").hide();
 	                $("#registertitle").hide();
 	                //vendor/order/NewOrder.view
-	                $("#loginameshow").children().eq(0).attr("href","../usercenter/personcenter.view");
+	                $("#loginameshow").children().eq(0).attr("href","TTO_MAIN/usercenter/personcenter.view");
 	                $("#loginameshow").data("successlogin",true);
 	                $("#loginameshow").children().eq(0).text(json.data);
 	            } else {

@@ -9,34 +9,33 @@
 		<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="<c:url value='/css/vendor/register.css'/>" />
 		<title>Register</title>
+		<style type="text/css">
+			.nav > li > a:hover{
+				background-color: #fff;
+			}
+			.nav-tabs.nav-justified > li > a:hover{
+				border-top: none;
+				border-left: none;
+				border-right: none;
+			}
+			
+		</style>
+		<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
-				</div>
-				<div class="collapse navbar-collapse" id="main-nav">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Welcome: Ace</a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<jsp:include page="../common/header.jsp" flush="true">
+            <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+        </jsp:include>
 		<div class="container container-main">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs nav-justified">
-						<li role="presentation"><a href="#">Contact information</a></li>
-     					<li role="presentation"><a href="#">Restaurant Information</a></li>
-     					<li role="presentation"><a href="#">Qualification certification</a></li>
-      					<li role="presentation" class="active"><a href="#">Approval status</a></li>
+						<li role="presentation"><a >Contact information</a></li>
+     					<li role="presentation"><a >Restaurant Information</a></li>
+     					<li role="presentation"><a >Qualification certification</a></li>
+      					<li role="presentation" class="active"><a >Approval status</a></li>
     				</ul>
     			</div>
     		</div>
@@ -49,5 +48,8 @@
         	</div>       
    		 	
 		</div>
+		<jsp:include page="../common/footer.jsp" flush="true">
+            <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+        </jsp:include>
 	</body>
 </html>
