@@ -65,8 +65,8 @@ public class ProductController extends BaseController {
 			product.setSalesVolume(temp);
 			product.setVersion((long) 0);
 			product.setProductPicUrl(picName1);
-			// /////////////////////////////////////////////
-			product.setStoreId((long) 50);
+			long sid=(long) request.getSession().getAttribute("sid");
+			product.setStoreId(sid);
 			ProductLabel productLabel = productLabelService
 					.findProductLabel(Long.parseLong(menuType));
 			product.setProductLabel(productLabel);
@@ -87,7 +87,8 @@ public class ProductController extends BaseController {
 	@ResponseBody
 	public List<Product> loadProducts(HttpServletRequest request) {
 		// 模拟用户
-		List<Product> products = productService.findAllProductsBySid(50);
+		long sid=(long) request.getSession().getAttribute("sid");
+		List<Product> products = productService.findAllProductsBySid(sid);
 		return products;
 	}
 	
@@ -95,7 +96,8 @@ public class ProductController extends BaseController {
 	@ResponseBody
 	public List<Product> loadProductsByLabel(HttpServletRequest request) {
 		String laeblID=request.getParameter("label");
-		List<Product> products = productService.findProductsByLabel(Long.parseLong(laeblID), 50);
+		long sid=(long) request.getSession().getAttribute("sid");
+		List<Product> products = productService.findProductsByLabel(Long.parseLong(laeblID),sid);
 		return products;
 	}
 	

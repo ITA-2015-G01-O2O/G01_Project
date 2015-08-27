@@ -25,6 +25,8 @@ public class FirstLoginController extends BaseController{
     Account loginConsumer = (Account) req.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     long uid = loginConsumer.getAccountId();
     
+    //
+    
     Store store=fl.getStore((int) uid);
     req.getSession().setAttribute("sid", store.getStoreId());
     

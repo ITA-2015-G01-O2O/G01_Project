@@ -74,19 +74,8 @@ function loadVendorInfo() {
 
 
 $(document).ready(function() {
-
+	 verify();
 	loadVendorInfo();
-	var i=0;
-	setInterval(function() {
-		i=i+1;
-		$.get("/TTO_MAIN/vendor/jmsController/jms.do", function(data) {
-			if ($.isEmptyObject(data) == false) {
-                $(".badge").text(i);
-			}
-		});
-
-	}, 10000);
-
 	$.get("loadAllNewOrder.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
@@ -116,3 +105,19 @@ $(document).ready(function() {
 	});
 
 });
+
+
+function verify(){
+	$.ajax({
+	type:"post",
+	url:"/TTO_MAIN/vendor/firstLogin/verify.do",
+	success:function(data){
+	var result=data.isSuccess;
+	if(result!=true)		
+		window.location.href="/TTO_MAIN/vendor/completeInfo/completeInfo.view";
+	},
+	        error:function(data){
+	            alert("Load message fail!");
+	        }
+	});
+}
