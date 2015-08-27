@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	loadVendorInfo();
 	$.get("/TTO_MAIN/vendor/productLabel/findProductLabel.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
@@ -112,3 +113,23 @@ function updateMenu1(id) {
          }
 	});
 }
+
+function loadVendorInfo(){
+	$.ajax({
+	type:"post",
+	url:"/TTO_MAIN/vendor/info/getVendorInfo.do",
+	success:function(data){
+	var name=data.data.storeName;
+	$("#ShopNameLabel").text(name);
+	var point=data.data.avgPoint;
+	$("#avgPointLabel").text(point);
+	var time=data.data.avgDeliverTime;
+	$("#avgTimeLabel").text(time);
+	var num=data.data.collectionNum;
+	$("#collectionNumLabel").text(num);
+	},
+	        error:function(data){
+	            alert("Load message fail!");
+	        }
+	});
+	}

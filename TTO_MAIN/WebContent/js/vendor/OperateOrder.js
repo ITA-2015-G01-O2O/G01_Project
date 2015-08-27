@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	loadVendorInfo();
+	
 	$.get("loadAllNewOrder.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
@@ -7,12 +10,9 @@ $(document).ready(function() {
 
 		$(".btn.btn-primary.access").on("click", function() {
 			var status = $(this).text();
-		//	if (status == "ACCEPT") {
-			//	alert(status + $(this).data('id'));
 				$.get("updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
 					 window.location.href="NewOrder.view";
 				});
-		//	}
 		});
 
 		$(".btn.btn-danger.giveUp").on("click", function() {
@@ -58,8 +58,6 @@ function addOrderTale(str) {
 	}
 }
 
-
-
 function getPrice(OrderItems){
 	if(OrderItems!=null)
 	{
@@ -82,3 +80,23 @@ var formatDateTime2 = function (date) {
     minute = minute < 10 ? ('0' + minute) : minute;  
     return y + '-' + m + '-' + d+' '+h+':'+minute;  
 }; 
+
+function loadVendorInfo(){
+	$.ajax({
+	type:"post",
+	url:"/TTO_MAIN/vendor/info/getVendorInfo.do",
+	success:function(data){
+	var name=data.data.storeName;
+	$("#ShopNameLabel").text(name);
+	var point=data.data.avgPoint;
+	$("#avgPointLabel").text(point);
+	var time=data.data.avgDeliverTime;
+	$("#avgTimeLabel").text(time);
+	var num=data.data.collectionNum;
+	$("#collectionNumLabel").text(num);
+	},
+	        error:function(data){
+	            alert("Load message fail!");
+	        }
+	});
+	}
