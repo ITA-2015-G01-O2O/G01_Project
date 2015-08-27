@@ -28,7 +28,8 @@
 
 	<context:component-scan base-package="com.group.tto.admin.dao" />
 	<context:component-scan base-package="com.group.tto.admin.service" />
-
+	<context:component-scan base-package="com.group.tto.admin.webservice" />
+	
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="fileEncoding" value="UTF-8" />

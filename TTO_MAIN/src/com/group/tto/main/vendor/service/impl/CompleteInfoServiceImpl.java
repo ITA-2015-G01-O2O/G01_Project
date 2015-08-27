@@ -5,7 +5,6 @@ import java.io.InputStream;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Store;
@@ -13,8 +12,7 @@ import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.StoreDao;
 import com.group.tto.main.vendor.service.CompleteInfoService;
 
-@Service
-@Repository("vendorCompleteInfoServiceImpl")
+@Service("vendorCompleteInfoServiceImpl")
 public class CompleteInfoServiceImpl implements CompleteInfoService {
 
   @Autowired

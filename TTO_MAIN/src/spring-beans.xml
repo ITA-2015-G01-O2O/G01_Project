@@ -32,6 +32,7 @@
 	
 	<context:component-scan base-package="com.group.tto.main.dao"/>
 	<context:component-scan base-package="com.group.tto.main.service"/>
+	<context:component-scan base-package="com.group.tto.main.service.web"/>
 	<context:component-scan base-package="com.group.tto.main.vendor.dao"/>
 	<context:component-scan base-package="com.group.tto.main.vendor.service"/>
 	

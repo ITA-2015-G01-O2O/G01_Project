@@ -45,37 +45,37 @@
 								<ul class="nav nav-pills nav-stacked">
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
 									<li role="presentation">
-										<a href="NewOrder.html"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">2</span></a>
+										<a href="<c:url value='/vendor/.../NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">2</span></a>
 									</li>
-									<li role="presentation"><a href="OrderCompleted.html"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/.../OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
 									<br/>
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Meal Center</li>
 									<li role="presentation">
-										<a href="FoodManageMent.html"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food Management</a>
+										<a href="<c:url value='/vendor/.../FoodManageMent.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food Management</a>
 									</li>
 									<br/>
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-									<li role="presentation">
-										<a href="PersonalInformation.html"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									<li class="active" role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
 									</li>
-									<li role="presentation" class="active"><a href="storeInfo.html"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
-									<li role="presentation"><a href="BasicSetting.html"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
 								</ul>
 							</div>
 							<div class="ShopState">
 								<span class="spantitle"><i class="glyphicon glyphicon-th-list"></i>&emsp;Store Credit</span>
 								<ul class="nav nav-pills nav-stacked">
-									<li>Shop Name :
-										<label class="ShopNameLabel">Iphone Shop</label>
+									<li>Store Name :
+										<label class="ShopNameLabel" id="shopNameLabel">${storeName}</label>
 									</li>
-									<li>Business score :
-										<label class="ShopNameLabel">9.0</label>
+									<li>Store average point :
+										<label class="ShopNameLabel" id="avgPointLabel">${avgPoint}</label>
 									</li>
-									<li>Average service time:
-										<label class="ShopNameLabel">20 min</label>
+									<li>Store average deliver Time:
+										<label class="ShopNameLabel" id="avgTimeLabel">${avgTime}</label>
 									</li>
-									<li>Collection index:
-										<label class="ShopNameLabel"><i class="glyphicon glyphicon-heart"></i></label>
+									<li>Collection Number:
+										<label class="ShopNameLabel" id="collectionNumLabel">${collectionNum}</label>
 									</li>
 								</ul>
 

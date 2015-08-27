@@ -191,6 +191,86 @@ public class Order {
     this.payWay = payWay;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+    result = prime * result + ((contacterName == null) ? 0 : contacterName.hashCode());
+    result = prime * result + ((contacterPhone == null) ? 0 : contacterPhone.hashCode());
+    result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
+    result = prime * result + ((detailLocation == null) ? 0 : detailLocation.hashCode());
+    result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+    result = prime * result + ((orderItems == null) ? 0 : orderItems.hashCode());
+    result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
+    result = prime * result + ((payWay == null) ? 0 : payWay.hashCode());
+    result = prime * result + ((remarks == null) ? 0 : remarks.hashCode());
+    result = prime * result + ((status == null) ? 0 : status.hashCode());
+    result = prime * result + ((storeId == null) ? 0 : storeId.hashCode());
+    result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Order other = (Order) obj;
+    if (comment == null) {
+      if (other.comment != null) return false;
+    } else if (!comment.equals(other.comment)) return false;
+    if (contacterName == null) {
+      if (other.contacterName != null) return false;
+    } else if (!contacterName.equals(other.contacterName)) return false;
+    if (contacterPhone == null) {
+      if (other.contacterPhone != null) return false;
+    } else if (!contacterPhone.equals(other.contacterPhone)) return false;
+    if (createTime == null) {
+      if (other.createTime != null) return false;
+    } else if (!createTime.equals(other.createTime)) return false;
+    if (detailLocation == null) {
+      if (other.detailLocation != null) return false;
+    } else if (!detailLocation.equals(other.detailLocation)) return false;
+    if (endTime == null) {
+      if (other.endTime != null) return false;
+    } else if (!endTime.equals(other.endTime)) return false;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (orderId == null) {
+      if (other.orderId != null) return false;
+    } else if (!orderId.equals(other.orderId)) return false;
+    if (orderItems == null) {
+      if (other.orderItems != null) return false;
+    } else if (!orderItems.equals(other.orderItems)) return false;
+    if (orderNumber == null) {
+      if (other.orderNumber != null) return false;
+    } else if (!orderNumber.equals(other.orderNumber)) return false;
+    if (payWay == null) {
+      if (other.payWay != null) return false;
+    } else if (!payWay.equals(other.payWay)) return false;
+    if (remarks == null) {
+      if (other.remarks != null) return false;
+    } else if (!remarks.equals(other.remarks)) return false;
+    if (status == null) {
+      if (other.status != null) return false;
+    } else if (!status.equals(other.status)) return false;
+    if (storeId == null) {
+      if (other.storeId != null) return false;
+    } else if (!storeId.equals(other.storeId)) return false;
+    if (userProfile == null) {
+      if (other.userProfile != null) return false;
+    } else if (!userProfile.equals(other.userProfile)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 
 }
