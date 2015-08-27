@@ -1,31 +1,3 @@
-$(document).ready(function() {
-	
-	loadVendorInfo();
-	
-	$.get("loadAllNewOrder.do", function(data) {
-		var str = eval(data);
-		$.each(str, function() {
-			addOrderTale(this);
-		});
-
-		$(".btn.btn-primary.access").on("click", function() {
-			var status = $(this).text();
-				$.get("updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
-					 window.location.href="NewOrder.view";
-				});
-		});
-
-		$(".btn.btn-danger.giveUp").on("click", function() {
-			var status = $(this).text();
-			$.get("updateOrder.do",{status:status,id:$(this).data('id')}, function(data) {
-				 window.location.href="NewOrder.view";
-			});
-		});
-
-	});
-
-});
-
 function addOrderTale(str) {
 	var Order = $("#orderTable").clone();
 	Order.find("#TableTbody").attr("id", str.orderNumber);
@@ -48,55 +20,99 @@ function addOrderTale(str) {
 	Order.find(".btn.btn-primary.access").data('id', str.orderId);
 	Order.find(".btn.btn-danger.giveUp").data('id', str.orderId);
 	Order.appendTo(".col-xs-9.main-wrapper");
-	if(str.status=="ACCEPT"){
+	if (str.status == "ACCEPT") {
 		Order.find(".btn.btn-primary.access").text("SENDING");
 	}
-	if(str.status=="SENDING")
-	{
+	if (str.status == "SENDING") {
 		Order.find(".btn.btn-primary.access").addClass("hidden");
-		Order.find(".btn.btn-danger.giveUp").attr("disabled", true); 
+		Order.find(".btn.btn-danger.giveUp").attr("disabled", true);
 	}
 }
 
-function getPrice(OrderItems){
-	if(OrderItems!=null)
-	{
+function getPrice(OrderItems) {
+	if (OrderItems != null) {
 		for (var i = 0; i < OrderItems.length; i++) {
-			var price =0;
-			price=price+parseInt(price+OrderItems[i].price);
+			var price = 0;
+			price = price + parseInt(price + OrderItems[i].price);
 		}
 		return price;
 	}
 }
 
-var formatDateTime2 = function (date) {  
-    var y = date.getFullYear();  
-    var m = date.getMonth() + 1;  
-    m = m < 10 ? ('0' + m) : m;  
-    var d = date.getDate();  
-    d = d < 10 ? ('0' + d) : d;  
-    var h = date.getHours();  
-    var minute = date.getMinutes();  
-    minute = minute < 10 ? ('0' + minute) : minute;  
-    return y + '-' + m + '-' + d+' '+h+':'+minute;  
-}; 
+var formatDateTime2 = function(date) {
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	m = m < 10 ? ('0' + m) : m;
+	var d = date.getDate();
+	d = d < 10 ? ('0' + d) : d;
+	var h = date.getHours();
+	var minute = date.getMinutes();
+	minute = minute < 10 ? ('0' + minute) : minute;
+	return y + '-' + m + '-' + d + ' ' + h + ':' + minute;
+};
 
-function loadVendorInfo(){
+function loadVendorInfo() {
 	$.ajax({
-	type:"post",
-	url:"/TTO_MAIN/vendor/info/getVendorInfo.do",
-	success:function(data){
-	var name=data.data.storeName;
-	$("#ShopNameLabel").text(name);
-	var point=data.data.avgPoint;
-	$("#avgPointLabel").text(point);
-	var time=data.data.avgDeliverTime;
-	$("#avgTimeLabel").text(time);
-	var num=data.data.collectionNum;
-	$("#collectionNumLabel").text(num);
-	},
-	        error:function(data){
-	            alert("Load message fail!");
-	        }
+		type : "post",
+		url : "/TTO_MAIN/vendor/info/getVendorInfo.do",
+		success : function(data) {
+			var name = data.data.storeName;
+			$("#ShopNameLabel").text(name);
+			var point = data.data.avgPoint;
+			$("#avgPointLabel").text(point);
+			var time = data.data.avgDeliverTime;
+			$("#avgTimeLabel").text(time);
+			var num = data.data.collectionNum;
+			$("#collectionNumLabel").text(num);
+		},
+		error : function(data) {
+			alert("Load message fail!");
+		}
 	});
-	}
+}
+
+
+
+$(document).ready(function() {
+
+	loadVendorInfo();
+	var i=0;
+	setInterval(function() {
+		i=i+1;
+		$.get("/TTO_MAIN/vendor/jmsController/jms.do", function(data) {
+			if ($.isEmptyObject(data) == false) {
+                $(".badge").text(i);
+			}
+		});
+
+	}, 10000);
+
+	$.get("loadAllNewOrder.do", function(data) {
+		var str = eval(data);
+		$.each(str, function() {
+			addOrderTale(this);
+		});
+
+		$(".btn.btn-primary.access").on("click", function() {
+			var status = $(this).text();
+			$.get("updateOrder.do", {
+				status : status,
+				id : $(this).data('id')
+			}, function(data) {
+				window.location.href = "NewOrder.view";
+			});
+		});
+
+		$(".btn.btn-danger.giveUp").on("click", function() {
+			var status = $(this).text();
+			$.get("updateOrder.do", {
+				status : status,
+				id : $(this).data('id')
+			}, function(data) {
+				window.location.href = "NewOrder.view";
+			});
+		});
+
+	});
+
+});

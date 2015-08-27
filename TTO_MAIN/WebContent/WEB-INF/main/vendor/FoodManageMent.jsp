@@ -30,8 +30,8 @@
 
 <body>
 	<jsp:include page="../common/header.jsp" flush="true">
-        <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
-    </jsp:include>
+		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+	</jsp:include>
 	<div class="modal fade bs-example-modal-sm1" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
@@ -130,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container container-main">
 		<div class="row">
 			<div class="col-xs-12">
@@ -178,22 +178,23 @@
                         	描述：增加商家状态信息
                         -->
 						<div class="ShopState">
-								<span class="spantitle"><i class="glyphicon glyphicon-th-list"></i>&emsp;Store Credit</span>
-								<ul class="nav nav-pills nav-stacked">
-									<li>Store Name :
-										<label class="ShopNameLabel" id="shopNameLabel">${storeName}</label>
-									</li>
-									<li>Store average point :
-										<label class="ShopNameLabel" id="avgPointLabel">${avgPoint}</label>
-									</li>
-									<li>Store average deliver Time:
-										<label class="ShopNameLabel" id="avgTimeLabel">${avgTime}</label>
-									</li>
-									<li>Collection Number:
-										<label class="ShopNameLabel" id="collectionNumLabel">${collectionNum}</label>
-									</li>
-								</ul>
-							</div>
+							<span class="spantitle"><i
+								class="glyphicon glyphicon-th-list"></i>&emsp;Store Credit</span>
+							<ul class="nav nav-pills nav-stacked">
+								<li>Store Name : <label class="ShopNameLabel"
+									id="shopNameLabel">${storeName}</label>
+								</li>
+								<li>Store average point : <label class="ShopNameLabel"
+									id="avgPointLabel">${avgPoint}</label>
+								</li>
+								<li>Store average deliver Time: <label
+									class="ShopNameLabel" id="avgTimeLabel">${avgTime}</label>
+								</li>
+								<li>Collection Number: <label class="ShopNameLabel"
+									id="collectionNumLabel">${collectionNum}</label>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="col-xs-9 main-wrapper">
 						<div class="col-xs-12 menuFunctionArea">
@@ -266,16 +267,10 @@
 				<div></div>
 			</a>
 		</div>
-
-
-		<div id="footer">
-			<a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span>
-			</a>
-		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
-        <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
-    </jsp:include>
+		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+	</jsp:include>
 
 	<script>
 		$(function() {
