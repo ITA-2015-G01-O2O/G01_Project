@@ -13,24 +13,9 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-default" id="header">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#"> TAKE-OUT </a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-left address">
-                        <li><a href="../stores/search.view"><span
-					class="glyphicon glyphicon-map-marker"></span> 珠海,切换地址</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../../o2o_user/personcenter.html">Hi,13552262626</a></li>
-                        <li><a href="../../../Vendor/completeInfo.html"><span
-					class="glyphicon glyphicon glyphicon-home"></span>我的店铺</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>注销</a></li>
-                    </ul>
-                </div>
-            </nav>
+            <jsp:include page="../common/header.jsp" flush="true">
+                <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+            </jsp:include>
             <div class="container">
                 <div class="row">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -81,7 +66,7 @@
                             </form>
                         </div>
                         <div class="row venders">
-                            <div class="col-xs-3 hidden" id="store_temp">
+                            <div class="col-md-4 col-lg-3 hidden" id="store_temp">
                                 <a href="../../consumer/getMerprosById.view?merId=50" class="thumbnail shopId"> <img class="logoPicURL" src="">
                                 </a>
                                 <h4 class="shopName">汉堡店</h4>
@@ -98,55 +83,17 @@
                                     <h6 class="text-muted col-xs-6">货到付款</h6>
                                 </div>
                             </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal fade login-modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title text-center">登录</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span
-								class="glyphicon glyphicon-user"></span></span>
-                                    <input type="text" class="form-control" name="to_username" id="username" placeholder="username">
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span
-								class="glyphicon glyphicon-lock"></span></span>
-                                    <input type="password" class="form-control" name="to_password" id="password" placeholder="password">
-                                </div>
-                                <div class="checkbox btn-re">
-                                    <label>
-                                        <input type="checkbox"> Remeber me
-                                    </label>
-                                </div>
-                                <div class="bttons">
-                                    <button class="btn btn-primary btn-block" type="submit">Login</button>
-                                    <a class="btn btn-success btn-block" href="register.html">Register</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <a href="#" onclick="gotoTop();return false;" class="totop">
                 <div></div>
             </a>
-            <div id="footer">
-                <a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a href="../../../Vendor/register1.html">我要开店</a> <a>|</a> <a><span>客服电话${config_hotLine}</span>
-		</a>
-            </div>
+            <%@ include file="../common/loginmodal.jsp"%>
+                <jsp:include page="../common/footer.jsp" flush="true">
+                    <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+                </jsp:include>
         </body>
 
 
@@ -154,7 +101,7 @@
         <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="../js/jquery.cookie.js"></script>
         <script type="text/javascript" src="<c:url value='../js/consumer/select_vender.js'/>"></script>
-        <script src="<c:url value='../js/consumer/basic.js'/>"></script>
+        <script src="<c:url value='../js/basic.js'/>"></script>
 
 
         </html>

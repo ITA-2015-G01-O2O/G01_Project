@@ -75,14 +75,15 @@ $(function () {
 
             new_li.on('click', function () {
                 console.log($(this));
-                set_Location_Cookies($(this).attr("id"));
+                set_Location_Cookies($(this).attr("id"), $(this).find('a').html());
             });
             maplist.append(new_li);
         }
     }
 
-    function set_Location_Cookies(id) {
+    function set_Location_Cookies(id, address) {
         $.cookie("location_Id", id);
+        $.cookie("location_name", address);
         window.location.href = "/TTO_MAIN/stores/select-vender.view";
     }
 

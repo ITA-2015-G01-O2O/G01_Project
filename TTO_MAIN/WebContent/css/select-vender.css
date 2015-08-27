@@ -15,9 +15,7 @@
 .venders>div {
     margin-bottom: 50px;
 }
-.container {
-    width: 960px;
-}
+.container {}
 .sorter {
     margin-top: 20px;
 }
