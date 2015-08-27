@@ -89,7 +89,11 @@ function confirmbuy() {
 	var auserPhone = $("#auserPhone").val();
 	var auseraddress = $("#auseraddress").val();
 	var merchantmsg = $("#merchantmsg").val();
-
+	
+	if(dataJson==null){
+		window.location.href = '../consumer/search.view';
+	}
+	
 	var dataJson = $.cookie('com.group.tto.main.addorder' + merId);
 	// var dataJson = JSON.stringify(orderjson);
 	// var dataJson=dataJson.substr(1, dataJson.length - 2);
@@ -116,7 +120,7 @@ function confirmbuy() {
 					$.cookie('com.group.tto.main.addorder' + merId, '', {
 						expires : -1
 					});
-					window.location.href = '../consumer/confirmOrder.view?';
+					window.location.href = '../usercenter/personcenter.view';
 				} else {
 					// 添加失败
 				}
