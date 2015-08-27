@@ -424,25 +424,11 @@ function clickproLabelgetAll(){
 
 function addCollect(){
 	var flag=false;
-	$.ajax({
-		type : "post",
-		url : "../consumer/isConsumerLogin.do",
-		cache : false,
-		asyn:false,
-		error : function(error) {
-			alert("error");
-		}
-	})
-	.done(
-			function(json) {
-				if (json != "") {
-					if (json.isSuccess == true) {
-						flag=true;
-					} else {
-						$("#relogin").modal("show");
-					}
-				}
-			});
+	if( $("#loginameshow").data("successlogin")!=undefined && $("#loginameshow").data("successlogin")==true ){
+		flag=true;
+	}else{
+		$("#relogin").modal("show");
+	}
 	
 	
 	

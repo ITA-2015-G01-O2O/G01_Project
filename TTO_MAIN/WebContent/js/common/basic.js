@@ -98,6 +98,9 @@ function getUserName(){
 	                $("#loginameshow").show();
 	                $("#logintitle").hide();
 	                $("#registertitle").hide();
+	                //vendor/order/NewOrder.view
+	                $("#loginameshow").children().eq(0).attr("href","../usercenter/personcenter.view");
+	                $("#loginameshow").data("successlogin",true);
 	                $("#loginameshow").children().eq(0).text(json.data);
 	            } else {
 	                $("#logintitle").show();
@@ -150,6 +153,7 @@ function consumerlogin() {
 			if (json.isSuccess == true) {
 				// window.location.href='../account/select-vender.view';
 				$("#relogin").modal("hide");
+				$("#logout").show();
 				getUserName();
 				isStore();
 			} else {
