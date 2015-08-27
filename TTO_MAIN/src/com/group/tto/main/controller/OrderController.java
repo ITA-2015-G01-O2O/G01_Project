@@ -87,6 +87,23 @@ public class OrderController extends BaseController {
   private Order getOrder(String ausername, String auserPhone, String auseraddress, String remark,
       List<AddOrderVO> vos) {
     Long bid = 0l;
+    
+    Order o = new Order();
+    o.setContacterName(ausername);
+    o.setContacterPhone(auserPhone);
+    o.setDetailLocation(auseraddress);
+    o.setRemarks(remark == null ? " " : remark);
+ 
+    o.setCreateTime(new Date());
+    o.setIsDelete(false);
+    o.setPayWay(PayWay.CASH_PAY.name());
+    o.setOrderNumber(UUID.randomUUID().toString());
+    o.setStoreId(bid);
+    o.setStatus(OrderStatus.NEW.name());
+    o.setVersion(1l);
+    
+    
+    
     List<OrderItem> ois = new ArrayList<OrderItem>();
     for (AddOrderVO aov : vos) {
       Product p = new Product();
@@ -95,28 +112,21 @@ public class OrderController extends BaseController {
       oi.setPrice(new BigDecimal(aov.getProPrice()));
       p.setProductId(Long.parseLong(aov.getProId()));
       oi.setProduct(p);
+ 
+      oi.setOrder(o);
+      
+      
       bid = Long.parseLong(aov.getBid());
       ois.add(oi);
+      
     }
 
     
     
     
     
-    
-    Order o = new Order();
-    o.setContacterName(ausername);
-    o.setContacterPhone(auserPhone);
-    o.setDetailLocation(auseraddress);
-    o.setRemarks(remark == null ? " " : remark);
     o.setOrderItems(ois);
-    o.setCreateTime(new Date());
-    o.setIsDelete(false);
-    o.setPayWay(PayWay.CASH_PAY.name());
-    o.setOrderNumber(UUID.randomUUID().toString());
-    o.setStoreId(bid);
-    o.setStatus(OrderStatus.NEW.name());
-    o.setVersion(1l);
+   
     return o;
   }
 
