@@ -3,11 +3,16 @@ package com.group.tto.main.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Order;
@@ -26,15 +31,28 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
   // select all orders by userProfile
   public List<Order> getAllOrderByUserProfile(UserProfile userProfile) {
     List<Order> orders = new ArrayList<Order>();
+//    String sql = "from Order where userProfile.userProfileId=:id";
+//    Query q = this.getEntityManager().createQuery(sql);
+//    q.setParameter("id", userProfile.getUserProfileId());
+//    orders = (List<Order>)q.getResultList();
+    
+    Session session = this.getEntityManager().unwrap(org.hibernate.Session.class);
+    String strSql= "from Order where userProfile.userProfileId=:id";
+    org.hibernate.Query  query = session.createQuery(strSql.toString());
+    query.setParameter("id", userProfile.getUserProfileId());
+    orders = (List<Order>)query.list();
 
-    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-    CriteriaQuery<Order> query = builder.createQuery(Order.class);
-    Root<Order> order = query.from(Order.class);
-
-		Predicate condition = builder.equal(order.get(FIELD_USERPROFILE),
-				userProfile);
-		orders = this.getEntityManager().createQuery(query.where(condition))
-				.getResultList();
+//    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+//    CriteriaQuery<Order> query = builder.createQuery(Order.class);
+//    Root<Order> order = query.from(Order.class);
+//
+//		Predicate condition = builder.equal(order.get(FIELD_USERPROFILE).get("userProfileId").as(Long.class),
+//				userProfile.getUserProfileId());
+//		orders = this.getEntityManager().createQuery(query.where(condition))
+//				.getResultList();
+    
+    
+    
 
     return orders;
   }
