@@ -27,10 +27,10 @@ public class OrderItem {
   @Column(name = "AMOUNT")
   private BigDecimal amount;
   @ManyToOne(targetEntity = Product.class, fetch = FetchType.EAGER)
-  @JoinColumn(foreignKey=@ForeignKey(name="PRODUCT"))
+  @JoinColumn(foreignKey = @ForeignKey(name = "PRODUCT"))
   private Product product;
-  @ManyToOne(fetch=FetchType.EAGER)
-  @JoinColumn(name="ORDER_ID",foreignKey=@ForeignKey(name="ORDER_ID"))
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "ORDER_ID", foreignKey = @ForeignKey(name = "ORDER_ID"))
   private Order order;
 
   public Long getOrderItemId() {
@@ -63,6 +63,14 @@ public class OrderItem {
 
   public void setProduct(Product product) {
     this.product = product;
+  }
+
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
   }
 
   @Override

@@ -55,7 +55,8 @@ public class Order {
   @JoinColumn(name = "COMMENT_ID", foreignKey = @ForeignKey(name = "COMMENT_ID"))
   private Comment comment;
 
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "order")
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @JoinColumn(name = "ORDER_ID")
   private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
   @Column(name = "VERSION")
