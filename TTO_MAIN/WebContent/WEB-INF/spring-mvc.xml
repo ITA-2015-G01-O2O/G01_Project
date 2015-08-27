@@ -22,7 +22,7 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/userCenter/**" />
+			<mvc:mapping path="/usercenter/**" />
 			<bean class="com.group.tto.main.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
