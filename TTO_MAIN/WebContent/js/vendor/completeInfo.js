@@ -81,7 +81,7 @@ $(document).ready(function(){
 				return false;
 			},
 		success:function(data){
-			window.location.href="NewOrder.view";
+			window.location.href="/TTO_MAIN/vendor/order/NewOrder.view";
 		}
 	});
 	
