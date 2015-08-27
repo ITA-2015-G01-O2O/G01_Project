@@ -35,7 +35,7 @@ function setOrderpros(orderdata) {
 
 function confirmorderbtn() {
 	errorMsg=null;
-	$('#errorMsg2').text("");
+	$('#errorMsg2').html("");
 	var ausername = $("#ausername").val();
 	var auserPhone = $("#auserPhone").val();
 	var auseraddress = $("#auseraddress").val();
@@ -43,7 +43,7 @@ function confirmorderbtn() {
 	errorMsg=validate(ausername, auserPhone, auseraddress);
 	if(errorMsg!=null){
 		$("#errorMsg2").show();
-		$('#errorMsg2').text(errorMsg);
+		$('#errorMsg2').html(errorMsg);
 		return false;
 	}else {
 		addflag=true;
@@ -53,22 +53,23 @@ function confirmorderbtn() {
 		$("#contact").text(ausername);
 		$("#phonenum").text(auserPhone);
 		$("#addressInfo").text(auseraddress);
+		$("#errorMsg2").hide();
 	}
 }
 var errorMsg = null;
 function validate(ausername, auserPhone, auseraddress) {
-	if (ausername == null) {
+	if (ausername == "") {
 		errorMsg=getErrorMsg(errorMsg, "UserName should not be null!");
 	}
-	if (auserPhone == null) {
+	if (auserPhone == "") {
 		errorMsg=getErrorMsg(errorMsg, "UserPhone should not be null!");
 	}else{
-		if(!auserPhone.match(/\d{11}/g)){
+		if(!auserPhone.match(/^\d{11}$/)){
 			errorMsg=getErrorMsg(errorMsg, "Error UserPhone format,The UserPhone's length  should be 11 number!");
 		}
 	}
-	if (auseraddress == null) {
-		errorMsg=getErrorMsg(errorMsg, "UserPhone should not be null!");
+	if (auseraddress == "") {
+		errorMsg=getErrorMsg(errorMsg, "UserAddress should not be null!");
 	}
 	return errorMsg;
 }

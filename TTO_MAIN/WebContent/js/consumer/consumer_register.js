@@ -70,7 +70,7 @@ function addToCard(proName, proId, proprice) {
 }
 var errorMsg;
 function verifyName(name) {
-	if (name.match(/\d{11}$/)) {
+	if (name.match(/^\d{11}$/)) {
 		return true;
 	} else {
 		errorMsg = getErrorMsg(errorMsg,

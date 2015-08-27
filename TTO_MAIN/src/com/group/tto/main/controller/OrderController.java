@@ -60,14 +60,18 @@ public class OrderController extends BaseController {
       for (Map<String, Object> map : list) {
         vos.add(new AddOrderVO(map));
       }
+      System.out.println("-------==-=-----=-=-"+vos.size());
       Order o = getOrder(ausername, auserPhone, auseraddress, remark, vos);
+      
+      
+      
       Account loginConsumer =
           (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
       UserProfile up = new UserProfile();
       up.setUserProfileId(loginConsumer.getUserProfile().getUserProfileId());
       o.setUserProfile(up);
 
-
+      
       orderService.addOrder(o);
 
       data = this.getResultJSON(true, "");
@@ -95,6 +99,11 @@ public class OrderController extends BaseController {
       ois.add(oi);
     }
 
+    
+    
+    
+    
+    
     Order o = new Order();
     o.setContacterName(ausername);
     o.setContacterPhone(auserPhone);
