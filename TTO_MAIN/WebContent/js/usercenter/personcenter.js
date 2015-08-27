@@ -97,9 +97,11 @@ $(function() {
 				s.find("#commitId").data("orderId", orderId);
 			} else {
 				s.find("#resOVoComment").show();
-				s.find("#resOVoComment").text(data.context);
-				s.find("#resOVoCommentscore2").text(data.context);
-				s.find("#resOVoCommenttime2").text(data.context);
+				s.find("#resOVoCommentscore2").show();
+				s.find("#resOVoCommenttime2").show();
+				s.find("#resOVoComment").text(data.context==null?"null":data.context);
+				s.find("#resOVoCommentscore2").text(data.point==null?"null":data.point);
+				s.find("#resOVoCommenttime2").text(data.deliverTime==null?"null":data.deliverTime);
 			}
 		}
 		if (data.status == "ACCEPT") {
