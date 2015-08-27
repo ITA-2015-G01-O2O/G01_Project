@@ -14,48 +14,57 @@ import com.group.tto.main.service.CollectService;
 
 @Service
 public class CollectServiceImpl implements CollectService {
-	
-	@Autowired
-	private CollectDao collectDao;
-	
 
-	@Override
-	@Transactional
-	public List<Collect> findAllCollects() {
-		
-		return collectDao.findAllCollects();
-	}
+  @Autowired
+  private CollectDao collectDao;
 
 
-	@Override
-	@Transactional
-	public Long findAllCollectsByStore(Store store) {
-		
-		return collectDao.findAllCollectsByStore(store);
-	}
+  @Override
+  @Transactional
+  public List<Collect> findAllCollects() {
+    return collectDao.findAllCollects();
+  }
 
 
-	@Override
-	@Transactional
-	public void removeCollectNodeById(Long id) {
-		collectDao.removeCollectNodeById(id);
-		
-	}
+  @Override
+  @Transactional
+  public Long findAllCollectsByStore(Store store) {
+
+    return collectDao.findAllCollectsByStore(store);
+  }
 
 
-	@Override
-	@Transactional
-	public void updateCollectNode(Collect c) {
-		Collect cc =collectDao.findCollectNodeById(c.getCollectId());
-		cc.setStore(null);
-		cc.setUserProfile(null);
-	}
+  @Override
+  @Transactional
+  public void removeCollectNodeById(Long id) {
+    collectDao.removeCollectNodeById(id);
+
+  }
+
+
+  @Override
+  @Transactional
+  public void updateCollectNode(Collect c) {
+    Collect cc = collectDao.findCollectNodeById(c.getCollectId());
+    cc.setStore(null);
+    cc.setUserProfile(null);
+  }
 
 
   @Override
   @Transactional
   public void addCollectNode(Collect c) {
     collectDao.addCollect(c);
+  }
+
+
+  @Override
+  @Transactional
+  public void removeCollect(Long storeId, Long userId) {
+    Collect collect = collectDao.findBy(storeId, userId);
+    collect.setStore(null);
+    collect.setUserProfile(null);
+    //this.collectDao.save(collect);
   }
 
 }

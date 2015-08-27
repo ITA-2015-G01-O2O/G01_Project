@@ -32,27 +32,28 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
   // select all orders by userProfile
   public List<Order> getAllOrderByUserProfile(UserProfile userProfile) {
     List<Order> orders = new ArrayList<Order>();
-//    String sql = "from Order where userProfile.userProfileId=:id";
-//    Query q = this.getEntityManager().createQuery(sql);
-//    q.setParameter("id", userProfile.getUserProfileId());
-//    orders = (List<Order>)q.getResultList();
-    
-//    Session session = this.getEntityManager().unwrap(org.hibernate.Session.class);
-//    String strSql= "from Order where userProfile.userProfileId=:id";
-//    org.hibernate.Query  query = session.createQuery(strSql.toString());
-//    query.setParameter("id", userProfile.getUserProfileId());
-//    orders = (List<Order>)query.list();
+    // String sql = "from Order where userProfile.userProfileId=:id";
+    // Query q = this.getEntityManager().createQuery(sql);
+    // q.setParameter("id", userProfile.getUserProfileId());
+    // orders = (List<Order>)q.getResultList();
+
+    // Session session = this.getEntityManager().unwrap(org.hibernate.Session.class);
+    // String strSql= "from Order where userProfile.userProfileId=:id";
+    // org.hibernate.Query query = session.createQuery(strSql.toString());
+    // query.setParameter("id", userProfile.getUserProfileId());
+    // orders = (List<Order>)query.list();
 
     CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
     CriteriaQuery<Order> query = builder.createQuery(Order.class);
     Root<Order> order = query.from(Order.class);
 
-		Predicate condition = builder.equal(order.get(FIELD_USERPROFILE).get("userProfileId").as(Long.class),
-				userProfile.getUserProfileId());
-		orders = this.getEntityManager().createQuery(query.where(condition).orderBy(builder.desc(order.get("createTime")))).getResultList();
-    
-    
-    
+    Predicate condition =
+        builder.equal(order.get(FIELD_USERPROFILE).get("userProfileId").as(Long.class),
+            userProfile.getUserProfileId());
+    orders =
+        this.getEntityManager()
+            .createQuery(query.where(condition).orderBy(builder.desc(order.get("createTime"))))
+            .getResultList();
 
     return orders;
   }

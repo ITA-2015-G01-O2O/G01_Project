@@ -6,9 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SMS - home</title>
-<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -152,7 +151,7 @@
 								<br />
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Meal Center</li>
-								<li role="presentation"><a
+								<li role="presentation" class="active"><a
 									href="<c:url value='/vendor/product/FoodManageMent.view'/>">
 										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food
 										Management
@@ -162,7 +161,7 @@
 									<li role="presentation">
 										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
 									</li>
-									<li class="active" role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
 									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
 								</ul>
 						</div>

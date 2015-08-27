@@ -63,7 +63,7 @@ function addUserFav(data){
 	
 	
 	s.find("button[name=cancelfav]").on("click",function(){
-		var cancel = s;
+		var cancel = this;
 		var yes = confirm("do you want to cancel?");
 		if(yes){
 			
@@ -78,9 +78,8 @@ function addUserFav(data){
 				error : function(error) {
 				}
 			}).done(function(json) {
-				var cancel1 = cancel;
 				if (json != "") {
-					$(cancel1).parent().parent().parent().parent().parent().remove();
+					$(cancel).parent().parent().parent().parent().parent().remove();
 				}
 			});
 		}	

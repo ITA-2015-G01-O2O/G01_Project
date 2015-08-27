@@ -93,6 +93,25 @@ public class CollectDaoImpl extends BaseDao<Collect> implements CollectDao {
     return this.getEntityManager().createQuery(query.where(condition)).getResultList();
   }
 
+  @Override
+  public Collect findBy(Long storeId, Long userId) {
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Collect> query = builder.createQuery(Collect.class);
+    Root<Collect> collect = query.from(Collect.class);
+
+    Predicate condition =
+        builder.and(builder.equal(collect.get("userProfile"), userId),
+            builder.equal(collect.get("store"), storeId));
+    List<Collect> collects =
+        this.getEntityManager().createQuery(query.where(condition)).getResultList();
+    return collects.size() == 0 ? null : collects.get(0);
+  }
+
+  @Override
+  public void save(Collect collect) {
+    this.update(collect);
+  }
+
 
 
 }

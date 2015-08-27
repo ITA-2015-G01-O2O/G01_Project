@@ -71,17 +71,17 @@ public class UserCenterController extends BaseController {
    */
   public List<OrderListVo> getAllOrderWhenLoadPage(HttpServletRequest request) {
     List<OrderListVo> orderlist = new ArrayList<OrderListVo>();
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    Account a = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     UserProfile userProfile = a.getUserProfile();
     List<Order> orders = orderService.getAllOrderByUserProfile(userProfile);
-    if(orders.size()<1){
+    if (orders.size() < 1) {
       return null;
     }
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
       MerProsList s = storeService.getStoreById(order.getStoreId());
       o.setOrderId(order.getOrderId());
-     
+
       o.setStoreName(s.getStoreName());
       o.setPhone(s.getPhone());
       o.setLogoPicUrl(s.getLogoPicUrl());
@@ -103,7 +103,7 @@ public class UserCenterController extends BaseController {
       o.setDetailLocation(order.getDetailLocation());
       o.setRemarks(order.getRemarks());
       Comment c = order.getComment();
-      if ( c== null) {
+      if (c == null) {
         o.setContext(null);
       } else {
         o.setContext(order.getComment().getContext());
@@ -119,7 +119,7 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/getUserProfile.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public UserInformationVo getUserProfileBy(HttpServletRequest request) {
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    Account a = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setUname(a.getUsername());
     userInformationVo.setPassword(a.getPassword());
@@ -147,11 +147,13 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/chargeUserFund.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo chargeUserFund(HttpServletRequest request,String addMoney) {
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-    UserProfile userProfile = a.getUserProfile();    
+  public UserInformationVo chargeUserFund(HttpServletRequest request, String addMoney) {
+    Account a = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    UserProfile userProfile = a.getUserProfile();
     BigDecimal addFund = new BigDecimal(Integer.valueOf(addMoney));
-    UserProfile u = userProfileService.chargeUserProfileFundByProfileId(userProfile.getUserProfileId(), addFund);
+    UserProfile u =
+        userProfileService
+            .chargeUserProfileFundByProfileId(userProfile.getUserProfileId(), addFund);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setFund(u.getFund());
     return userInformationVo;
@@ -161,24 +163,20 @@ public class UserCenterController extends BaseController {
   @ResponseBody
   public List<UserFavVendorsVo> getUserFavVendor(HttpServletRequest request) {
 
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-    List<UserFavVendorsVo> userFavVendorsVoList = storeService.getStoresByUserProfileId(a.getUserProfile().getUserProfileId());
-   
+    Account a = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    List<UserFavVendorsVo> userFavVendorsVoList =
+        storeService.getStoresByUserProfileId(a.getUserProfile().getUserProfileId());
+
     return userFavVendorsVoList;
   }
 
   @RequestMapping(value = "/cancelUserFavVendor.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo cancelUserFavVendor(HttpServletRequest request) {
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+  public UserInformationVo cancelUserFavVendor(HttpServletRequest request, Long storeId) {
+    Account a = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     UserProfile user = a.getUserProfile();
-    List<Collect> collects = user.getCollects();
-    for (Collect collect : collects) {
-      if (collect.getStore().getStoreId() == 50L) {
-        collectService.updateCollectNode(collect);
-        break;
-      }
-    }
+    Long userId = user.getUserProfileId();
+    this.collectService.removeCollect(storeId, userId);
     UserInformationVo userInformationVo = new UserInformationVo();
     return userInformationVo;
   }
@@ -206,12 +204,12 @@ public class UserCenterController extends BaseController {
     Boolean result = orderService.cancelOrderById(Long.valueOf(orderId));
     return this.getResultJSON(result, "");
   }
-  
+
   @RequestMapping(value = "/confirmOrder.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String confirmOrder(String orderId) {
     Boolean result = orderService.confirmOrderById(Long.valueOf(orderId));
     return this.getResultJSON(result, "");
   }
-  
+
 }

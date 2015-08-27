@@ -45,7 +45,7 @@ public class StoreServiceImpl implements StoreService {
     if (temp == null) {
       temp = new Store();
     }
-    System.out.println(temp.getProducts().size());
+    temp.getProducts();
     MerProsList merProsList = new MerProsList(temp);
     return merProsList;
   }
@@ -55,7 +55,7 @@ public class StoreServiceImpl implements StoreService {
   public List<StoreSearchVo> getStoresbyCriteria(StoreSearchCriteria criteria) {
     List<Store> storeList = store.getStoreByCriteria(criteria);
     List<StoreSearchVo> voList = new ArrayList<StoreSearchVo>();
-    for(Store store:storeList){
+    for (Store store : storeList) {
       voList.add(new StoreSearchVo(store));
     }
     return voList;
@@ -87,6 +87,7 @@ public class StoreServiceImpl implements StoreService {
       u.setLogoPicUrl(s.getLogoPicUrl());
       u.setDetailLocation(s.getDetailLocation());
       u.setPhone(s.getPhone());
+      u.setStoreId(s.getStoreId());
 
       List<Order> orders = order.getAllOrderByStoreId(s.getStoreId());
       u.setAvgPoint(s.getAvgPoint());
