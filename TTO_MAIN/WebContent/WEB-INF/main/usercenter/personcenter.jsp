@@ -81,11 +81,14 @@
 												<label for="inputPassword" class="col-xs-2 control-label">Password</label>
 												<div class="col-xs-10">
 													<ul class="list-inline">
-													
-														<li><input id="userInfo_password" type="password"/>
+
+														<li><input id="userInfo_password" type="password" />
 														</li>
-														<li><a class="btn btn-info" onclick="changePsw()" id="changePsd">change
+														<li><a class="btn btn-info" onclick="changePsw()">change
 																psd</a></li>
+
+														<li><div class="alert alert-danger"
+																style="display: none" role="alert" id="errorMsg2"></div></li>
 
 													</ul>
 												</div>
@@ -162,8 +165,9 @@
 								</tbody>
 							</table>
 							<div class="text-right">
-								total:$<lable id="totalPrice"></lable>
-								
+								total:$
+								<lable id="totalPrice"></lable>
+
 
 							</div>
 						</div>
@@ -187,14 +191,24 @@
 							</div>
 							<div>
 								comment:
-								<lable id="resOVoComment"></lable>
+								<lable id="resOVoComment" style="display:none"></lable>
+								<div id="resOVoComment2" style="display: none">
+									<input type="text" id="resOVoCommenttext"/> <span
+										id="comment"></span>
+									<button onclick="commitcomment(this)" id="commitId">commit</button>
+								</div>
 							</div>
-							<div class="page-header ">addr:<lable id="detailLocation"></lable></div>
+							<div class="page-header ">
+								addr:
+								<lable id="detailLocation"></lable>
+							</div>
 						</div>
 						<div class="myclass1">
-							<div class="text-center mymainhei" id="resReplyToUser">waiting for check by res</div>
+							<div class="text-center mymainhei" id="resReplyToUser">waiting
+								for check by res</div>
 							<div class=" text-right">
-								<button class="btn btn-warning hidden" id="userCancelThisOrder">cancel order?</button>
+								<button class="btn btn-warning hidden" id="userCancelThisOrder">cancel
+									order?</button>
 							</div>
 						</div>
 					</div>
@@ -207,6 +221,51 @@
 			<td class="success" id="productName"></td>
 			<td class="warning" id="productPrice"></td>
 		</tr>
+		<div class="modal fade" id="showChangePsw" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						请输入原始密码：<input type="password" id="checkPassword" />
+					</div>
+					<div class="alert alert-danger" style="display: none" role="alert"
+						id="errorMsg"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							onclick="confirmPsw()">Comfirm</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="successchange" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h3>Update password successfully!!</h3>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Comfirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="failchange" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h3>Login,pls!!</h3>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Comfirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 
 </html>

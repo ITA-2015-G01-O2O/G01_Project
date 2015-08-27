@@ -1,6 +1,6 @@
 var merId;
 $(function() {
-	getUserName();
+	
 	merId = $("#merId").val();
 	$.cookie('com.group.tto.main.addorder' + merId, '', {
 		expires : -1
@@ -31,6 +31,7 @@ $(function() {
 			} 
 		}
 	});
+	getUserName();
 });
 
 

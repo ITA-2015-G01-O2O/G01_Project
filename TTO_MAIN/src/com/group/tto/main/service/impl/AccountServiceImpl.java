@@ -33,8 +33,9 @@ public class AccountServiceImpl implements AccountService {
 	@Transactional
 	public void changePasswordByAccount(Account account, String newPassword) {
 		try{
-			Account a = accountDao.getAccountById(account.getAccountId());
-			a.setPassword(newPassword);
+			//Account a = accountDao.getAccountById(account.getAccountId());
+		  account.setPassword(newPassword);
+		  this.accountDao.updateAccount(account);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
