@@ -7,16 +7,14 @@ import com.group.tto.main.common.StoreSearchCriteria;
 
 public interface StoreDao {
 	public Store getStoreById(Long sid);
-
-	
-	
-	
 	/**
 	 * query store by criteria
 	 * @param criteria
 	 * @return
 	 */
 	public List<Store> getStoreByCriteria(StoreSearchCriteria criteria);
+	
+	public void updateStore(Store store);
 
 	
 }
