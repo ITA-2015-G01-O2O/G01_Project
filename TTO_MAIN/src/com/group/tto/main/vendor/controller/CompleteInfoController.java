@@ -21,7 +21,7 @@ import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.CompleteInfoService;
 
 @Controller
-@RequestMapping("/completeInfo")
+@RequestMapping("/vendor/completeInfo")
 public class CompleteInfoController extends BaseController {
 
   @Autowired

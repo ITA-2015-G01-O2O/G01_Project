@@ -96,25 +96,25 @@ public class VendorRegisterServiceImpl implements VendorRegisterService {
 
   @Override
   public List<String> getAllArea() {
-    List<String> locations=locationDao.getAllArea();
+    List<String> locations = locationDao.getAllArea();
     return locations;
   }
 
   @Override
   public List<Configuration> getAllConfig() {
-    List<Configuration> cons=conDao.getAllConfig();
+    List<Configuration> cons = conDao.getAllConfig();
     return cons;
   }
 
   @Override
   public List<String> getCity(String area) {
-    List<String> locations=locationDao.getCity(area);
+    List<String> locations = locationDao.getCity(area);
     return locations;
   }
 
   @Override
   public List<Location> getPlace(String city) {
-    List<Location> locations=locationDao.getPlace(city);
+    List<Location> locations = locationDao.getPlace(city);
     return locations;
   }
 

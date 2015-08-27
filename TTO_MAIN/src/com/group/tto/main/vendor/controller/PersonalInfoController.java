@@ -11,7 +11,7 @@ import com.group.tto.cmn.model.StoreProfile;
 import com.group.tto.main.vendor.service.PersonalInfoService;
 
 @Controller
-@RequestMapping("/personalInfo")
+@RequestMapping("/vendor/personalInfo")
 public class PersonalInfoController extends BaseController {
   @Autowired
   private PersonalInfoService pi;

@@ -26,6 +26,7 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
   private static final String FIELD_STOREPLACE = "location";
   private static final String FIELD_STATUS = "status";
   private static final String FIELD_STORE_PROFILE = "storeProfile";
+  private static final String FIELD_STORE_ISDELETE = "isDelete";
 
   @Override
   // 根据商家id找到商家
@@ -52,8 +53,9 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
     Predicate condition =
         builder.and(builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation()),
-            builder.equal(store.get(FIELD_STORE_PROFILE).get(FIELD_STATUS).as(String.class),
-                StopProfileStatus.NORMAL.toString()));
+            builder.equal(store.get(FIELD_STORE_PROFILE).get(FIELD_STATUS).as(String.class),StopProfileStatus.NORMAL.toString()),
+            builder.equal(store.get(FIELD_STORE_ISDELETE), false)
+            );
 
     List<Store> storeList =
         this.getEntityManager().createQuery(query.where(condition)).getResultList();
