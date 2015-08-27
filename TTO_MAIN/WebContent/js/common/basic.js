@@ -52,10 +52,10 @@ $(function() {
 function isStore(){
 	 $.ajax({
 	        type: "post",
-	        url: "../account/isStore.do",
+	        url: "/TTO_MAIN/account/isStore.do",
 	        cache: false,
 	        error: function (error) {
-	            alert("error");
+	            alert("error1");
 	        }
 	    }).done(function (json) {
 	        if (json != "") {
@@ -87,10 +87,10 @@ function isStore(){
 function getUserName(){
 	 $.ajax({
 	        type: "post",
-	        url: "../account/getMainName.do",
+	        url: "/TTO_MAIN/account/getMainName.do",
 	        cache: false,
 	        error: function (error) {
-	            alert("error");
+	            alert("error2");
 	        }
 	    }).done(function (json) {
 	        if (json != "") {
@@ -100,7 +100,7 @@ function getUserName(){
 	                $("#registertitle").hide();
 	                $("#logout").show();
 	                //vendor/order/NewOrder.view
-	                $("#loginameshow").children().eq(0).attr("href","../usercenter/personcenter.view");
+	                $("#loginameshow").children().eq(0).attr("href","/TTO_MAIN/usercenter/personcenter.view");
 	                $("#loginameshow").data("successlogin",true);
 	                $("#loginameshow").children().eq(0).text(json.data);
 	            } else {
@@ -114,11 +114,11 @@ function getUserName(){
 function isstorelogin(){
 	  $.ajax({
 	        type: "post",
-	        url: "../account/getMainName.do",
+	        url: "/TTO_MAIN/account/getMainName.do",
 	        cache: false,
 	        asyn:false,
 	        error: function (error) {
-	            alert("error");
+	            alert("error3");
 	        }
 	    }).done(function (json) {
 	        if (json != "") {
@@ -140,14 +140,14 @@ function consumerlogin() {
 
 	$.ajax({
 		type : "post",
-		url : "../account/login.do",
+		url : "/TTO_MAIN/account/login.do",
 		cache : false,
 		data : {
 			loginname : username,
 			password : password
 		},
 		error : function(error) {
-			alert("error");
+			alert("error4");
 		}
 	}).done(function(json) {
 		if (json != "") {
