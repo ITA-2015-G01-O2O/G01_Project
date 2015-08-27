@@ -65,7 +65,7 @@ $(function () {
             new_store.find('.salesNum').html("销量:" + store_list[i].salesNum);
             new_store.find('.avgDeliverTime').html(store_list[i].avgDeliverTime + "分钟送达");
             //hot img
-            console.log(store_list[i].isHot);
+            console.log("hot state" + store_list[i].isHot);
             if (store_list[i].isHot) {
                 carousel_imgs[count_img++].attr("src", "../file/img/" + store_list[i].logoPicURL);
             }
@@ -169,35 +169,37 @@ $(function () {
     }
 
     function compare_result(i, j) {
-
         if (sortType == "sales") {
             //console.log("按照销量排序");
             return (orderType * sort_store_list[i].salesNum >= orderType * sort_store_list[j].salesNum);
         }
-
         if (sortType == "score") {
             //console.log("按照评分排序");
             return (orderType * sort_store_list[i].avgPoint >= orderType * sort_store_list[j].avgPoint);
         }
-
         if (sortType == "speed") {
             //console.log("按照送餐时间排序");
             return (orderType * sort_store_list[i].avgDeliverTime >= orderType * sort_store_list[j].avgDeliverTime);
         }
-
         return 0;
     }
 
 
+    //select then search    
+
+    $('.search input').on('keydown', function () {
+        var input = $('.search input').val();
+        console.log("select");
+
+    });
 
 
-    //clean doms
+    //clean DOM
     function clean_stores() {
         for (var i = 0; i < stores.length; i++) {
             $("#store_temp").next().remove();
         }
     }
-
 
     //ajax call data
     store_info();

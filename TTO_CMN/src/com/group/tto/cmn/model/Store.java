@@ -56,7 +56,8 @@ public class Store {
   @JoinColumn(name = "TYPE_CONFIG_ID", foreignKey = @ForeignKey(name = "TYPE_CONFIG_ID"))
   private Configuration typeConfig;
 
-  @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name="LOCATION",foreignKey=@ForeignKey(name="LOCATION"))
   private Location location;
   @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
   @JoinColumn(name = "STORE_PROFILE_ID", foreignKey = @ForeignKey(name = "STORE_PROFILE_ID"))
