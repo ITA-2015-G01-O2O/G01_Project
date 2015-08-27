@@ -18,6 +18,7 @@ public class SessionListener implements HttpSessionListener {
   public void sessionDestroyed(HttpSessionEvent arg0) {
     HttpSession session = arg0.getSession();
     Account account = (Account) session.getAttribute(Constants.SESSION_LOGIN_INFO);
+    System.out.println("remove   ===="+account.getUsername());
     Long id = account.getAccountId();
     List<Account> accounts =
         (List<Account>) session.getServletContext().getAttribute(Constants.CONTEXT_LOGIN_INFO);
