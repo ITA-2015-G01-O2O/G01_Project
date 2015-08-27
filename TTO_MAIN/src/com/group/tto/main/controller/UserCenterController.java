@@ -26,6 +26,7 @@ import com.group.tto.main.service.CommentService;
 import com.group.tto.main.service.OrderService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.service.UserProfileService;
+import com.group.tto.main.vo.MerProsList;
 import com.group.tto.main.vo.OrderEachItem;
 import com.group.tto.main.vo.OrderListVo;
 import com.group.tto.main.vo.UserFavVendorsVo;
@@ -78,7 +79,7 @@ public class UserCenterController extends BaseController {
     }
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
-      Store s = storeService.getStoreById(order.getStoreId());
+      MerProsList s = storeService.getStoreById(order.getStoreId());
       o.setOrderId(order.getOrderId());
      
       o.setStoreName(s.getStoreName());

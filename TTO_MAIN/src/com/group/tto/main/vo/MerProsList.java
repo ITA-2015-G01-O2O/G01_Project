@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.ProductLabel;
 import com.group.tto.cmn.model.Store;
@@ -36,13 +37,15 @@ public class MerProsList {
    */
   private String announcement;
 
+  List<Order> orders=new ArrayList<Order>();
   private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-
+  private String phone;
   public MerProsList() {
 
   }
 
   public MerProsList(Store stroe) {
+    this.phone=stroe.getPhone();
     this.products = stroe.getProducts();
     this.storeId = stroe.getStoreId();
     this.storeName = stroe.getStoreName();
@@ -57,6 +60,35 @@ public class MerProsList {
     this.deliverFee = stroe.getDeliverFee();
     this.startingFee = stroe.getStartingFee();
 
+    this.orders=stroe.getOrders();
+    this.avgPoint = stroe.getAvgPoint();
+
+    this.avgDeliverTime = stroe.getAvgDeliverTime();
+
+    /**
+     * gong gao
+     */
+    this.announcement = stroe.getAnnouncement();
+    this.logoPicUrl = stroe.getLogoPicUrl();
+    this.productLabels=stroe.getProductLabels();
+  }
+  public MerProsList(MerProsList stroe) {
+    this.phone=stroe.getPhone();
+    this.products = stroe.getProducts();
+    this.storeId = stroe.getStoreId();
+    this.storeName = stroe.getStoreName();
+
+    this.detailLocation = stroe.getDetailLocation();
+
+    this.serviceBeginTime = stroe.getServiceBeginTime();
+    this.serviceEndTime = stroe.getServiceEndTime();
+    /**
+     * kuai di fei qisong fei
+     */
+    this.deliverFee = stroe.getDeliverFee();
+    this.startingFee = stroe.getStartingFee();
+
+    this.orders=stroe.getOrders();
     this.avgPoint = stroe.getAvgPoint();
 
     this.avgDeliverTime = stroe.getAvgDeliverTime();
@@ -69,6 +101,21 @@ public class MerProsList {
     this.productLabels=stroe.getProductLabels();
   }
 
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
+  }
 
   public String getLogoPicUrl() {
     return logoPicUrl;
