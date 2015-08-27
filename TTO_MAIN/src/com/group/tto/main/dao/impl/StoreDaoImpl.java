@@ -53,14 +53,19 @@ public class StoreDaoImpl extends BaseDao<Store> implements StoreDao {
 
     Predicate condition =
         builder.and(builder.equal(store.get(FIELD_STOREPLACE), criteria.getStoreLocation()),
-            builder.equal(store.get(FIELD_STORE_PROFILE).get(FIELD_STATUS).as(String.class),StopProfileStatus.NORMAL.toString()),
-            builder.equal(store.get(FIELD_STORE_ISDELETE), false)
-            );
+            builder.equal(store.get(FIELD_STORE_PROFILE).get(FIELD_STATUS).as(String.class),
+                StopProfileStatus.NORMAL.toString()), builder.equal(
+                store.get(FIELD_STORE_ISDELETE), false));
 
     List<Store> storeList =
         this.getEntityManager().createQuery(query.where(condition)).getResultList();
 
     return storeList;
+  }
+
+  @Override
+  public void updateStore(Store store) {
+    this.update(store);
   }
 
 }

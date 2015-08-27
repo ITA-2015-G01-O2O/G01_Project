@@ -16,7 +16,7 @@ import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.BasicSettingService;
 
 @Controller
-@RequestMapping("/basicSetting")
+@RequestMapping("/vendor/basicSetting")
 public class BasicSettingController extends BaseController {
   @Autowired
   private BasicSettingService bs;

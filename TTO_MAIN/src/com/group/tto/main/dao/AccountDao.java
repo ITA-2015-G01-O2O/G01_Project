@@ -9,4 +9,6 @@ public interface AccountDao {
 	
 	public Account getAccountById(Long accountId);
 	public void createAccount(Account a);
+
+  public void updateAccount(Account account);
 }

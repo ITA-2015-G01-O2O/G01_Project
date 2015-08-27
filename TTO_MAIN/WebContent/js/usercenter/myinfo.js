@@ -55,7 +55,10 @@ function addUserFav(data){
 	s.find("#resVodetailLocation").text(data.detailLocation);
 	s.find("#resVopoint").text(data.avgPoint);
 	s.find("#resVoAmount").text(data.orderAmount);
+	
 	s.find("#resVoColAmount").text(data.collectAmount);
+	
+	
 	s.find("button[name=cancelfav]").on("click",function(){
 		var cancel = $(this);
 		var yes = confirm("do you want to cancel?");

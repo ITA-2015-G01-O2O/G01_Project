@@ -11,4 +11,5 @@ public interface OrderService {
 	public Boolean cancelOrderById(Long orderId);
 	public List<Order> getAllOrderByStoreId(Long storeId);
 	public void addOrder(Order o);
+	public Boolean confirmOrderById(Long orderId);
 }

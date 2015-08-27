@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Comment;
 import com.group.tto.cmn.model.Order;
+import com.group.tto.cmn.model.Store;
 import com.group.tto.main.dao.OrderDao;
+import com.group.tto.main.dao.StoreDao;
 import com.group.tto.main.dao.UserProfileDao;
 import com.group.tto.main.service.CommentService;
 
@@ -20,6 +22,8 @@ public class CommentServiceImpl implements CommentService {
   private OrderDao orderDao;
   @Autowired
   private UserProfileDao userProfileDao;
+  @Autowired
+  private StoreDao storeDao;
 
   @Override
   @Transactional
@@ -34,14 +38,24 @@ public class CommentServiceImpl implements CommentService {
     Order order = this.orderDao.getOrderById(orderId);
     if (order.getComment() == null) {
       order.setComment(comment);
+
+      Store store = this.storeDao.getStoreById(order.getStoreId());
+      BigDecimal avgPoint = store.getAvgPoint();
+      BigDecimal avgDeliver = store.getAvgDeliverTime();
+      Integer totalOrder = store.getOrders().size();
+
+      store.setAvgDeliverTime(avgDeliver.multiply(new BigDecimal(totalOrder)).add(deliverTime)
+          .multiply(new BigDecimal(totalOrder + 1)));
+      store.setAvgPoint(avgPoint.multiply(new BigDecimal(totalOrder)).add(point)
+          .multiply(new BigDecimal(totalOrder + 1)));
+
       this.orderDao.saveOrder(order);
+      this.storeDao.updateStore(store);
+
       return true;
     } else {
       return false;
     }
-
-
-
   }
 
 }

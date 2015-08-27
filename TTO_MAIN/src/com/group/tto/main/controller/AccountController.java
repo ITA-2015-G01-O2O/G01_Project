@@ -87,12 +87,21 @@ public class AccountController extends BaseController {
 	  @RequestMapping(value = "/getMainName.do", produces = {"application/json;charset=UTF-8"})
       @ResponseBody
       public String getMainName(HttpServletRequest request) {
-	    
-	  
-	    String loginName =  (String) request.getSession().getAttribute("mainName");
-	    boolean flag=false;
-	    if(loginName!=null){
-	      flag=true;
+	    List<Account> loginMain =
+	        (List<Account>) request.getServletContext().getAttribute(Constants.CONTEXT_LOGIN_INFO);
+
+	    Account loginConsumer = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+	    String loginName = null;
+	    boolean flag = false;
+	    if (loginConsumer != null) {
+	      if (loginMain != null) {
+	        for (Account temp : loginMain) {
+	          if (temp.getUsername().equals(loginConsumer.getUsername())) {
+	            flag = true;
+	            loginName=temp.getUsername();
+	          }
+	        }
+	      }
 	    }
 	    String data = this.getResultJSON(flag, loginName);
          return data;

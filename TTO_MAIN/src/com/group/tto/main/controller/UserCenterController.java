@@ -132,16 +132,25 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/changeUserProfile.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo changeUserProfile() {
+  public String changeUserProfile(String newPassword, HttpServletRequest request) {
     System.out.println("receive change user's password  by Account..........");
-    System.out.println("handling............");
-    Account account = new Account();
-    account.setAccountId(50l);
-    accountService.changePasswordByAccount(account, "123");
-    UserInformationVo userInformationVo = new UserInformationVo();
-    userInformationVo.setPassword("123");
-    return userInformationVo;
+    System.out.println("handling............" + newPassword);
+
+    // Account account = new Account();
+    // account.setAccountId(50l);
+    Boolean flag = false;
+    if (newPassword != null) {
+      Account account = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+      System.out.println(account.getUsername());
+      if (account != null) {
+        flag = true;
+        accountService.changePasswordByAccount(account, newPassword);
+        request.getSession().setAttribute(Constants.SESSION_LOGIN_INFO, account);
+      }
+    }
+    return this.getResultJSON(flag, "");
   }
+
 
 
   @RequestMapping(value = "/chargeUserFund.do", produces = {"application/json;charset=UTF-8"})
@@ -217,16 +226,28 @@ public class UserCenterController extends BaseController {
       return this.getResultJSON(false, "");
     }
   }
-  
-  
+
+
   @RequestMapping(value = "/cancelOrder.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public String cancelOrder(String orderId){
-    System.out.println("receive user cancel order request!"+orderId);
+  public String cancelOrder(String orderId) {
+    System.out.println("receive user cancel order request!" + orderId);
     Boolean result = orderService.cancelOrderById(Long.valueOf(orderId));
-    
-    
-    
+
+
+
     return this.getResultJSON(result, "");
   }
+  
+  @RequestMapping(value = "/confirmOrder.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String confirmOrder(String orderId) {
+    System.out.println("receive user confirm order request!" + orderId);
+    Boolean result = orderService.confirmOrderById(Long.valueOf(orderId));
+
+
+
+    return this.getResultJSON(result, "");
+  }
+  
 }

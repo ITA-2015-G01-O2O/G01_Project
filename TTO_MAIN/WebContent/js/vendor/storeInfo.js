@@ -42,7 +42,7 @@ function loadMessage(){
 			$("#inputType").val(type);
 			
 			var uuid=data.data.logoPicUrl;
-			$("#showStorePic").attr("src","../file/img/"+uuid);
+			$("#showStorePic").attr("src","/TTO_MAIN/file/img/"+uuid);
 			
 			$("#piclog").val("0");
 		},
@@ -51,16 +51,32 @@ function loadMessage(){
         }
 	});
 }
+function loadConfig(){
+	$.ajax({
+		type:"post",
+		url:"loadConfig.do",
+        success:function(data){
+            var configs=data.data;
+            for(var i in configs){
+            	var con=configs[i];
+            	$("#configMenu").append("<li><a href=\"#\" id=\"type"+i+"\">"+con.configValue+"</a></li>");           
+            }
+            
+            $("a[id^=type]").on("click",function(){
+				var type=$(this).text();
+				$("#typemsg").text(type);
+				$("#inputType").val(type);
+			});
+        }
+	});
+}
 $(document).ready(function(){
 	$("#inputStoreName").on("blur",verifyStoreName);
-	$("a[id^=type]").on("click",function(){
-		var type=$(this).text();
-		$("#typemsg").text(type);
-		$("#inputType").val(type);
-	});
+	
 	$("#changePic").on("click",function(){
 		$("#piclog").val("1");
 	});
+	loadConfig();
 	loadMessage();
 	$('#si_form').ajaxForm({
 		type:'post',

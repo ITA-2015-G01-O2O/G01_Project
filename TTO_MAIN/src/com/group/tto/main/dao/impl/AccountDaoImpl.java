@@ -72,6 +72,17 @@ public class AccountDaoImpl extends BaseDao<Account> implements  AccountDao{
         e.printStackTrace();
       }
   }
+
+  @Override
+  public void updateAccount(Account account) {
+    try {
+      this.update(account);
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+  }
 	
 	
 	

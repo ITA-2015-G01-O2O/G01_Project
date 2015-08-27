@@ -1,6 +1,5 @@
 package com.group.tto.main.vendor.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;

@@ -5,7 +5,6 @@ import java.io.InputStream;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.group.tto.cmn.model.Configuration;
@@ -15,8 +14,7 @@ import com.group.tto.main.vendor.dao.ConfigurationDao;
 import com.group.tto.main.vendor.dao.StoreDao;
 import com.group.tto.main.vendor.service.StoreInfoService;
 
-@Service
-@Repository("vendorStoreInfoServiceImpl")
+@Service("vendorStoreInfoServiceImpl")
 public class StoreInfoServiceImpl implements StoreInfoService {
 
   @Autowired
@@ -52,6 +50,7 @@ public class StoreInfoServiceImpl implements StoreInfoService {
     }
     return num;
   }
+
   @Override
   @Transactional
   public int updateStoreInfo(Store store, int sid) {
@@ -76,6 +75,7 @@ public class StoreInfoServiceImpl implements StoreInfoService {
     Configuration con = conDao.getConfiguration(value);
     return con;
   }
+
   public StoreDao getStoreDao() {
     return storeDao;
   }

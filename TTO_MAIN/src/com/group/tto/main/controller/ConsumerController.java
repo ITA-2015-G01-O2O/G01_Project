@@ -71,17 +71,19 @@ public class ConsumerController extends BaseController {
     Account loginConsumer = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
 
     boolean flag = false;
+    String username=null;
     if (loginConsumer != null) {
       if (loginMain != null) {
         for (Account temp : loginMain) {
           if (temp.getUsername().equals(loginConsumer.getUsername())) {
             flag = true;
+            username=temp.getUsername();
           }
         }
       }
     }
 
-    String data = this.getResultJSON(flag, "");
+    String data = this.getResultJSON(flag, username);
     return data;
   }
 
