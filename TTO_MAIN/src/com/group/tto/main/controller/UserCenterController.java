@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Collect;
+import com.group.tto.cmn.model.Comment;
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.OrderItem;
 import com.group.tto.cmn.model.Store;
@@ -80,6 +81,7 @@ public class UserCenterController extends BaseController {
       OrderListVo o = new OrderListVo();
       Store s = storeService.getStoreById(order.getStoreId());
       o.setOrderId(order.getOrderId());
+     
       o.setStoreName(s.getStoreName());
       o.setPhone(s.getPhone());
       o.setLogoPicUrl(s.getLogoPicUrl());
@@ -100,10 +102,13 @@ public class UserCenterController extends BaseController {
       o.setContacterPhone(order.getContacterPhone());
       o.setDetailLocation(order.getDetailLocation());
       o.setRemarks(order.getRemarks());
-      if (order.getComment() == null) {
+      Comment c = order.getComment();
+      if ( c== null) {
         o.setContext(null);
       } else {
         o.setContext(order.getComment().getContext());
+        o.setDeliverTime(c.getDeliverTime());
+        o.setPoint(c.getPoint());
       }
 
 

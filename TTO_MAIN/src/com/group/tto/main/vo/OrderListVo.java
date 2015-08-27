@@ -20,6 +20,8 @@ public class OrderListVo {
 	private String remarks;
 	private String context;//comment text
 	private String logoPicUrl;
+	private BigDecimal deliverTime;
+	private BigDecimal point;
 
 	public String getStoreName() {
 		return storeName;
@@ -98,6 +100,18 @@ public class OrderListVo {
   }
   public void setOrderId(Long orderId) {
     this.orderId = orderId;
+  }
+  public BigDecimal getDeliverTime() {
+    return deliverTime;
+  }
+  public void setDeliverTime(BigDecimal deliverTime) {
+    this.deliverTime = deliverTime;
+  }
+  public BigDecimal getPoint() {
+    return point;
+  }
+  public void setPoint(BigDecimal point) {
+    this.point = point;
   }
 	
 	
