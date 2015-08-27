@@ -48,7 +48,7 @@ public class CollectServiceImpl implements CollectService {
 	public void updateCollectNode(Collect c) {
 		Collect cc =collectDao.findCollectNodeById(c.getCollectId());
 		cc.setStore(null);
-		cc.setUserProfile(null);
+		cc.setUserProfileId(null);
 	}
 
 }
