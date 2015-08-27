@@ -22,7 +22,6 @@ public class OrderVO {
   private String remarks;
   private String detailLocation;
   private Long storeId;
-  private List<OrderItem> orderItems = new ArrayList<OrderItem>();
   private Comment comment;
   private Long version;
   private Boolean isDelete;
@@ -44,10 +43,9 @@ public class OrderVO {
     this.remarks = pl.getRemarks();
     this.detailLocation = pl.getDetailLocation();
     this.storeId = pl.getStoreId();
-    this.orderItems = pl.getOrderItems();
+  
     if (pl.getComment() != null) {
       this.comment = new Comment();
-      this.comment.setCommentId(pl.getComment().getCommentId());
       this.comment.setContext(pl.getComment().getContext());
       this.comment.setDeliverTime(pl.getComment().getDeliverTime());
       this.comment.setPoint(pl.getComment().getPoint());
@@ -142,14 +140,6 @@ public class OrderVO {
 
   public void setStoreId(Long storeId) {
     this.storeId = storeId;
-  }
-
-  public List<OrderItem> getOrderItems() {
-    return orderItems;
-  }
-
-  public void setOrderItems(List<OrderItem> orderItems) {
-    this.orderItems = orderItems;
   }
 
   public Comment getComment() {

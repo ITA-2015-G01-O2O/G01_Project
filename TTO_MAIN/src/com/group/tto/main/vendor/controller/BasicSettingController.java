@@ -25,7 +25,7 @@ public class BasicSettingController extends BaseController {
   @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String updateBasicSetting(HttpServletRequest req) {
-    int sid = (int) req.getSession().getAttribute("sid");
+    long sid = (long) req.getSession().getAttribute("sid");
     //int sid=2050;
     String announcement = req.getParameter("announcement");
     String minPrice = req.getParameter("minPrice");
@@ -53,7 +53,7 @@ public class BasicSettingController extends BaseController {
     store.setServiceBeginTime(beginTime);
     store.setServiceEndTime(endTime);
 
-    int num = bs.updateBasicSetting(sid, store);
+    int num = bs.updateBasicSetting((int)sid, store);
     return this.getResultJSON(true, num);
   }
 
