@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Configuration;
@@ -76,8 +77,8 @@ public class RegisterController extends BaseController {
 
   @RequestMapping(value = "/register3.do")
   public String register3(HttpServletRequest req,
-      @RequestParam(value = "idcardpic") MultipartFile pic1,
-      @RequestParam(value = "licensepic") MultipartFile pic2) {
+      @RequestParam(value = "idcardpic") CommonsMultipartFile pic1,
+      @RequestParam(value = "licensepic") CommonsMultipartFile pic2) {
     Store store = (Store) req.getSession().getAttribute("store");
     String realName = req.getParameter("realname");
     String idcardNumber = req.getParameter("idcardnumber");
@@ -92,12 +93,6 @@ public class RegisterController extends BaseController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    // try {
-    // pic1.transferTo(new File(picName1));
-    // pic2.transferTo(new File(picName2));
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
 
     StoreProfile sp = new StoreProfile();
     sp.setRealName(realName);
