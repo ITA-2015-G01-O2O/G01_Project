@@ -54,23 +54,24 @@ $(function() {
 	$("#charge").on("click", function() {
 		var flag = confirm("do you really want to charge ?");
 		if (flag) {
-			$.ajax({
-
-				type : "post",
-				url : "../usercenter/chargeUserFund.do",
-				cache : false,
-				data : {
-
-				},
-				error : function(error) {
-					
-				}
-			}).done(function(json) {
-				if (json != "") {
-					$("#userInfo_fund").text("￥：" + json.fund);
-
-				}
-			});
+			
+//			$.ajax({
+//
+//				type : "post",
+//				url : "../usercenter/chargeUserFund.do",
+//				cache : false,
+//				data : {
+//
+//				},
+//				error : function(error) {
+//					
+//				}
+//			}).done(function(json) {
+//				if (json != "") {
+//					$("#userInfo_fund").text("￥：" + json.fund);
+//
+//				}
+//			});
 
 		}
 

@@ -90,11 +90,12 @@ function confirmbuy() {
 	var auseraddress = $("#auseraddress").val();
 	var merchantmsg = $("#merchantmsg").val();
 	
+	
+	
+	var dataJson = $.cookie('com.group.tto.main.addorder' + merId);
 	if(dataJson==null){
 		window.location.href = '../consumer/search.view';
 	}
-	
-	var dataJson = $.cookie('com.group.tto.main.addorder' + merId);
 	// var dataJson = JSON.stringify(orderjson);
 	// var dataJson=dataJson.substr(1, dataJson.length - 2);
 	if (addflag==true) {

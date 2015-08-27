@@ -68,11 +68,14 @@ public class UserCenterController extends BaseController {
    * 
    * @return
    */
-  public List<OrderListVo> getAllOrderWhenLoadPage() {
+  public List<OrderListVo> getAllOrderWhenLoadPage(HttpServletRequest request) {
     List<OrderListVo> orderlist = new ArrayList<OrderListVo>();
-    UserProfile userProfile = new UserProfile();
-    userProfile.setUserProfileId(50l);
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    UserProfile userProfile = a.getUserProfile();
     List<Order> orders = orderService.getAllOrderByUserProfile(userProfile);
+    if(orders.size()<1){
+      return null;
+    }
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
       Store s = storeService.getStoreById(order.getStoreId());
@@ -114,8 +117,8 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/getUserProfile.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo getUserProfileBy() {
-    Account a = accountService.getAccountByAccountId(50L);
+  public UserInformationVo getUserProfileBy(HttpServletRequest request) {
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setUname(a.getUsername());
     userInformationVo.setPassword(a.getPassword());
@@ -143,9 +146,11 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/chargeUserFund.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo chargeUserFund() {
+  public UserInformationVo chargeUserFund(HttpServletRequest request) {
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    UserProfile userProfile = a.getUserProfile();
     BigDecimal addFund = new BigDecimal("20");
-    UserProfile u = userProfileService.chargeUserProfileFundByProfileId(50l, addFund);
+    UserProfile u = userProfileService.chargeUserProfileFundByProfileId(userProfile.getUserProfileId(), addFund);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setFund(u.getFund());
     return userInformationVo;
@@ -153,9 +158,10 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/getUserFavVendor.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public List<UserFavVendorsVo> getUserFavVendor() {
+  public List<UserFavVendorsVo> getUserFavVendor(HttpServletRequest request) {
     List<UserFavVendorsVo> userFavVendorsVoList = new ArrayList<UserFavVendorsVo>();
-    List<Collect> vendors = userProfileService.getUserCollectVendorByProfileId(50L);
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    List<Collect> vendors = userProfileService.getUserCollectVendorByProfileId(a.getUserProfile().getUserProfileId());
     for (Collect collect : vendors) {
       UserFavVendorsVo u = new UserFavVendorsVo();
       Store s = collect.getStore();
@@ -177,8 +183,9 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/cancelUserFavVendor.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo cancelUserFavVendor() {
-    UserProfile user = userProfileService.getUserProfilebyId(50L);
+  public UserInformationVo cancelUserFavVendor(HttpServletRequest request) {
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    UserProfile user = a.getUserProfile();
     List<Collect> collects = user.getCollects();
     for (Collect collect : collects) {
       if (collect.getStore().getStoreId() == 50L) {
