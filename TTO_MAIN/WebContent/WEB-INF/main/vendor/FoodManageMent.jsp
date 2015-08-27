@@ -10,7 +10,7 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link
-	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	href="http://cdn.boohttp://localhost:4545/TTO_MAIN/vendor/order/NewOrder.viewtcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/OperateMenu.js'/>"></script>
@@ -158,19 +158,13 @@
 										Management
 								</a></li>
 								<br />
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.view">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
-										Information
-								</a></li>
-								<li role="presentation"><a href="storeInfo.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
-										Information</a></li>
-								<li role="presentation"><a href="BasicSetting.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic
-										Settings</a></li>
-							</ul>
+								<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									</li>
+									<li class="active" role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+								</ul>
 						</div>
 						<!--
                         	作者：chen.ace@outlook.com
@@ -267,6 +261,9 @@
 				<div></div>
 			</a>
 		</div>
+
+
+
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
 		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>

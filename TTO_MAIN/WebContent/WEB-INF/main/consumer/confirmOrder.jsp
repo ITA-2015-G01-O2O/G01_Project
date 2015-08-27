@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,6 +10,8 @@
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link rel="stylesheet" href="../css/basic.css">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 <style>
 .clear {
 	clear: both;
@@ -178,6 +181,9 @@ input {
 .merchantMsgclass {
 	margin: 20px;
 }
+		<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 </style>
 </head>
 <body>

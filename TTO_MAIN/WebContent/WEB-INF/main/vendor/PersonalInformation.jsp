@@ -40,10 +40,10 @@
 									</li>
 									<br/>
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-									<li class="active" role="presentation">
+									<li role="presentation">
 										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
 									</li>
-									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li class="active" role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
 									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
 								</ul>
 							</div>
@@ -70,7 +70,7 @@
 
 							<div class="panel panel-default">
 
-								<div class="panel-heading">Basic Setting</div>
+								<div class="panel-heading">Personal Information</div>
 								<div class="panel-body form-horizontal">
 									
     								<div class="page-text">	

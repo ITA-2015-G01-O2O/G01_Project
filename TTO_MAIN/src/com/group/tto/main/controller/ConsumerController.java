@@ -31,12 +31,13 @@ public class ConsumerController extends BaseController {
   @RequestMapping(value = "/getMerchantById.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getMerProsById(String merId) {
-    Store store = this.storeService.getStoreById(Long.parseLong(merId));
-    if (store == null) {
-      store = new Store();
+    MerProsList merProsList = this.storeService.getStoreById(Long.parseLong(merId));
+    if(merProsList==null){
+      System.out.println(merProsList);
     }
-    MerProsList merProsList = this.getMerProsListVo(store);
-    String data = this.getResultJSON(true, merProsList);
+    System.out.println(merProsList.getProducts().size()+"   controller");
+    MerProsList newMerProsList=new MerProsList(merProsList);
+    String data = this.getResultJSON(true, newMerProsList);
     return data;
   }
   
@@ -44,10 +45,12 @@ public class ConsumerController extends BaseController {
   @ResponseBody
   public String getprosByproLabel(String merId,String productlabelId) {
     List<Product> products = this.storeService.getStoreByprosLabelId(Long.parseLong(merId),Long.parseLong(productlabelId));
+    boolean flag=true;
     if (products == null) {
+      flag=false;
       products =new ArrayList<Product>();
     }
-    String data = this.getResultJSON(true, products);
+    String data = this.getResultJSON(flag, products);
     return data;
   }
   
