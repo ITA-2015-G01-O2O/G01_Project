@@ -51,4 +51,11 @@ public class CollectServiceImpl implements CollectService {
 		cc.setUserProfileId(null);
 	}
 
+
+  @Override
+  @Transactional
+  public void addCollectNode(Collect c) {
+    collectDao.addCollect(c);
+  }
+
 }

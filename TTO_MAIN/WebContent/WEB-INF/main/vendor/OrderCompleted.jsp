@@ -31,14 +31,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Order Detail</h4>
       </div>
       <div class="modal-body">
-        ...
+        <table class="table">
+         <tbody id="tbody">
+           <tr><td>订单号：</td><td><label id="orderNum">123456677743322</label></td></tr>
+           <tr><td>日期：</td><td><label id="orderDate">2015-08-09 12:20</td></tr>
+           <tr><td>选择餐品：</td><td><label id="orderMenu">鸡肉，牛肉，猪肉</td></tr>
+           <tr><td>评分：</td><td><label id="orderPoint">9.0</td></tr>
+           <tr><td>状态：</td><td><label id="orderState">Finished</td></tr>
+           <tr><td>消费金额：</td><td><label id="orderPrice">100</td></tr>
+           <hr/>
+            <tr><td>消费者：</td><td><label id="Name">Ace</td></tr>
+            <tr><td>联系号码：</td><td><label id="Phone">137500012345</td></tr>
+            <tr><td>留言：</td><td><label id="Remark">Good</td></tr>
+         </tbody>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -91,22 +103,17 @@
 					<div class="col-xs-3">
 						<div calss="operate">
 							<ul class="nav nav-pills nav-stacked">
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
-								<li role="presentation"><a href="NewOrder.html"> <i
-										class="glyphicon glyphicon-triangle-right"> </i>&emsp;New
-										Order<span class="badge">2</span></a></li>
-								<li class="active" role="presentation"><a href="#"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed
-										Order</a></li>
-								<br />
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Meal Center</li>
-								<li role="presentation"><a href="FoodManageMent.html">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food
-										Management
-								</a></li>
-								<br />
+							<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">2</span></a>
+									</li>
+									<li role="presentation"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
+									<br/>
+									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Meal Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/product/FoodManageMent.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food Management</a>
+									</li>
+									<br/>
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
 								<li role="presentation"><a href="PersonalInformation.html">

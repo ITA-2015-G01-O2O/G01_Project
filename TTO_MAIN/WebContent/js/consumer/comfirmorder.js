@@ -1,5 +1,6 @@
 var merId;
 $(function() {
+	paycount=0;
 	merId = $("#merId").text();
 	var orderjson = $.cookie('com.group.tto.main.addorder' + merId);
 
@@ -12,7 +13,7 @@ $(function() {
 
 });
 
-var paycount = 0;
+var paycount;
 function setOrderpros(orderdata) {
 	for (var i = 0; i < orderdata.length; i++) {
 		var order = orderdata[i];
@@ -31,60 +32,9 @@ function setOrderpros(orderdata) {
 	}
 }
 
-function getUserName(){
-	$.ajax({
-		type : "post",
-		url : "../account/getMainName.do",
-		cache : false,
-		error : function(error) {
-			alert("error");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if (json.isSuccess == true) {
-				$("#loginameshow").show();
-				$("#logintitle").hide();
-				$("#registertitle").hide();
-				$("#loginameshow").children().eq(0).text(json.data);
-			}else{
-				$("#logintitle").show();
-				$("#registertitle").show();
-				$("#loginameshow").hide();
-			} 
-		}
-	});
-}
-
-function consumerlogin() {
-	var username = $("#username").val();
-	var password = $("#password").val();
-
-	$.ajax({
-		type : "post",
-		url : "../account/login.do",
-		cache : false,
-		data : {
-			loginname : username,
-			password : password
-		},
-		error : function(error) {
-			alert("error");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if (json.isSuccess == true) {
-				$("#relogin").modal("hide");
-				getUserName();
-			} else {
-				$("#errorMsg").show();
-				$("#errorMsg").text(json.data);
-			}
-		}
-	});
-}
-
 
 function confirmorderbtn() {
+	errorMsg=null;
 	$('#errorMsg2').text("");
 	var ausername = $("#ausername").val();
 	var auserPhone = $("#auserPhone").val();
@@ -113,8 +63,8 @@ function validate(ausername, auserPhone, auseraddress) {
 	if (auserPhone == null) {
 		errorMsg=getErrorMsg(errorMsg, "UserPhone should not be null!");
 	}else{
-		if(!auserPhone.match(/\d{12}/g)){
-			errorMsg=getErrorMsg(errorMsg, "Error UserPhone format,The UserPhone's length  should be 12 number!");
+		if(!auserPhone.match(/\d{11}/g)){
+			errorMsg=getErrorMsg(errorMsg, "Error UserPhone format,The UserPhone's length  should be 11 number!");
 		}
 	}
 	if (auseraddress == null) {
@@ -178,5 +128,7 @@ function confirmbuy() {
 
 function setTotalCount(money) {
 	money = Number(money);
-	$("#totalcount").text("￥" + (money + paycount));
+	var totalmoney=(money + Number(paycount));
+	$("#totalcount").text("￥" + totalmoney);
+	paycount=totalmoney;
 }

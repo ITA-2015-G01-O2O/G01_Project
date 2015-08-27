@@ -74,6 +74,16 @@ public class CollectDaoImpl  extends BaseDao<Collect> implements CollectDao {
 			        .getSingleResult();
 	}
 
+  @Override
+  public void addCollect(Collect c) {
+    try {
+      this.create(c);
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
 	
 	
 

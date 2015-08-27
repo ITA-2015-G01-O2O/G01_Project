@@ -20,7 +20,7 @@ import com.group.tto.main.vendor.service.ProductLabelService;
 import com.group.tto.main.vendor.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/vendor/product")
 public class ProductController extends BaseController {
 	@Autowired
 	private ProductService productService;
