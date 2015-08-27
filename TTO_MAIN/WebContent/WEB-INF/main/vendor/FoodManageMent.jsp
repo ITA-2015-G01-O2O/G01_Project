@@ -159,28 +159,30 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
-								<li role="presentation"><a href="NewOrder.view"> <i
+								<li role="presentation"><a
+									href="<c:url value='/vendor/order/NewOrder.view'/>"> <i
 										class="glyphicon glyphicon-triangle-right"> </i>&emsp;New
 										Order<span class="badge">2</span></a></li>
-								<li role="presentation"><a href="OrderCompleted.html"><i
+								<li role="presentation"><a
+									href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i
 										class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed
 										Order</a></li>
 								<br />
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Meal Center</li>
-								<li role="presentation" class="active"><a
-									href="FoodManageMent.html"> <i
-										class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food
+								<li role="presentation"><a
+									href="<c:url value='/vendor/product/FoodManageMent.view'/>">
+										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food
 										Management
 								</a></li>
 								<br />
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.html">
+								<li role="presentation"><a href="PersonalInformation.view">
 										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
 										Information
 								</a></li>
-								<li role="presentation"><a href="storeInfo.html"><i
+								<li role="presentation"><a href="storeInfo.view"><i
 										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
 										Information</a></li>
 								<li role="presentation"><a href="BasicSetting.view"><i

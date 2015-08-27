@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$.get("../productLabel/findProductLabel.do", function(data) {
+	$.get("/TTO_MAIN/vendor/productLabel/findProductLabel.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
 			addLaebl(this);
@@ -10,7 +10,7 @@ $(document).ready(function() {
 			var labelValue=$(this).data('id');
 			if( typeof(labelValue) != "undefined")
 	  		{	
-			$.get("../product/loadProductByLabel.do",{label:labelValue}, function(data) {
+			$.get("/TTO_MAIN/vendor/product/loadProductByLabel.do",{label:labelValue}, function(data) {
 				var str = eval(data);
 				$.each(str, function() {
 					var Menu = $("#menuModel").clone();
@@ -32,11 +32,11 @@ $(document).ready(function() {
 				
 				$("#saveMenuTypeBtn").on("click", function() {
 					   var menuType=$("#addMenuType").val();
-						$.get("../productLabel/addProductLabel.do", {
+						$.get("addProductLabel.do", {
 							LabelName : menuType,
 						}, function(data) {
 					         if(data.isSuccess){
-					        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+					        	 window.location.href="FoodManageMent.view";
 					         }
 						});
 					});
@@ -48,7 +48,7 @@ $(document).ready(function() {
 			});
 		}else{
 	         
-			 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+			 window.location.href="/TTO_MAIN/vendor/product/FoodManageMent.view";
 		}
 		});
 
@@ -84,16 +84,16 @@ function addMenu1(Menu,str) {
 	Menu.find("#menuPrice").text(str.price);
 	Menu.find(".btn.btn-danger.del").data('id', str.productId);
 	Menu.find(".btn.btn-primary.update").data('id', str.productId);
-	Menu.find("#srcImg").attr('src',"../file/img/"+str.productPicUrl);
+	Menu.find("#srcImg").attr('src',"/TTO_MAIN/file/img/"+str.productPicUrl);
 	Menu.removeClass("hidden");
 	Menu.appendTo(".menuTestArea");
 }
 function deleteMenu1(id) {
-	$.get("../product/deleteProduct.do", {
+	$.get("../vendor/product/deleteProduct.do", {
 		pid : id,
 	}, function(data) {
          if(data.isSuccess){
-        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+        	 window.location.href="/TTO_MAIN/vendor/product/FoodManageMent.view";
          }
 	});
 }
@@ -102,13 +102,13 @@ function updateMenu1(id) {
 	
 	var name=$("#updateMenuName").val();
 	var price=$("#updateMenuPrice").val();
-	$.get("../product/updateProduct.do", {
+	$.get("/TTO_MAIN/vendor/product/updateProduct.do", {
 		pid : id,
 		name: name,
 		price:price,
 	}, function(data) {
          if(data.isSuccess){
-        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+        	 window.location.href="/TTO_MAIN/vendor/product/FoodManageMent.view";
          }
 	});
 }

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$.get("../product/loadProduct.do", function(data) {
+	$.get("loadProduct.do", function(data) {
 		var str = eval(data);
 		$.each(str, function() {
 			addMenu(this);
@@ -22,11 +22,11 @@ $(document).ready(function() {
 		
 		$("#saveMenuTypeBtn").on("click", function() {
 			   var menuType=$("#addMenuType").val();
-				$.get("../productLabel/addProductLabel.do", {
+				$.get("/TTO_MAIN/vendor/productLabel/addProductLabel.do", {
 					LabelName : menuType,
 				}, function(data) {
 			         if(data.isSuccess){
-			        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+			        	 window.location.href="FoodManageMent.view";
 			         }
 				});
 			});
@@ -53,9 +53,9 @@ $(document).ready(function() {
 	
 	$('#form1').ajaxForm({
 		type:'post',
-		url:'../product/addProduct.do',
+		url:'addProduct.do',
 		success:function(data){
-			 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+			 window.location.href="FoodManageMent.view";
 		}
 	});
 	
@@ -71,7 +71,7 @@ function addMenu(str) {
 	var Menu = $("#menuModel").clone();
 	Menu.attr("id",str.productId);
 	Menu.find("#menuName").text(str.productName);
-	Menu.find("#srcImg").attr('src',"../file/img/"+str.productPicUrl);
+	Menu.find("#srcImg").attr('src',"/TTO_MAIN/file/img/"+str.productPicUrl);
 	Menu.find("#menuPrice").text(str.price);
 	Menu.find(".btn.btn-danger.del").data('id', str.productId);
 	Menu.find(".btn.btn-primary.update").data('id', str.productId);
@@ -80,11 +80,11 @@ function addMenu(str) {
 }
 
 function deleteMenu(id) {
-	$.get("../product/deleteProduct.do", {
+	$.get("deleteProduct.do", {
 		pid : id,
 	}, function(data) {
          if(data.isSuccess){
-        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+        	 window.location.href="FoodManageMent.view";
          }
 	});
 }
@@ -93,13 +93,13 @@ function updateMenu(id) {
 	
 	var name=$("#updateMenuName").val();
 	var price=$("#updateMenuPrice").val();
-	$.get("../product/updateProduct.do", {
+	$.get("updateProduct.do", {
 		pid : id,
 		name: name,
 		price:price,
 	}, function(data) {
          if(data.isSuccess){
-        	 window.location.href="/TTO_MAIN/product/FoodManageMent.view";
+        	 window.location.href="FoodManageMent.view";
          }
 	});
 }

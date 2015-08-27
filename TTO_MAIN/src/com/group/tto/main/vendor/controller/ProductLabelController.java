@@ -13,7 +13,7 @@ import com.group.tto.cmn.model.ProductLabel;
 import com.group.tto.main.vendor.service.ProductLabelService;
 
 @Controller
-@RequestMapping("/productLabel")
+@RequestMapping("/vendor/productLabel")
 public class ProductLabelController extends BaseController {
 	@Autowired
 	private ProductLabelService productLabelService;

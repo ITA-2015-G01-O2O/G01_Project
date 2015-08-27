@@ -40,10 +40,14 @@ public class OrderController extends BaseController{
 
 	@RequestMapping(value = "/loadAllNewOrder.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public List<Order> loadAllOrders(HttpServletRequest request) {
+	public List<OrderModelVo> loadAllOrders(HttpServletRequest request) {
 		//////////////写死
+		System.out.println("222222222222222222222");
 		List<Order> Orders= orderService.findNewOrders(50);
-		return Orders;
+		
+		
+		System.out.print(Orders.size());
+		return translateObject(Orders);
 	}
 	
 	
@@ -88,11 +92,11 @@ public class OrderController extends BaseController{
 	 		//oo.setOrderItems(order.getOrderItems());
 	 		oo.setEndTime(order.getEndTime());
 	 		oo.setRemarks(order.getRemarks());
-	 		oo.setStatus(order.getRemarks());
+	 		oo.setStatus(order.getStatus());
 	 		oo.setStoreId(order.getStoreId());
 	 		oo.setVersion(order.getVersion());
 	 		oo.setOrderNumber(order.getOrderNumber());
-	 		
+	 		List<OrderItem> orderItems=new ArrayList<OrderItem>();
 	 		for(int i=0;i<order.getOrderItems().size();i++)
 	 		{	
 	 	     OrderItem  orderItem=new OrderItem();
@@ -100,7 +104,9 @@ public class OrderController extends BaseController{
 	 	     orderItem.setOrderItemId(order.getOrderItems().get(i).getOrderItemId());
 	 	     orderItem.setPrice(order.getOrderItems().get(i).getPrice());
 	 	     orderItem.setProduct(order.getOrderItems().get(i).getProduct());
+	 	     orderItems.add(orderItem);
 	 		}
+	 		oo.setOrderItems(orderItems);
 	 	    // orderItem.
 	 		
 	 		if(order.getComment()!=null)
