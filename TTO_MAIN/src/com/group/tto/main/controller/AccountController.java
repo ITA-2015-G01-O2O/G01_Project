@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Store;
+import com.group.tto.cmn.type.StopProfileStatus;
 import com.group.tto.main.common.Constants;
 import com.group.tto.main.service.AccountService;
 
@@ -104,6 +105,39 @@ public class AccountController extends BaseController {
 	      }
 	    }
 	    String data = this.getResultJSON(flag, loginName);
+         return data;
+      }
+	  
+	  @RequestMapping(value = "/isStore.do", produces = {"application/json;charset=UTF-8"})
+      @ResponseBody
+      public String isStore(HttpServletRequest request) {
+        List<Account> loginMain =
+            (List<Account>) request.getServletContext().getAttribute(Constants.CONTEXT_LOGIN_INFO);
+
+        Account loginConsumer = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+        String status = null;
+        boolean flag = false;
+        if (loginConsumer != null) {
+          if (loginMain != null) {
+            for (Account temp : loginMain) {
+              if (temp.getUsername().equals(loginConsumer.getUsername())) {
+                //flag = true;
+                if(temp.getStore()!=null){
+                  flag = true;
+                    if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.NORMAL.name()){
+                      status="NORMAL";
+                    }else if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.CHECK.name()){
+                      status="CHECK";
+                    }if(temp.getStore().getStoreProfile().getStatus()==StopProfileStatus.FREEZE.name()){
+                      status="FREEZE";
+                    }
+      
+                }
+              }
+            }
+          }
+        }
+        String data = this.getResultJSON(flag, status);
          return data;
       }
 	  

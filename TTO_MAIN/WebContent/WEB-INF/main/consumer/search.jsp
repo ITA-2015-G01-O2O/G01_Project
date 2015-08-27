@@ -36,12 +36,12 @@
             <jsp:include page="../common/footer.jsp" flush="true">
                 <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
             </jsp:include>
+            
         </body>
         <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="../js/jquery.cookie.js"></script>
         <script type="text/javascript" src="../js/consumer/consumer.js"></script>
         <script type="text/javascript" src="../js/consumer/search.js"></script>
-		
-
+        <script type="text/javascript" src="../js/common/basic.js"></script>
         </html>

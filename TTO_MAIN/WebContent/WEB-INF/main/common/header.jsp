@@ -15,7 +15,7 @@
 
                 <li id="logintitle" style="display:none"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
                 <li id="registertitle" style="display:none"><a href="../consumer/register.view">注册</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon glyphicon-home"></span>我的店铺</a></li>
+                <li id="showmyShop"><a href="#"><span class="glyphicon glyphicon glyphicon-home"></span>我的店铺</a></li>
 
                 <li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服 ${config.hotLine} </a></li>
             </ul>

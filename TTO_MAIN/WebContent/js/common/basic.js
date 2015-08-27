@@ -38,7 +38,7 @@ function gotoTop(acceleration, stime) {
     }
 }
 
-$(document).ready(function () {
+$(function() {
     $.ajax({
         type: "post",
         url: "../account/getMainName.do",
@@ -60,13 +60,67 @@ $(document).ready(function () {
             }
         }
     });
-
+	
+    $.ajax({
+        type: "post",
+        url: "../account/isStore.do",
+        cache: false,
+        error: function (error) {
+            alert("error");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+            	if(json.data=="NORMAL"){
+            		$("#openStore").hide();
+            		$("#showmyShop").show();
+            		$("#openStore").attr('href',"../vendor/product/NewOrder.view");
+            	}else if(json.data=="CHECK"){
+            		$("#openStore").show();
+            		$("#showmyShop").hide();
+            		$("#openStore").data('openStore',"../vendor/register/register4.view");
+            	}else if(json.data=="FREEZE"){
+            		$("#openStore").show();
+            		$("#showmyShop").hide();
+            		$("#openStore").data('openStore',"../vendor/register/register1.view");
+            	}
+            } else {
+            	 $("#openStore").show();
+            	 $("#showmyShop").hide();
+            	 $("#openStore").data('openStore',"../vendor/register/register1.view");
+            }
+        }
+    });
     //setAddress
     if ($.cookie("location_Id") != null) {
         $("#address").html($.cookie("location_name"));
     } else {
         $("#address").hide();
     }
-
-
 });
+
+
+function isstorelogin(){
+	  $.ajax({
+	        type: "post",
+	        url: "../account/getMainName.do",
+	        cache: false,
+	        asyn:false,
+	        error: function (error) {
+	            alert("error");
+	        }
+	    }).done(function (json) {
+	        if (json != "") {
+	            if (json.isSuccess == true) {
+	            	 $("#relogin").modal("hide");
+	            	 window.location.href= $("#openStore").data('openStore');
+	            	 return true;
+	            } else {
+	               $("#relogin").modal("show");
+	               return false;
+	            }
+	        }
+	    });
+}
+
+

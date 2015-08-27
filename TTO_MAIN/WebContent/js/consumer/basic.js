@@ -38,7 +38,3 @@ function gotoTop(acceleration, stime) {
     }
 }
 
-
-$(function () {
-
-});
