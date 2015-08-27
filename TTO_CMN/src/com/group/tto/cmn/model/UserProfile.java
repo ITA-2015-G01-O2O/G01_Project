@@ -75,5 +75,41 @@ public class UserProfile {
     this.collects = collects;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((collects == null) ? 0 : collects.hashCode());
+    result = prime * result + ((fund == null) ? 0 : fund.hashCode());
+    result = prime * result + ((isDelete == null) ? 0 : isDelete.hashCode());
+    result = prime * result + ((userProfileId == null) ? 0 : userProfileId.hashCode());
+    result = prime * result + ((version == null) ? 0 : version.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    UserProfile other = (UserProfile) obj;
+    if (collects == null) {
+      if (other.collects != null) return false;
+    } else if (!collects.equals(other.collects)) return false;
+    if (fund == null) {
+      if (other.fund != null) return false;
+    } else if (!fund.equals(other.fund)) return false;
+    if (isDelete == null) {
+      if (other.isDelete != null) return false;
+    } else if (!isDelete.equals(other.isDelete)) return false;
+    if (userProfileId == null) {
+      if (other.userProfileId != null) return false;
+    } else if (!userProfileId.equals(other.userProfileId)) return false;
+    if (version == null) {
+      if (other.version != null) return false;
+    } else if (!version.equals(other.version)) return false;
+    return true;
+  }
+
 
 }
