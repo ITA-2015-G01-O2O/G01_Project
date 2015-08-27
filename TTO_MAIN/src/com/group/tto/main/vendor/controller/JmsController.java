@@ -22,20 +22,4 @@ public class JmsController extends BaseController {
 		return "main/vendor";
 	}
 
-	@RequestMapping(value = "/update.do", produces = { "application/json;charset=UTF-8" })
-	@ResponseBody
-	public String verifyFirstLogin(HttpServletRequest req) {
-		Account loginConsumer = (Account) req.getSession().getAttribute(
-				Constants.SESSION_LOGIN_INFO);
-		long uid = loginConsumer.getAccountId();
-
-		Store store = fl.getStore((int) uid);
-		if (store.getServiceBeginTime() == null
-				|| store.getServiceEndTime() == null)
-			return this.getResultJSON(false, "");
-		else
-			return this.getResultJSON(true, "");
-
-	}
-
 }
