@@ -25,8 +25,8 @@ public class BasicSettingController extends BaseController {
   @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String updateBasicSetting(HttpServletRequest req) {
-    //int sid = (int) req.getSession().getAttribute("sid");
-    int sid=2050;
+    int sid = (int) req.getSession().getAttribute("sid");
+    //int sid=2050;
     String announcement = req.getParameter("announcement");
     String minPrice = req.getParameter("minPrice");
     String shipment = req.getParameter("shipment");

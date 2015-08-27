@@ -118,7 +118,7 @@
 									class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
 								<li role="presentation"><a
 									href="<c:url value='/vendor/order/NewOrder.view'/>"> <i
-										class="glyphicon glyphicon-triangle-right"> </i>&emsp;New
+									<li role="presentation" class="active"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
 										Order<span class="badge">2</span></a></li>
 								<li role="presentation"><a
 									href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i
@@ -133,19 +133,13 @@
 										Management
 								</a></li>
 								<br />
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.html">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
-										Information
-								</a></li>
-								<li role="presentation"><a href="storeInfo.html"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
-										Information</a></li>
-								<li role="presentation"><a href="BasicSetting.html"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic
-										Settings</a></li>
-							</ul>
+									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									</li>
+									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+								</ul>
 						</div>
 						<!--
                         	作者：chen.ace@outlook.com
@@ -204,8 +198,42 @@
 						</div>
 
 					</div>
+					<!--    <div class="col-xs-3">
+                        <div class="myCart text-muted"><i class="glyphicon glyphicon-shopping-cart"></i><span>My Cart</span><span class="badge">42</span></div>
+                        <div class="orders">
+                            <div class="orderBox">
+                                <h4>Blabla</h4>
+                                <h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla</h5>
+                                <button class="btn btn-default btn-sm">-</button>
+                                <input type="number" value="1" class="form-control input-sm">
+                                <button class="btn btn-default btn-sm">+</button>
+                                <span class="price">$27</span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="orderBox">
+                                <h4>Blabla</h4>
+                                <h5 class="text-muted">BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabla</h5>
+                                <button class="btn btn-default btn-sm">-</button>
+                                <input type="number" value="1" class="form-control input-sm">
+                                <button class="btn btn-default btn-sm">+</button>
+                                <span class="price">$27</span>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="pay">
+                            <span class="total">$81</span>
+                            <button class="btn btn-lg btn-success pull-right">Delivery</button>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    -->
 				</div>
 			</div>
+		</div>
+
+		<div class="col-xs-12">
+			<nav class="text-center"> <span><a href="#">关注 </a> </span> | <span><a
+				href="#"> 客服热线：4000000</a></span> </nav>
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
