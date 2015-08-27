@@ -104,6 +104,9 @@ $(function() {
 		if(data.status=="ACCEPT"){
 			s.find("#resReplyToUser").text("vendor is cooking");
 		}
+		if(data.status=="CANCEL"){
+			s.find("#resReplyToUser").text("This order has been canceled.");
+		}
 		if(data.status=="SENDING"){
 			s.find("#resReplyToUser").text("vendor is sending your food");
 			s.find("#userConfirmThisOrder").removeClass("hidden");
@@ -140,6 +143,7 @@ $(function() {
 		s.find("#showImg").attr("src", "../file/img/" + data.logoPicUrl);
 
 		if (data.status == "NEW") {
+			s.find("#resReplyToUser").text("this order is writting for checked.");
 			s.find("#userCancelThisOrder").removeClass("hidden");
 			s.find("#userCancelThisOrder").on("click", function() {
 				var cancelOrder = confirm("do you want to cancel this order?");
