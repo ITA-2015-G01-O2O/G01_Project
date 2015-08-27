@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 import com.group.tto.cmn.model.Order;
 import com.group.tto.main.vendor.dao.OrderDao;
 import com.group.tto.main.vendor.service.OrderService;
-@Service
-@Repository("vendorOrderServiceImpl")
+@Service("vendorOrderServiceImpl")
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDao orderDao;
@@ -35,6 +34,18 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	public void updateOrder(Order order) {
 		orderDao.updateOrder(order);
+	}
+
+	@Override
+	@Transactional
+	public List<Order> findNewOrders(long sid) {
+		return orderDao.findNewOrders(sid);
+	}
+
+	@Override
+	public List<Order> findAllCompletedOrderd(long sid) {
+	
+		return orderDao.findAllCompletedOrders(sid);
 	}
 
 }

@@ -14,8 +14,7 @@ import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.PoductDao;
 import com.group.tto.main.vendor.service.ProductService;
 
-@Service
-@Repository("vendorProductServiceImpl")
+@Service("vendorProductServiceImpl")
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private PoductDao poductDao;
