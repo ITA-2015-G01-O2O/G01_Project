@@ -65,10 +65,10 @@ Ext.define('shop.controller.searchController', {
 		var grid = Ext.getCmp('searchResultGrid');
 		var selectedRows = grid.getSelectionModel().getSelection();
 		if (selectedRows.length == 1) {
-			if (selectedRows[0].data.isHot) {
+			if (selectedRows[0].data.status=='NORMAL' && selectedRows[0].data.isHot) {
 				Ext.getCmp('setAsHotShopBtn').setDisabled(true);
 				Ext.getCmp('cancelAsHotShopBtn').setDisabled(false);
-			} else {
+			} else if(selectedRows[0].data.status=='NORMAL'){
 				Ext.getCmp('setAsHotShopBtn').setDisabled(false);
 				Ext.getCmp('cancelAsHotShopBtn').setDisabled(true);
 			}

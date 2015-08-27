@@ -49,16 +49,20 @@ public class ShopServiceImpl implements ShopService {
   @Transactional
   public void setHot(Long id) {
     Store store = this.dao.getById(id);
-    store.setIsHot(true);
-    this.dao.save(store);
+    if (store.getStoreProfile().getStatus().equals(StopProfileStatus.NORMAL.toString())) {
+      store.setIsHot(true);
+      this.dao.save(store);
+    }
   }
-  
+
   @Override
   @Transactional
   public void setNoHot(Long id) {
     Store store = this.dao.getById(id);
-    store.setIsHot(false);
-    this.dao.save(store);
+    if (store.getStoreProfile().getStatus().equals(StopProfileStatus.NORMAL.toString())) {
+      store.setIsHot(false);
+      this.dao.save(store);
+    }
   }
 
   @Override
