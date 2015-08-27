@@ -48,33 +48,7 @@ $(function() {
 	 */
 });
 
-function consumerlogin() {
-	var username = $("#username").val();
-	var password = $("#password").val();
 
-	$.ajax({
-		type : "post",
-		url : "../account/login.do",
-		cache : false,
-		data : {
-			loginname : username,
-			password : password
-		},
-		error : function(error) {
-			alert("error");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if (json.isSuccess == true) {
-				// window.location.href='../account/select-vender.view';
-				$("#relogin").modal("hide");
-			} else {
-				$("#errorMsg").show();
-				$("#errorMsg").text(json.data);
-			}
-		}
-	});
-}
 
 function addaddress() {
 	$('#addressModal').on('show.bs.modal', function(e) {

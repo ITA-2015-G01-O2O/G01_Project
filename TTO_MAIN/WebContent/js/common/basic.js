@@ -39,58 +39,8 @@ function gotoTop(acceleration, stime) {
 }
 
 $(function() {
-    $.ajax({
-        type: "post",
-        url: "../account/getMainName.do",
-        cache: false,
-        error: function (error) {
-            alert("error");
-        }
-    }).done(function (json) {
-        if (json != "") {
-            if (json.isSuccess == true) {
-                $("#loginameshow").show();
-                $("#logintitle").hide();
-                $("#registertitle").hide();
-                $("#loginameshow").children().eq(0).text(json.data);
-            } else {
-                $("#logintitle").show();
-                $("#registertitle").show();
-                $("#loginameshow").hide();
-            }
-        }
-    });
-	
-    $.ajax({
-        type: "post",
-        url: "../account/isStore.do",
-        cache: false,
-        error: function (error) {
-            alert("error");
-        }
-    }).done(function (json) {
-        if (json != "") {
-            if (json.isSuccess == true) {
-            	if(json.data=="NORMAL"){
-            		$("#openStore").hide();
-            		$("#showmyShop").show();
-            		$("#openStore").attr('href',"../vendor/product/NewOrder.view");
-            	}else if(json.data=="CHECK"){
-            		$("#openStore").show();
-            		$("#showmyShop").hide();
-            		$("#openStore").data('openStore',"../vendor/register/register4.view");
-            	}else if(json.data=="FREEZE"){
-            		$("#openStore").show();
-            		$("#showmyShop").hide();
-            		$("#openStore").data('openStore',"../vendor/register/register1.view");
-            	}
-            } else {
-            	 $("#openStore").show();
-            	 $("#showmyShop").hide();
-            	 $("#openStore").data('openStore',"../vendor/register/register1.view");
-            }
-        }
-    });
+	getUserName();
+	isStore();
     //setAddress
     if ($.cookie("location_Id") != null) {
         $("#address").html($.cookie("location_name"));
@@ -99,7 +49,64 @@ $(function() {
     }
 });
 
+function isStore(){
+	 $.ajax({
+	        type: "post",
+	        url: "../account/isStore.do",
+	        cache: false,
+	        error: function (error) {
+	            alert("error");
+	        }
+	    }).done(function (json) {
+	        if (json != "") {
+	            if (json.isSuccess == true) {
+	            	if(json.data=="NORMAL"){
+	            		$("#openStore").hide();
+	            		$("#showmyShop").show();
+	            		$("#logout").show();
+	            		$("#openStore").attr('href',"../vendor/product/NewOrder.view");
+	            	}else if(json.data=="CHECK"){
+	            		$("#openStore").show();
+	            		$("#showmyShop").hide();
+	            		$("#openStore").data('openStore',"../vendor/register/register4.view");
+	            	}else if(json.data=="FREEZE"){
+	            		$("#openStore").show();
+	            		$("#showmyShop").hide();
+	            		$("#openStore").data('openStore',"../vendor/register/register1.view");
+	            	}
+	            } else {
+	            	 $("#openStore").show();
+	            	 $("#showmyShop").hide();
+	            	 $("#openStore").data('openStore',"../vendor/register/register1.view");
+	            }
+	        }
+	    });
+}
 
+
+function getUserName(){
+	 $.ajax({
+	        type: "post",
+	        url: "../account/getMainName.do",
+	        cache: false,
+	        error: function (error) {
+	            alert("error");
+	        }
+	    }).done(function (json) {
+	        if (json != "") {
+	            if (json.isSuccess == true) {
+	                $("#loginameshow").show();
+	                $("#logintitle").hide();
+	                $("#registertitle").hide();
+	                $("#loginameshow").children().eq(0).text(json.data);
+	            } else {
+	                $("#logintitle").show();
+	                $("#registertitle").show();
+	                $("#loginameshow").hide();
+	            }
+	        }
+	    });
+}
 function isstorelogin(){
 	  $.ajax({
 	        type: "post",
@@ -122,5 +129,37 @@ function isstorelogin(){
 	        }
 	    });
 }
+
+function consumerlogin() {
+	var username = $("#username").val();
+	var password = $("#password").val();
+
+	$.ajax({
+		type : "post",
+		url : "../account/login.do",
+		cache : false,
+		data : {
+			loginname : username,
+			password : password
+		},
+		error : function(error) {
+			alert("error");
+		}
+	}).done(function(json) {
+		if (json != "") {
+			if (json.isSuccess == true) {
+				// window.location.href='../account/select-vender.view';
+				$("#relogin").modal("hide");
+				getUserName();
+				isStore();
+			} else {
+				$("#errorMsg").show();
+				$("#errorMsg").text(json.data);
+			}
+		}
+	});
+}
+
+
 
 
