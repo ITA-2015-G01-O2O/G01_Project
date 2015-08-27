@@ -136,7 +136,11 @@ public class AccountController extends BaseController {
         String data = this.getResultJSON(flag, status);
          return data;
       }
-	  
+	  @RequestMapping(value = "/logout.do", produces = {"application/json;charset=UTF-8"})
+	  public String logout(HttpServletRequest request) {
+	    request.getSession().invalidate();
+	    return "redirect:../consumer/search.view";
+	  }
 	  
 	  
 	@Override

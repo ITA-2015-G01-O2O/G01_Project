@@ -43,12 +43,16 @@ public class OrderDaoImpl  extends BaseDao<Order> implements OrderDao {
 	
 	@Override
 	public List<Order> findAllCompletedOrders(long sid) {
+		
+		
+		System.out.println("----------------------"+sid);
 		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Order> query = builder.createQuery(Order.class);
 		Root<Order> order=query.from(Order.class);
 		Predicate condition =  builder.and(builder.equal(order.get("storeId"),sid),builder.or(builder.equal(order.get("status"),"FINISHED"),builder.equal(order.get("status"),"CANCEL")));
 	    List <Order>orders=this.getEntityManager().createQuery(query.where(condition).orderBy(builder.desc(order.get("createTime")))).getResultList();
-		return orders;
+		System.out.println("----------------------");
+	    return orders;
 	}
 
 }

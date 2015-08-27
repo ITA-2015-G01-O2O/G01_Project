@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,10 +27,10 @@ public class Account {
   private String password;
 
   @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-  @JoinColumn(name = "USER_PROFILE_ID")
+  @JoinColumn(name = "USER_PROFILE_ID", foreignKey = @ForeignKey(name = "USER_PROFILE_ID"))
   private UserProfile userProfile;
   @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-  @JoinColumn(name = "STORE_ID")
+  @JoinColumn(name = "STORE_ID", foreignKey = @ForeignKey(name = "STORE_ID"))
   private Store store;
 
   @Column(name = "VERSION")

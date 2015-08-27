@@ -44,7 +44,7 @@ $(function () {
             input = $.trim(search_input.val()),
             now = new Date().getTime();
 
-        if (input == keyword || (now - last_time) < 500) {
+        if (input == keyword) { //|| (now - last_time) < 500
             last_time = now;
 
             return 0;

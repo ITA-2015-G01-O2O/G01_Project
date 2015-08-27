@@ -9,20 +9,14 @@
 <link
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
-	<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+	<link rel="stylesheet" href="../css/basic.css">
 		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
 		<script src="<c:url value='/js/common/basic.js'/>"></script>
 <style>
 .clear {
 	clear: both;
 }
-
-body {
-	background: #eee;
-}
-
 .container-main {
-	background: #eee;
 	width: 1100px;
 	margin-bottom: 50px;
 	padding-bottom: 50px;
@@ -157,7 +151,8 @@ body {
 	text-align: center;
 	margin-bottom: 20px;
 }
-.address-box2{
+
+.address-box2 {
 	border: 1px solid #eeeeee;
 	height: 100px;
 	line-height: 86px;
@@ -166,7 +161,7 @@ body {
 	color: black;
 	text-align: center;
 	font-size: 14px;
-	margin-top:30px;
+	margin-top: 30px;
 	margin-bottom: 20px;
 }
 
@@ -193,8 +188,8 @@ input {
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" flush="true">
-            <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
-        </jsp:include>
+		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+	</jsp:include>
 	<div class="container container-main">
 		<span style="display: none" id="merId">${merId}</span>
 		<div class="row">
@@ -206,7 +201,7 @@ input {
 								<tr>
 									<th class="left" width="240px">
 										<div class="th-inner alight-left">菜品</div>
-										
+
 									</th>
 
 									<th class="right">
@@ -228,19 +223,19 @@ input {
 										</div>
 									</td>
 								</tr>
-								
-								<tr id="showorderCopy" style="display:none">
+
+								<tr id="showorderCopy" style="display: none">
 									<td class="left" width="240px">
-										<div class="td-inner alight-left"></div>
-										<span style="display:none"></span>
+										<div class="td-inner alight-left"></div> <span
+										style="display: none"></span>
 									</td>
-									
+
 									<td class="right">
 										<div class="td-inner alight-right"></div>
 									</td>
 
 								</tr>
-								
+
 							</tbody>
 						</table>
 
@@ -250,25 +245,32 @@ input {
 						style="background-color: white; height: 350px;">
 						<div class="col-lg-12">
 							<h4>送餐详情</h4>
-							<div class="address-box" id="addadress"
-								data-toggle="modal" data-target="#addressModal">添加地址</div>
-							</div>
-							<div style="display:none" class="address-box2"  id="showaddressInfo" onclick="addaddress()"
-								data-toggle="modal" data-target="#addressModal">
-								<h5>联系人：<label id="contact"></label></h5>
-								<h5>电话：<label id="phonenum"></label></h5>
-								<h5>详细地址：<label id="addressInfo"></label></h5>
-							</div>
+							<div class="address-box" id="addadress" data-toggle="modal"
+								data-target="#addressModal">添加地址</div>
+						</div>
+						<div style="display: none" class="address-box2"
+							id="showaddressInfo" onclick="addaddress()" data-toggle="modal"
+							data-target="#addressModal">
+							<h5>
+								联系人：<label id="contact"></label>
+							</h5>
+							<h5>
+								电话：<label id="phonenum"></label>
+							</h5>
+							<h5>
+								详细地址：<label id="addressInfo"></label>
+							</h5>
+						</div>
 						<div class="col-lg-12 merchantMsgclass">
 							<label for="merchantmsg" class="col-sm-3 control-label">给商家留言：</label>
 							<input type="text" width="200px" id="merchantmsg"
 								placeholder="不要辣，多放盐等口味要求">
 						</div>
 						<div class="col-lg-12 ">
-								<div class="td-inner"></div>
-								<span style="font-weight: bold;font-size: 20px;" >支付方式:</span>
-								<span style="color: #fe4d3d">货到付款</span>
-							</div>
+							<div class="td-inner"></div>
+							<span style="font-weight: bold; font-size: 20px;">支付方式:</span> <span
+								style="color: #fe4d3d">货到付款</span>
+						</div>
 						<button type="button" class="btn btn-primary pull-right"
 							id="getusebtn" onclick="confirmbuy()">Comfirm</button>
 					</div>
@@ -309,64 +311,31 @@ input {
 					</div>
 					<div class="form-group">
 						<div class="alert alert-danger" style="display: none" role="alert"
-					id="errorMsg2"></div>
+							id="errorMsg2"></div>
 					</div>
 				</div>
-				
+
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="getusebtn" onclick="confirmorderbtn()">Comfirm</button>
+					<button type="button" class="btn btn-primary" id="getusebtn"
+						onclick="confirmorderbtn()">Comfirm</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-	<div class="modal fade login-modal" tabindex="-1" role="dialog" id="relogin">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title text-center">登录</h4>
-				</div>
-				<div class="modal-body">
-					<div class="input-group">
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-user"></span></span> <input type="text"
-							class="form-control" name="to_username" id="username"
-							placeholder="username">
-					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-lock"></span></span> <input type="password"
-							class="form-control" name="to_password" id="password"
-							placeholder="password">
-					</div>
-					 <div class="alert alert-danger" style="display:none" role="alert" id="errorMsg"></div>
-					<div class="checkbox btn-re">
-						<label> <input type="checkbox"> Remeber me
-						</label>
-					</div>
-					<div class="bttons">
-						<a class="btn btn-primary btn-block" type="submit"
-							onclick="consumerlogin()">Login</a> <a
-							class="btn btn-success btn-block" href="register.html">Register</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+
+
+
+	<%@ include file="../common/loginmodal.jsp"%>
 	<jsp:include page="../common/footer.jsp" flush="true">
-            <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
-        </jsp:include>
+		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+	</jsp:include>
+
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="../js/consumer/comfirmorder.js"></script>
 	<script src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common/basic.js"></script>
 </body>
 </html>

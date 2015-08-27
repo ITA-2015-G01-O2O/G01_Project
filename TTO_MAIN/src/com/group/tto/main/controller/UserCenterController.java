@@ -165,6 +165,7 @@ public class UserCenterController extends BaseController {
     for (Collect collect : vendors) {
       UserFavVendorsVo u = new UserFavVendorsVo();
       Store s = collect.getStore();
+      
       u.setStoreName(s.getStoreName());
       u.setServiceBeginTime(s.getServiceBeginTime());
       u.setServiceEndTime(s.getServiceEndTime());
@@ -172,6 +173,7 @@ public class UserCenterController extends BaseController {
       u.setDetailLocation(s.getDetailLocation());
       u.setPhone(s.getPhone());
       List<Order> orders = orderService.getAllOrderByStoreId(s.getStoreId());
+      u.setAvgPoint(s.getAvgPoint());
       u.setOrderAmount(new BigDecimal(orders.size()));
       Long l = collectService.findAllCollectsByStore(s);
       u.setCollectAmount(new BigDecimal(l));

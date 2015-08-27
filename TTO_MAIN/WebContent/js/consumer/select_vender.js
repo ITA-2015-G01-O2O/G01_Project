@@ -6,7 +6,6 @@
 $(function () {
 
     /**
-     *default parameters *location_id =50, later on cookies
      *jquery sort, discard DB order
      */
     var location_id = $.cookie("location_Id"),
@@ -15,8 +14,11 @@ $(function () {
         storeType = "allType"
 
     var type_list = new Array();
-    var stores;
-    var sort_store_list;
+    var stores,
+        sort_store_list;
+    var carousel_imgs = $("#carousel img");
+
+    //console.log(carousel_imgs.length);
 
     var param = {
         location: location_id,
@@ -49,6 +51,7 @@ $(function () {
 
     //dom operation
     function operate_store_DOM(store_list) {
+        var count_img = 0;
         for (var i = 0; i < store_list.length; i++) {
             var new_store = $("#store_temp").clone();
             new_store.removeClass('hidden');
@@ -61,7 +64,11 @@ $(function () {
             new_store.find('.startingFee').html(store_list[i].startingFee + "元 起送");
             new_store.find('.salesNum').html("销量:" + store_list[i].salesNum);
             new_store.find('.avgDeliverTime').html(store_list[i].avgDeliverTime + "分钟送达");
-            //new_store.find('.isHot')[0].innerHTML = store_list[i].isHot;
+            //hot img
+            console.log("hot state" + store_list[i].isHot);
+            if (store_list[i].isHot) {
+                carousel_imgs[count_img++].attr("src", "../file/img/" + store_list[i].logoPicURL);
+            }
             //new_store.find('.status');
             $("#store_temp").parent().append(new_store);
             //generate_list
@@ -162,35 +169,37 @@ $(function () {
     }
 
     function compare_result(i, j) {
-
         if (sortType == "sales") {
             //console.log("按照销量排序");
             return (orderType * sort_store_list[i].salesNum >= orderType * sort_store_list[j].salesNum);
         }
-
         if (sortType == "score") {
             //console.log("按照评分排序");
             return (orderType * sort_store_list[i].avgPoint >= orderType * sort_store_list[j].avgPoint);
         }
-
         if (sortType == "speed") {
             //console.log("按照送餐时间排序");
             return (orderType * sort_store_list[i].avgDeliverTime >= orderType * sort_store_list[j].avgDeliverTime);
         }
-
         return 0;
     }
 
 
+    //select then search    
+
+    $('.search input').on('keydown', function () {
+        var input = $('.search input').val();
+        console.log("select");
+
+    });
 
 
-    //clean doms
+    //clean DOM
     function clean_stores() {
         for (var i = 0; i < stores.length; i++) {
             $("#store_temp").next().remove();
         }
     }
-
 
     //ajax call data
     store_info();

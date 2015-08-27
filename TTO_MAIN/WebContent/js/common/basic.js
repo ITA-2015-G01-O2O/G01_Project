@@ -64,7 +64,7 @@ function isStore(){
 	            		$("#openStore").hide();
 	            		$("#showmyShop").show();
 	            		$("#logout").show();
-	            		$("#openStore").attr('href',"../vendor/product/NewOrder.view");
+	            		$("#openStore").children().eq(0).attr('href',"../vendor/product/NewOrder.view");
 	            	}else if(json.data=="CHECK"){
 	            		$("#openStore").show();
 	            		$("#showmyShop").hide();
@@ -98,6 +98,7 @@ function getUserName(){
 	                $("#loginameshow").show();
 	                $("#logintitle").hide();
 	                $("#registertitle").hide();
+	                $("#logout").show();
 	                //vendor/order/NewOrder.view
 	                $("#loginameshow").children().eq(0).attr("href","../usercenter/personcenter.view");
 	                $("#loginameshow").data("successlogin",true);
