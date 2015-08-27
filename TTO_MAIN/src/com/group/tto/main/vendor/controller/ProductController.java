@@ -94,11 +94,8 @@ public class ProductController extends BaseController {
 	@RequestMapping(value = "/loadProductByLabel.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<Product> loadProductsByLabel(HttpServletRequest request) {
-		// 模拟用户
-		System.out.println("-=-=-=-=-=-=-=:::"+request.getParameter("label"));
 		String laeblID=request.getParameter("label");
 		List<Product> products = productService.findProductsByLabel(Long.parseLong(laeblID), 50);
-		System.out.println(">>>>>>>>>>>>>>>>"+products.size());
 		return products;
 	}
 	

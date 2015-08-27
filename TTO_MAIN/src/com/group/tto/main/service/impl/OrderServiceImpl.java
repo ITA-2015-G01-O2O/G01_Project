@@ -113,7 +113,6 @@ public class OrderServiceImpl implements OrderService {
       Order o = order.getOrderById(orderId);
       if ("SENDING".equals(o.getStatus())) {
         o.setStatus(OrderStatus.FINISHED.name());
-        System.out.println(o.getStatus());
         return true;
       } else {
         return false;

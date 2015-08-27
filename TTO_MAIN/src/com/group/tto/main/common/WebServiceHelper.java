@@ -56,20 +56,4 @@ public class WebServiceHelper {
     return webResource.get(String.class);
   }
 
-  public static void main(String[] args) {
-    WebServiceHelper helper = new WebServiceHelper();
-    List<String> others = new ArrayList<String>();
-    others.add("广东省%20珠海市");
-    others.add("25");
-    others.add("%20");
-    ObjectMapper objectMapper=new ObjectMapper();
-    String str=helper.getWebServiceResult(Location.class, others);
-    try {
-      List<Location> list= objectMapper.readValue(str,List.class);
-      System.out.println(list);
-    }  catch (Exception e) {
-      e.printStackTrace();
-    }
-    System.out.println();
-  }
 }
