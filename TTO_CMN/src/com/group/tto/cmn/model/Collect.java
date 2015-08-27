@@ -3,6 +3,7 @@ package com.group.tto.cmn.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,9 +21,11 @@ public class Collect {
   @GeneratedValue(generator = "ORDER_COLLECT_SEQ", strategy = GenerationType.SEQUENCE)
   private Long collectId;
 
-  @Column(name = "USER_PROFILE_ID")
-  private Long userProfileId;
-  @ManyToOne(targetEntity = Store.class, fetch = FetchType.EAGER)
+  @ManyToOne(targetEntity = Store.class, fetch = FetchType.LAZY)
+  @JoinColumn(name = "USER_PROFILE_ID", foreignKey = @ForeignKey(name = "USER_PROFILE_ID"))
+  private UserProfile userProfile;
+  @ManyToOne(targetEntity = Store.class, fetch = FetchType.LAZY)
+  @JoinColumn(name = "STORE", foreignKey = @ForeignKey(name = "STORE"))
   private Store store;
 
   public Long getCollectId() {
@@ -33,12 +36,12 @@ public class Collect {
     this.collectId = collectId;
   }
 
-  public Long getUserProfileId() {
-    return userProfileId;
+  public UserProfile getUserProfile() {
+    return userProfile;
   }
 
-  public void setUserProfileId(Long userProfileId) {
-    this.userProfileId = userProfileId;
+  public void setUserProfile(UserProfile userProfile) {
+    this.userProfile = userProfile;
   }
 
   public Store getStore() {
@@ -55,7 +58,7 @@ public class Collect {
     int result = 1;
     result = prime * result + ((collectId == null) ? 0 : collectId.hashCode());
     result = prime * result + ((store == null) ? 0 : store.hashCode());
-    result = prime * result + ((userProfileId == null) ? 0 : userProfileId.hashCode());
+    result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
     return result;
   }
 
@@ -71,11 +74,12 @@ public class Collect {
     if (store == null) {
       if (other.store != null) return false;
     } else if (!store.equals(other.store)) return false;
-    if (userProfileId == null) {
-      if (other.userProfileId != null) return false;
-    } else if (!userProfileId.equals(other.userProfileId)) return false;
+    if (userProfile == null) {
+      if (other.userProfile != null) return false;
+    } else if (!userProfile.equals(other.userProfile)) return false;
     return true;
   }
+
 
 
 }

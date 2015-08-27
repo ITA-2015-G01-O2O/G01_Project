@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,15 +48,14 @@ public class Order {
   @Column(name = "STORE_ID")
   private Long storeId;
 
-  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
-  @JoinColumn(name = "USER_PROFILE_ID")
+  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
+  @JoinColumn(name = "USER_PROFILE_ID", foreignKey = @ForeignKey(name = "USER_PROFILE_ID"))
   private UserProfile userProfile;
   @OneToOne(targetEntity = Comment.class, cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-  @JoinColumn(name = "COMMENT_ID")
+  @JoinColumn(name = "COMMENT_ID", foreignKey = @ForeignKey(name = "COMMENT_ID"))
   private Comment comment;
 
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-  @JoinColumn(name = "ORDER_ID")
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "order")
   private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
   @Column(name = "VERSION")
