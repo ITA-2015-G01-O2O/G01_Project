@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Store;
+import com.group.tto.main.vo.StoreInfo;
 
 @Repository("vendorStoreInfoService")
 public interface StoreInfoService {
-  public Store loadStoreInfo(int sid);
+  public StoreInfo loadStoreInfo(int sid);
 
   public int updateStoreInfo(Store store, int sid, String uuid, InputStream is);
 

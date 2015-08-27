@@ -19,13 +19,15 @@ public class FirstLoginController extends BaseController{
   @Autowired
   private FirstLoginService fl;
 
-  @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})
+  @RequestMapping(value = "/verify.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String verifyFirstLogin(HttpServletRequest req) {
     Account loginConsumer = (Account) req.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
     long uid = loginConsumer.getAccountId();
     
     Store store=fl.getStore((int) uid);
+    req.getSession().setAttribute("sid", store.getStoreId());
+    
     if(store.getServiceBeginTime()==null ||store.getServiceEndTime()==null)
       return this.getResultJSON(false, "");
     else

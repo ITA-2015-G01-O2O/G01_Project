@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,6 +9,9 @@
 <link
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
+	<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 <style>
 .clear {
 	clear: both;
@@ -182,34 +186,15 @@ input {
 .merchantMsgclass {
 	margin: 20px;
 }
+		<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#main-nav">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a href="index.html"><img src="img/title_client.png" width="70px"
-				style="margin-top: 8px"></a>
-		</div>
-		<div class="collapse navbar-collapse" id="main-nav">
-			<ul class="nav navbar-nav">
-				<li><a href="#">Change Of Address </a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				
-				<li id="loginameshow" style="display:none"><a href="#"></a></li>
-				<li id="logintitle" style="display:none"><a href="#" data-toggle="modal" data-target=".login-modal">登陆</a></li>
-				<li id="registertitle" style="display:none"><a href="../consumer/register.view">注册</a></li>
-
-			</ul>
-		</div>
-	</div>
-	</nav>
+	<jsp:include page="../common/header.jsp" flush="true">
+            <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+        </jsp:include>
 	<div class="container container-main">
 		<span style="display: none" id="merId">${merId}</span>
 		<div class="row">
@@ -375,7 +360,9 @@ input {
 		</div>
 	</div>
 	
-	
+	<jsp:include page="../common/footer.jsp" flush="true">
+            <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+        </jsp:include>
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script
 		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

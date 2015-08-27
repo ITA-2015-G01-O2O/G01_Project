@@ -18,6 +18,7 @@ import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.StoreInfoService;
 import com.group.tto.main.vendor.service.VendorRegisterService;
+import com.group.tto.main.vo.StoreInfo;
 
 @Controller
 @RequestMapping("/vendor/storeInfo")
@@ -33,9 +34,12 @@ public class StoreInfoController extends BaseController {
   public String loadStoreInfo(HttpServletRequest req) {
     // int sid = (int) req.getSession().getAttribute("sid");
     int sid = 2050;
-    Store store = si.loadStoreInfo(sid);
+    StoreInfo store = si.loadStoreInfo(sid);
+    
+    String json=this.getResultJSON(true, store);
+    System.out.println(json);
 
-    return this.getResultJSON(true, store);
+    return json;
   }
 
   @RequestMapping(value = "/update.do", produces = {"application/json;charset=UTF-8"})

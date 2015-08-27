@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.BasicSettingService;
+import com.group.tto.main.vo.BasicSetting;
 
 @Controller
 @RequestMapping("/vendor/basicSetting")
@@ -63,7 +64,17 @@ public class BasicSettingController extends BaseController {
     int sid=2050;
     Store store=bs.loadBasicSetting(sid);
     
-    return this.getResultJSON(true, store);
+    BasicSetting bs=new BasicSetting();
+    bs.setAnnouncement(store.getAnnouncement());
+    bs.setDeliverFee(store.getDeliverFee());
+    bs.setServiceBeginTime(store.getServiceBeginTime());
+    bs.setServiceEndTime(store.getServiceEndTime());
+    bs.setStartingFee(store.getStartingFee());
+    
+    String json=this.getResultJSON(true, bs);
+    System.out.println(json);
+    
+    return json;
 
   }
 
