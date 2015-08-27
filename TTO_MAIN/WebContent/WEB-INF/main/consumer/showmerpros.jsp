@@ -181,6 +181,7 @@
 
                                 <div class="row">
                                     <div class="jumbotron" style="background-color: white;">
+                                    <input type="hidden" id="merId" value=${merId } />
                                         <div class="col-xs-5">
                                             <img id="storeImgId" src="../img/img.png" />
 
