@@ -147,10 +147,10 @@ public class UserCenterController extends BaseController {
 
   @RequestMapping(value = "/chargeUserFund.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public UserInformationVo chargeUserFund(HttpServletRequest request) {
+  public UserInformationVo chargeUserFund(HttpServletRequest request,String addMoney) {
     Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-    UserProfile userProfile = a.getUserProfile();
-    BigDecimal addFund = new BigDecimal("20");
+    UserProfile userProfile = a.getUserProfile();    
+    BigDecimal addFund = new BigDecimal(Integer.valueOf(addMoney));
     UserProfile u = userProfileService.chargeUserProfileFundByProfileId(userProfile.getUserProfileId(), addFund);
     UserInformationVo userInformationVo = new UserInformationVo();
     userInformationVo.setFund(u.getFund());

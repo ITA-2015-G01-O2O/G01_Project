@@ -19,9 +19,10 @@ import com.group.tto.main.vo.OrderModelVo;
 
 @Controller("OrderVendor")
 @RequestMapping("/vendor/order")
-public class OrderController extends BaseController{
+public class OrderController extends BaseController {
 	@Autowired
 	private OrderService orderService;
+
 	public OrderService getOrderService() {
 		return orderService;
 	}
@@ -32,44 +33,47 @@ public class OrderController extends BaseController{
 
 	@RequestMapping(value = "/loaCompletedOrderByState.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public List<OrderModelVo> loadOrdersByState(HttpServletRequest request) {		
-	    String state=request.getParameter("state");
-		List<Order> Orders= orderService.findOrdersByState(state,50);	
+	public List<OrderModelVo> loadOrdersByState(HttpServletRequest request) {
+		String state = request.getParameter("state");
+		List<Order> Orders = orderService.findOrdersByState(state, 50);
 		return translateObject(Orders);
 	}
 
 	@RequestMapping(value = "/loadAllNewOrder.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<OrderModelVo> loadAllOrders(HttpServletRequest request) {
-		//////////////写死
-		System.out.println("222222222222222222222");
-		List<Order> Orders= orderService.findNewOrders(50);
-		
-		
+
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		long sid = (long) request.getSession().getAttribute("sid");
+		List<Order> Orders = orderService.findNewOrders(sid);
 		System.out.print(Orders.size());
-		System.out.println("=============================");
 		return translateObject(Orders);
 	}
-	
-	
+
 	@RequestMapping(value = "/loadAllCompletedOrder.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<OrderModelVo> loadAllCompletedOrders(HttpServletRequest request) {
-	   	List<Order> Orders= orderService.findAllCompletedOrderd(50);
-	     return  translateObject(Orders);
-		
+		long sid = (long) request.getSession().getAttribute("sid");
+		List<Order> Orders = orderService.findAllCompletedOrderd(sid);
+		return translateObject(Orders);
+
 	}
 
 	@RequestMapping(value = "/updateOrder.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<Order> updateOrder(HttpServletRequest request) {
-         String status=request.getParameter("status");
-         String id=request.getParameter("id");
-	     Order order =new Order();   
-	     order.setOrderId(Long.parseLong(id));
-	     order.setStatus(status);
-	     orderService.updateOrder(order);
-		 return null;
+		String status = request.getParameter("status");
+		String id = request.getParameter("id");
+		Order order = new Order();
+		order.setOrderId(Long.parseLong(id));
+		order.setStatus(status);
+		orderService.updateOrder(order);
+		return null;
 	}
 
 	@Override
@@ -77,52 +81,50 @@ public class OrderController extends BaseController{
 		// TODO Auto-generated method stub
 		return "main/vendor";
 	}
-	  
-	
-	public 	List<OrderModelVo> translateObject(List<Order> orders){
-		List<OrderModelVo> listVo=new ArrayList<OrderModelVo>();
-	 	for(Order order:orders){
-	 		OrderModelVo oo=new OrderModelVo();
-	 		oo.setContacterName(order.getContacterName());
-	 		oo.setContacterPhone(order.getContacterPhone());
-	 		oo.setCreateTime(order.getCreateTime());
-	 		oo.setDetailLocation(order.getDetailLocation());
-	 		oo.setEndTime(order.getEndTime());
-	 		oo.setIsDelete(order.getIsDelete());
-	 		oo.setOrderId(order.getOrderId());
-	 		//oo.setOrderItems(order.getOrderItems());
-	 		oo.setEndTime(order.getEndTime());
-	 		oo.setRemarks(order.getRemarks());
-	 		oo.setStatus(order.getStatus());
-	 		oo.setStoreId(order.getStoreId());
-	 		oo.setVersion(order.getVersion());
-	 		oo.setOrderNumber(order.getOrderNumber());
-	 		List<OrderItem> orderItems=new ArrayList<OrderItem>();
-	 		for(int i=0;i<order.getOrderItems().size();i++)
-	 		{	
-	 	     OrderItem  orderItem=new OrderItem();
-	 	     orderItem.setAmount(order.getOrderItems().get(i).getAmount());
-	 	     orderItem.setOrderItemId(order.getOrderItems().get(i).getOrderItemId());
-	 	     orderItem.setPrice(order.getOrderItems().get(i).getPrice());
-	 	     orderItem.setProduct(order.getOrderItems().get(i).getProduct());
-	 	     orderItems.add(orderItem);
-	 		}
-	 		oo.setOrderItems(orderItems);
-	 	    // orderItem.
-	 		
-	 		if(order.getComment()!=null)
-	 		{	
-	 		Comment comm =new Comment();
-	 		comm.setCommentId(order.getComment().getCommentId());
-	 		comm.setContext(order.getComment().getContext());
-	 		comm.setPoint(order.getComment().getPoint());;
-	 		oo.setComment(comm);
-	 		}
-	 		listVo.add(oo);
-	 	}	
-		System.out.println("--89999999999999999999999999999999999999999999999");
+
+	public List<OrderModelVo> translateObject(List<Order> orders) {
+		List<OrderModelVo> listVo = new ArrayList<OrderModelVo>();
+		for (Order order : orders) {
+			OrderModelVo oo = new OrderModelVo();
+			oo.setContacterName(order.getContacterName());
+			oo.setContacterPhone(order.getContacterPhone());
+			oo.setCreateTime(order.getCreateTime());
+			oo.setDetailLocation(order.getDetailLocation());
+			oo.setEndTime(order.getEndTime());
+			oo.setIsDelete(order.getIsDelete());
+			oo.setOrderId(order.getOrderId());
+			// oo.setOrderItems(order.getOrderItems());
+			oo.setEndTime(order.getEndTime());
+			oo.setRemarks(order.getRemarks());
+			oo.setStatus(order.getStatus());
+			oo.setStoreId(order.getStoreId());
+			oo.setVersion(order.getVersion());
+			oo.setOrderNumber(order.getOrderNumber());
+			List<OrderItem> orderItems = new ArrayList<OrderItem>();
+			for (int i = 0; i < order.getOrderItems().size(); i++) {
+				OrderItem orderItem = new OrderItem();
+				orderItem.setAmount(order.getOrderItems().get(i).getAmount());
+				orderItem.setOrderItemId(order.getOrderItems().get(i)
+						.getOrderItemId());
+				orderItem.setPrice(order.getOrderItems().get(i).getPrice());
+				orderItem.setProduct(order.getOrderItems().get(i).getProduct());
+				orderItems.add(orderItem);
+			}
+			oo.setOrderItems(orderItems);
+			// orderItem.
+
+			if (order.getComment() != null) {
+				Comment comm = new Comment();
+				comm.setCommentId(order.getComment().getCommentId());
+				comm.setContext(order.getComment().getContext());
+				comm.setPoint(order.getComment().getPoint());
+				;
+				oo.setComment(comm);
+			}
+			listVo.add(oo);
+		}
 		return listVo;
-		
+
 	}
-	
+
 }

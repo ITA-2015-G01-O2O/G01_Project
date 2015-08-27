@@ -16,6 +16,10 @@ $(function() {
 			
 		}
 	}).done(function(json) {
+		if(json==""){
+			var str="<h1 >have no orders  yet</h1>";
+			$("#home").append(str);
+		}
 		if (json != "") {
 			$("#myordermodel").removeClass("hidden");
 			for (var i = 0; i < json.length; i++) {
@@ -51,27 +55,27 @@ $(function() {
 
 	});
 
-	$("#charge").on("click", function() {
-		var flag = confirm("do you really want to charge ?");
+	$("#saveCharge").on("click", function() {
+		var flag = confirm("do you want to charge?");
+		var addFund = $("#addMoney").val();
 		if (flag) {
-			
-//			$.ajax({
-//
-//				type : "post",
-//				url : "../usercenter/chargeUserFund.do",
-//				cache : false,
-//				data : {
-//
-//				},
-//				error : function(error) {
-//					
-//				}
-//			}).done(function(json) {
-//				if (json != "") {
-//					$("#userInfo_fund").text("￥：" + json.fund);
-//
-//				}
-//			});
+			$.ajax({
+
+				type : "post",
+				url : "../usercenter/chargeUserFund.do",
+				cache : false,
+				data : {
+					addMoney:addFund,
+				},
+				error : function(error) {
+					
+				}
+			}).done(function(json) {
+				if (json != "") {
+					$("#userInfo_fund").text("￥：" + json.fund);
+
+				}
+			});
 
 		}
 
