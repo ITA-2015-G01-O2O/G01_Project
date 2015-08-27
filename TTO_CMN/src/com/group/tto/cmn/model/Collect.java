@@ -20,7 +20,7 @@ public class Collect {
   @GeneratedValue(generator = "ORDER_COLLECT_SEQ", strategy = GenerationType.SEQUENCE)
   private Long collectId;
 
-  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
+  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
   @JoinColumn(name = "USER_PROFILE_ID")
   private UserProfile userProfile;
   @ManyToOne(targetEntity = Store.class, fetch = FetchType.EAGER)

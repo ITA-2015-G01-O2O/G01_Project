@@ -45,7 +45,7 @@
         		<img src="<c:url value='/img/vendor/success.png'/>" height="200px" width="200px" id="pic"/>
             	<h2 class="table-title">You have successfully submitted your application</h2>
             	<h2 class="table-title">Please be patient before admin review</h2>
-           	 	<a class="btn btn-success btn-lg" href="../consumer/search.view" >goback</a>
+           	 	<a class="btn btn-success btn-lg" href="/TTO_MAIN/consumer/search.view" >goback</a>
         	</div>       
    		 	
 		</div>

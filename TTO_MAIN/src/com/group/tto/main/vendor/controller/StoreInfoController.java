@@ -72,6 +72,8 @@ public class StoreInfoController extends BaseController {
     }else{
       num=si.updateStoreInfo(store, sid);
     }
+    if(num==1)
+      req.getSession().setAttribute("storeName", storeName);
     
     return this.getResultJSON(true, num);
   }
