@@ -69,5 +69,41 @@ public class Comment {
     this.userProfile = userProfile;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((commentId == null) ? 0 : commentId.hashCode());
+    result = prime * result + ((context == null) ? 0 : context.hashCode());
+    result = prime * result + ((deliverTime == null) ? 0 : deliverTime.hashCode());
+    result = prime * result + ((point == null) ? 0 : point.hashCode());
+    result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Comment other = (Comment) obj;
+    if (commentId == null) {
+      if (other.commentId != null) return false;
+    } else if (!commentId.equals(other.commentId)) return false;
+    if (context == null) {
+      if (other.context != null) return false;
+    } else if (!context.equals(other.context)) return false;
+    if (deliverTime == null) {
+      if (other.deliverTime != null) return false;
+    } else if (!deliverTime.equals(other.deliverTime)) return false;
+    if (point == null) {
+      if (other.point != null) return false;
+    } else if (!point.equals(other.point)) return false;
+    if (userProfile == null) {
+      if (other.userProfile != null) return false;
+    } else if (!userProfile.equals(other.userProfile)) return false;
+    return true;
+  }
+
 
 }

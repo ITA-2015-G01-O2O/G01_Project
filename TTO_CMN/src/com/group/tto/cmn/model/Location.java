@@ -56,4 +56,36 @@ public class Location {
     this.place = place;
   }
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((area == null) ? 0 : area.hashCode());
+    result = prime * result + ((city == null) ? 0 : city.hashCode());
+    result = prime * result + ((locationId == null) ? 0 : locationId.hashCode());
+    result = prime * result + ((place == null) ? 0 : place.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Location other = (Location) obj;
+    if (area == null) {
+      if (other.area != null) return false;
+    } else if (!area.equals(other.area)) return false;
+    if (city == null) {
+      if (other.city != null) return false;
+    } else if (!city.equals(other.city)) return false;
+    if (locationId == null) {
+      if (other.locationId != null) return false;
+    } else if (!locationId.equals(other.locationId)) return false;
+    if (place == null) {
+      if (other.place != null) return false;
+    } else if (!place.equals(other.place)) return false;
+    return true;
+  }
+
 }
