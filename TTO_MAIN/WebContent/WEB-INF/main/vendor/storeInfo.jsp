@@ -73,7 +73,7 @@
 
 							<div class="panel panel-default">
 							<form enctype="multipart/form-data" id="si_form">
-								<div class="panel-heading">Basic Setting</div>
+								<div class="panel-heading">Store Information</div>
 								<div class="panel-body form-horizontal">
 									<div class="page-text">	
     									<label>Address</label>

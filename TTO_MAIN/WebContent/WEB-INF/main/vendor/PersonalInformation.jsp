@@ -108,8 +108,6 @@
 		<jsp:include page="../common/footer.jsp" flush="true">
             <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
         </jsp:include>
-		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-		<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</body>
 
 </html>

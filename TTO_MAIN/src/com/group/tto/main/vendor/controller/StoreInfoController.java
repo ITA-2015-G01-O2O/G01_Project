@@ -32,9 +32,9 @@ public class StoreInfoController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadStoreInfo(HttpServletRequest req) {
-     int sid = (int) req.getSession().getAttribute("sid");
+     long sid = (long) req.getSession().getAttribute("sid");
     //int sid = 2050;
-    StoreInfo store = si.loadStoreInfo(sid);
+    StoreInfo store = si.loadStoreInfo((int)sid);
     
     String json=this.getResultJSON(true, store);
     System.out.println(json);

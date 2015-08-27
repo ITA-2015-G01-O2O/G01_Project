@@ -6,9 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SMS - home</title>
-<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -180,9 +179,7 @@
 	<jsp:include page="../common/footer.jsp" flush="true">
             <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
         </jsp:include>
-	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script
-		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 </body>
 
