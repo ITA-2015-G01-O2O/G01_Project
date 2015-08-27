@@ -15,13 +15,7 @@
 .clear {
 	clear: both;
 }
-
-body {
-	background: #eee;
-}
-
-.container-main {
-	background: #eee;
+.container-main {	
 	width: 1100px;
 	margin-bottom: 50px;
 	padding-bottom: 50px;
