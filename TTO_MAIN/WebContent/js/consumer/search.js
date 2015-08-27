@@ -8,6 +8,7 @@ $(function () {
         search_btn = $('#search-btn'),
         search_input = $(".search-Place"),
         maplist = $("#maplist"),
+        last_time = 0,
         temp = $("#temp");
 
     $("#background").click(function (e) {
@@ -15,7 +16,7 @@ $(function () {
     });
 
     function search() {
-        if ($.trim(keyword) != "") {
+        if (keyword != "") {
             $.ajax({
                 type: "post",
                 url: "../location/loadLocation.do",
@@ -38,16 +39,26 @@ $(function () {
         }
     }
 
-    search_input.on("keyup", function () {
+    search_input.on("keyup", function (event) {
+        var code = event.keyCode,
+            input = $.trim(search_input.val()),
+            now = new Date().getTime();
 
-        search_num = 10;
-        keyword = search_input.val();
-        maplist.show();
-        maplist.removeClass('longer-list');
-        //console.log(keyword);
-        cleanDOM();
-        search();
+        if (input == keyword || (now - last_time) < 500) {
+            last_time = now;
+            return 0;
+        }
 
+        if ((code >= 65 && code <= 105) || code == 8 || code == 32) {
+            keyword = input;
+            search_num = 10;
+            maplist.show();
+            maplist.removeClass('longer-list');
+            //console.log(keyword);
+            cleanDOM();
+            search();
+            last_time = now;
+        }
 
     });
 
@@ -71,6 +82,7 @@ $(function () {
         }
         for (var i = 0; i < list.length; i++) {
             var new_li = temp.clone().removeClass('hidden').attr("id", list[i].locationId);
+
             new_li.find('a').html(list[i].area + ',' + list[i].city + ',' + list[i].place);
 
             new_li.on('click', function () {
