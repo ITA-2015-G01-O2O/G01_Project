@@ -30,8 +30,15 @@ public abstract class BaseController {
   protected String getResultJSON(boolean isSuccess, Object obj) {
     String data = "";
     try {
+      System.out.println(obj+"====--=-=-=");
       data = new ObjectMapper().writeValueAsString(obj);
-    } catch (Exception e) {}
+      System.out.println(data);
+      if(data==""){
+        data=null;
+      }
+    } catch (Exception e) {
+      e.getStackTrace();
+    }
     return "{\"isSuccess\":" + isSuccess + ",\"data\":" + data + "}";
   }
 }

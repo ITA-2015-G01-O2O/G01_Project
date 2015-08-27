@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import com.group.tto.cmn.model.Order;
 import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.ProductLabel;
 import com.group.tto.cmn.model.Store;
 
 public class MerProsList {
-  private List<Product> products;
+  private List<ProductVO> products = new ArrayList<ProductVO>();
 
   private Long storeId;
   private String storeName;
@@ -31,36 +33,39 @@ public class MerProsList {
 
   private BigDecimal avgDeliverTime;
 
-  private List<ProductLabel> productLabels = new ArrayList<ProductLabel>();
+  private List<ProductLabelVO> productLabels = new ArrayList<ProductLabelVO>();
   /**
    * gong gao
    */
   private String announcement;
 
-  List<Order> orders=new ArrayList<Order>();
-  private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+  List<OrderVO> orders = new ArrayList<OrderVO>();
   private String phone;
+
   public MerProsList() {
 
   }
 
   public MerProsList(Store stroe) {
-    this.phone=stroe.getPhone();
-    this.products = stroe.getProducts();
+    this.phone = stroe.getPhone();
+
+    this.products = getProductVO(stroe.getProducts());
+
+
     this.storeId = stroe.getStoreId();
     this.storeName = stroe.getStoreName();
 
     this.detailLocation = stroe.getDetailLocation();
 
-    this.serviceBeginTime = sdf.format(stroe.getServiceBeginTime());
-    this.serviceEndTime = sdf.format(stroe.getServiceEndTime());
+    this.serviceBeginTime = new SimpleDateFormat("HH:mm").format(stroe.getServiceBeginTime());
+    this.serviceEndTime = new SimpleDateFormat("HH:mm").format(stroe.getServiceEndTime());
     /**
      * kuai di fei qisong fei
      */
     this.deliverFee = stroe.getDeliverFee();
     this.startingFee = stroe.getStartingFee();
 
-    this.orders=stroe.getOrders();
+    this.orders = getOrdersVO(stroe.getOrders());
     this.avgPoint = stroe.getAvgPoint();
 
     this.avgDeliverTime = stroe.getAvgDeliverTime();
@@ -70,35 +75,34 @@ public class MerProsList {
      */
     this.announcement = stroe.getAnnouncement();
     this.logoPicUrl = stroe.getLogoPicUrl();
-    this.productLabels=stroe.getProductLabels();
+    this.productLabels = getProductLabelVO(stroe.getProductLabels());
   }
-  public MerProsList(MerProsList stroe) {
-    this.phone=stroe.getPhone();
-    this.products = stroe.getProducts();
-    this.storeId = stroe.getStoreId();
-    this.storeName = stroe.getStoreName();
 
-    this.detailLocation = stroe.getDetailLocation();
+  private List<ProductLabelVO> getProductLabelVO(List<ProductLabel> productLabels2) {
+    List<ProductLabelVO> prolabelsVos = new ArrayList<ProductLabelVO>();
+    for (ProductLabel pl : productLabels2) {
+      ProductLabelVO p1 = new ProductLabelVO(pl);
+      prolabelsVos.add(p1);
+    }
+    return prolabelsVos;
+  }
 
-    this.serviceBeginTime = stroe.getServiceBeginTime();
-    this.serviceEndTime = stroe.getServiceEndTime();
-    /**
-     * kuai di fei qisong fei
-     */
-    this.deliverFee = stroe.getDeliverFee();
-    this.startingFee = stroe.getStartingFee();
+  private List<OrderVO> getOrdersVO(List<Order> orders2) {
+    List<OrderVO> ordersVos = new ArrayList<OrderVO>();
+    for (Order pl : orders2) {
+      OrderVO p1 = new OrderVO(pl);
+      ordersVos.add(p1);
+    }
+    return ordersVos;
+  }
 
-    this.orders=stroe.getOrders();
-    this.avgPoint = stroe.getAvgPoint();
-
-    this.avgDeliverTime = stroe.getAvgDeliverTime();
-
-    /**
-     * gong gao
-     */
-    this.announcement = stroe.getAnnouncement();
-    this.logoPicUrl = stroe.getLogoPicUrl();
-    this.productLabels=stroe.getProductLabels();
+  private List<ProductVO> getProductVO(List<Product> products2) {
+    List<ProductVO> productsVos = new ArrayList<ProductVO>();
+    for (Product pl : products2) {
+      ProductVO p1 = new ProductVO(pl);
+      productsVos.add(p1);
+    }
+    return productsVos;
   }
 
   public String getPhone() {
@@ -109,36 +113,42 @@ public class MerProsList {
     this.phone = phone;
   }
 
-  public List<Order> getOrders() {
-    return orders;
-  }
 
-  public void setOrders(List<Order> orders) {
-    this.orders = orders;
-  }
 
   public String getLogoPicUrl() {
     return logoPicUrl;
   }
 
-  public List<ProductLabel> getProductLabels() {
-    return productLabels;
-  }
 
-  public void setProductLabels(List<ProductLabel> productLabels) {
-    this.productLabels = productLabels;
-  }
 
   public void setLogoPicUrl(String logoPicUrl) {
     this.logoPicUrl = logoPicUrl;
   }
 
-  public List<Product> getProducts() {
+
+
+  public List<ProductVO> getProducts() {
     return products;
   }
 
-  public void setProducts(List<Product> products) {
+  public void setProducts(List<ProductVO> products) {
     this.products = products;
+  }
+
+  public List<ProductLabelVO> getProductLabels() {
+    return productLabels;
+  }
+
+  public void setProductLabels(List<ProductLabelVO> productLabels) {
+    this.productLabels = productLabels;
+  }
+
+  public List<OrderVO> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<OrderVO> orders) {
+    this.orders = orders;
   }
 
   public Long getStoreId() {
@@ -221,6 +231,14 @@ public class MerProsList {
     this.announcement = announcement;
   }
 
+  
+  public static void main(String[] arg) throws Exception{
+    MerProsList mp=new MerProsList();
+    List<ProductVO> pros=new ArrayList<ProductVO>();
+    //pros.add(e)
+    mp.setAnnouncement("12321321");
+    System.out.println(new ObjectMapper().writeValueAsString(mp));
+  }
 
 
 }

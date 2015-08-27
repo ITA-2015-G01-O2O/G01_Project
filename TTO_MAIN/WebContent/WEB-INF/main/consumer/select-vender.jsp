@@ -26,13 +26,13 @@
                         </ol>
                         <div id="carousel" class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="../images/temp.jpg" data-holder-rendered="true">
+                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="/TTO_MAIN/img/temp.jpg" data-holder-rendered="true">
                             </div>
                             <div class="item">
-                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="../images/temp.jpg" data-holder-rendered="true">
+                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="/TTO_MAIN/img/temp1.jpg" data-holder-rendered="true">
                             </div>
                             <div class="item">
-                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="../images/temp.jpg" data-holder-rendered="true">
+                                <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="/TTO_MAIN/img/temp.jpg" data-holder-rendered="true">
                             </div>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 main-wrapper">
+                    <div class="main-wrapper container">
                         <div class="row">
                             <ul class="nav nav-pills" id="store_type_list">
                                 <li role="presentation" class="active"><a href="#">全部</a></li>
@@ -66,13 +66,13 @@
                             </form>
                         </div>
                         <div class="row venders">
-                            <div class="col-md-4 col-lg-3 hidden" id="store_temp">
+                            <div class="col-sm-6 col-md-4 col-lg-3 hidden" id="store_temp">
                                 <a href="../../consumer/getMerprosById.view?merId=50" class="thumbnail shopId"> <img class="logoPicURL" src="">
                                 </a>
-                                <h4 class="shopName">汉堡店</h4>
+                                <h3 class="shopName">汉堡店</h3>
                                 <div class="row">
                                     <div class="col-xs-6 avgPoint">评分：4分</div>
-                                    <div class="col-xs-6 salesNum">销量:888单</div>
+                                    <div class="col-xs-6 salesNum">销量：888单</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 startingFee">30元 起送</div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="row">
                                     <h6 class="text-muted col-xs-6 avgDeliverTime">30分钟送达</h6>
-                                    <h6 class="text-muted col-xs-6">货到付款</h6>
+                                    <h6 class="text-muted col-xs-6 payway">货到付款</h6>
                                 </div>
                             </div>
                         </div>

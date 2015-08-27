@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.group.tto.cmn.model.Product;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.common.StoreSearchCriteria;
+import com.group.tto.main.vo.StoreSearchVo;
 import com.group.tto.main.vo.MerProsList;
 import com.group.tto.main.vo.UserFavVendorsVo;
 
@@ -16,7 +17,7 @@ public interface StoreService {
 
   public Store getOrgStoreById(Long sid);
 
-  public List<Store> getStoresbyCriteria(StoreSearchCriteria criteria);
+  public List<StoreSearchVo> getStoresbyCriteria(StoreSearchCriteria criteria);
 
   public List<Product> getStoreByprosLabelId(long merId, Long productlabelId);
 

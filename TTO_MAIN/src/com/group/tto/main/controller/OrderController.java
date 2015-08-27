@@ -52,7 +52,7 @@ public class OrderController extends BaseController {
 
     ObjectMapper mapper = new ObjectMapper();
     mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
-
+    System.out.println("-------==-=-----=-=-"+dataJson);
     List<Map<String, Object>> list = mapper.readValue(dataJson, List.class);
     String data = null;
     if (list.size() > 0 && ausername != null && auserPhone != null && auseraddress != null) {

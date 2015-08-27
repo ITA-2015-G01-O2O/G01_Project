@@ -27,12 +27,9 @@ public class StoreController extends BaseController {
     criteria.setOrderType(orderType);
     criteria.setSortType(sortType);
     criteria.setStoreType(storeType);
-    List<Store> list = storeService.getStoresbyCriteria(criteria);
-    List<StoreSearchVo> voList = new ArrayList<StoreSearchVo>();
-    for(Store store:list){
-      voList.add(new StoreSearchVo(store));
-    }
-    return voList;
+    List<StoreSearchVo> list = storeService.getStoresbyCriteria(criteria);
+    
+    return list;
   }
   
   
