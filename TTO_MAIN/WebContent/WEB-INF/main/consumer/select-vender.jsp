@@ -24,7 +24,7 @@
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
-                        <div class="carousel-inner" role="listbox">
+                        <div id="carousel" class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="../images/temp.jpg" data-holder-rendered="true">
                             </div>

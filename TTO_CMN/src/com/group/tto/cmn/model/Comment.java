@@ -5,9 +5,11 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -27,6 +29,7 @@ public class Comment {
   @Column(name = "DELIVER_TIME")
   private BigDecimal deliverTime;
   @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
+  @JoinColumn(name = "USER_PROFILE", foreignKey = @ForeignKey(name = "USER_PROFILE"))
   private UserProfile userProfile;
 
   public Long getCommentId() {

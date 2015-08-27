@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,22 +53,22 @@ public class Store {
   @Column(name = "LOGO_PIC_URL")
   private String logoPicUrl;
   @ManyToOne(targetEntity = Configuration.class, fetch = FetchType.EAGER)
-  @JoinColumn(name = "TYPE_CONFIG_ID")
+  @JoinColumn(name = "TYPE_CONFIG_ID", foreignKey = @ForeignKey(name = "TYPE_CONFIG_ID"))
   private Configuration typeConfig;
 
   @ManyToOne(targetEntity = Location.class, fetch = FetchType.EAGER)
   private Location location;
   @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-  @JoinColumn(name = "STORE_PROFILE_ID")
+  @JoinColumn(name = "STORE_PROFILE_ID", foreignKey = @ForeignKey(name = "STORE_PROFILE_ID"))
   private StoreProfile storeProfile;
 
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   @JoinColumn(name = "STORE_ID")
   private List<Product> products = new ArrayList<Product>();
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   @JoinColumn(name = "STORE_ID")
   private List<ProductLabel> productLabels = new ArrayList<ProductLabel>();
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   @JoinColumn(name = "STORE_ID")
   private List<Order> orders = new ArrayList<Order>();
 

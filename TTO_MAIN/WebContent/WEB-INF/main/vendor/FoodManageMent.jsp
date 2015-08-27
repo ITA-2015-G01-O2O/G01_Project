@@ -23,9 +23,15 @@
 <script type="text/javascript" src="<c:url value='/js/vendor/pic.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/css/vendor/basic.css'/>" />
 <link rel="stylesheet" href="<c:url value='/css/vendor/index.css'/>" />
+<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+<script src="<c:url value='/js/common/basic.js'/>"></script>
 </head>
 
 <body>
+	<jsp:include page="../common/header.jsp" flush="true">
+        <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+    </jsp:include>
 	<div class="modal fade bs-example-modal-sm1" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
@@ -124,31 +130,7 @@
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#main-nav">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a href="index.html"><img src="img/title_client.png" width="70px"
-				style="margin-top: 8px"></a>
-		</div>
-		<div class="collapse navbar-collapse" id="main-nav">
-			<!--
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">My Meals</a></li>
-                    <li><a href="#">My Profile</a></li>
-                </ul>  -->
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Welcome: Ace</a></li>
-				<li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
+	
 	<div class="container container-main">
 		<div class="row">
 			<div class="col-xs-12">
@@ -291,6 +273,9 @@
 			</a>
 		</div>
 	</div>
+	<jsp:include page="../common/footer.jsp" flush="true">
+        <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+    </jsp:include>
 
 	<script>
 		$(function() {

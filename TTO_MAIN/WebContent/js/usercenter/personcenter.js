@@ -54,23 +54,24 @@ $(function() {
 	$("#charge").on("click", function() {
 		var flag = confirm("do you really want to charge ?");
 		if (flag) {
-			$.ajax({
-
-				type : "post",
-				url : "../usercenter/chargeUserFund.do",
-				cache : false,
-				data : {
-
-				},
-				error : function(error) {
-					
-				}
-			}).done(function(json) {
-				if (json != "") {
-					$("#userInfo_fund").text("￥：" + json.fund);
-
-				}
-			});
+			
+//			$.ajax({
+//
+//				type : "post",
+//				url : "../usercenter/chargeUserFund.do",
+//				cache : false,
+//				data : {
+//
+//				},
+//				error : function(error) {
+//					
+//				}
+//			}).done(function(json) {
+//				if (json != "") {
+//					$("#userInfo_fund").text("￥：" + json.fund);
+//
+//				}
+//			});
 
 		}
 
@@ -82,7 +83,9 @@ $(function() {
 		s.find("#resOVoname").text(data.storeName);
 		s.find("#resOVoPhone").text(data.phone);
 		s.find("#resOVoOrderNumber").text(data.orderNumber);
-		s.find("#resOVoOrderTime").text(data.createTime);
+		var orderTime = new Date(data.createTime);
+		var finalTime = formatDateTime2(orderTime);
+		s.find("#resOVoOrderTime").text(finalTime);
 		s.find("#resOVoOrderState").text(data.status);
 		s.find("#resOVoContacter").text(data.contacterName);
 		s.find("#resOVoContactPhone").text(data.contacterPhone);
@@ -290,3 +293,15 @@ function getErrorMsg(msg, newmsg) {
 	}
 	return msg;
 }
+
+var formatDateTime2 = function (date) {  
+    var y = date.getFullYear();  
+    var m = date.getMonth() + 1;  
+    m = m < 10 ? ('0' + m) : m;  
+    var d = date.getDate();  
+    d = d < 10 ? ('0' + d) : d;  
+    var h = date.getHours();  
+    var minute = date.getMinutes();  
+    minute = minute < 10 ? ('0' + minute) : minute;  
+    return y + '-' + m + '-' + d+' '+h+':'+minute;  
+};

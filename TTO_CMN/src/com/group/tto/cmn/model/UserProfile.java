@@ -31,7 +31,7 @@ public class UserProfile {
   @Column(name = "IS_DELETE")
   private Boolean isDelete;
 
-  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+  @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   @JoinColumn(name = "USER_PROFILE_ID")
   private List<Collect> collects = new ArrayList<Collect>();
 

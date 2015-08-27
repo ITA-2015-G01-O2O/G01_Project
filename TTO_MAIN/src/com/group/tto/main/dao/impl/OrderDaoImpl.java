@@ -48,8 +48,7 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 
 		Predicate condition = builder.equal(order.get(FIELD_USERPROFILE).get("userProfileId").as(Long.class),
 				userProfile.getUserProfileId());
-		orders = this.getEntityManager().createQuery(query.where(condition))
-				.getResultList();
+		orders = this.getEntityManager().createQuery(query.where(condition).orderBy(builder.desc(order.get("createTime")))).getResultList();
     
     
     

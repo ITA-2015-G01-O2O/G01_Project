@@ -16,13 +16,18 @@ public class VendorLoginInterceptor implements HandlerInterceptor {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
     if (request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO) == null) {
-      Account account=(Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-      if(account.getStore()==null){
-        response.sendRedirect(request.getContextPath() + "/consumer/select-vender.view");
-      }
+      response.sendRedirect(request.getContextPath() + "/consumer/search.view");
       return false;
+    } else {
+      Account account = (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+      if (account.getStore() == null) {
+        response.sendRedirect(request.getContextPath() + "/consumer/search.view");
+        return false;
+      } else {
+        return true;
+      }
     }
-    return true;
+
   }
 
   @Override
