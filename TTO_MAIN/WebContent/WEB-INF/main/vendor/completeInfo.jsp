@@ -14,27 +14,15 @@
 		<script type="text/javascript" src="<c:url value='/js/vendor/bootstrap-datetimepicker.fr.js'/>" charset="UTF-8"></script>
 		<script type="text/javascript" src="<c:url value='/js/vendor/completeInfo.js'/>"></script>
 		<script type="text/javascript" src="<c:url value='/js/vendor/jquery.form.js'/>"></script>
+		<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 		<title>Complete Information</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="index.html"><img src="<c:url value='/img/vendor/title_vender.png'/>" width="70px" style="margin-top:8px"></a>
-				</div>
-				<div class="collapse navbar-collapse" id="main-nav">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Welcome: Ace</a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<jsp:include page="../common/header.jsp" flush="true">
+            <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+        </jsp:include>
 		<div class="container container-main">	
 			<form enctype="multipart/form-data" id="ci_form">
     		<div class="sign-form page-center form-horizontal">
@@ -111,7 +99,9 @@
             </div>
             </form>
 		</div>
-		
+		<jsp:include page="../common/footer.jsp" flush="true">
+            <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+        </jsp:include>
 		<script type="text/javascript">
 		$('.form_time').datetimepicker({
         	language:  'fr',
