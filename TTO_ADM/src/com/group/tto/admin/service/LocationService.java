@@ -8,4 +8,8 @@ public interface LocationService {
   public List<Location> search(String search,String splitor);
   
   public List<Location> search(String area,String city,String place);
+  
+  public List<Location> search(String search, String splitor,Integer limit);
+
+  public List<Location> search(String area, String city, String place,Integer limit);
 }

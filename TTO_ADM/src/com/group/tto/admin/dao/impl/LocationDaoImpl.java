@@ -39,4 +39,51 @@ public class LocationDaoImpl extends BaseDao<Location> implements LocationDao {
 
     return result;
   }
+
+  @Override
+  public List<Location> search(String area, String city, String place, Integer limit) {
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Location> query = builder.createQuery(Location.class);
+    Root<Location> location = query.from(Location.class);
+
+    Predicate predicate =
+        builder.and(builder.like(location.get(FIELD_AREA).as(String.class), "%" + area + "%"),
+            builder.and(builder.like(location.get(FIELD_CITY).as(String.class), "%" + city + "%"),
+                builder.like(location.get(FIELD_PLACE).as(String.class), "%" + place + "%")));
+    List<Location> result;
+    if (limit != null) {
+      result =
+          this.getEntityManager().createQuery(query.where(predicate)).setMaxResults(limit)
+              .getResultList();
+    } else {
+      result = this.getEntityManager().createQuery(query.where(predicate)).getResultList();
+    }
+
+    return result;
+  }
+
+
+  @Override
+  public List<Location> search(String search, Integer limit) {
+    CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+    CriteriaQuery<Location> query = builder.createQuery(Location.class);
+    Root<Location> location = query.from(Location.class);
+
+    Predicate predicate =
+        builder.or(builder.like(location.get(FIELD_AREA).as(String.class), "%" + search + "%"),
+            builder.or(builder.like(location.get(FIELD_CITY).as(String.class), "%" + search + "%"),
+                builder.like(location.get(FIELD_PLACE).as(String.class), "%" + search + "%")));
+    List<Location> result;
+    if (limit != null) {
+      result =
+          this.getEntityManager().createQuery(query.where(predicate)).setMaxResults(limit)
+              .getResultList();
+    } else {
+      result = this.getEntityManager().createQuery(query.where(predicate)).getResultList();
+    }
+
+
+    return result;
+  }
+
 }
