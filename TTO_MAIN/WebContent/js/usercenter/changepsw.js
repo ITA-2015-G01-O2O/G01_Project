@@ -15,7 +15,6 @@ function changePsw() {
 				newPassword:$("#userInfo_password").val()
 			},
 			error : function(error) {
-				alert("error");
 			}
 		}).done(function(json) {
 			if (json.isSuccess == true) {
