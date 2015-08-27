@@ -46,6 +46,7 @@ $(function () {
 
         if (input == keyword || (now - last_time) < 500) {
             last_time = now;
+
             return 0;
         }
 
@@ -94,8 +95,16 @@ $(function () {
     }
 
     function set_Location_Cookies(id, address) {
-        $.cookie("location_Id", id);
-        $.cookie("location_name", address);
+        $.cookie("location_Id", id, {
+            expires: 7,
+            path: '/TTO_MAIN'
+        });
+
+        $.cookie("location_name", address, {
+            expires: 7,
+            path: '/TTO_MAIN'
+        });
+
         window.location.href = "/TTO_MAIN/stores/select-vender.view";
     }
 

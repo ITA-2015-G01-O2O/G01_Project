@@ -57,8 +57,6 @@ public class AccountServiceImpl implements AccountService {
       a.setUsername(loginname);
       a.setPassword(password);
       
-      System.out.println("dao---======"+a.getUsername());
-      System.out.println("dao---======"+a.getPassword());
       a.setIsDelete(false);
       a.setVersion(1l);
       UserProfile u=new UserProfile();
