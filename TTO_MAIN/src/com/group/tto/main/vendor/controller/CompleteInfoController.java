@@ -31,7 +31,7 @@ public class CompleteInfoController extends BaseController {
   @ResponseBody
   public String completeInfo(HttpServletRequest req,
       @RequestParam(value = "logopic") CommonsMultipartFile pic) {
-    int sid = (int) req.getSession().getAttribute("sid");
+    long sid =  (long) req.getSession().getAttribute("sid");
     // int sid = 2050;
     String announcement = req.getParameter("announcement");
     String minPrice = req.getParameter("minPrice");
@@ -68,7 +68,7 @@ public class CompleteInfoController extends BaseController {
     }
     store.setLogoPicUrl(filename);
 
-    int num = ci.updateStoreInfo(store, sid, filename, is1);
+    int num = ci.updateStoreInfo(store, (int)sid, filename, is1);
     return this.getResultJSON(true, num);
 
   }
