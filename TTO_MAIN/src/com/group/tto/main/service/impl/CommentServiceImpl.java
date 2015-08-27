@@ -45,9 +45,9 @@ public class CommentServiceImpl implements CommentService {
       Integer totalOrder = store.getOrders().size();
 
       store.setAvgDeliverTime(avgDeliver.multiply(new BigDecimal(totalOrder)).add(deliverTime)
-          .multiply(new BigDecimal(totalOrder + 1)));
+          .divide(new BigDecimal(totalOrder + 1)));
       store.setAvgPoint(avgPoint.multiply(new BigDecimal(totalOrder)).add(point)
-          .multiply(new BigDecimal(totalOrder + 1)));
+          .divide(new BigDecimal(totalOrder + 1)));
 
       this.orderDao.saveOrder(order);
       this.storeDao.updateStore(store);
