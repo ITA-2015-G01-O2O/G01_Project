@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +17,11 @@
 <link rel="stylesheet" href="../css/usercenter/myfav.css" />
 <link rel="stylesheet" href="../css/usercenter/myinfo.css" />
 <link rel="stylesheet" href="../css/usercenter/myorder.css" />
+<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
+		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
+		<script src="<c:url value='/js/common/basic.js'/>"></script>
 <style>
+	
 .resOVoComment2 {
 	padding: 5px;
 }
@@ -25,26 +29,9 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#main-nav">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a href="index.html"><img src="../img/usercenter/title_admin.png"
-				width="70px" style="margin-top: 8px"></a>
-		</div>
-		<div class="collapse navbar-collapse" id="main-nav">
-
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Hello user</a></li>
-				<li><a href="#"><i class="glyphicon glyphicon-log-out"></i></a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
+	<jsp:include page="../common/header.jsp" flush="true">
+            <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+        </jsp:include>
 
 	<div class="container container-main">
 
@@ -350,6 +337,9 @@
 				</div>
 			</div>
 		</div>
+		<jsp:include page="../common/footer.jsp" flush="true">
+            <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+        </jsp:include>
 </body>
 
 </html>

@@ -74,6 +74,22 @@ function loadMessage(){
         }
 	});
 }
+function verify(){
+	$.ajax({
+		type:"post",
+		url:"TTO_MAIN/vendor/firstLogin/verify.do",
+		success:function(data){
+			var result=data.isSuccess;
+			if(result==true)
+				window.location.href="/TTO_MAIN/vendor/order/NewOrder.view";
+			else
+				window.location.href="/TTO_MAIN/vendor/completeInfo/completeInfo.view";
+		},
+        error:function(data){
+            alert("Load message fail!");
+        }
+	});
+}
 $(document).ready(function(){
 	$("#inputAnnouncement").on("blur",verifyAnnouncement);
 	$("#inputMinAmount").on("blur",verifyMinPrice);

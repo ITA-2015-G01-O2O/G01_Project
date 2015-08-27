@@ -13,6 +13,7 @@ import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.ConfigurationDao;
 import com.group.tto.main.vendor.dao.StoreDao;
 import com.group.tto.main.vendor.service.StoreInfoService;
+import com.group.tto.main.vo.StoreInfo;
 
 @Service("vendorStoreInfoServiceImpl")
 public class StoreInfoServiceImpl implements StoreInfoService {
@@ -26,9 +27,18 @@ public class StoreInfoServiceImpl implements StoreInfoService {
 
   @Override
   @Transactional
-  public Store loadStoreInfo(int sid) {
+  public StoreInfo loadStoreInfo(int sid) {
     Store store = storeDao.getStoreById(sid);
-    return store;
+
+    StoreInfo si = new StoreInfo();
+    si.setLogoPicUrl(store.getLogoPicUrl());
+    si.setPhone(store.getPhone());
+    si.setStoreName(store.getStoreName());
+    si.setTypeConfig(store.getTypeConfig());
+    si.setLocation(store.getLocation());
+    si.setDetailLocation(store.getDetailLocation());
+
+    return si;
   }
 
   @Override

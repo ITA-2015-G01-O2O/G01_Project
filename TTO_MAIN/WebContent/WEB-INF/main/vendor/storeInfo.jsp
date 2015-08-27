@@ -43,11 +43,11 @@
 									</li>
 									<br/>
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-									<li class="active" role="presentation">
+									<li  role="presentation">
 										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
 									</li>
 									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
-									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+									<li role="presentation" class="active"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
 								</ul>
 							</div>
 							<div class="ShopState">
@@ -116,7 +116,7 @@
 										</div>
     								</div>
     								<input name="piclog" type="text" id="piclog"  style="display: none;"></input>
-									<input type="submit" class="btn btn-primary btn-lg">Save</input>
+									<input type="submit" class="btn btn-primary btn-lg"></input>
 								</div>
 							</form>
 							</div>
