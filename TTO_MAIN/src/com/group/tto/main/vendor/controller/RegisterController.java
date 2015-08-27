@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.group.tto.cmn.model.Account;
 import com.group.tto.cmn.model.Configuration;
@@ -26,7 +25,7 @@ import com.group.tto.main.common.Constants;
 import com.group.tto.main.vendor.service.VendorRegisterService;
 
 @Controller
-@RequestMapping("/vendorregister")
+@RequestMapping("/vendor/register")
 public class RegisterController extends BaseController {
   @Autowired
   private VendorRegisterService vr;
@@ -75,8 +74,7 @@ public class RegisterController extends BaseController {
     return this.getResultJSON(true, "");
   }
 
-  @RequestMapping(value = "/register3.do", produces = {"application/json;charset=UTF-8"})
-  @ResponseBody
+  @RequestMapping(value = "/register3.do")
   public String register3(HttpServletRequest req,
       @RequestParam(value = "idcardpic") MultipartFile pic1,
       @RequestParam(value = "licensepic") MultipartFile pic2) {
@@ -115,35 +113,38 @@ public class RegisterController extends BaseController {
     store.setIsHot(false);
     store.setIsDelete(false);
 
+    BigDecimal fee = new BigDecimal(0);
+    store.setDeliverFee(fee);
+    store.setStartingFee(fee);
 
-    // Account loginConsumer = (Account) req.getSession().getAttribute(COMMON.SESSION_LOGIN_INFO);
-    // long uid = loginConsumer.getAccountId();
-    long uid = 52l;
+    Account loginConsumer = (Account) req.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    long uid = loginConsumer.getAccountId();
+    //long uid = 52l;
     int num = vr.storeRegister(store, (int) uid, picName1, is1, picName2, is2);
     if (num == 1)
-      return "register4.view";
+      return "redirect:/vendor/register/register4.view";
     else
-      return "register1.view";
+      return "redirect:/vendor/register/register1.view";
   }
 
   @RequestMapping(value = "/loadCity.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadCity(HttpServletRequest req) {
-    String area=req.getParameter("area");
+    String area = req.getParameter("area");
     List<String> locations = vr.getCity(area);
 
     return this.getResultJSON(true, locations);
   }
-  
+
   @RequestMapping(value = "/loadPlace.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadPlace(HttpServletRequest req) {
-    String city=req.getParameter("city");
+    String city = req.getParameter("city");
     List<Location> locations = vr.getPlace(city);
 
     return this.getResultJSON(true, locations);
   }
-  
+
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadLocation(HttpServletRequest req) {
@@ -151,11 +152,11 @@ public class RegisterController extends BaseController {
 
     return this.getResultJSON(true, locations);
   }
-  
+
   @RequestMapping(value = "/loadConfig.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadConfig(HttpServletRequest req) {
-    List<Configuration> cons=vr.getAllConfig();
+    List<Configuration> cons = vr.getAllConfig();
 
     return this.getResultJSON(true, cons);
   }

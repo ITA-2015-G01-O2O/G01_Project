@@ -113,9 +113,8 @@
   												<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="typemsg">
     												Choose type of Store <span class="caret"></span>
   												</button>
-  											<ul class="dropdown-menu" id="typeMenu">
-   												<li><a href="#" id="type1">type1</a></li>
-    											<li><a href="#" id="type2">type2</a></li>
+  											<ul class="dropdown-menu" id="configMenu">
+
   											</ul>
 											</div>
     									</div>

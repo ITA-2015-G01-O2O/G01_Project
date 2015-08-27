@@ -2,6 +2,7 @@ package com.group.tto.main.vendor.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.group.tto.cmn.model.Configuration;
 import com.group.tto.cmn.model.Store;
 import com.group.tto.main.vendor.service.StoreInfoService;
+import com.group.tto.main.vendor.service.VendorRegisterService;
 
 @Controller
-@RequestMapping("/storeInfo")
+@RequestMapping("/vendor/storeInfo")
 public class StoreInfoController extends BaseController {
 
   @Autowired
   private StoreInfoService si;
+  @Autowired
+  private VendorRegisterService vr;
 
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
@@ -80,9 +84,26 @@ public class StoreInfoController extends BaseController {
   public StoreInfoService getSi() {
     return si;
   }
+  
+  @RequestMapping(value = "/loadConfig.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String loadConfig(HttpServletRequest req) {
+    List<Configuration> cons = vr.getAllConfig();
+
+    return this.getResultJSON(true, cons);
+  }
 
   public void setSi(StoreInfoService si) {
     this.si = si;
   }
 
+  public VendorRegisterService getVr() {
+    return vr;
+  }
+
+  public void setVr(VendorRegisterService vr) {
+    this.vr = vr;
+  }
+
+  
 }
