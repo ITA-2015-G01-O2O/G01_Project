@@ -31,7 +31,8 @@ public class ProductLabelController extends BaseController {
 		String LabelName=request.getParameter("LabelName");
 		ProductLabel productLabel=new ProductLabel();
 		productLabel.setProductLabelName(LabelName);
-		productLabel.setStoreId((long) 50);
+		long sid=(long) request.getSession().getAttribute("sid");
+		productLabel.setStoreId(sid);
 		productLabelService.addProductLabel(productLabel);
 	    return this.getResultJSON(true, null);	
 	}

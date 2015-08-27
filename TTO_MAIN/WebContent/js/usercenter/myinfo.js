@@ -33,6 +33,11 @@ function loadMyFav(){
 		}
 	}).done(function(json) {
 		
+		if(json==""){
+			$("#messages").children().remove();
+			var str="<h1 >have no favorite vendors yet</h1>";
+			$("#messages").append(str);
+		}
 		if (json != "") {
 			$("#messages").children().remove();
 			$("#myfavinfo").removeClass("hidden");

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -10,14 +10,13 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link
-	href="http://cdn.boohttp://localhost:4545/TTO_MAIN/vendor/order/NewOrder.viewtcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/OperateMenu.js'/>"></script>
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/OperateMenuLabel.js'/>"></script>
-<script type="text/javascript"
-	src="<c:url value='/js/vendor/basic.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/vendor/basic.js'/>"></script>
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/jquery.form.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/vendor/pic.js'/>"></script>
@@ -26,6 +25,7 @@
 <link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
 <script src="<c:url value='/js/jquery.cookie.js'/>"></script>
 <script src="<c:url value='/js/common/basic.js'/>"></script>
+<script  type="text/javascript"  src="<c:url value='/js/vendor/TimeSetting.js'/>"></script>
 </head>
 
 <body>

@@ -63,21 +63,22 @@ function isStore(){
 	            	if(json.data=="NORMAL"){
 	            		$("#openStore").hide();
 	            		$("#showmyShop").show();
+	            		$("#showmyShop").children().eq(0).attr('href','/TTO_MAIN/vendor/order/NewOrder.view')
 	            		$("#logout").show();
-	            		$("#openStore").children().eq(0).attr('href',"../vendor/product/NewOrder.view");
+	            		$("#loginameshow").children().eq(0).attr('href',"/TTO_MAIN/vendor/product/NewOrder.view");
 	            	}else if(json.data=="CHECK"){
 	            		$("#openStore").show();
 	            		$("#showmyShop").hide();
-	            		$("#openStore").data('openStore',"../vendor/register/register4.view");
+	            		$("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register4.view");
 	            	}else if(json.data=="FREEZE"){
 	            		$("#openStore").show();
 	            		$("#showmyShop").hide();
-	            		$("#openStore").data('openStore',"../vendor/register/register1.view");
+	            		$("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register1.view");
 	            	}
 	            } else {
 	            	 $("#openStore").show();
 	            	 $("#showmyShop").hide();
-	            	 $("#openStore").data('openStore',"../vendor/register/register1.view");
+	            	 $("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register1.view");
 	            }
 	        }
 	    });
