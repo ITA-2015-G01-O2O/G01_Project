@@ -100,6 +100,7 @@
 		<filter-name>HiddenHttpMethodFilter</filter-name>
 		<servlet-name>spring</servlet-name>
 	</filter-mapping>
+	<!-- session listener -->
 	<listener>
 		<listener-class>com.group.tto.admin.listener.SessionListener</listener-class>
 	</listener>

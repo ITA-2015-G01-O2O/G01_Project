@@ -43,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
   public void changeStatus(List<Order> orders, String status) {
     for (Order order : orders) {
       order.setStatus(status);
+      order.setEndTime(new Date());
     }
     this.dao.save(orders);
   }
