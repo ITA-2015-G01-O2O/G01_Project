@@ -16,4 +16,7 @@ public interface CollectDao {
 	public Collect findCollectNodeById(Long id);
 	
     public void addCollect(Collect c);
+    
+    public List<Collect> findStoresByUserProfileId(Long userProfileId);
+    
 }

@@ -16,6 +16,7 @@ import com.group.tto.main.service.AccountService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.vo.CommentsVO;
 import com.group.tto.main.vo.MerProsList;
+import com.group.tto.main.vo.OrderVO;
 
 @Controller
 @RequestMapping("/comment")
@@ -27,14 +28,14 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentBySid.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentBySid(String merId) {
-    Store store = this.storeService.getStoreById(Long.parseLong(merId));
+    MerProsList store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
     if (store != null) {
-      List<Order> orders = store.getOrders();
+      List<OrderVO> orders = store.getOrders();
       if (orders != null && orders.size() > 0) {
         flag = true;
-        for (Order o : orders) {
+        for (OrderVO o : orders) {
           merProsList.add(o.getComment());
         }
       }
@@ -54,14 +55,14 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentByScore.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentByScore(String merId,int score) {
-    Store store = this.storeService.getStoreById(Long.parseLong(merId));
+    MerProsList store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
     if (store != null) {
-      List<Order> orders = store.getOrders();
+      List<OrderVO> orders = store.getOrders();
       if (orders != null && orders.size() > 0) {
         flag = true;
-        for (Order o : orders) {
+        for (OrderVO o : orders) {
           merProsList.add(o.getComment());
         }
       }

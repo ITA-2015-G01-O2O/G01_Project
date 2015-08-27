@@ -23,6 +23,7 @@ import com.group.tto.main.dao.FileDao;
 import com.group.tto.main.vendor.dao.ConfigurationDao;
 import com.group.tto.main.vendor.dao.StoreDao;
 import com.group.tto.main.vendor.service.impl.StoreInfoServiceImpl;
+import com.group.tto.main.vo.StoreInfo;
 
 public class TestStoreInfo {
 
@@ -55,7 +56,7 @@ public class TestStoreInfo {
     transaction.begin();
     int sid = 2050;
 
-    Store store = si.loadStoreInfo(sid);
+    StoreInfo store = si.loadStoreInfo(sid);
 
     transaction.commit();
     Assert.assertTrue(store != null);

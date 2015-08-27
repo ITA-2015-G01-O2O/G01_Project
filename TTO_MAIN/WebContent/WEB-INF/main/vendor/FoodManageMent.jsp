@@ -10,7 +10,7 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <link
-	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	href="http://cdn.boohttp://localhost:4545/TTO_MAIN/vendor/order/NewOrder.viewtcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/OperateMenu.js'/>"></script>
@@ -30,8 +30,8 @@
 
 <body>
 	<jsp:include page="../common/header.jsp" flush="true">
-        <jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
-    </jsp:include>
+		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+	</jsp:include>
 	<div class="modal fade bs-example-modal-sm1" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
@@ -130,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container container-main">
 		<div class="row">
 			<div class="col-xs-12">
@@ -158,19 +158,13 @@
 										Management
 								</a></li>
 								<br />
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.view">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
-										Information
-								</a></li>
-								<li role="presentation"><a href="storeInfo.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
-										Information</a></li>
-								<li role="presentation"><a href="BasicSetting.view"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic
-										Settings</a></li>
-							</ul>
+								<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									</li>
+									<li class="active" role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+								</ul>
 						</div>
 						<!--
                         	作者：chen.ace@outlook.com
@@ -178,22 +172,23 @@
                         	描述：增加商家状态信息
                         -->
 						<div class="ShopState">
-								<span class="spantitle"><i class="glyphicon glyphicon-th-list"></i>&emsp;Store Credit</span>
-								<ul class="nav nav-pills nav-stacked">
-									<li>Store Name :
-										<label class="ShopNameLabel" id="shopNameLabel">${storeName}</label>
-									</li>
-									<li>Store average point :
-										<label class="ShopNameLabel" id="avgPointLabel">${avgPoint}</label>
-									</li>
-									<li>Store average deliver Time:
-										<label class="ShopNameLabel" id="avgTimeLabel">${avgTime}</label>
-									</li>
-									<li>Collection Number:
-										<label class="ShopNameLabel" id="collectionNumLabel">${collectionNum}</label>
-									</li>
-								</ul>
-							</div>
+							<span class="spantitle"><i
+								class="glyphicon glyphicon-th-list"></i>&emsp;Store Credit</span>
+							<ul class="nav nav-pills nav-stacked">
+								<li>Store Name : <label class="ShopNameLabel"
+									id="shopNameLabel">${storeName}</label>
+								</li>
+								<li>Store average point : <label class="ShopNameLabel"
+									id="avgPointLabel">${avgPoint}</label>
+								</li>
+								<li>Store average deliver Time: <label
+									class="ShopNameLabel" id="avgTimeLabel">${avgTime}</label>
+								</li>
+								<li>Collection Number: <label class="ShopNameLabel"
+									id="collectionNumLabel">${collectionNum}</label>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="col-xs-9 main-wrapper">
 						<div class="col-xs-12 menuFunctionArea">
@@ -268,14 +263,11 @@
 		</div>
 
 
-		<div id="footer">
-			<a href="#">关注微信</a> <a>|</a> <a href="#">关注微博</a> <a>|</a> <a><span>客服电话400-xxx-xxx</span>
-			</a>
-		</div>
+
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
-        <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
-    </jsp:include>
+		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+	</jsp:include>
 
 	<script>
 		$(function() {

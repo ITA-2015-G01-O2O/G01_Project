@@ -69,7 +69,7 @@
 					<span class="btn btn-primary btn-lg" onclick="$('#LicensePic').click();" id="licenseBtn">Choose License Picture</span> （Max size 2M,form：JPG,GIF,PNG,BMP）
 				</div>
 				<div class="alert alert-danger" style="display: none;"  role="alert" id="licensepicmsg">Please upload your idcard picture!</div>
-            	<input type="submit" class="btn btn-primary btn-lg" id="next">Next</input>
+            	<input type="submit" class="btn btn-primary btn-lg" id="next"></input>
             	</form>
             <div>
 		</div>

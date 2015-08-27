@@ -26,6 +26,7 @@ import com.group.tto.main.service.CommentService;
 import com.group.tto.main.service.OrderService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.service.UserProfileService;
+import com.group.tto.main.vo.MerProsList;
 import com.group.tto.main.vo.OrderEachItem;
 import com.group.tto.main.vo.OrderListVo;
 import com.group.tto.main.vo.UserFavVendorsVo;
@@ -78,7 +79,7 @@ public class UserCenterController extends BaseController {
     }
     for (Order order : orders) {
       OrderListVo o = new OrderListVo();
-      Store s = storeService.getStoreById(order.getStoreId());
+      MerProsList s = storeService.getStoreById(order.getStoreId());
       o.setOrderId(order.getOrderId());
      
       o.setStoreName(s.getStoreName());
@@ -159,27 +160,10 @@ public class UserCenterController extends BaseController {
   @RequestMapping(value = "/getUserFavVendor.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public List<UserFavVendorsVo> getUserFavVendor(HttpServletRequest request) {
-    List<UserFavVendorsVo> userFavVendorsVoList = new ArrayList<UserFavVendorsVo>();
-    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
-    List<Collect> vendors = userProfileService.getUserCollectVendorByProfileId(a.getUserProfile().getUserProfileId());
-    for (Collect collect : vendors) {
-      UserFavVendorsVo u = new UserFavVendorsVo();
-      Store s = collect.getStore();
-      
-      u.setStoreName(s.getStoreName());
-      u.setServiceBeginTime(s.getServiceBeginTime());
-      u.setServiceEndTime(s.getServiceEndTime());
-      u.setLogoPicUrl(s.getLogoPicUrl());
-      u.setDetailLocation(s.getDetailLocation());
-      u.setPhone(s.getPhone());
-      List<Order> orders = orderService.getAllOrderByStoreId(s.getStoreId());
-      u.setAvgPoint(s.getAvgPoint());
-      u.setOrderAmount(new BigDecimal(orders.size()));
-      Long l = collectService.findAllCollectsByStore(s);
-      u.setCollectAmount(new BigDecimal(l));
 
-      userFavVendorsVoList.add(u);
-    }
+    Account a = (Account)request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
+    List<UserFavVendorsVo> userFavVendorsVoList = storeService.getStoresByUserProfileId(a.getUserProfile().getUserProfileId());
+   
     return userFavVendorsVoList;
   }
 
