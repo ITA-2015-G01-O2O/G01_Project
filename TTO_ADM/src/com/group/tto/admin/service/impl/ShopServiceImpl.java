@@ -41,6 +41,7 @@ public class ShopServiceImpl implements ShopService {
   @Transactional
   public void inactiveStore(Long id) {
     Store store = this.dao.getById(id);
+    store.setIsHot(false);
     store.getStoreProfile().setStatus(StopProfileStatus.FREEZE.toString());
     this.dao.save(store);
   }
