@@ -10,6 +10,8 @@ public interface LocationDao {
    */
   public List<Location> getAllLocations();
   
-  public List<Location> search(String area,String city,String place);
+  public List<Location> search(String area,String city,String place,Integer limit);
+  
+  public List<Location> search(String query,Integer limit);
   
 }

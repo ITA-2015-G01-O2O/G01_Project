@@ -19,7 +19,7 @@
                         <a class="navbar-brand" href="#"> TAKE-OUT </a>
                     </div>
                     <ul class="nav navbar-nav navbar-left address">
-                        <li><a href="search.html"><span
+                        <li><a href="../stores/search.view"><span
 					class="glyphicon glyphicon-map-marker"></span> 珠海,切换地址</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -152,9 +152,9 @@
 
         <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
         <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="../js/jquery.cookie.js"></script>
         <script type="text/javascript" src="<c:url value='../js/consumer/select_vender.js'/>"></script>
-
-        <script src="<c:url value='../js/consumer/search.js'/>"></script>
         <script src="<c:url value='../js/consumer/basic.js'/>"></script>
+
 
         </html>

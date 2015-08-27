@@ -16,8 +16,8 @@ public class LocationController extends BaseController {
 
   @RequestMapping(value = "/loadLocation.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
-  public String getLocations(String query) {
-    return this.getResultJSON(true, this.locationService.search(query, " "));
+  public String getLocations(String query,Integer limit) {
+    return this.getResultJSON(true, this.locationService.search(query, " ",limit));
   }
 
   @Override

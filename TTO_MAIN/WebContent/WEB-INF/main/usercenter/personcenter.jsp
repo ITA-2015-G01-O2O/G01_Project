@@ -13,6 +13,7 @@
 <script src="../js/usercenter/myinfo.js"></script>
 <script src="../js/usercenter/myorder.js"></script>
 <script src="../js/usercenter/personcenter.js"></script>
+<script src="../js/usercenter/changepsw.js"></script>
 <link rel="stylesheet" href="../css/usercenter/myfav.css" />
 <link rel="stylesheet" href="../css/usercenter/myinfo.css" />
 <link rel="stylesheet" href="../css/usercenter/myorder.css" />
@@ -80,9 +81,10 @@
 												<label for="inputPassword" class="col-xs-2 control-label">Password</label>
 												<div class="col-xs-10">
 													<ul class="list-inline">
-														<li><p class="form-control" id="userInfo_password"></p>
+													
+														<li><input id="userInfo_password" type="password"/>
 														</li>
-														<li><a class="btn btn-info" id="changePsd">change
+														<li><a class="btn btn-info" onclick="changePsw()" id="changePsd">change
 																psd</a></li>
 
 													</ul>
@@ -190,9 +192,9 @@
 							<div class="page-header ">addr:<lable id="detailLocation"></lable></div>
 						</div>
 						<div class="myclass1">
-							<div class="text-center mymainhei">waiting for check by res</div>
+							<div class="text-center mymainhei" id="resReplyToUser">waiting for check by res</div>
 							<div class=" text-right">
-								<button class="btn btn-warning">cancel order?</button>
+								<button class="btn btn-warning hidden" id="userCancelThisOrder">cancel order?</button>
 							</div>
 						</div>
 					</div>

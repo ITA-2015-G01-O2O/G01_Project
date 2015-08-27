@@ -8,7 +8,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.group.tto.main.common.JMSHelper;
+import com.group.tto.main.common.LoggerNames;
 import com.group.tto.main.common.OrderJMSMsg;
+import com.group.tto.main.common.SystemLogger;
 
 @Component
 public class JMSAcceptor {
@@ -40,7 +42,7 @@ public class JMSAcceptor {
     try {
       msgs.addAll(jmsHelper.getMessage(100, 5 * 1000L));
     } catch (Exception e) {
-      e.printStackTrace();
+      SystemLogger.error(LoggerNames.ERROR_APPENDER, "JMS Message accept error");
     }
   }
 }

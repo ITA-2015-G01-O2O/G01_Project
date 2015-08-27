@@ -9,7 +9,7 @@ $(function () {
      *default parameters *location_id =50, later on cookies
      *jquery sort, discard DB order
      */
-    var location_id = 50,
+    var location_id = $.cookie("location_Id"),
         sortType = "salesCount",
         orderType = 1,
         storeType = "allType"

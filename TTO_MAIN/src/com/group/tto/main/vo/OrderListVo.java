@@ -7,6 +7,7 @@ import java.util.List;
 import com.group.tto.cmn.model.Store;
 
 public class OrderListVo {
+    private Long orderId;
 	private String storeName;//res name;
 	private String phone;//res phone;
 	private String orderNumber;
@@ -92,6 +93,12 @@ public class OrderListVo {
 	public void setLogoPicUrl(String logoPicUrl) {
 		this.logoPicUrl = logoPicUrl;
 	}
+  public Long getOrderId() {
+    return orderId;
+  }
+  public void setOrderId(Long orderId) {
+    this.orderId = orderId;
+  }
 	
 	
 	
