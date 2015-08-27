@@ -38,7 +38,35 @@ function gotoTop(acceleration, stime) {
     }
 }
 
+$(document).ready(function () {
+    $.ajax({
+        type: "post",
+        url: "../account/getMainName.do",
+        cache: false,
+        error: function (error) {
+            alert("error");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+                $("#loginameshow").show();
+                $("#logintitle").hide();
+                $("#registertitle").hide();
+                $("#loginameshow").children().eq(0).text(json.data);
+            } else {
+                $("#logintitle").show();
+                $("#registertitle").show();
+                $("#loginameshow").hide();
+            }
+        }
+    });
 
-$(function () {
+    //setAddress
+    if ($.cookie("location_Id") != null) {
+        $("#address").html($.cookie("location_name"));
+    } else {
+        $("#address").hide();
+    }
+
 
 });
