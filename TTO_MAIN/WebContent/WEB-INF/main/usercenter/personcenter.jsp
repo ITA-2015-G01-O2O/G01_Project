@@ -187,7 +187,7 @@
 								<lable id="resOVoRemarks"></lable>
 							</div>
 							<div id="resOVoCommentFunc" style="display: none">
-								<div>
+								<div id="showcommentlabel">
 									conment:
 									<lable id="resOVoComment" style="display:none"></lable>
 									score:
