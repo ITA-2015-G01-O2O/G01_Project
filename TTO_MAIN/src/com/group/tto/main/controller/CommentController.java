@@ -27,11 +27,9 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentBySid.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentBySid(String merId) {
-    System.out.println("--------" + merId);
     Store store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
-    System.out.println("--------" + store);
     if (store != null) {
       List<Order> orders = store.getOrders();
       if (orders != null && orders.size() > 0) {
@@ -56,11 +54,9 @@ public class CommentController extends BaseController {
   @RequestMapping(value = "/getallCommentByScore.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getallCommentByScore(String merId,int score) {
-    System.out.println("--------" + merId);
     Store store = this.storeService.getStoreById(Long.parseLong(merId));
     List<Comment> merProsList = new ArrayList<Comment>();
     boolean flag = false;
-    System.out.println("--------" + store);
     if (store != null) {
       List<Order> orders = store.getOrders();
       if (orders != null && orders.size() > 0) {
@@ -96,7 +92,6 @@ public class CommentController extends BaseController {
 
   @Override
   protected String getName() {
-    // TODO Auto-generated method stub
     return null;
   }
 

@@ -30,7 +30,6 @@ public abstract class BaseController {
     String data = "";
     try {
       data = new ObjectMapper().writeValueAsString(obj);
-      System.out.println("data=============="+data);
     } catch (Exception e) {}
     return "{\"isSuccess\":" + isSuccess + ",\"data\":" + data + "}";
   }

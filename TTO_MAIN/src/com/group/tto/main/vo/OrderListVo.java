@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-import com.group.tto.cmn.model.Store;
-
 public class OrderListVo {
     private Long orderId;
 	private String storeName;//res name;
@@ -113,8 +111,5 @@ public class OrderListVo {
   public void setPoint(BigDecimal point) {
     this.point = point;
   }
-	
-	
-	
 
 }

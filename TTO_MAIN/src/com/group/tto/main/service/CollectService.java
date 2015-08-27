@@ -13,4 +13,6 @@ public interface CollectService {
 	public void removeCollectNodeById(Long id);
 	
 	public void updateCollectNode(Collect c);
+	
+	public void addCollectNode(Collect c);
 }

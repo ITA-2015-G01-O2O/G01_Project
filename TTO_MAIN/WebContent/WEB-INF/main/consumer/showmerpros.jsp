@@ -3,12 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Select Products</title>
 <link
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="../css/basic.css">
 <style>
 .clear {
 	clear: both;
@@ -165,36 +167,11 @@ body {
 }
 </style>
 </head>
+
 <body>
-	<nav class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#main-nav">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a href="index.html"><img src="../img/title_client.png"
-				width="70px" style="margin-top: 8px"></a>
-		</div>
-		<div class="collapse navbar-collapse" id="main-nav">
-			<ul class="nav navbar-nav">
-				<li><a href="#">Change Of Address </a></li>
-				<input type="hidden" id="merId" value=${merId } />
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-
-				<li id="loginameshow" style="display: none"><a href="#"></a></li>
-				<li id="logintitle" style="display: none"><a href="#"
-					data-toggle="modal" data-target=".login-modal">登陆</a></li>
-				<li id="registertitle" style="display: none"><a
-					href="../consumer/register.view">注册</a></li>
-
-				<li><a href="#"><span class="glyphicon glyphicon-earphone"></span>找客服</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
+	<jsp:include page="../common/header.jsp" flush="true">
+		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+	</jsp:include>
 	<div class="container container-main">
 		<div class="row">
 			<div class="col-xs-12">
@@ -205,6 +182,7 @@ body {
 
 						<div class="row">
 							<div class="jumbotron" style="background-color: white;">
+								<input type="hidden" id="merId" value=${merId } />
 								<div class="col-xs-5">
 									<img id="storeImgId" src="../img/img.png" />
 
@@ -227,7 +205,7 @@ body {
 									</div>
 									<h5 id="startingFee"></h5>
 									<h5 id="deliverFee"></h5>
-									<a href="#"><h5>
+									<a href="#" onclick="addCollect()"><h5>
 											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>收藏
 										</h5></a>
 								</div>
@@ -274,65 +252,7 @@ body {
 										<button type="button" onclick="addMeals(this)"
 											class="btn btn-success pull-right">Add</button>
 									</div>
-									<!-- 
-											<div class="col-xs-3 imfoimg">
-												<img src="img.png"  style="height: 150px;" />
-											</div>
 
-											<div class="col-xs-9 imfolist" style="background-color: white;">
-												<h4>红烧猪脚</h4>
-												<span style="display: none;">2</span>
-												<h5>￥<span>20</span>/份</h5>
-												<h5 class="text-muted">月售<span>50</span>份</h5>
-												<button type="button" onclick="addMeals(this)" class="btn btn-success pull-right">Add</button>
-											</div>
-								
-											<div class="col-xs-3 imfoimg">
-												<img src="img.png"  style="height: 150px;" />
-											</div>
-
-											<div class="col-xs-9 imfolist" style="background-color: white;">
-												<h4>卤酱猪脚</h4>
-												<span style="display: none;">3</span>
-												<h5>￥<span>20</span>/份</h5>
-												<h5 class="text-muted">月售<span>50</span>份</h5>
-												<button type="button" onclick="addMeals(this)" class="btn btn-success pull-right">Add</button>
-											</div>
-						
-											<div class="col-xs-3 imfoimg">
-												<img src="img.png"  style="height: 150px;" />
-											</div>
-
-											<div class="col-xs-9 imfolist" style="background-color: white;">
-												<h4>卤酱猪手</h4>
-												<span style="display: none;">4</span>
-												<h5>￥<span>20</span>/份</h5>
-												<h5 class="text-muted">月售<span>50</span>份</h5>
-												<button type="button" onclick="addMeals(this)" class="btn btn-success pull-right">Add</button>
-											</div>
-											<div class="col-xs-3 imfoimg">
-												<img src="img.png"  style="height: 150px;" />
-											</div>
-
-											<div class="col-xs-9 imfolist" style="background-color: white;">
-												<h4>隆江猪脚</h4>
-												<span style="display: none;">5</span>
-												<h5>￥<span>20</span>/份</h5>
-												<h5 class="text-muted">月售<span>50</span>份</h5>
-												<button type="button" onclick="addMeals(this)" class="btn btn-success pull-right">Add</button>
-											</div>
-											<div class="col-xs-3 imfoimg">
-												<img src="img.png"  style="height: 150px;" />
-											</div>
-
-											<div class="col-xs-9 imfolist" style="background-color: white;">
-												<h4>隆江猪手</h4>
-												<span style="display: none;">6</span>
-												<h5>￥<span>20</span>/份</h5>
-												<h5 class="text-muted">月售<span>50</span>份</h5>
-												<button type="button" onclick="addMeals(this)" class="btn btn-success pull-right">Add</button>
-											</div>
-										 -->
 								</div>
 
 								<div role="tabpanel" class="tab-pane" id="comment">
@@ -420,51 +340,13 @@ body {
 		</div>
 	</div>
 
-	<div class="modal fade login-modal" tabindex="-1" role="dialog"
-		id="relogin">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title text-center">登录</h4>
-				</div>
-				<div class="modal-body">
-					<div class="input-group">
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-user"></span></span> <input type="text"
-							class="form-control" name="to_username" id="username"
-							placeholder="username">
-					</div>
-					<div class="input-group">
-						<span class="input-group-addon"><span
-							class="glyphicon glyphicon-lock"></span></span> <input type="password"
-							class="form-control" name="to_password" id="password"
-							placeholder="password">
-					</div>
-					<div class="alert alert-danger" style="display: none" role="alert"
-						id="errorMsg"></div>
-					<div class="checkbox btn-re">
-						<label> <input type="checkbox"> Remeber me
-						</label>
-					</div>
-					<div class="bttons">
-						<a class="btn btn-primary btn-block" type="submit"
-							onclick="consumerlogin()">Login</a> <a
-							class="btn btn-success btn-block" href="register.html">Register</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-<div class="modal fade" id="orderEmpty" tabindex="-1" role="dialog"
+	<div class="modal fade" id="orderEmpty" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="modal-body"><h5>Choose a meal, pls</h5>
+				<div class="modal-body">
+					<h5>Choose a meal, pls</h5>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Comfirm</button>
@@ -472,13 +354,30 @@ body {
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="successaddCollect" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<h5>collect successfully!!</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Comfirm</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%@ include file="../common/loginmodal.jsp"%>
+	<jsp:include page="../common/footer.jsp" flush="true">
+		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+	</jsp:include>
 
-	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script
-		src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="../js/consumer/merpros.js"></script>
-	<script src="../js/consumer/Ordermodel.js"></script>
-	<script src="../js/jquery.cookie.js"></script>
 </body>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/consumer/merpros.js"></script>
+<script src="../js/consumer/Ordermodel.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="<c:url value='/js/common/basic.js'/>"></script>
 
 </html>

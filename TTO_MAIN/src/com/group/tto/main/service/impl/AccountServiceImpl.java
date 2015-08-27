@@ -1,5 +1,7 @@
 package com.group.tto.main.service.impl;
 
+import java.math.BigDecimal;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +57,12 @@ public class AccountServiceImpl implements AccountService {
       a.setUsername(loginname);
       a.setPassword(password);
       
-      System.out.println("dao---======"+a.getUsername());
-      System.out.println("dao---======"+a.getPassword());
       a.setIsDelete(false);
       a.setVersion(1l);
       UserProfile u=new UserProfile();
+      u.setFund(new BigDecimal("0"));
+      u.setIsDelete(false);
+      u.setVersion(1L);
       a.setUserProfile(u);
       accountDao.createAccount(a);
     

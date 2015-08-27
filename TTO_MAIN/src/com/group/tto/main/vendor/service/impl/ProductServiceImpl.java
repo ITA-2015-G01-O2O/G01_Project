@@ -40,29 +40,19 @@ public class ProductServiceImpl implements ProductService {
   @Transactional
   public void addProduct(Product product, InputStream input) {
     poductDao.createProduct(product);
-
-    System.out.println("-=====================-:" + product.getProductPicUrl());
     fileDao.saveFile(input, product.getProductPicUrl());
-    // TODO Auto-generated method stub
-
   }
 
   @Override
   @Transactional
   public List<Product> findAllProductsBySid(long sid) {
-
     return poductDao.findAllProducts(sid);
-    // TODO Auto-generated method stub
-
   }
 
   @Override
   @Transactional
   public List<Product> findProductsByLabel(long label, long sid) {
-
     return poductDao.findProductsByLabel(label, sid);
-    // TODO Auto-generated method stub
-
   }
 
   @Override

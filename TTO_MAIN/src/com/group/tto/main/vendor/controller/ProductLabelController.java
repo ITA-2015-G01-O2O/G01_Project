@@ -28,7 +28,6 @@ public class ProductLabelController extends BaseController {
 	@RequestMapping(value = "/addProductLabel.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public String addProductLabel(HttpServletRequest request) {
-		System.out.println();
 		String LabelName=request.getParameter("LabelName");
 		ProductLabel productLabel=new ProductLabel();
 		productLabel.setProductLabelName(LabelName);

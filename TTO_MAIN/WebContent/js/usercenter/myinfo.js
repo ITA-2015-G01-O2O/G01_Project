@@ -8,7 +8,6 @@ function loadMyInfo(){
 			
 		},
 		error : function(error) {
-			alert("error");
 		}
 	}).done(function(json) {
 		if (json != "") {
@@ -31,7 +30,6 @@ function loadMyFav(){
 			
 		},
 		error : function(error) {
-			alert("error");
 		}
 	}).done(function(json) {
 		
@@ -55,12 +53,12 @@ function addUserFav(data){
 	s.find("#resVodetailLocation").text(data.detailLocation);
 	s.find("#resVopoint").text(data.avgPoint);
 	s.find("#resVoAmount").text(data.orderAmount);
-	
+	var storeId = data.storeId;
 	s.find("#resVoColAmount").text(data.collectAmount);
 	
 	
 	s.find("button[name=cancelfav]").on("click",function(){
-		var cancel = $(this);
+		var cancel = s;
 		var yes = confirm("do you want to cancel?");
 		if(yes){
 			
@@ -70,10 +68,9 @@ function addUserFav(data){
 				url : "../usercenter/cancelUserFavVendor.do",
 				cache : false,
 				data : {
-					
+					storeId:storeId,
 				},
 				error : function(error) {
-					alert("error");
 				}
 			}).done(function(json) {
 				var cancel1 = cancel;

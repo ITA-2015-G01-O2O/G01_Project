@@ -22,8 +22,6 @@ import com.group.tto.main.service.AccountService;
 import com.group.tto.main.service.StoreService;
 import com.group.tto.main.vo.MerProsList;
 
-
-
 @Controller
 @RequestMapping("/consumer")
 public class ConsumerController extends BaseController {
@@ -33,10 +31,7 @@ public class ConsumerController extends BaseController {
   @RequestMapping(value = "/getMerchantById.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getMerProsById(String merId) {
-    System.out.println("--------" + merId);
     Store store = this.storeService.getStoreById(Long.parseLong(merId));
-
-    System.out.println("--------" + store);
     if (store == null) {
       store = new Store();
     }
@@ -48,10 +43,7 @@ public class ConsumerController extends BaseController {
   @RequestMapping(value = "/getprosByproLabel.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getprosByproLabel(String merId,String productlabelId) {
-    System.out.println("--------" + productlabelId);
     List<Product> products = this.storeService.getStoreByprosLabelId(Long.parseLong(merId),Long.parseLong(productlabelId));
-
-    System.out.println("--------" + products);
     if (products == null) {
       products =new ArrayList<Product>();
     }
@@ -103,7 +95,6 @@ public class ConsumerController extends BaseController {
   @RequestMapping("/confirmOrder.view")
   public String confirmOrder(String merId, Map map) {
     map.put("merId", merId);
-   System.out.println("dataJson-----------------------------"+merId);
     return this.getName() + "/confirmOrder";
   }
 

@@ -51,41 +51,27 @@ public class OrderController extends BaseController {
 
 
     ObjectMapper mapper = new ObjectMapper();
-    System.out.println(dataJson);
     mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 
-    // String
-    // s="[{\"proName\":\"haha\",\"proId\":\"50\",\"proPrice\":\"200\",\"proNum\":\"4\",\"bid\":\"50\"},{\"proName\":\"haha\",\"proId\":\"50\",\"proPrice\":\"200\",\"proNum\":\"4\",\"bid\":\"50\"}]";
-
-    // map = mapper.readValue(dataJson,
-    // new TypeReference<HashMap<String,String>>(){});
-
     List<Map<String, Object>> list = mapper.readValue(dataJson, List.class);
-    String data=null;
-    if (list.size() > 0 && ausername != null && auserPhone != null && auseraddress != null
-        ) {
-
+    String data = null;
+    if (list.size() > 0 && ausername != null && auserPhone != null && auseraddress != null) {
       List<AddOrderVO> vos = new ArrayList<AddOrderVO>();
       for (Map<String, Object> map : list) {
         vos.add(new AddOrderVO(map));
       }
-
-      
       Order o = getOrder(ausername, auserPhone, auseraddress, remark, vos);
-
       Account loginConsumer =
           (Account) request.getSession().getAttribute(Constants.SESSION_LOGIN_INFO);
       UserProfile up = new UserProfile();
-      System.out.println(loginConsumer.getUserProfile().getUserProfileId());
-      
       up.setUserProfileId(loginConsumer.getUserProfile().getUserProfileId());
       o.setUserProfile(up);
 
 
       orderService.addOrder(o);
-      
+
       data = this.getResultJSON(true, "");
-    }else{
+    } else {
       data = this.getResultJSON(false, "");
     }
     return data;
@@ -113,7 +99,7 @@ public class OrderController extends BaseController {
     o.setContacterName(ausername);
     o.setContacterPhone(auserPhone);
     o.setDetailLocation(auseraddress);
-    o.setRemarks(remark==null?" ":remark);
+    o.setRemarks(remark == null ? " " : remark);
     o.setOrderItems(ois);
     o.setCreateTime(new Date());
     o.setIsDelete(false);

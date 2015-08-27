@@ -26,7 +26,7 @@
                         </label>
                     </div>
                     <div class="bttons">
-                        <a class="btn btn-primary btn-block" type="submit" onclick="consumerlogin()">Login</a> <a class="btn btn-success btn-block" href="register.html">Register</a>
+                        <a class="btn btn-primary btn-block" type="submit" onclick="consumerlogin()">Login</a> <a class="btn btn-success btn-block" href="../consumer/register.view">Register</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,6 @@ public class ProductLabelDaoImpl extends BaseDao<ProductLabel> implements
 
 	@Override
 	public List<ProductLabel> findAllProductLabels() {
-		System.out.println(this.getEntityManager().getCriteriaBuilder());
 		CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
 		@SuppressWarnings("unchecked")
 		List<ProductLabel> productLabels = this.getEntityManager()
