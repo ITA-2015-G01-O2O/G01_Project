@@ -238,4 +238,16 @@ public class UserCenterController extends BaseController {
 
     return this.getResultJSON(result, "");
   }
+  
+  @RequestMapping(value = "/confirmOrder.do", produces = {"application/json;charset=UTF-8"})
+  @ResponseBody
+  public String confirmOrder(String orderId) {
+    System.out.println("receive user confirm order request!" + orderId);
+    Boolean result = orderService.confirmOrderById(Long.valueOf(orderId));
+
+
+
+    return this.getResultJSON(result, "");
+  }
+  
 }

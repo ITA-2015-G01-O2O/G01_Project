@@ -189,7 +189,7 @@
 								remarks:
 								<lable id="resOVoRemarks"></lable>
 							</div>
-							<div>
+							<div id="resOVoCommentFunc" style="display:none">
 								comment:
 								<lable id="resOVoComment" style="display:none"></lable>
 								<div id="resOVoComment2" style="display: none">
@@ -204,8 +204,11 @@
 							</div>
 						</div>
 						<div class="myclass1">
-							<div class="text-center mymainhei" id="resReplyToUser">waiting
-								for check by res</div>
+							<div class="text-center mymainhei" id="resReplyToUser"></div>
+							<div class=" text-right">
+								<button class="btn btn-warning hidden" id="userConfirmThisOrder">confirm
+									order?</button>
+							</div>
 							<div class=" text-right">
 								<button class="btn btn-warning hidden" id="userCancelThisOrder">cancel
 									order?</button>

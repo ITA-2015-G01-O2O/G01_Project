@@ -90,6 +90,9 @@ $(function() {
 		s.find("#resOVoContactPhone").text(data.contacterPhone);
 		s.find("#resOVoRemarks").text(data.remarks);
 		if (data.status == "FINISHED") {
+			
+			s.find("#resReplyToUser").text("订单已完成。");
+			s.find("#resOVoCommentFunc").show();
 			if (data.context == null) {
 				s.find("#resOVoComment2").show();
 				s.find("#commitId").data("orderId", orderId);
@@ -97,6 +100,40 @@ $(function() {
 				s.find("#resOVoComment").show();
 				s.find("#resOVoComment").text(data.context);
 			}
+		}
+		if(data.status=="ACCEPT"){
+			s.find("#resReplyToUser").text("商家正在忙碌炒菜中。");
+		}
+		if(data.status=="SENDING"){
+			s.find("#resReplyToUser").text("商家正朝你飞奔而来。");
+			s.find("#userConfirmThisOrder").removeClass("hidden");
+			s.find("#userConfirmThisOrder").on("click", function() {
+				var confirmOrder = confirm("do you want to confirm this order?");
+				if (confirmOrder) {
+					$.ajax({
+
+						type : "post",
+						url : "../usercenter/confirmOrder.do",
+						cache : false,
+						data : {
+							orderId : orderId,
+
+						},
+						error : function(error) {
+							alert(error);
+						}
+					}).done(function(json) {
+						var ss = s;
+						if (json.isSuccess) {
+							alert("success");
+							ss.find("#userConfirmThisOrder").addClass("hidden");
+							s.find("#resOVoOrderState").text("FINISHED");
+							s.find("#resReplyToUser").text("订单已完成。");
+						}
+					});
+				}
+
+			});
 		}
 
 		s.find("#detailLocation").text(data.detailLocation);

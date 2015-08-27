@@ -49,7 +49,6 @@ public class OrderServiceImpl implements OrderService {
 			Order o = order.getOrderById(orderId);
 			if("NEW".equals(o.getStatus())){
 			  o.setStatus(OrderStatus.CANCEL.name());
-			  System.out.println("order status:"+o.getStatus());
 			  return true;
 			}else{
 			  return false;
@@ -86,5 +85,29 @@ public class OrderServiceImpl implements OrderService {
 	
 		return order.getAllOrderByStoreId(storeId);
 	}
+
+  @Override
+  @Transactional
+  public Boolean confirmOrderById(Long orderId) {
+    try {
+      
+      Order o = order.getOrderById(orderId);
+      System.out.println("!!!!!!!!!!!!!");
+      System.out.println("!!!!!!!!!!!!!");
+      System.out.println("!!!!!!!!!!!!!");
+      System.out.println("SENDING".equals(o.getStatus()));
+      if("SENDING".equals(o.getStatus())){
+        o.setStatus(OrderStatus.FINISHED.name());
+        System.out.println(o.getStatus());
+        return true;
+      }else{
+        return false;
+      }
+      
+  } catch (Exception e) {
+      e.printStackTrace();
+      return false;
+  }
+  }
 
 }
