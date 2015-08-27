@@ -52,7 +52,7 @@ $(function() {
 function isStore(){
 	 $.ajax({
 	        type: "post",
-	        url: "TTO_MAIN/account/isStore.do",
+	        url: "../account/isStore.do",
 	        cache: false,
 	        error: function (error) {
 	            alert("error");
@@ -87,7 +87,7 @@ function isStore(){
 function getUserName(){
 	 $.ajax({
 	        type: "post",
-	        url: "TTO_MAIN/account/getMainName.do",
+	        url: "../account/getMainName.do",
 	        cache: false,
 	        error: function (error) {
 	            alert("error");
@@ -98,8 +98,9 @@ function getUserName(){
 	                $("#loginameshow").show();
 	                $("#logintitle").hide();
 	                $("#registertitle").hide();
+	                $("#logout").show();
 	                //vendor/order/NewOrder.view
-	                $("#loginameshow").children().eq(0).attr("href","TTO_MAIN/usercenter/personcenter.view");
+	                $("#loginameshow").children().eq(0).attr("href","../usercenter/personcenter.view");
 	                $("#loginameshow").data("successlogin",true);
 	                $("#loginameshow").children().eq(0).text(json.data);
 	            } else {
