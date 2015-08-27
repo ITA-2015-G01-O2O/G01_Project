@@ -1,6 +1,7 @@
 package com.group.tto.main.service.impl;
 
 
+import java.util.ArrayList;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import com.group.tto.main.dao.OrderDao;
 import com.group.tto.main.dao.PoductDao;
 import com.group.tto.main.dao.StoreDao;
 import com.group.tto.main.service.StoreService;
+import com.group.tto.main.vo.StoreSearchVo;
 import com.group.tto.main.vo.UserFavVendorsVo;
 import com.group.tto.main.vo.MerProsList;
 
@@ -50,9 +52,13 @@ public class StoreServiceImpl implements StoreService {
 
   @Override
   @Transactional
-  public List<Store> getStoresbyCriteria(StoreSearchCriteria criteria) {
+  public List<StoreSearchVo> getStoresbyCriteria(StoreSearchCriteria criteria) {
     List<Store> storeList = store.getStoreByCriteria(criteria);
-    return storeList;
+    List<StoreSearchVo> voList = new ArrayList<StoreSearchVo>();
+    for(Store store:storeList){
+      voList.add(new StoreSearchVo(store));
+    }
+    return voList;
   }
 
   @Override
