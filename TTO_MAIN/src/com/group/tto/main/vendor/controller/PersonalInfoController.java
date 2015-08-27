@@ -20,8 +20,8 @@ public class PersonalInfoController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadPersonalInfo(HttpServletRequest req) {
-    //int sid = (int) req.getSession().getAttribute("sid");
-    int sid=2050;
+    int sid = (int) req.getSession().getAttribute("sid");
+    //int sid=2050;
     StoreProfile sp = pi.loadPersonInfo(sid);
     
     PersonalInfo pi=new PersonalInfo();

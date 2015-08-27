@@ -55,7 +55,7 @@
 						<div calss="operate">
 							<ul class="nav nav-pills nav-stacked">
 							<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
-									<li role="presentation">
+									<li class="active" role="presentation">
 										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">2</span></a>
 									</li>
 									<li role="presentation"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
@@ -65,19 +65,13 @@
 										<a href="<c:url value='/vendor/product/FoodManageMent.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Food Management</a>
 									</li>
 									<br/>
-								<li role="presentation" class="title"><i
-									class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
-								<li role="presentation"><a href="PersonalInformation.html">
-										<i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal
-										Information
-								</a></li>
-								<li role="presentation"><a href="storeInfo.html"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Store
-										Information</a></li>
-								<li role="presentation"><a href="BasicSetting.html"><i
-										class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic
-										Settings</a></li>
-							</ul>
+									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Account Center</li>
+									<li role="presentation">
+										<a href="<c:url value='/vendor/personalInfo/PersonalInformation.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;Personal Information</a>
+									</li>
+									<li role="presentation"><a href="<c:url value='/vendor/storeInfo/storeInfo.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Store Information</a></li>
+									<li role="presentation"><a href="<c:url value='/vendor/basicSetting/BasicSetting.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Basic Settings</a></li>
+								</ul>
 						</div>
 						<!--
                         	作者：chen.ace@outlook.com
