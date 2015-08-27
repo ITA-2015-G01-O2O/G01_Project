@@ -91,7 +91,7 @@ $(function() {
 		s.find("#resOVoRemarks").text(data.remarks);
 		if (data.status == "FINISHED") {
 			
-			s.find("#resReplyToUser").text("订单已完成。");
+			s.find("#resReplyToUser").text("this order has finished.");
 			s.find("#resOVoCommentFunc").show();
 			if (data.context == null) {
 				s.find("#resOVoComment2").show();
@@ -102,10 +102,10 @@ $(function() {
 			}
 		}
 		if(data.status=="ACCEPT"){
-			s.find("#resReplyToUser").text("商家正在忙碌炒菜中。");
+			s.find("#resReplyToUser").text("vendor is cooking");
 		}
 		if(data.status=="SENDING"){
-			s.find("#resReplyToUser").text("商家正朝你飞奔而来。");
+			s.find("#resReplyToUser").text("vendor is sending your food");
 			s.find("#userConfirmThisOrder").removeClass("hidden");
 			s.find("#userConfirmThisOrder").on("click", function() {
 				var confirmOrder = confirm("do you want to confirm this order?");
@@ -128,7 +128,7 @@ $(function() {
 							alert("success");
 							ss.find("#userConfirmThisOrder").addClass("hidden");
 							s.find("#resOVoOrderState").text("FINISHED");
-							s.find("#resReplyToUser").text("订单已完成。");
+							s.find("#resReplyToUser").text("this order has finished.");
 						}
 					});
 				}
