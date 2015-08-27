@@ -21,8 +21,8 @@
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
@@ -101,7 +101,7 @@
         <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="../js/jquery.cookie.js"></script>
         <script type="text/javascript" src="<c:url value='../js/consumer/select_vender.js'/>"></script>
-        <script src="<c:url value='../js/basic.js'/>"></script>
+        <script src="<c:url value='/js/common/basic.js'/>"></script>
 
 
         </html>
