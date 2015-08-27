@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<html>
 <meta charset="UTF-8">
 <title>SMS - home</title>
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
@@ -13,7 +14,7 @@
 	href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 <script type="text/javascript"
-	src="<c:url value='/js/vendor/OperateOrder.js'/>"></script>
+	src="<c:url value='/js/vendor/OperateOrderHistory.js'/>"></script>
 <script type="text/javascript"
 	src="<c:url value='/js/vendor/basic.js'/>"></script>
 <script type="text/javascript"
@@ -21,9 +22,27 @@
 <script type="text/javascript" src="<c:url value='/js/vendor/pic.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/css/vendor/basic.css'/>" />
 <link rel="stylesheet" href="<c:url value='/css/vendor/index.css'/>" />
-</head>
 
 <body>
+
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel">
@@ -74,11 +93,10 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li role="presentation" class="title"><i
 									class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
-								<li role="presentation" class="active"><a
-									href="NewOrder.html"> <i
+								<li role="presentation"><a href="NewOrder.html"> <i
 										class="glyphicon glyphicon-triangle-right"> </i>&emsp;New
 										Order<span class="badge">2</span></a></li>
-								<li role="presentation"><a href="OrderCompleted.html"><i
+								<li class="active" role="presentation"><a href="#"><i
 										class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed
 										Order</a></li>
 								<br />
@@ -128,47 +146,37 @@
 						</div>
 					</div>
 					<div class="col-xs-9 main-wrapper">
-						<div id="orderTable" class="col-xs-12 hidden">
-							<div class="col-xs-12"	style="height: 180px; margin-bottom: 70px;">
-								<div class="col-xs-4"
-									style="height: 160px; margin-left: 0px; padding: 0px;">
-									<div style="overflow-y: scroll; height: 150px;border: 1px solid #ddd;">
-										<table class="table"
-											style="border: 1px solid #ddd; margin-bottom: 0px;">
-								          <tbody  id="TableTbody">
-											<tr id="tableTitle">
-												<td width="120px">餐点</td>
-												<td>份数</td>
-												<td>价格</td>
-											</tr>
-								          </tbody>
-										</table>
-									</div>
-									<div style="border: 1px solid #ddd;text-align: center;">
-										<label>总价格</label>
-										<!-- label价格动态生成 -->
-										<label id="priceLabel">27</label>
-									</div>
-									</div>
-								
-								<div class="col-xs-8"
-									style="height: 176px; border: 1px solid #ddd; text-align: left;">
-									<label>订单号：</label> <label id="orderNum">130000000000000</label>
-									<br /> <label>下单日期：</label> <label id="orderDate">2015-08-23
-										17:52:23</label> <br /> <label>订单状态：</label> <label id="orderState">商家未确认</label>
-									<br /> <label>联系人：</label> <label id="orderPeopleName">ChenAce</label>
-									<br /> <label>电话：</label> <label id="orderTel">13000000000</label>
-									<br /> <label>地址：</label> <label id="orderAddress">南方软件园B5
-										1-4单元 5楼</label> <br />
-								</div>
-								
-								<div class="col-xs-12"style="text-align: right; border: 1px solid #ddd;">
-									<button class="btn btn-primary access">ACCEPT</button>
-									<button class="btn btn-danger giveUp">CANCEL</button>
-								</div>
+						<div id="flowLayot" class="col-xs-12">
+
+
+
+							<div class="col-xs-12"
+								style="height: 180px; margin-bottom: 70px;">
+								<h3>Order History:</h3>
+								<div style="overflow-y: scroll; height: 500px;">
+									<table class="table"
+										style="border: 1px solid #ddd; margin-bottom: 0px;">
+										<tr>
+											<td width="120px">订单号</td>
+											<td>时间</td>
+											<td>选择餐品</td>
+											<td>评分</td>
+											<td>评价</td>
+											<td>状态</td>
+											<td>操作</td>
+
+										</tr>
+
+										<tbody id="HistoryTbody">
+
+										</tbody>
+
+									</table>
 								</div>
 							</div>
+
 						</div>
+
 					</div>
 					<!--    <div class="col-xs-3">
                         <div class="myCart text-muted"><i class="glyphicon glyphicon-shopping-cart"></i><span>My Cart</span><span class="badge">42</span></div>
