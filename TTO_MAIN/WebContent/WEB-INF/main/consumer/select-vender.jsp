@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <a id="border-triangle" href="#" onclick="gotoTop();return false;" class="totop" style="display:none">
+            <a id="border-triangle" href="#" onclick="gotoTop();return false;" class="totop">
                 <div></div>
             </a>
             <%@ include file="../common/loginmodal.jsp"%>
