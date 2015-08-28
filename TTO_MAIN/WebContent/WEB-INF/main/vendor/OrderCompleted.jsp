@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
 <script src="<c:url value='/js/jquery.cookie.js'/>"></script>
 <script src="<c:url value='/js/common/basic.js'/>"></script>
+<script  type="text/javascript"  src="<c:url value='/js/vendor/TimeSetting.js'/>"></script>
 <body>
 	<jsp:include page="../common/header.jsp" flush="true">
 		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
@@ -115,7 +116,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
 								<li  role="presentation">
-										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge"  style="background-color: red">2</span></a>
+										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge"  style="background-color: red">${jmsSize}</span></a>
 									</li>
 									<li role="presentation" class="active"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
 									<br/>

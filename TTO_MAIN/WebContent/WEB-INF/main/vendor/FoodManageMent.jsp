@@ -143,7 +143,7 @@
 								<li role="presentation"><a
 									href="<c:url value='/vendor/order/NewOrder.view'/>"> <i
 										class="glyphicon glyphicon-triangle-right"> </i>&emsp;New
-										Order<span class="badge">2</span></a></li>
+										Order<span class="badge">${jmsSize}</span></a></li>
 								<li role="presentation"><a
 									href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i
 										class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed
