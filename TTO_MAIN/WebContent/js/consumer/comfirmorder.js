@@ -42,6 +42,7 @@ function confirmorderbtn() {
 
 	errorMsg=validate(ausername, auserPhone, auseraddress);
 	if(errorMsg!=null){
+		addflag=false;
 		$("#errorMsg2").show();
 		$('#errorMsg2').html(errorMsg);
 		return false;
