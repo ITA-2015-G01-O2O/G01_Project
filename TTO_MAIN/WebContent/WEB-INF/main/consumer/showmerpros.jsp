@@ -238,7 +238,7 @@
 									aria-controls="Meals" role="tab" data-toggle="tab">Meals</a></li>
 								<li role="presentation"><a href="#comment"
 									aria-controls="comment" role="tab" data-toggle="tab"
-									onclick="conment()">Conmment</a></li>
+									onclick="conment()">Comment</a></li>
 							</ul>
 
 							<div class="tab-content">
@@ -313,7 +313,7 @@
 					<div class="col-xs-3 ">
 						<div class="nav nav-tabs nav-stacked" data-spy="affix"
 							data-offset -top="100" data-offset-bottom="100">
-							<div class="preferInfo ">
+							<div class="preferInfo">
 								<div class="preferInfoBox ">
 									<h4>商家营业公告及营业时间</h4>
 									<h5 class="text-muted" id="announcement"></h5>
@@ -360,46 +360,46 @@
 	</div>
 
 
-	<div class="modal fade " id="orderEmpty" tabindex="-1 " role="dialog "
-		aria-labelledby="myModalLabel ">
-		<div class="modal-dialog " role="document ">
-			<div class="modal-content ">
-				<div class="modal-body ">
+	<div class="modal fade" id="orderEmpty" tabindex="-1 " role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
 					<h5>Choose a meal, pls</h5>
 				</div>
-				<div class="modal-footer ">
-					<button type="button " class="btn btn-default "
-						data-dismiss="modal ">Comfirm</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal">Comfirm</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="modal fade " id="successaddCollect" tabindex="-1 "
-		role="dialog " aria-labelledby="myModalLabel ">
-		<div class="modal-dialog " role="document ">
-			<div class="modal-content ">
-				<div class="modal-body ">
+	<div class="modal fade" id="successaddCollect" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
 					<h5>collect successfully!!</h5>
 				</div>
-				<div class="modal-footer ">
-					<button type="button " class="btn btn-default "
-						data-dismiss="modal ">Comfirm</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal">Comfirm</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="../common/loginmodal.jsp"%>
-	<jsp:include page="../common/footer.jsp " flush="true ">
-		<jsp:param name="config_hotLine " value="${config_hotLine} "></jsp:param>
+	<jsp:include page="../common/footer.jsp" flush="true">
+		<jsp:param name="config_hotLine" value="${config_hotLine} "></jsp:param>
 	</jsp:include>
 
 </body>
-<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js "></script>
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script
-	src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js "></script>
-<script src="../js/consumer/merpros.js "></script>
-<script src="../js/consumer/Ordermodel.js "></script>
-<script src="../js/jquery.cookie.js "></script>
+	src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/consumer/merpros.js"></script>
+<script src="../js/consumer/Ordermodel.js"></script>
+<script src="../js/jquery.cookie.js"></script>
 <script src="<c:url value='/js/common/basic.js' />"></script>
 
 </html>

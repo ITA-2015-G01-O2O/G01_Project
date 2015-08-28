@@ -128,6 +128,8 @@ function confirmbuy() {
 				}
 			}
 		});
+	}else{
+		$("#completeinfo").modal("show");
 	}
 
 }
