@@ -6,7 +6,7 @@
                 <a class="navbar-brand" href="#"> TAKE-OUT </a>
             </div>
             <ul class="nav navbar-nav navbar-left address">
-                <li><a href="/TTO_MAIN/account/stores/search.view"><span class="glyphicon glyphicon-map-marker"></span> <span id="address">切换地址</span></a></li>
+                <li><a href="/TTO_MAIN/stores/search.view"><span class="glyphicon glyphicon-map-marker"></span> <span id="address">切换地址</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
