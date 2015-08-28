@@ -41,7 +41,7 @@ Ext.define('login.controller.loginController', {
 						}
 						Ext.MessageBox.alert('Error', tip);
 					}else{
-						window.location.href='../user/userSearch.view';
+						window.location.href=domain_name+'user/userSearch.view';
 					}
 				},
 				failure : function() {

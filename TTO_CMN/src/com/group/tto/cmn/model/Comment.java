@@ -28,7 +28,7 @@ public class Comment {
   private BigDecimal point;
   @Column(name = "DELIVER_TIME")
   private BigDecimal deliverTime;
-  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.EAGER)
+  @ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
   @JoinColumn(name = "USER_PROFILE", foreignKey = @ForeignKey(name = "USER_PROFILE"))
   private UserProfile userProfile;
 

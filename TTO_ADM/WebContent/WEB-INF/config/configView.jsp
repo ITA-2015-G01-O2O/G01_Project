@@ -9,6 +9,7 @@
     <script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
     <link rel="stylesheet" href="http://cdn.sencha.com/ext/gpl/4.2.1/packages/ext-theme-gray/build/resources/ext-theme-gray-all.css" />
     <link rel="stylesheet" href="<c:url value='/css/custom.css'/>" />
+    <%@include file="../config.jsp" %>
 	<script type="text/javascript" src="<c:url value='/js/common/commonController.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/js/config/configApp.js'/>"></script>
 </head>

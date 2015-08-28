@@ -24,30 +24,30 @@ Ext.define('cmn.controller.cmnController', {
 		});
 	},
 	userPage:function(){
-		window.location.href='/TTO_Admin/user/userSearch.view';
+		window.location.href=domain_name+'user/userSearch.view';
 	},
 	logout:function(){
 		Ext.Ajax.request({
-			url : '/TTO_Admin/logout.do',
+			url : domain_name+'logout.do',
 			success : function(response) {
-				window.location.href='/TTO_Admin/admin/login.view';
+				window.location.href=domain_name+'admin/login.view';
 			},
 			failure : function() {
-				window.location.href='/TTO_Admin/admin/login.view';
+				window.location.href=domain_name+'admin/login.view';
 			}
 		});
 		
 	},
 	shopPage:function(){
-		window.location.href='/TTO_Admin/shop/shopSearch.view';
+		window.location.href=domain_name+'shop/shopSearch.view';
 	},
 	systemPage:function(){
-		window.location.href='/TTO_Admin/config/configView.view';
+		window.location.href=domain_name+'config/configView.view';
 	},
 	loadLogo:function( comp, eOpts ){
-		comp.setSrc('/TTO_Admin/img/rice.png');
+		comp.setSrc(domain_name+system_logo_src);
 	},
 	loadSystemTitle:function(comp,eOpts){
-		comp.setText('Tomcat Takeout Admin');
+		comp.setText(system_title);
 	}
 });

@@ -26,7 +26,7 @@ public class OrderItem {
   private BigDecimal price;
   @Column(name = "AMOUNT")
   private BigDecimal amount;
-  @ManyToOne(targetEntity = Product.class, fetch = FetchType.EAGER)
+  @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
   @JoinColumn(foreignKey = @ForeignKey(name = "PRODUCT"))
   private Product product;
   @ManyToOne(fetch = FetchType.EAGER)
