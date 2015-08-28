@@ -55,7 +55,7 @@ $(function () {
             //console.log($(document).scrollTop());
             $('#border-triangle').fadeOut();
         } else {
-            $('#border-triangle').fadeOut();
+            $('#border-triangle').fadeIn();
         }
     });
 
