@@ -60,9 +60,9 @@ public class BasicSettingController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadBasicSetting(HttpServletRequest req) {
-    //int sid = (int) req.getSession().getAttribute("sid");
-    int sid=2050;
-    Store store=bs.loadBasicSetting(sid);
+    long sid = (long) req.getSession().getAttribute("sid");
+    
+    Store store=bs.loadBasicSetting((int) sid);
     
     BasicSetting bs=new BasicSetting();
     bs.setAnnouncement(store.getAnnouncement());
