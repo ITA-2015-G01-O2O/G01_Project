@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
+<jsp:include page="../common/header.jsp" flush="true">
+		<jsp:param name="config.hotLine" value="${config.hotLine}"></jsp:param>
+	</jsp:include>
 	<div class="container">
 		<div class="row">
 			<div class="logo">
@@ -45,10 +48,18 @@
 
 			</form>
 		</div>
+		
+		
+		<%@ include file="../common/loginmodal.jsp"%>
+	<jsp:include page="../common/footer.jsp" flush="true">
+		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
+	</jsp:include>
+		
 		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script
 			src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../js/consumer/consumer_register.js"></script>
 		<script type="text/javascript" src="../js/jquery.form.js"></script>
+		<script type="text/javascript" src="../js/common/basic.js"></script>
 </body>
 </html>

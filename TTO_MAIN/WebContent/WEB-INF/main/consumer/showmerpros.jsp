@@ -220,9 +220,10 @@
                                             </div>
                                             <h5 id="startingFee" class="label label-primary"></h5>
                                             <h5 id="deliverFee "></h5>
-                                            <a href="# " onclick="addCollect() "/>
-                                            <a class="btn btn-default ">
+                                            <a href="#" onclick="addCollect()" class="btn btn-default">
+    
                                                 <i class="glyphicon glyphicon-heart " aria-hidden="true "></i>收藏
+                                        
                                             </a>
                                         </div>
                                         <div class="clear "></div>
