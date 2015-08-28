@@ -237,26 +237,26 @@
 								<li role="presentation " class="active "><a href="#meals "
 									aria-controls="Meals " role="tab " data-toggle="tab ">Meals</a></li>
 								<li role="presentation "><a href="#comment "
-									aria-controls="comment " role="tab " data-toggle="tab "
-									onclick="conment() ">Conmment</a></li>
+									aria-controls="comment" role="tab" data-toggle="tab"
+									onclick="conment()">Conmment</a></li>
 							</ul>
 
-							<div class="tab-content ">
+							<div class="tab-content">
 
-								<div role="tabpanel " class="tab-pane active " id="meals">
+								<div role="tabpanel" class="tab-pane active" id="meals">
 
-									<div class="col-xs-12 secondTitle " id="showAllpros">
-										<a type="button " class="btn btn-default btn-sm "
-											onclick="clickproLabelgetAll() ">All</a> <a type="button "
+									<div class="col-xs-12 secondTitle" id="showAllpros">
+										<a type="button" class="btn btn-default btn-sm"
+											onclick="clickproLabelgetAll()">All</a> <a type="button "
 											id="labelBtn" class="btn btn-default btn-sm "
-											style="display: none" onclick="clickproLabel(this) ">Sort</a>
+											style="display: none" onclick="clickproLabel(this)">Sort</a>
 									</div>
-									<div class="col-xs-3 imfoimg " id="proimg"
+									<div class="col-xs-3 imfoimg" id="proimg"
 										style="display: none;">
 										<img src=" " />
 									</div>
 
-									<div class="col-xs-9 imfolist " id="proInfo"
+									<div class="col-xs-9 imfolist" id="proInfo"
 										style="background-color: white; display: none;">
 										<h4>红烧猪蹄</h4>
 										<span style="display: none;">1</span>
@@ -274,29 +274,29 @@
 
 								</div>
 
-								<div role="tabpanel " class="tab-pane " id="comment">
+								<div role="tabpanel" class="tab-pane" id="comment">
 
-									<div class="col-xs-12 secondTitle ">
-										<button type="button " class="btn btn-default btn-lg "
-											onclick="conment() ">全部</button>
-										<button type="button " class="btn btn-default btn-lg "
-											onclick="getComby(4) ">好评（4-5分）</button>
-										<button type="button " class="btn btn-default btn-lg "
-											onclick="getComby(3) ">中评（3分）</button>
-										<button type="button " class="btn btn-default btn-lg "
-											onclick="getComby(1) ">差评（1-2分）</button>
+									<div class="col-xs-12 secondTitle">
+										<button type="button" class="btn btn-default btn-lg"
+											onclick="conment()">全部</button>
+										<button type="button" class="btn btn-default btn-lg"
+											onclick="getComby(4)">好评（4-5分）</button>
+										<button type="button" class="btn btn-default btn-lg"
+											onclick="getComby(3)">中评（3分）</button>
+										<button type="button" class="btn btn-default btn-lg"
+											onclick="getComby(1)">差评（1-2分）</button>
 									</div>
-									<div class="col-xs-12 secondTitle commentlist "
+									<div class="col-xs-12 secondTitle commentlist"
 										id="commentInfo" style="display: none">
-										<div class="col-xs-3 ">
+										<div class="col-xs-3">
 											评分：<span></span>分
 										</div>
-										<div class="col-xs-9 text-right ">
+										<div class="col-xs-9 text-right">
 											送餐时间：<span></span>分钟
 										</div>
-										<div class="col-xs-12 secondTitle ">
+										<div class="col-xs-12 secondTitle">
 											点评内容：
-											<h5 class="text-muted "></h5>
+											<h5 class="text-muted"></h5>
 										</div>
 									</div>
 
