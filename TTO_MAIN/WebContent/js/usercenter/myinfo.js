@@ -1,4 +1,5 @@
 function loadMyInfo(){
+	
 	$.ajax({
 		
 		type : "post",
@@ -21,6 +22,7 @@ function loadMyInfo(){
 
 
 function loadMyFav(){
+
 	$.ajax({
 		
 		type : "post",
@@ -52,21 +54,18 @@ function loadMyFav(){
 
 function addUserFav(data){
 	var s = $("#myfavinfo").clone();  
-	$("#showStorePic").attr("src","../file/img/"+data.logoPicUrl);
+	var storeId = data.storeId;
+	s.find("#showStorePic").attr("src","../file/img/"+data.logoPicUrl);
 	s.find("#resVoname").text(data.storeName);
 	s.find("#resVophone").text(data.phone);
 	s.find("#resVodetailLocation").text(data.detailLocation);
 	s.find("#resVopoint").text(data.avgPoint);
 	s.find("#resVoAmount").text(data.orderAmount);
-	var storeId = data.storeId;
 	s.find("#resVoColAmount").text(data.collectAmount);
-	
-	
 	s.find("button[name=cancelfav]").on("click",function(){
 		var cancel = this;
 		var yes = confirm("do you want to cancel?");
 		if(yes){
-			
 			$.ajax({
 				
 				type : "post",
@@ -82,6 +81,12 @@ function addUserFav(data){
 					$(cancel).parent().parent().parent().parent().parent().remove();
 				}
 			});
+		}	
+	});
+	s.find("#showStorePic").on("click",function(){
+		var yes = confirm("do you want to enter this vendor?");
+		if(yes){
+			window.location.href="../consumer/getMerprosById.view?merId="+storeId;
 		}	
 	});
 	setRomdomNameandId(s);
