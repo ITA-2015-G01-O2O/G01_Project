@@ -56,8 +56,8 @@ function loadVendorInfo() {
 		type : "post",
 		url : "/TTO_MAIN/vendor/info/getVendorInfo.do",
 		success : function(data) {
-			var name = data.data.storeName;
-			$("#ShopNameLabel").text(name);
+			var shopname = data.data.storeName;
+			$("#shopNameLabel").text(shopname);
 			var point = data.data.avgPoint;
 			$("#avgPointLabel").text(point);
 			var time = data.data.avgDeliverTime;
@@ -66,7 +66,7 @@ function loadVendorInfo() {
 			$("#collectionNumLabel").text(num);
 		},
 		error : function(data) {
-			alert("Load message fail!");
+			console.log("Load message fail!");
 		}
 	});
 }
@@ -112,12 +112,12 @@ function verify(){
 	type:"post",
 	url:"/TTO_MAIN/vendor/firstLogin/verify.do",
 	success:function(data){
-	var result=data.isSuccess;
-	if(result!=true)		
+		var result=data.isSuccess;
+		if(result!=true)		
 		window.location.href="/TTO_MAIN/vendor/completeInfo/completeInfo.view";
 	},
-	        error:function(data){
-	            alert("Load message fail!");
-	        }
+	error:function(data){
+	    console.log("verify fail!");
+	}
 	});
 }
