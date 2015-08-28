@@ -15,7 +15,9 @@ li {
 	font-size: 20px;
 	border-bottom: 1px solid #ddd;
 }
-
+.badge{
+	background-color:red ;
+}
 .container-main {
 	background: #fff;
 	border: 1px solid #ddd;

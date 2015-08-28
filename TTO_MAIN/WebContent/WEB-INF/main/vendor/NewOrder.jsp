@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
 		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
 		<script src="<c:url value='/js/common/basic.js'/>"></script>
+		<script  type="text/javascript"  src="<c:url value='/js/vendor/TimeSetting.js'/>"></script>
 </head>
 
 <body>
