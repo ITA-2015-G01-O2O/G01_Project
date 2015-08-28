@@ -50,11 +50,6 @@ li {
 	margin-bottom: 0;
 }
 
-.main-wrapper {
-	border-right: 1px solid #ddd;
-	border-left: 1px solid #ddd;
-}
-
 .myCart {
 	position: relative;
 	padding: 5px 0 0 10px;
@@ -112,9 +107,6 @@ li {
 	border: 1px solid #ddd;
 }
 
-.col-xs-3 {
-	border-left: 1px solid #ddd;
-}
 
 .spantitle {
 	font-size: 16px;

@@ -210,15 +210,16 @@ $(function() {
 
 		for (var i = 0; i < orderItems.length; i++) {
 			var tr = "<tr>";
-			tr += "<td class=\"active\" id=\"productId\">"
-					+ orderItems[i].productId + "</td>";
+			
 			tr += "<td class=\"active\" id=\"productName\">"
 					+ orderItems[i].productName + "</td>";
 			tr += "<td class=\"active\" id=\"productPrice\">"
 					+ orderItems[i].price + "</td>";
+			tr += "<td class=\"active\" id=\"productAmount\">"
+				+ orderItems[i].amount + "</td>";
 			tr += "</tr>";
 			s.find("#myordertbody").append(tr);
-			sum += orderItems[i].price;
+			sum += orderItems[i].price*orderItems[i].amount;
 		}
 
 		s.find("#totalPrice").text(sum);
@@ -236,12 +237,33 @@ $(function() {
 });
 function commitcomment(ele) {
 	commenterrormsg=null;
+	var inputvalue="";
+	var inputvalue2="";
+	var inputvalue3="";
+	var inputvalue4;
 	var resOVoCommentchildren = $(ele).closest('div').children();
-	var inputvalue = resOVoCommentchildren.eq(0).val();
-	var inputvalue2 = resOVoCommentchildren.eq(1).val();
-	var inputvalue3 = resOVoCommentchildren.eq(2).val();
+	for(var i=0;i<resOVoCommentchildren.length;i++){
+		if(resOVoCommentchildren.eq(i).attr('id')=="resOVoCommenttext"){
+			inputvalue=resOVoCommentchildren.eq(i).val();
+			continue;
+		}
+		if(resOVoCommentchildren.eq(i).attr('id')=="resOVoCommentscore"){
+			inputvalue2=resOVoCommentchildren.eq(i).val();
+			continue;
+		}
+		if(resOVoCommentchildren.eq(i).attr('id')=="resOVoCommenttime"){
+			inputvalue3=resOVoCommentchildren.eq(i).val();
+			continue;
+		}
+		if(resOVoCommentchildren.eq(i).attr('id')=="errorMsg3"){
+			inputvalue4=resOVoCommentchildren.eq(i);
+			continue;
+		}
+	}
+
+	
+	
 	var id = $(ele).data("orderId");
-	resOVoCommentchildren.eq(4).hide();
 	if (inputvalue3 != "" && isNaN(inputvalue3)) {
 		commenterrormsg = getErrorMsg(commenterrormsg,
 				"Error deliver time number,reinput pls,deliver time should be a number");
@@ -257,8 +279,10 @@ function commitcomment(ele) {
 		}
 	}
 	if (commenterrormsg != "") {
-		resOVoCommentchildren.eq(4).show();
-		resOVoCommentchildren.eq(4).html(commenterrormsg);
+		inputvalue4.hide();
+		inputvalue4.html('');
+		inputvalue4.show();
+		inputvalue4.html(commenterrormsg);
 		return false;
 	} else {
 		if (id != null) {

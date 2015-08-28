@@ -223,10 +223,6 @@
 			</div>
 		</div>
 
-		<div class="col-xs-12">
-			<nav class="text-center"> <span><a href="#">关注 </a> </span> | <span><a
-				href="#"> 客服热线：4000000</a></span> </nav>
-		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
 		<jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>

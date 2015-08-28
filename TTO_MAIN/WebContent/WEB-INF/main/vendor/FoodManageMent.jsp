@@ -94,12 +94,16 @@
 	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
 		aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-sm">
+			
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Update Menu</h4>
 				</div>
 				<div class="modal-body">
-					<input id="updateMenuName" text="text" class="form-control" /> <input
+					<label>Product Name</label>
+					<input id="updateMenuName" text="text" class="form-control" /> 
+					<label>Produce Price</label>
+					<input
 						id="updateMenuPrice" text="text" class="form-control" />
 				</div>
 				<div class="modal-footer">

@@ -32,11 +32,11 @@ public class StoreInfoController extends BaseController {
   @RequestMapping(value = "/load.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadStoreInfo(HttpServletRequest req) {
-     long sid = (long) req.getSession().getAttribute("sid");
-    //int sid = 2050;
-    StoreInfo store = si.loadStoreInfo((int)sid);
-    
-    String json=this.getResultJSON(true, store);
+    long sid = (long) req.getSession().getAttribute("sid");
+    // int sid = 2050;
+    StoreInfo store = si.loadStoreInfo((int) sid);
+
+    String json = this.getResultJSON(true, store);
     System.out.println(json);
 
     return json;
@@ -46,25 +46,25 @@ public class StoreInfoController extends BaseController {
   @ResponseBody
   public String updateStoreInfo(HttpServletRequest req,
       @RequestParam(value = "storeLogo", required = false) MultipartFile pic) {
-    // int sid = (int) req.getSession().getAttribute("sid");
-    int sid = 2050;
+    long sid = (long) req.getSession().getAttribute("sid");
+    // int sid = 2050;
     String storeName = req.getParameter("storename");
     String phone = req.getParameter("phone");
     String type = req.getParameter("type");
-    String piclog=req.getParameter("piclog");
-       
-    int num=0;
+    String piclog = req.getParameter("piclog");
+
+    int num = 0;
     Store store = new Store();
-    store.setStoreName(storeName);   
+    store.setStoreName(storeName);
     store.setPhone(phone);
-    
+
     Configuration con = si.getConfiguration(type);
-    store.setTypeConfig(con);    
-    
-    if("1".equals(piclog)){
+    store.setTypeConfig(con);
+
+    if ("1".equals(piclog)) {
       String filename = UUID.randomUUID().toString();
       InputStream is = null;
-      
+
       try {
         is = pic.getInputStream();
       } catch (IOException e) {
@@ -72,13 +72,12 @@ public class StoreInfoController extends BaseController {
       }
       store.setLogoPicUrl(filename);
 
-      num = si.updateStoreInfo(store, sid, filename, is);
-    }else{
-      num=si.updateStoreInfo(store, sid);
+      num = si.updateStoreInfo(store, (int) sid, filename, is);
+    } else {
+      num = si.updateStoreInfo(store, (int) sid);
     }
-    if(num==1)
-      req.getSession().setAttribute("storeName", storeName);
-    
+    if (num == 1) req.getSession().setAttribute("storeName", storeName);
+
     return this.getResultJSON(true, num);
   }
 
@@ -90,7 +89,7 @@ public class StoreInfoController extends BaseController {
   public StoreInfoService getSi() {
     return si;
   }
-  
+
   @RequestMapping(value = "/loadConfig.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String loadConfig(HttpServletRequest req) {
@@ -111,5 +110,5 @@ public class StoreInfoController extends BaseController {
     this.vr = vr;
   }
 
-  
+
 }
