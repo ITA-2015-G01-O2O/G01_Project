@@ -8,14 +8,21 @@ $(function () {
     /**
      *jquery sort, discard DB order
      */
+
     var location_id = $.cookie("location_Id"),
         sortType = "salesCount",
         orderType = 1,
-        storeType = "allType"
+        storeType = "allType";
+
+    if ($.cookie("location_Id") == null) {
+        location_id = 50;
+    }
 
     var type_list = new Array();
     var stores,
-        sort_store_list;
+        sort_store_list,
+        search_list;
+
     var carousel_imgs = $("#carousel img");
 
     //console.log(carousel_imgs.length);
@@ -45,6 +52,7 @@ $(function () {
                 operate_store_DOM(stores);
                 render_type_list();
                 addEvents();
+                sort_store_list = json;
             }
         });
     }
@@ -65,10 +73,10 @@ $(function () {
             new_store.find('.salesNum').html("销量：" + store_list[i].salesNum);
             new_store.find('.avgDeliverTime').html(store_list[i].avgDeliverTime + "分钟送达");
             //hot img
-//            console.log("hot state" + store_list[i].isHot);
- //            if (store_list[i].isHot) {
- //                carousel_imgs[count_img++].attr("src", "../file/img/" + store_list[i].logoPicURL);
- //            }
+            //            console.log("hot state" + store_list[i].isHot);
+            //            if (store_list[i].isHot) {
+            //                carousel_imgs[count_img++].attr("src", "../file/img/" + store_list[i].logoPicURL);
+            //            }
             //new_store.find('.status');
             $("#store_temp").parent().append(new_store);
             //generate_list
@@ -185,12 +193,18 @@ $(function () {
     }
 
 
-    //select then search    
+    //----------------------select then search-------------------------
 
-    $('.search input').on('keydown', function () {
+    $('.search input').on('keyup', function () {
         var input = $('.search input').val();
-        console.log("select");
-
+        search_list = sort_store_list;
+        clean_stores();
+        for (var i = 0; i < search_list.length; i++) {
+            if (!(sort_store_list[i].shopName.match(input))) {
+                search_list.splice(i, 1);
+            }
+        }
+        operate_store_DOM(search_list);
     });
 
 
