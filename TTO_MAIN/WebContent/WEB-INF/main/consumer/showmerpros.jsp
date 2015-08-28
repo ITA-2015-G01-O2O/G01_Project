@@ -233,10 +233,10 @@
 						</div>
 
 						<div class="row ">
-							<ul class="nav nav-tabs " role="tablist ">
-								<li role="presentation " class="active "><a href="#meals "
-									aria-controls="Meals " role="tab " data-toggle="tab ">Meals</a></li>
-								<li role="presentation "><a href="#comment "
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#meals"
+									aria-controls="Meals" role="tab" data-toggle="tab">Meals</a></li>
+								<li role="presentation"><a href="#comment"
 									aria-controls="comment" role="tab" data-toggle="tab"
 									onclick="conment()">Conmment</a></li>
 							</ul>
@@ -311,12 +311,12 @@
 					</div>
 
 					<div class="col-xs-3 ">
-						<div class="nav nav-tabs nav-stacked " data-spy="affix "
-							data-offset -top="100 " data-offset-bottom="100 ">
+						<div class="nav nav-tabs nav-stacked" data-spy="affix"
+							data-offset -top="100" data-offset-bottom="100">
 							<div class="preferInfo ">
 								<div class="preferInfoBox ">
 									<h4>商家营业公告及营业时间</h4>
-									<h5 class="text-muted " id="announcement"></h5>
+									<h5 class="text-muted" id="announcement"></h5>
 									<h5 class="text-muted ">
 										营业开始时间:<span id="serviceBeginTime"></span>
 									</h5>
@@ -328,28 +328,28 @@
 
 							</div>
 
-							<div class="orders " id="ordersCard">
-								<div class="cart text-muted ">
-									<i class="glyphicon glyphicon-shopping-cart "></i><span>My
+							<div class="orders" id="ordersCard">
+								<div class="cart text-muted">
+									<i class="glyphicon glyphicon-shopping-cart"></i><span>My
 										Cart</span>
 								</div>
-								<div class="orderBox " id="orderBoxCopy" style="display: none;">
+								<div class="orderBox" id="orderBoxCopy" style="display: none;">
 									<h4></h4>
 									<span style="display: none;"></span>
-									<button class="btn btn-default btn-sm " onclick="del1(this) ">-</button>
-									<input type="number " value="1 " readOnly="true "
-										class="form-control input-sm ">
-									<button class="btn btn-default btn-sm " onclick="add1(this) ">+</button>
-									<span class="price "></span> <span style="display: none;"></span>
-									<div class="clear "></div>
+									<button class="btn btn-default btn-sm" onclick="del1(this)">-</button>
+									<input type="number" value="1" readOnly="true"
+										class="form-control input-sm">
+									<button class="btn btn-default btn-sm" onclick="add1(this)">+</button>
+									<span class="price"></span> <span style="display: none;"></span>
+									<div class="clear"></div>
 								</div>
 							</div>
 
-							<div class="pay " id="payCount">
-								<span class="total ">$0</span>
-								<button class="btn btn-lg btn-success pull-right "
-									onclick="deliveryPros() ">Delivery</button>
-								<div class="clear "></div>
+							<div class="pay" id="payCount">
+								<span class="total">￥0</span>
+								<button class="btn btn-lg btn-success pull-right"
+									onclick="deliveryPros()">Delivery</button>
+								<div class="clear"></div>
 							</div>
 
 						</div>
