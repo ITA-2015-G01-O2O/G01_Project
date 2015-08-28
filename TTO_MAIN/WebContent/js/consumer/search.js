@@ -64,11 +64,13 @@ $(function () {
     });
 
     search_btn.on("click", function () {
-        search_num = 100;
-        cleanDOM();
-        maplist.addClass('longer-list');
-        maplist.show();
-        search();
+        if ($.trim(search_input.val()) != null) {
+            search_num = 100;
+            cleanDOM();
+            maplist.addClass('longer-list');
+            maplist.show();
+            search();
+        }
     });
 
     function cleanDOM() {
