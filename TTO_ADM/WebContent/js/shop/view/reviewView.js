@@ -93,7 +93,7 @@ Ext.define('shop.view.reviewView', {
 												},
 												{
 													xtype: 'image',
-													src:'img/test.png',
+													src:'',
 													height: 175,
 													width: 175,
 													id:'idCardPicImg',
@@ -111,7 +111,7 @@ Ext.define('shop.view.reviewView', {
 												},
 												{
 													xtype: 'image',
-													src:'img/test.png',
+													src:'',
 													height: 175,
 													width: 175,
 													id:'licensePicImg',
@@ -129,7 +129,7 @@ Ext.define('shop.view.reviewView', {
 												},
 												{
 													xtype: 'image',
-													src:'img/test.png',
+													src:'',
 													height: 175,
 													width: 175,
 													id:'realShopPicImg',
@@ -180,7 +180,7 @@ Ext.define('shop.view.reviewView', {
 										},
 										{
 											xtype: 'image',
-											src:'img/test.png',
+											src:'',
 											height: 175,
 											width: 175,
 											id:'shopLogoPicImg',

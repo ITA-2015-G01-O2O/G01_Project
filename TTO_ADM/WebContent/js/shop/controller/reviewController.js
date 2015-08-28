@@ -80,7 +80,8 @@ Ext.define('shop.controller.reviewController', {
 				Ext.getCmp('startingFeeField').setValue(me.shopDTO.startingFee);
 				Ext.getCmp('avgPointField').setValue(me.shopDTO.avgPoint);
 				Ext.getCmp('avgDeliverField').setValue(me.shopDTO.avgDeliverTime);
-				if(me.shopDTO.logoPicUrl){
+				if(me.shopDTO.logoPicUrl!='/TTO_Admin/file/img/null'){
+					debugger;
 					Ext.getCmp('shopLogoPicImg').setSrc(me.shopDTO.logoPicUrl);
 				}
 
