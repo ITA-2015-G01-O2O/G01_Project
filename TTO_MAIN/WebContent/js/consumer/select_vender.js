@@ -197,13 +197,13 @@ $(function () {
 
     $('.search input').on('keyup', function () {
         var input = $('.search input').val();
-        search_list = sort_store_list;
-        clean_stores();
-        for (var i = 0; i < search_list.length; i++) {
-            if (!(sort_store_list[i].shopName.match(input))) {
-                search_list.splice(i, 1);
+        search_list = new Array();
+        for (var i = 0, j = 0; i < sort_store_list.length; i++) {
+            if (sort_store_list[i].shopName.match(input)) {
+                search_list[j++] = sort_store_list[i];
             }
         }
+        clean_stores();
         operate_store_DOM(search_list);
     });
 

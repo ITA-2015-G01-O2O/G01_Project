@@ -38,134 +38,145 @@ function gotoTop(acceleration, stime) {
     }
 }
 
-$(function() {
-	getUserName();
-	isStore();
+$(function () {
+    getUserName();
+    isStore();
     //setAddress
     if ($.cookie("location_Id") != null) {
         $("#address").html($.cookie("location_name"));
     } else {
         $("#address").hide();
     }
+
+
+    $(window).scroll(function () {
+
+        if ($(document).scrollTop() == 0) {
+            //console.log($(document).scrollTop());
+            $('#border-triangle').fadeOut();
+        } else {
+            $('#border-triangle').fadeOut();
+        }
+    });
+
+
+
 });
 
-function isStore(){
-	 $.ajax({
-	        type: "post",
-	        url: "/TTO_MAIN/account/isStore.do",
-	        cache: false,
-	        error: function (error) {
-	            alert("error1");
-	        }
-	    }).done(function (json) {
-	        if (json != "") {
-	            if (json.isSuccess == true) {
-	            	if(json.data=="NORMAL"){
-	            		$("#openStore").hide();
-	            		$("#showmyShop").show();
-	            		$("#showmyShop").children().eq(0).attr('href','/TTO_MAIN/vendor/order/NewOrder.view')
-	            		$("#logout").show();
-	            		$("#loginameshow").children().eq(0).attr('href',"/TTO_MAIN/usercenter/personcenter.view");
-	            	}else if(json.data=="CHECK"){
-	            		$("#openStore").show();
-	            		$("#showmyShop").hide();
-	            		$("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register4.view");
-	            	}else if(json.data=="FREEZE"){
-	            		$("#openStore").show();
-	            		$("#showmyShop").hide();
-	            		$("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register1.view");
-	            	}
-	            } else {
-	            	 $("#openStore").show();
-	            	 $("#showmyShop").hide();
-	            	 $("#openStore").data('openStore',"/TTO_MAIN/vendor/register/register1.view");
-	            }
-	        }
-	    });
+function isStore() {
+    $.ajax({
+        type: "post",
+        url: "/TTO_MAIN/account/isStore.do",
+        cache: false,
+        error: function (error) {
+            alert("error1");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+                if (json.data == "NORMAL") {
+                    $("#openStore").hide();
+                    $("#showmyShop").show();
+                    $("#showmyShop").children().eq(0).attr('href', '/TTO_MAIN/vendor/order/NewOrder.view')
+                    $("#logout").show();
+                    $("#loginameshow").children().eq(0).attr('href', "/TTO_MAIN/usercenter/personcenter.view");
+                } else if (json.data == "CHECK") {
+                    $("#openStore").show();
+                    $("#showmyShop").hide();
+                    $("#openStore").data('openStore', "/TTO_MAIN/vendor/register/register4.view");
+                } else if (json.data == "FREEZE") {
+                    $("#openStore").show();
+                    $("#showmyShop").hide();
+                    $("#openStore").data('openStore', "/TTO_MAIN/vendor/register/register1.view");
+                }
+            } else {
+                $("#openStore").show();
+                $("#showmyShop").hide();
+                $("#openStore").data('openStore', "/TTO_MAIN/vendor/register/register1.view");
+            }
+        }
+    });
 }
 
 
-function getUserName(){
-	 $.ajax({
-	        type: "post",
-	        url: "/TTO_MAIN/account/getMainName.do",
-	        cache: false,
-	        error: function (error) {
-	            alert("error2");
-	        }
-	    }).done(function (json) {
-	        if (json != "") {
-	            if (json.isSuccess == true) {
-	                $("#loginameshow").show();
-	                $("#logintitle").hide();
-	                $("#registertitle").hide();
-	                $("#logout").show();
-	                //vendor/order/NewOrder.view
-	                $("#loginameshow").children().eq(0).attr("href","/TTO_MAIN/usercenter/personcenter.view");
-	                $("#loginameshow").data("successlogin",true);
-	                $("#loginameshow").children().eq(0).text(json.data);
-	            } else {
-	                $("#logintitle").show();
-	                $("#registertitle").show();
-	                $("#loginameshow").hide();
-	            }
-	        }
-	    });
+function getUserName() {
+    $.ajax({
+        type: "post",
+        url: "/TTO_MAIN/account/getMainName.do",
+        cache: false,
+        error: function (error) {
+            alert("error2");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+                $("#loginameshow").show();
+                $("#logintitle").hide();
+                $("#registertitle").hide();
+                $("#logout").show();
+                //vendor/order/NewOrder.view
+                $("#loginameshow").children().eq(0).attr("href", "/TTO_MAIN/usercenter/personcenter.view");
+                $("#loginameshow").data("successlogin", true);
+                $("#loginameshow").children().eq(0).text(json.data);
+            } else {
+                $("#logintitle").show();
+                $("#registertitle").show();
+                $("#loginameshow").hide();
+            }
+        }
+    });
 }
-function isstorelogin(){
-	  $.ajax({
-	        type: "post",
-	        url: "/TTO_MAIN/account/getMainName.do",
-	        cache: false,
-	        asyn:false,
-	        error: function (error) {
-	            alert("error3");
-	        }
-	    }).done(function (json) {
-	        if (json != "") {
-	            if (json.isSuccess == true) {
-	            	 $("#relogin").modal("hide");
-	            	 window.location.href= $("#openStore").data('openStore');
-	            	 return true;
-	            } else {
-	               $("#relogin").modal("show");
-	               return false;
-	            }
-	        }
-	    });
+
+function isstorelogin() {
+    $.ajax({
+        type: "post",
+        url: "/TTO_MAIN/account/getMainName.do",
+        cache: false,
+        asyn: false,
+        error: function (error) {
+            alert("error3");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+                $("#relogin").modal("hide");
+                window.location.href = $("#openStore").data('openStore');
+                return true;
+            } else {
+                $("#relogin").modal("show");
+                return false;
+            }
+        }
+    });
 }
 
 function consumerlogin() {
-	var username = $("#username").val();
-	var password = $("#password").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
 
-	$.ajax({
-		type : "post",
-		url : "/TTO_MAIN/account/login.do",
-		cache : false,
-		data : {
-			loginname : username,
-			password : password
-		},
-		error : function(error) {
-			alert("error4");
-		}
-	}).done(function(json) {
-		if (json != "") {
-			if (json.isSuccess == true) {
-				// window.location.href='../account/select-vender.view';
-				$("#relogin").modal("hide");
-				$("#logout").show();
-				getUserName();
-				isStore();
-			} else {
-				$("#errorMsg").show();
-				$("#errorMsg").text(json.data);
-			}
-		}
-	});
+    $.ajax({
+        type: "post",
+        url: "/TTO_MAIN/account/login.do",
+        cache: false,
+        data: {
+            loginname: username,
+            password: password
+        },
+        error: function (error) {
+            alert("error4");
+        }
+    }).done(function (json) {
+        if (json != "") {
+            if (json.isSuccess == true) {
+                // window.location.href='../account/select-vender.view';
+                $("#relogin").modal("hide");
+                $("#logout").show();
+                getUserName();
+                isStore();
+            } else {
+                $("#errorMsg").show();
+                $("#errorMsg").text(json.data);
+            }
+        }
+    });
 }
-
-
-
-

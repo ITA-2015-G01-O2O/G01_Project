@@ -52,7 +52,7 @@
                             </ul>
                         </div>
                         <div class="nav sorter">
-
+                            <div class="navbar-left" style="line-height:48px;margin-right:-10px">排序：</div>
                             <div class="btn-group navbar-form navbar-left" role="group" id="sorter">
                                 <button type="button" class="btn btn-default" id="sales">
                                     &nbsp;销量<span class="hidden glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" onclick="gotoTop();return false;" class="totop">
+            <a id="border-triangle" href="#" onclick="gotoTop();return false;" class="totop" style="display:none">
                 <div></div>
             </a>
             <%@ include file="../common/loginmodal.jsp"%>
