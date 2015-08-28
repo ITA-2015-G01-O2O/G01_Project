@@ -65,7 +65,7 @@ function isStore(){
 	            		$("#showmyShop").show();
 	            		$("#showmyShop").children().eq(0).attr('href','/TTO_MAIN/vendor/order/NewOrder.view')
 	            		$("#logout").show();
-	            		$("#loginameshow").children().eq(0).attr('href',"/TTO_MAIN/vendor/product/NewOrder.view");
+	            		$("#loginameshow").children().eq(0).attr('href',"/TTO_MAIN/usercenter/personcenter.view");
 	            	}else if(json.data=="CHECK"){
 	            		$("#openStore").show();
 	            		$("#showmyShop").hide();

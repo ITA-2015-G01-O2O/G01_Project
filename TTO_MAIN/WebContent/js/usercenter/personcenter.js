@@ -160,6 +160,8 @@ $(function() {
 																			"#resReplyToUser")
 																	.text(
 																			"this order has finished.");
+															s.find("#resOVoCommentFunc").show();
+															s.find("#showcommentlabel").hide();
 															s.find("#resOVoComment2").show();
 														}
 													});
@@ -240,21 +242,21 @@ function commitcomment(ele) {
 	var inputvalue3 = resOVoCommentchildren.eq(2).val();
 	var id = $(ele).data("orderId");
 	resOVoCommentchildren.eq(4).hide();
-	if (inputvalue3 != null && isNaN(inputvalue3)) {
+	if (inputvalue3 != "" && isNaN(inputvalue3)) {
 		commenterrormsg = getErrorMsg(commenterrormsg,
 				"Error deliver time number,reinput pls,deliver time should be a number");
 	}
-	if (inputvalue2 != null) {
+	if (inputvalue2 != "") {
 		if (isNaN(inputvalue2)) {
 			commenterrormsg = getErrorMsg(commenterrormsg,
 					"Error Score number,the score number should be a number,reinput pls");
-		} else if ((Number(inputvalue2) < 0 || Number(inputvalue2) > 100)) {
+		} else if ((Number(inputvalue2) <= 0 || Number(inputvalue2) > 5)) {
 			commenterrormsg = getErrorMsg(
 					commenterrormsg,
-					"Error Score number,reinput pls,and the length should be greater than 0 and less than 100");
+					"Error Score number,reinput pls,and the length should be greater than 0 and less than 5");
 		}
 	}
-	if (commenterrormsg != null) {
+	if (commenterrormsg != "") {
 		resOVoCommentchildren.eq(4).show();
 		resOVoCommentchildren.eq(4).html(commenterrormsg);
 		return false;
@@ -266,9 +268,9 @@ function commitcomment(ele) {
 				cache : false,
 				asyn : false,
 				data : {
-					context : inputvalue,
-					point : inputvalue2,
-					deliverTime : inputvalue3,
+					context : inputvalue==""?"nothing":inputvalue,
+					point : inputvalue2==""?"3":inputvalue2,
+					deliverTime : inputvalue3==""?"60":inputvalue3,
 					orderId : $(ele).data("orderId")
 				},
 				error : function(error) {					

@@ -72,9 +72,6 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao {
 
   @Override
   public int addOrder(Order o) {
-    for(OrderItem item:o.getOrderItems()){
-      this.getEntityManager().persist(item);
-    }
     this.create(o);
     return 1;
   }
