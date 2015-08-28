@@ -47,11 +47,12 @@
                     <div class="main-wrapper container">
                         <div class="row">
                             <ul class="nav nav-pills" id="store_type_list">
-                                <li role="presentation" class="active"><a href="#">全部</a></li>
+                                <li role="presentation" class="active"><a href="javascript:void(0)">全部</a></li>
 
                             </ul>
                         </div>
                         <div class="nav sorter">
+
                             <div class="btn-group navbar-form navbar-left" role="group" id="sorter">
                                 <button type="button" class="btn btn-default" id="sales">
                                     &nbsp;销量<span class="hidden glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
@@ -61,8 +62,9 @@
 
                             </div>
                             <form class="navbar-form navbar-right search">
+                                搜索：
                                 <input type="text" class="form-control" placeholder="Search">
-                                <button class="btn btn-default">Go</button>
+
                             </form>
                         </div>
                         <div class="row venders">
