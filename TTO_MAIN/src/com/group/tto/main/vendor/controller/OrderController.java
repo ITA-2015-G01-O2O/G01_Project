@@ -22,7 +22,6 @@ import com.group.tto.main.vo.OrderModelVo;
 public class OrderController extends BaseController {
 	@Autowired
 	private OrderService orderService;
-
 	public OrderService getOrderService() {
 		return orderService;
 	}
@@ -35,8 +34,8 @@ public class OrderController extends BaseController {
 	@ResponseBody
 	public List<OrderModelVo> loadOrdersByState(HttpServletRequest request) {
 		String state = request.getParameter("state");
-		List<Order> Orders = orderService.findOrdersByState(state, 50);
-		return translateObject(Orders);
+		List<OrderModelVo> Orders = orderService.findOrdersByState(state, 50);
+		return Orders;
 	}
 
 	@RequestMapping(value = "/loadAllNewOrder.do", produces = { "application/json;charset=UTF-8" })
@@ -50,17 +49,17 @@ public class OrderController extends BaseController {
 			e.printStackTrace();
 		}
 		long sid = (long) request.getSession().getAttribute("sid");
-		List<Order> Orders = orderService.findNewOrders(sid);
+		List<OrderModelVo> Orders = orderService.findNewOrders(sid);
 		System.out.print(Orders.size());
-		return translateObject(Orders);
+		return Orders;
 	}
 
 	@RequestMapping(value = "/loadAllCompletedOrder.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
 	public List<OrderModelVo> loadAllCompletedOrders(HttpServletRequest request) {
 		long sid = (long) request.getSession().getAttribute("sid");
-		List<Order> Orders = orderService.findAllCompletedOrderd(sid);
-		return translateObject(Orders);
+		List<OrderModelVo> Orders = orderService.findAllCompletedOrderd(sid);
+		return Orders;
 
 	}
 
@@ -82,49 +81,5 @@ public class OrderController extends BaseController {
 		return "main/vendor";
 	}
 
-	public List<OrderModelVo> translateObject(List<Order> orders) {
-		List<OrderModelVo> listVo = new ArrayList<OrderModelVo>();
-		for (Order order : orders) {
-			OrderModelVo oo = new OrderModelVo();
-			oo.setContacterName(order.getContacterName());
-			oo.setContacterPhone(order.getContacterPhone());
-			oo.setCreateTime(order.getCreateTime());
-			oo.setDetailLocation(order.getDetailLocation());
-			oo.setEndTime(order.getEndTime());
-			oo.setIsDelete(order.getIsDelete());
-			oo.setOrderId(order.getOrderId());
-			// oo.setOrderItems(order.getOrderItems());
-			oo.setEndTime(order.getEndTime());
-			oo.setRemarks(order.getRemarks());
-			oo.setStatus(order.getStatus());
-			oo.setStoreId(order.getStoreId());
-			oo.setVersion(order.getVersion());
-			oo.setOrderNumber(order.getOrderNumber());
-			List<OrderItem> orderItems = new ArrayList<OrderItem>();
-			for (int i = 0; i < order.getOrderItems().size(); i++) {
-				OrderItem orderItem = new OrderItem();
-				orderItem.setAmount(order.getOrderItems().get(i).getAmount());
-				orderItem.setOrderItemId(order.getOrderItems().get(i)
-						.getOrderItemId());
-				orderItem.setPrice(order.getOrderItems().get(i).getPrice());
-				orderItem.setProduct(order.getOrderItems().get(i).getProduct());
-				orderItems.add(orderItem);
-			}
-			oo.setOrderItems(orderItems);
-			// orderItem.
-
-			if (order.getComment() != null) {
-				Comment comm = new Comment();
-				comm.setCommentId(order.getComment().getCommentId());
-				comm.setContext(order.getComment().getContext());
-				comm.setPoint(order.getComment().getPoint());
-				;
-				oo.setComment(comm);
-			}
-			listVo.add(oo);
-		}
-		return listVo;
-
-	}
 
 }

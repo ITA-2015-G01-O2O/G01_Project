@@ -40,7 +40,9 @@ public class JMSAcceptor {
   @Scheduled(cron = "0 0/1 *  * * ? ")
   public void acceptJMSMessage() {
     try {
-      msgs.addAll(jmsHelper.getMessage(100, 5 * 1000L));
+      msgs.addAll(jmsHelper.getMessage(100, 10 * 1000L));
+      System.out.println("JMS RECEIVED:"+msgs.size());
+      System.out.println("1232134");
     } catch (Exception e) {
       SystemLogger.error(LoggerNames.ERROR_APPENDER, "JMS Message accept error");
     }

@@ -1,5 +1,6 @@
 package com.group.tto.main.vendor.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,28 @@ public class JmsController extends BaseController {
 
 	@RequestMapping(value = "/jms.do", produces = { "application/json;charset=UTF-8" })
 	@ResponseBody
-	public List<OrderJMSMsg> jmsController(HttpServletRequest req) {
+	public List<OrderJMSMsg> jmsController(HttpServletRequest req) throws InterruptedException {
+		Thread.sleep(500);
+		long sid=(long) req.getSession().getAttribute("sid");
+		List<OrderJMSMsg>  jms=new ArrayList<OrderJMSMsg>();
+	   for(OrderJMSMsg omsg :  JMSAcceptor.getAllMsg())
+	   {
+		   if(omsg.getStoreId()==sid)
+		   {
+			   jms.add(omsg);
+			   System.out.println("jms running:>>>>>>>>>>>"+jms.size());
+			   req.setAttribute("jmsSize",jms.size());
+		   }
+	   }
+		return jms;
+	}
+		
+	@RequestMapping(value = "/removejms.do", produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public List<OrderJMSMsg> removeJms(HttpServletRequest req) {
+		String orderId=req.getParameter("id");
+		System.out.println("===================================== jms remove"+orderId);
+		JMSAcceptor.removeMsg(Long.parseLong(orderId));
 		List<OrderJMSMsg> jms = JMSAcceptor.getAllMsg();
 		return jms;
 	}

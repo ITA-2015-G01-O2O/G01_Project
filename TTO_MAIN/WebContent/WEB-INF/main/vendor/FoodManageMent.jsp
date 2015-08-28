@@ -39,6 +39,7 @@
 					<div class="modal-header">
 						<h4 class="modal-title">Add Menu</h4>
 					</div>
+					
 					<div class="modal-body">
 						<div class="col-xs-12">
 							<div class="col-xs-6">
@@ -212,13 +213,14 @@
 
 							</div>
 
+
+
+
 							<div class="col-xs-12 MenuArea">
 								<div class="row MenuArea">
 									<div class="col-xs-10">&nbsp;</div>
-									<div class="col-xs-2">
-										<button id="addButton" class="col-xs-2 btn btn-success"
-											data-toggle="modal" data-target=".bs-example-modal-sm1"
-											style="width: 100px;">Add Memu</button>
+								<div class="col-xs-2" style="position:relative;right:11px">
+										<button id="addButton" class="col-xs-2 btn btn-success" data-toggle="modal" data-target=".bs-example-modal-sm1" style="width: 100px;">Add Memu</button>
 									</div>
 								</div>
 							</div>

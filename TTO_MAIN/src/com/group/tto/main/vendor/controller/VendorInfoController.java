@@ -19,6 +19,12 @@ public class VendorInfoController extends BaseController {
   @RequestMapping(value = "/getVendorInfo.do", produces = {"application/json;charset=UTF-8"})
   @ResponseBody
   public String getUserProfileBy(HttpServletRequest req) {
+	  try {
+		Thread.sleep(500);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     long sid = (long) req.getSession().getAttribute("sid");
     //int sid=50;
     VendorInfo v = vi.getVendorInfo((int) sid);

@@ -90,7 +90,7 @@ function addMenu1(Menu,str) {
 	Menu.appendTo(".menuTestArea");
 }
 function deleteMenu1(id) {
-	$.get("../vendor/product/deleteProduct.do", {
+	$.get("deleteProduct.do", {
 		pid : id,
 	}, function(data) {
          if(data.isSuccess){

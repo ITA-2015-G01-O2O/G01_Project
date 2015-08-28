@@ -50,7 +50,7 @@ private static ApplicationContext context;
     order.setOrderNumber("test"+i);
     order.setPayWay("test"+i);
     order.setRemarks("test"+i);
-    order.setStatus("test"+i);
+    order.setStatus("NEW");
     Store store=new Store();
     store.setStoreId(50L);
     order.setStoreId(store.getStoreId());

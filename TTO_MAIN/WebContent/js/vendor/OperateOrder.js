@@ -5,7 +5,7 @@ function addOrderTale(str) {
 		$(
 				"<tr><td>" + str.orderItems[i].product.productName
 						+ "</td><td>" + str.orderItems[i].amount + "</td><td>"
-						+ str.orderItems[i].product.price + "</td></tr>")
+						+ str.orderItems[i].price + "</td></tr>")
 				.appendTo(Order.find("#" + str.orderNumber));
 	}
 	Order.attr("id", str.orderId);
@@ -31,9 +31,9 @@ function addOrderTale(str) {
 
 function getPrice(OrderItems) {
 	if (OrderItems != null) {
+		var price = 0;
 		for (var i = 0; i < OrderItems.length; i++) {
-			var price = 0;
-			price = price + parseInt(price + OrderItems[i].price);
+			price = price + parseInt(OrderItems[i].price)* parseInt(OrderItems[i].amount);
 		}
 		return price;
 	}
@@ -71,10 +71,8 @@ function loadVendorInfo() {
 	});
 }
 
-
-
 $(document).ready(function() {
-	 verify();
+	verify();
 	loadVendorInfo();
 	$.get("loadAllNewOrder.do", function(data) {
 		var str = eval(data);
@@ -83,11 +81,20 @@ $(document).ready(function() {
 		});
 
 		$(".btn.btn-primary.access").on("click", function() {
+			var id=$(this).data('id');
 			var status = $(this).text();
 			$.get("updateOrder.do", {
 				status : status,
 				id : $(this).data('id')
 			}, function(data) {
+				// 加东西
+				if (status == "SENDING") {
+					$.get("/TTO_MAIN/vendor/jmsController/removejms.do", {
+						id : id
+					}, function(data) {
+
+					});
+				}
 				window.location.href = "NewOrder.view";
 			});
 		});
@@ -98,6 +105,7 @@ $(document).ready(function() {
 				status : status,
 				id : $(this).data('id')
 			}, function(data) {
+				// 加东西
 				window.location.href = "NewOrder.view";
 			});
 		});
@@ -106,18 +114,17 @@ $(document).ready(function() {
 
 });
 
-
-function verify(){
+function verify() {
 	$.ajax({
-	type:"post",
-	url:"/TTO_MAIN/vendor/firstLogin/verify.do",
-	success:function(data){
-	var result=data.isSuccess;
-	if(result!=true)		
-		window.location.href="/TTO_MAIN/vendor/completeInfo/completeInfo.view";
-	},
-	        error:function(data){
-	            alert("Load message fail!");
-	        }
-	});
+				type : "post",
+				url : "/TTO_MAIN/vendor/firstLogin/verify.do",
+				success : function(data) {
+					var result = data.isSuccess;
+					if (result != true)
+						window.location.href = "/TTO_MAIN/vendor/completeInfo/completeInfo.view";
+				},
+				error : function(data) {
+					alert("Load message fail!");
+				}
+			});
 }

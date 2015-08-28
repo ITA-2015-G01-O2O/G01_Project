@@ -1,15 +1,24 @@
 $(document).ready(function() {
 	var i=0;
-	setInterval(function() {
-		i=i+1;
-		$.get("/TTO_MAIN/vendor/jmsController/jms.do", function(data) {
-			if ($.isEmptyObject(data) == false) {
-                $(".badge").text(i);
-                $(".badge").css("background-color","red");
-			}
-		});
+	$.get("/TTO_MAIN/vendor/jmsController/jms.do", function(data) {
+		if ($.isEmptyObject(data) == false) {
+			var str=eval(data);
+            $(".badge").text(str.length);
+            $(".badge").css("background-color","red");
+            setInterval(function() {
+        		$.get("/TTO_MAIN/vendor/jmsController/jms.do", function(data) {
+        			if ($.isEmptyObject(data) == false) {
+        				var str=eval(data);
+                        $(".badge").text(str.length);
+                        $(".badge").css("background-color","red");
+        			}
+        		});
 
-	}, 1000);
+        	}, 1000);
+		}
+	});
+	
+	
 	
 });
 

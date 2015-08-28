@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="<c:url value='/css/basic.css'/>">
 		<script src="<c:url value='/js/jquery.cookie.js'/>"></script>
 		<script src="<c:url value='/js/common/basic.js'/>"></script>
+		<script  type="text/javascript"  src="<c:url value='/js/vendor/TimeSetting.js'/>"></script>
 	</head>
 
 	<body>
@@ -30,7 +31,7 @@
 								<ul class="nav nav-pills nav-stacked">
 									<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
 									<li role="presentation">
-										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">2</span></a>
+										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge">${jmsSize}</span></a>
 									</li>
 									<li role="presentation"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
 									<br/>
