@@ -81,7 +81,6 @@ public class UserCenterController extends BaseController {
       OrderListVo o = new OrderListVo();
       MerProsList s = storeService.getStoreById(order.getStoreId());
       o.setOrderId(order.getOrderId());
-
       o.setStoreName(s.getStoreName());
       o.setPhone(s.getPhone());
       o.setLogoPicUrl(s.getLogoPicUrl());

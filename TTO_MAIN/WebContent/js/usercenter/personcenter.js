@@ -3,7 +3,6 @@ $(function() {
 		e.preventDefault();
 		$(this).tab('show');
 	});
-
 	$.ajax({
 
 		type : "post",
@@ -71,9 +70,10 @@ $(function() {
 					
 				}
 			}).done(function(json) {
+				$("#chargePage").modal("hide");
 				if (json != "") {
 					$("#userInfo_fund").text("￥：" + json.fund);
-
+					
 				}
 			});
 
@@ -236,7 +236,7 @@ $(function() {
 
 });
 function commitcomment(ele) {
-	commenterrormsg=null;
+	commenterrormsg="";
 	var inputvalue="";
 	var inputvalue2="";
 	var inputvalue3="";
@@ -301,10 +301,11 @@ function commitcomment(ele) {
 				}
 			}).done(function(json) {
 				if (json.isSuccess == true) {
-					resOVoCommentchildren.hide();
+					$(ele).closest('div').hide();
 					var preele = $(ele).closest('div').prev();
 					preele.show();
-					preele.text(inputvalue);
+					setCommentLabel(preele,inputvalue,inputvalue2,inputvalue3);
+					
 				} else {
 					$("#failchange").modal("show");
 				}
@@ -313,6 +314,28 @@ function commitcomment(ele) {
 	}
 
 }
+
+function setCommentLabel(preele,inputvalue,inputvalue2,inputvalue3){
+	var preeleChildren=$(preele).children();
+	for(var i=0;i<preeleChildren.length;i++){
+		if(preeleChildren.eq(i).attr('id')=="resOVoComment"){
+			preeleChildren.eq(i).show();
+			preeleChildren.eq(i).text(inputvalue);
+			continue;
+		}
+		if(preeleChildren.eq(i).attr('id')=="resOVoCommentscore2"){
+			preeleChildren.eq(i).show();
+			inputvalue2=preeleChildren.eq(i).text(inputvalue2);
+			continue;
+		}
+		if(preeleChildren.eq(i).attr('id')=="resOVoCommenttime2"){
+			preeleChildren.eq(i).show();
+			inputvalue3=preeleChildren.eq(i).text(inputvalue3);
+			continue;
+		}
+	}
+}
+
 
 var commenterrormsg = null;
 function getErrorMsg(msg, newmsg) {

@@ -202,7 +202,7 @@ function addToCard(proName, proId, proprice) {
 	var is_add = false;
 	divele.each(function() {
 		var orderclass = $(this).attr("class");
-		if (orderclass == "orderBox") {
+		if (orderclass.indexOf("orderBox") != -1) {
 			var orderchildren = $(this).children();
 			var orderclassId = orderchildren.eq(1).text();
 			if (orderclassId == proId) {
@@ -214,10 +214,10 @@ function addToCard(proName, proId, proprice) {
 				var price2 = Number(price1) + Number(proprice);
 				updatePaymoney(proprice);
 				orderchildren.eq(3).val(number2);
-				orderchildren.eq(5).text("$" + price2);
+				orderchildren.eq(5).text("￥" + price2);
 			}
 		}
-	})
+	});
 
 	if (!is_add) {
 		var orderBox1 = addPointPair();
@@ -225,7 +225,7 @@ function addToCard(proName, proId, proprice) {
 		orderBox.eq(0).text(proName);
 		orderBox.eq(1).text(proId);
 		orderBox.eq(3).val(1);
-		orderBox.eq(5).text("$" + proprice);
+		orderBox.eq(5).text("￥" + proprice);
 		orderBox.eq(6).text(proprice);
 		updatePaymoney(proprice);
 	}
@@ -235,13 +235,14 @@ function addToCard(proName, proId, proprice) {
 function updatePaymoney(money) {
 	var paychildren = $("#payCount").children();
 	var money2 = Number(money) + Number(moneyCount);
-	paychildren.eq(0).text(money2);
+	paychildren.eq(0).text("￥"+money2);
 	moneyCount = money2;
 }
 
 function addPointPair() {
 	var orderBox1 = $("#orderBoxCopy").clone();
 	orderBox1.show().appendTo($("#ordersCard"));
+	setRomdomNameandId(orderBox1);
 	return orderBox1;
 }
 
@@ -261,7 +262,7 @@ function add1(ele) {
 	var money = orderchildren.eq(6).text();
 	var money2 = number2 * Number(money);
 
-	orderchildren.eq(5).text("$" + money2);
+	orderchildren.eq(5).text("￥" + money2);
 	updatePaymoney(Number(money));
 }
 
@@ -278,7 +279,7 @@ function del1(ele) {
 		} else {
 			orderchildren.eq(3).val(number2);
 
-			orderchildren.eq(5).text("$" + Number(number2) * orgprice);
+			orderchildren.eq(5).text("￥" + Number(number2) * orgprice);
 			updatePaymoney(-orgprice);
 		}
 	} else {

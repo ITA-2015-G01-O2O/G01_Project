@@ -25,11 +25,11 @@
         http://www.springframework.org/schema/task 
     	http://www.springframework.org/schema/task/spring-task.xsd"
 	default-autowire="default">
-	
+	<!-- 
 	<task:annotation-driven></task:annotation-driven>
 	<context:component-scan base-package="com.group.tto.main.task"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
-	
+	 -->
 	<context:component-scan base-package="com.group.tto.main.dao"/>
 	<context:component-scan base-package="com.group.tto.main.service"/>
 	<context:component-scan base-package="com.group.tto.main.service.web"/>
