@@ -25,6 +25,12 @@
 .resOVoComment2 {
 	padding: 5px;
 }
+#mainContent{
+	min-height:500px;
+	max-height:700px;
+	overflow-y:scroll;
+
+}
 </style>
 </head>
 <body>
@@ -45,17 +51,17 @@
 									aria-controls="home" role="tab" data-toggle="tab">myorder</a></li>
 								<li role="presentation"><a href="#profile"
 									aria-controls="profile" role="tab" data-toggle="tab"
-									onclick="loadMyInfo()">myinfo</a></li>
+									onclick="loadMyInfo()" id="myinfo1">myinfo</a></li>
 								<li role="presentation"><a href="#messages"
 									aria-controls="messages" role="tab" data-toggle="tab"
-									onclick="loadMyFav()">myfav</a></li>
+									onclick="loadMyFav()" id="myfav1">myfav</a></li>
 							</ul>
 						</ul>
 					</div>
 					<div class="col-xs-10 main-wrapper">
 
 						<div class="row" id="mainContent">
-							<div class="tab-content">
+							<div class="tab-content" >
 							
 								<div role="tabpanel" class="tab-pane active" id="home"></div>
 
