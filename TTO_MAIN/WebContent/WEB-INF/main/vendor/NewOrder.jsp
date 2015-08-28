@@ -55,7 +55,7 @@
 							<ul class="nav nav-pills nav-stacked">
 							<li role="presentation" class="title"><i class="glyphicon glyphicon-file"></i>&emsp;Order Center</li>
 									<li class="active" role="presentation">
-										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge"  style="background-color: red">2</span></a>
+										<a href="<c:url value='/vendor/order/NewOrder.view'/>"> <i class="glyphicon glyphicon-triangle-right"> </i>&emsp;New Order<span class="badge"  style="background-color: white;">2</span></a>
 									</li>
 									<li role="presentation"><a href="<c:url value='/vendor/order/OrderCompleted.view'/>"><i class="glyphicon glyphicon-triangle-right"></i>&emsp;Completed Order</a></li>
 									<br/>
@@ -171,10 +171,6 @@
 			</div>
 		</div>
 
-		<div class="col-xs-12">
-			<nav class="text-center"> <span><a href="#">关注 </a> </span> | <span><a
-				href="#"> 客服热线：4000000</a></span> </nav>
-		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp" flush="true">
             <jsp:param name="config_hotLine" value="${config_hotLine}"></jsp:param>
