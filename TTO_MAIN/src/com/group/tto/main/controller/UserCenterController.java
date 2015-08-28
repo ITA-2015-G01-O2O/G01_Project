@@ -93,7 +93,7 @@ public class UserCenterController extends BaseController {
       for (OrderItem orderItem : orderItemList) {
         OrderEachItem oo = new OrderEachItem();
         oo.setProductName(orderItem.getProduct().getProductName());
-        oo.setProductId(orderItem.getProduct().getProductId());
+        oo.setAmount(orderItem.getAmount());
         oo.setPrice(orderItem.getProduct().getPrice());
         orderEachItemList.add(oo);
       }

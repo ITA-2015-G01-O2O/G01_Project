@@ -147,15 +147,15 @@
 						<div class="">
 							<table class="table table-bordered ">
 								<caption>orderInfo</caption>
-								<thead>
-									<th class="active">productId</th>
+								<thead>					
 									<th class="active">productName</th>
 									<th class="active">productPrice</th>
+									<th class="active">productAmount</th>
 								</thead>
-								<tfoot>
-									<th class="active">productId</th>
+								<tfoot>							
 									<th class="active">productName</th>
 									<th class="active">productPrice</th>
+									<th class="active">productAmount</th>
 								</tfoot>
 								<tbody id="myordertbody">
 
@@ -230,7 +230,7 @@
 		</div>
 		<!--shopping car template  -->
 		<tr class="hidden" id="productListModul">
-			<td class="active" id="productId"></td>
+			<td class="active" id="productamount"></td>
 			<td class="success" id="productName"></td>
 			<td class="warning" id="productPrice"></td>
 		</tr>
