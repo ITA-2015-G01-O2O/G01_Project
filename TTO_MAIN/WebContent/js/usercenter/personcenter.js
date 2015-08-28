@@ -210,15 +210,16 @@ $(function() {
 
 		for (var i = 0; i < orderItems.length; i++) {
 			var tr = "<tr>";
-			tr += "<td class=\"active\" id=\"productId\">"
-					+ orderItems[i].productId + "</td>";
+			
 			tr += "<td class=\"active\" id=\"productName\">"
 					+ orderItems[i].productName + "</td>";
 			tr += "<td class=\"active\" id=\"productPrice\">"
 					+ orderItems[i].price + "</td>";
+			tr += "<td class=\"active\" id=\"productAmount\">"
+				+ orderItems[i].amount + "</td>";
 			tr += "</tr>";
 			s.find("#myordertbody").append(tr);
-			sum += orderItems[i].price;
+			sum += orderItems[i].price*orderItems[i].amount;
 		}
 
 		s.find("#totalPrice").text(sum);
